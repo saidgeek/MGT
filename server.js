@@ -20,21 +20,29 @@ var db = mongoose.connect(config.mongo.uri, config.mongo.options);
 
 // Bootstrap models
 var modelsPath = path.join(__dirname, 'lib/models');
-fs.readdirSync(modelsPath).forEach(function (file) {
-  if (/(.*)\.(js$|coffee$)/.test(file)) {
-    require(modelsPath + '/' + file);
-  }
-});
+require(modelsPath + '/user');
+require(modelsPath + '/attachment');
+require(modelsPath + '/token');
+require(modelsPath + '/category');
+require(modelsPath + '/notification');
+require(modelsPath + '/report');
+require(modelsPath + '/solicitude');
+// fs.readdirSync(modelsPath).forEach(function (file) {
+//   if (/(.*)\.(js$|coffee$)/.test(file)) {
+//     require(modelsPath + '/' + file);
+//   }
+// });
 
-// Populate empty DB with sample data
-if (app.get('env') === 'development') {
-  require('./lib/config/dummydata');
-};
   
 // Passport Configuration
 var passport = require('./lib/config/passport');
 
 var app = express();
+
+// Populate empty DB with sample data
+if (app.get('env') === 'development') {
+  require('./lib/config/dummydata');
+};
 
 // Express settings
 require('./lib/config/express')(app);
