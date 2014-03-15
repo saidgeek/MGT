@@ -20,9 +20,9 @@ var db = mongoose.connect(config.mongo.uri, config.mongo.options);
 
 // Bootstrap models
 var modelsPath = path.join(__dirname, 'lib/models');
+require(modelsPath + '/token');
 require(modelsPath + '/user');
 require(modelsPath + '/attachment');
-require(modelsPath + '/token');
 require(modelsPath + '/category');
 require(modelsPath + '/notification');
 require(modelsPath + '/report');

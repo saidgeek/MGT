@@ -4,11 +4,11 @@ var should = require('should'),
     app = require('../../../server'),
     request = require('supertest');
 
-// describe('GET /api/awesomeThings', function() {
+// describe('GET /api/v1/users/me', function() {
   
 //   it('should respond with JSON array', function(done) {
 //     request(app)
-//       .get('/api/awesomeThings')
+//       .get('/api/v1/users/me')
 //       .expect(200)
 //       .expect('Content-Type', /json/)
 //       .end(function(err, res) {
