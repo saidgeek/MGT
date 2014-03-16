@@ -12,10 +12,11 @@ angular.module('movistarApp')
         Auth.login(
           email: $scope.user.email
           password: $scope.user.password
+          remember: $scope.user.remember
         )
         .then ->
           # Logged in, redirect to home
           $location.path '/'
         .catch (err) ->
           err = err.data;
-          $scope.errors.other = err.message;
+          $scope.errors.other = err;

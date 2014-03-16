@@ -19,6 +19,7 @@ angular.module('movistarApp')
       Session.save(
         email: user.email
         password: user.password
+        remember: user.remember
       , (user) ->
         $rootScope.currentUser = user
         cb()
@@ -41,24 +42,6 @@ angular.module('movistarApp')
       , (err) ->
         cb err
       ).$promise
-
-    
-    ###
-    Create a new user
-    
-    @param  {Object}   user     - user info
-    @param  {Function} callback - optional
-    @return {Promise}
-    ###
-    createUser: (user, callback) ->
-      cb = callback or angular.noop
-      User.save(user, (user) ->
-        $rootScope.currentUser = user
-        cb user
-      , (err) ->
-        cb err
-      ).$promise
-
     
     ###
     Change password

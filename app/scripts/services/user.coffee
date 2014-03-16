@@ -2,7 +2,7 @@
 
 angular.module("movistarApp")
   .factory "User", ($resource) ->
-    $resource "/api/users/:id",
+    $resource "/api/v1/user/:id",
       id: "@id"
     ,
       update:

@@ -2,4 +2,4 @@
 
 angular.module('movistarApp')
   .factory 'Session', ($resource) ->
-    $resource '/api/session/'
+    $resource '/session/'

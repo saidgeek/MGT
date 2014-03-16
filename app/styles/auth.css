@@ -1,0 +1,227 @@
+/* 
+    Document   : style
+    Created on : 21-03-2014
+    author     : Fran
+*/
+
+/* Css Reset */
+
+fieldset,img{border:0}
+strong,th{font-style:inherit;font-weight:inherit}
+li{padding: 0;}
+ul{padding: 0;margin: 0;}
+p,h1,h2,h3,h4,h5,h6{font-size:100%; margin: 0; font-weight: normal; outline: none;}
+legend{color:#000}
+input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit}
+input,button,textarea,select{font-size:100%}
+a,a:focus,a:hover,a:active{outline:none; text-decoration: none;}
+input:focus, textarea:focus {outline: none;}
+table, tr, td{ border: none!important;}
+
+/* fonts */
+
+@font-face {
+   font-family: 'proxima_nova_rgbold';
+   src: url('fonts/proximanova-bold.eot');
+   src: url('fonts/proximanova-bold.eot?#iefix') format('embedded-opentype'),
+        url('fonts/proximanova-bold.woff') format('woff'),
+        url('fonts/proximanova-bold.ttf') format('truetype'),
+        url('fonts/proximanova-bold.svg#proxima_nova_rgbold') format('svg');
+   font-weight: normal;
+   font-style: normal;
+}
+@font-face {
+   font-family: 'proxima_novasemibold';
+   src: url('fonts/proximanova-semibold.eot');
+   src: url('fonts/proximanova-semibold.eot?#iefix') format('embedded-opentype'),
+        url('fonts/proximanova-semibold.woff') format('woff'),
+        url('fonts/proximanova-semibold.ttf') format('truetype'),
+        url('fonts/proximanova-semibold.svg#proxima_novasemibold') format('svg');
+   font-weight: normal;
+   font-style: normal;
+}
+
+/* Style */
+
+*{
+    margin: 0;
+    padding: 0;
+}
+html, body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x:hidden;
+}
+body{ margin: 0; 
+    padding: 0; 
+    background: #2f364a; 
+    font: 14px proxima_novasemibold; 
+    color: #f2f6fa;
+}
+
+#login{
+    padding: 94px 0 0 0;
+    position: relative;
+    z-index: 10;
+}
+.bkg{
+    background: url(../images/bkg-body.png) repeat-x 0 0;
+    position: relative;
+}
+
+#wrapper{ 
+    width: 480px;
+    margin: 0 auto;
+}
+#wrapper .bienvenida .logo{ 
+    text-align: center; 
+    padding: 128px 0 36px 0;
+}
+#wrapper .bienvenida p{ 
+    margin: 0 0 30px 0; 
+    padding: 0; 
+    text-align: center; 
+    font-size: 15px;
+}
+#wrapper .bienvenida p strong{ 
+    display: block;
+    font: 21px proxima_nova_rgbold;
+}
+
+#alerta.error{
+    font-family: 'proxima_novasemibold';
+    font-size: 14px;
+    color: #fff;
+    padding: 30px 30px 30px 100px;
+    text-align: center;
+    background: #f67780 url(../images/error.png) no-repeat 30px 30px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+form {
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+form fieldset{
+    padding: 15px 0 0 0;
+    position: relative;
+}
+
+input {    
+    text-align: left;
+    outline: none; 
+    margin: 10px;
+    height: 46px;
+    border: 1px solid #05d3ed;
+    font-family: 'proxima_nova_rgbold';
+    font-size: 15px;
+}
+label.error{
+    color: #f67780;
+    font-family: 'proxima_novasemibold';
+    font-size:12px;
+    position: absolute;
+    left: 0; top: 0;
+}
+input.box {     
+    padding-left: 48px;    
+    width: 410px;     
+    color: #9da9b9;       
+    background: #fff no-repeat 0 0;
+}
+.round{
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+#Contrasena{
+    background-image: url(../images/pass.png);
+}
+#Nombre{
+    background-image: url(../images/user.png);
+}
+#Email{
+    background-image: url(../images/email.png);
+}
+
+.center{
+    width: 100%;
+    text-align: center;
+    margin: 20px 0 30px;
+}
+input.submit {
+    width: 178px;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    background: #00b8cf;
+}
+input.submit:hover {
+    background-color: #0a8da1;
+}
+input.submit:active {
+    background-color: #0fdbf4;
+}
+form a{
+    font-family: 'proxima_novasemibold';
+    font-size:12px;
+    color: #a3afc0;
+    text-align: center;
+    width: 100%;
+    float: left;
+}
+
+/* checkbox */
+
+input[type=checkbox].css-checkbox {
+    display:none;
+}
+input[type=checkbox].css-checkbox + label.css-label {
+    padding-left:26px;
+    height:20px; 
+    display:inline-block;
+    line-height:20px;
+    background-repeat:no-repeat;
+    background-position: 0 0;
+    font-family: 'proxima_novasemibold';
+    font-size:12px;
+    color: #a3afc0;
+    vertical-align:middle;
+    cursor:pointer;
+}
+input[type=checkbox].css-checkbox:checked + label.css-label {
+    background-image:url(../images/checked.png);
+}
+label.css-label {
+    background-image:url(../images/unchecked.png);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.check a{
+    display: inline-block;
+    padding: 4px 0 4px 28px;
+    background: url(../images/check.png) no-repeat 0 50%;
+    width: 120px;
+    margin:0 auto;
+    float: none;
+}
+.check a.checked{
+    background: url(../images/checked.png) no-repeat 0 50%;
+}
+
+.punta{
+    position: absolute;
+    left: 50%;
+    top:340px;
+    margin: 0 0 0 -20px;
+}
+

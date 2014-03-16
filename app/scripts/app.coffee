@@ -11,7 +11,7 @@ angular.module('movistarApp', [
       .when '/',
         templateUrl: 'partials/main'
         controller: 'MainCtrl'
-      
+        authenticate: true
       .when '/login',
         templateUrl: 'partials/login'
         controller: 'LoginCtrl'
@@ -23,7 +23,7 @@ angular.module('movistarApp', [
         controller: 'SettingsCtrl'
         authenticate: true
       .otherwise
-        redirectTo: '/'
+        redirectTo: '/login'
 
     $locationProvider.html5Mode true
   
