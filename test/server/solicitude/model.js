@@ -26,8 +26,8 @@ describe('Solicitude Model', function(){
     _involved = [{user: user._id}];
 
     _tasks = [
-      {descrioption: 'task 1'},
-      {descrioption: 'task 2'}
+      {description: 'task 1'},
+      {description: 'task 2'}
     ];
     _comments = [
       {content: 'comment 1', involved: _involved},

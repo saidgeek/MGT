@@ -40,7 +40,7 @@ var passport = require('./lib/config/passport');
 var app = express();
 
 // Populate empty DB with sample data
-if (app.get('env') === 'development') {
+if (app.get('env') === 'development' || app.get('env') === 'test') {
   require('./lib/config/dummydata');
 };
 
