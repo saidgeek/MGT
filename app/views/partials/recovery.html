@@ -1,0 +1,23 @@
+<div class="bienvenida">
+<div class="logo">
+    <img src="img/movistar-logo.png" /></div>
+    <p>Ingresa la dirección de tu correo electrónico<br>para enviarte ahí la contraseña</p>
+</div>
+    
+<div id="login">
+    <div id="alerta" class="round error" ng-show="submitted && recoveryForm.$invalid">
+        <p>Hay un error en el ingreso de sus datos, por favor revise si está correcta la información</p>
+    </div>
+    <form name="form" ng-submit="recovery()" novalidate>
+        <fieldset>
+        <label class="error" ng-show="submitted && form.Email.$error.required">
+            * El correo electrónico no existe o no está bien ingresado
+        </label>
+        <input class="box round"  type="email" id="Email" name="Email"  ng-model="user.email" placeholder="Email" required>
+        </fieldset>                       
+       
+        <div class="center">
+            <input class="submit round" ng-click="submitted=true"  type="submit" value="Ingresar">                        
+        </div>
+    </form> 
+</div>

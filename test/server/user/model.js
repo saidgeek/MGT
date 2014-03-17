@@ -90,4 +90,11 @@ describe('User Model', function() {
     user.authenticate('blah').should.not.be.true;
   });
 
+  it("should recovery password", function() {
+    user.recovery(function(err, u){
+      should.not.exist(err);
+      should.not.exist(u.confirmAt);
+    });
+  });
+
 });

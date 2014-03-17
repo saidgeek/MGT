@@ -11,12 +11,12 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'app/bower_components/angular/angular.js',
-      'app/bower_components/angular-mocks/angular-mocks.js',
-      'app/bower_components/angular-resource/angular-resource.js',
-      'app/bower_components/angular-cookies/angular-cookies.js',
-      'app/bower_components/angular-sanitize/angular-sanitize.js',
-      'app/bower_components/angular-route/angular-route.js',
+      'app/lib/angular/angular.js',
+      'app/lib/angular-mocks/angular-mocks.js',
+      'app/lib/angular-resource/angular-resource.js',
+      'app/lib/angular-cookies/angular-cookies.js',
+      'app/lib/angular-sanitize/angular-sanitize.js',
+      'app/lib/angular-route/angular-route.js',
       'app/scripts/*.coffee',
       'app/scripts/**/*.coffee',
       'test/client/mock/**/*.coffee',

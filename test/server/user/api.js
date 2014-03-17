@@ -182,4 +182,24 @@ describe('GET /api/v1/users', function() {
     });
   });
 
+  it('should recovery password of user', function(done){
+    var _user = new User(user);
+    _user.save(function(err){
+      request(app)
+        .put('/api/v1/user/recovery')
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .send({
+          clientToken: token.clientToken,
+          accessToken: token.accessToken,
+          email: user.email
+        })
+        .end(function(err, res) {
+          if (err) return done(err);
+          res.status.should.eql(200);
+          done();
+        });
+    });
+  });
+
 });
