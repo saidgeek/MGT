@@ -15,9 +15,9 @@ angular.module('movistarApp', [
       .when '/login',
         templateUrl: 'partials/login'
         controller: 'LoginCtrl'
-      .when '/signup', 
-        templateUrl: 'partials/signup'
-        controller: 'SignupCtrl'
+      .when '/recovery',
+        templateUrl: 'partials/recovery'
+        controller: 'RecoveryCtrl'
       .when '/settings',
         templateUrl: 'partials/settings'
         controller: 'SettingsCtrl'

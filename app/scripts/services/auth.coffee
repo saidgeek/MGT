@@ -42,6 +42,16 @@ angular.module('movistarApp')
       , (err) ->
         cb err
       ).$promise
+
+    recovery: (user, callback) ->
+      cb = callback or angular.noop
+      User.recovery(
+        email: user.email
+      , (user) ->
+        cb()
+      , (err) ->
+        cb err
+      ).$promise
     
     ###
     Change password

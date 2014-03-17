@@ -2,15 +2,22 @@
 
 angular.module("movistarApp")
   .factory "User", ($resource) ->
-    $resource "/api/v1/user/:id",
+    $resource "",
       id: "@id"
     ,
       update:
         method: "PUT"
         params: {}
+        url: '/api/v1/user/:id'
 
       get:
         method: "GET"
         params:
           id: "me"
+        url: '/api/v1/user/:id'
+
+      recovery:
+        method: "PUT"
+        params: {}
+        url: "/api/v1/user/recovery"
 
