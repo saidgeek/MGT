@@ -39,6 +39,8 @@ var passport = require('./lib/config/passport');
 
 var app = express();
 
+var jobs = require('./lib/config/kue')(app);
+
 // Populate empty DB with sample data
 if (app.get('env') === 'development' || app.get('env') === 'test') {
   require('./lib/config/dummydata');
