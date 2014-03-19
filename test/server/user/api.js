@@ -121,28 +121,8 @@ describe('GET /api/v1/users', function() {
         });
     });
   });
-
-  it('should create password', function(done){
-    var _user = new User(user);
-    _user.save(function(err){
-      request(app)
-        .post('/api/v1/user/confirm/'+_user.confirmToken)
-        .expect('Content-Type', /json/)
-        .expect(200)
-        .send({
-          confirmPassword: '123456',
-          password: '123456'
-        })
-        .end(function(err, res) {
-          if (err) return done(err);
-          res.status.should.eql(200);
-          done();
-        });
-    });
-  });
   
   it('should change password', function(done){
-    user.password = '123456';
     var _user = new User(user);
     _user.save(function(err){
       request(app)
@@ -152,8 +132,9 @@ describe('GET /api/v1/users', function() {
         .send({
           clientToken: token.clientToken,
           accessToken: token.accessToken,
-          oldPassword: '123456',
-          newPassword: '654321'
+          oldPassword: _user.tempPassword,
+          newPassword: '654321',
+          confirmPassword: '654321'
         })
         .end(function(err, res) {
           if (err) return done(err);

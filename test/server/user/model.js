@@ -25,7 +25,6 @@ describe('User Model', function() {
         },
         access: token.info,
         email: 'test@test.com',
-        password: 'password'
       });
     });
 
@@ -82,19 +81,29 @@ describe('User Model', function() {
     });
   });
 
-  it("should authenticate user if password is valid", function() {
-    user.authenticate('password').should.be.true;
+  it("should authenticate user if password is valid", function(done) {
+    user.save(function(err){
+      User.findOne({email: user.email}, function(err, usr){
+        should.not.exist(err);
+        usr.authenticate(usr.tempPassword).should.be.true;
+        done();
+      });
+    });
   });
 
   it("should not authenticate user if password is invalid", function() {
     user.authenticate('blah').should.not.be.true;
   });
 
-  it("should recovery password", function() {
-    user.recovery(function(err, u){
-      should.not.exist(err);
-      should.not.exist(u.confirmAt);
+  it("should recovery password", function(done) {
+     user.save(function(err){
+      User.findOne({email: user.email}, function(err, usr){
+        usr.recovery(function(err, u){
+          should.not.exist(err);
+          usr.tempPassword.should.eql(usr.tempPassword);
+          done();
+        });
+      });
     });
   });
-
 });
