@@ -50,6 +50,10 @@ if (app.get('env') === 'development' || app.get('env') === 'test') {
   require('./lib/config/dummydata');
 };
 
+if (app.get('env') === 'production' && config.dummyDataPro) {
+  require('./lib/config/dummydataPro'); 
+};
+
 // Express settings
 require('./lib/config/express')(app);
 
