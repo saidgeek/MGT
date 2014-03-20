@@ -8,7 +8,10 @@
     <div id="alerta" class="round error" ng-show="submitted && (form.$invalid || errors.other.fail)">
         <p>Hay un error en el ingreso de sus datos, por favor revise si está correcta la información</p>
     </div>
-    <form name="form" ng-submit="recovery(form)" novalidate>
+    <div id="alerta" class="round success" ng-show="success.sendEmail">
+        <p>Se a enviado con exito la nueva clave al siguiente correo <strong>{{ success.email }}</strong></p>
+    </div>
+    <form name="form" ng-submit="recovery(form)" novalidate ng-hide="success.sendEmail">
         <fieldset>
         <label class="error" ng-show="submitted && (form.Email.$error.required || errors.other.fail) || form.Email.$error.email">
             * El correo electrónico no existe o no está bien ingresado

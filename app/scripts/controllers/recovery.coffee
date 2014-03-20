@@ -13,8 +13,9 @@ angular.module('movistarApp')
         Auth.recovery(
           email: $scope.user.email
         )
-        .then ->
-          $scope.success.ok = true
+        .then (user)->
+          $scope.success.sendEmail = true
+          $scope.success.email = user.email
         .catch (err) ->
           err = err.data
           $scope.errors.other = err

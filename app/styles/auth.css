@@ -101,6 +101,18 @@ body{ margin: 0;
     right: 0;
     top: 0;
 }
+#alerta.success{
+    font-family: 'proxima_novasemibold';
+    font-size: 14px;
+    color: #fff;
+    padding: 30px 30px 30px 30px;
+    text-align: center;
+    background: #00AF00;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+}
 form {
     margin: 0 auto;
     margin-top: 20px;

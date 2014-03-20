@@ -48,7 +48,7 @@ angular.module('movistarApp')
       User.recovery(
         email: user.email
       , (user) ->
-        cb()
+        cb(user)
       , (err) ->
         cb err
       ).$promise
