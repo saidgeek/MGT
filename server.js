@@ -3,7 +3,11 @@
 var express = require('express'),
     path = require('path'),
     fs = require('fs'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    mandrill = require('mandrill-api/mandrill'),
+    mandrill_client = new mandrill.Mandrill('9cyYwqPH5H0YbKF1zjUvpg');
+
+global.mandrill = mandrill_client;
 
 /**
  * Main application file
@@ -27,12 +31,12 @@ require(modelsPath + '/category');
 require(modelsPath + '/notification');
 require(modelsPath + '/report');
 require(modelsPath + '/solicitude');
+var Email = require(modelsPath + '/email');
 // fs.readdirSync(modelsPath).forEach(function (file) {
 //   if (/(.*)\.(js$|coffee$)/.test(file)) {
 //     require(modelsPath + '/' + file);
 //   }
 // });
-
   
 // Passport Configuration
 var passport = require('./lib/config/passport');
