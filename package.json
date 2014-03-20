@@ -11,7 +11,8 @@
     "ejs": "~0.8.4",
     "kue": "~0.7.5",
     "mandrill-api": "~1.0.39",
-    "swig": "~1.3.2"
+    "swig": "~1.3.2",
+    "moment": "~2.5.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
