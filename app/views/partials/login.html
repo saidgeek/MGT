@@ -1,45 +1,51 @@
-
-
-
-<div class="bienvenida">
-  <div class="logo">
-    <img src="images/movistar-logo.png" />
-  </div>
-  <p>
-    <strong>Bienvenido,</strong>Ingresa los datos de tu cuenta para acceder
-  </p>
-</div>
-      
-<div id="login">
-  
-  <div id="alerta" class="round error" ng-show="submitted && (form.$invalid || errors.other.show )">
-    <p>Hay un error en el ingreso de sus datos, por favor revise si está correcta la información</p>
-  </div>
-
-  <form name="form" ng-submit="login(form)" novalidate>
+<div class="bkg">
+  <div id="wrapper">
     
-    <fieldset>
-      <label class="error" ng-show="submitted && (form.$error.required || errors.other.knownEmail )">
-        * El nombre de usuario no existe o no está bien ingresado
-      </label>
-      <input class="box round" type="text" id="Email" name="email" ng-model="user.email" value="" placeholder="Email de Usuario" required>
-    </fieldset> 
-
-    <fieldset>
-        <label class="error" ng-show="submitted && (form.$error.required || errors.other.invalidPassword )">
-          * La contraseña no está correctamente ingresada
-        </label>
-        <input class="box round" type="password" id="Contrasena" name="Contrasena" ng-model="user.password" value="" placeholder="Contraseña" required>
-    </fieldset>
-
-    <div data-sgk-remember text='Recordar mis datos'></div>
-    
-    <div class="center">
-        <input class="submit round"  type="submit" value="Login">
-        <a ng-href="/recovery">¿Perdiste tu contraseña?</a>
+    <div class="bienvenida">
+      <div class="logo">
+        <img src="images/movistar-logo.png" />
+      </div>
+      <p>
+        <strong>Bienvenido,</strong>Ingresa los datos de tu cuenta para acceder
+      </p>
     </div>
-  
-  </form> 
-</div>
+          
+    <div id="login">
+      
+      <div id="alerta" class="round error" ng-show="submitted && (form.$invalid || errors.other.show )">
+        <p>Hay un error en el ingreso de sus datos, por favor revise si está correcta la información</p>
+      </div>
 
-<!-- <div ng-include="'partials/navbar.html'"></div> -->
+      <form name="form" ng-submit="login(form)" novalidate>
+        
+        <fieldset>
+          <label class="error" ng-show="submitted && (form.$error.required || errors.other.knownEmail )">
+            * El nombre de usuario no existe o no está bien ingresado
+          </label>
+          <input class="box round" type="text" id="Email" name="email" ng-model="user.email" value="" placeholder="Email de Usuario" required>
+        </fieldset> 
+
+        <fieldset>
+            <label class="error" ng-show="submitted && (form.$error.required || errors.other.invalidPassword )">
+              * La contraseña no está correctamente ingresada
+            </label>
+            <input class="box round" type="password" id="Contrasena" name="Contrasena" ng-model="user.password" value="" placeholder="Contraseña" required>
+        </fieldset>
+
+        <div data-sgk-remember text='Recordar mis datos'></div>
+        
+        <div class="center">
+            <input class="submit round"  type="submit" value="Login">
+            <a ng-href="/recovery">¿Perdiste tu contraseña?</a>
+        </div>
+      
+      </form> 
+    </div>
+
+    <!-- <div ng-include="'partials/navbar.html'"></div> -->
+    
+  </div>
+  <div class="punta">
+      <img src="images/punta.png">   
+  </div>
+</div>
