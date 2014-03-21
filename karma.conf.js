@@ -22,7 +22,10 @@ module.exports = function(config) {
       'test/client/mock/**/*.coffee',
       'test/client/spec/**/*.coffee'
     ],
-
+    reporters: ['html'],
+    htmlReporter: {
+      outputFile: 'test/client/spec/units.html'
+    },
     // list of files / patterns to exclude
     exclude: [],
 

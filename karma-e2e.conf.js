@@ -13,7 +13,10 @@ module.exports = function(config) {
     files: [
       'test/client/e2e/**/*.coffee'
     ],
-
+    reporters: ['html'],
+    htmlReporter: {
+      outputFile: 'test/client/e2e/e2e.html'
+    },
     // list of files / patterns to exclude
     exclude: [],
 
