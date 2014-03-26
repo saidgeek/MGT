@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" ng-app="movistarApp"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="movistarApp" data-ng-controller="CssCtrl"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,8 +16,9 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
-    <link ng-if="!currentUser" rel="stylesheet" href="styles/auth.css">
+    <!-- <link ng-if="!currentUser" rel="stylesheet" href="styles/auth.css"> -->
     <!-- endbuild -->
+    <link data-ng-repeat="css in includeCss" rel="stylesheet" href="{{css}}" class="ng-scope">
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -48,14 +49,20 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        
+        <script src="scripts/controllers/master.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/navbar.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/recovery.js"></script>
         <script src="scripts/controllers/settings.js"></script>
+        
+        <script src="scripts/factories/params.js"></script>
+        
         <script src="scripts/services/auth.js"></script>
         <script src="scripts/services/session.js"></script>
         <script src="scripts/services/user.js"></script>
+        
         <script src="scripts/directives/remember.js"></script>
         <script src="scripts/directives/mongooseError.js"></script>
         <!-- endbuild -->

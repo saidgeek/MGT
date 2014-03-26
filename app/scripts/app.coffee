@@ -8,16 +8,17 @@ angular.module('movistarApp', [
 ])
   .config ($routeProvider, $locationProvider, $httpProvider) ->
     $routeProvider
-      .when '/',
-        templateUrl: 'partials/main'
-        controller: 'MainCtrl'
-        authenticate: true
       .when '/login',
         templateUrl: 'partials/login'
         controller: 'LoginCtrl'
       .when '/recovery',
         templateUrl: 'partials/recovery'
         controller: 'RecoveryCtrl'
+
+      .when '/',
+        templateUrl: 'partials/main'
+        controller: 'MainCtrl'
+        authenticate: true
       .when '/settings',
         templateUrl: 'partials/settings'
         controller: 'SettingsCtrl'

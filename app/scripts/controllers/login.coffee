@@ -1,7 +1,8 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'LoginCtrl', ($scope, Auth, $location) ->
+  .controller 'LoginCtrl', ($rootScope, $scope, Auth, $location) ->
+    $rootScope.cssInclude = ['styles/auth.css']
     $scope.user = {}
     $scope.errors = {}
 
