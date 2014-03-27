@@ -4,7 +4,8 @@ angular.module('movistarApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'filepicker'
 ])
   .config ($routeProvider, $locationProvider, $httpProvider) ->
     $routeProvider
@@ -18,9 +19,11 @@ angular.module('movistarApp', [
       .when '/admin',
         templateUrl: 'partials/admin/main'
         controller: 'AdminCtrl'
+        authenticate: true
       .when '/admin/:module',
         templateUrl: 'partials/admin/main'
         controller: 'AdminCtrl'
+        authenticate: true
 
       .when '/',
         templateUrl: 'partials/main'

@@ -19,6 +19,14 @@ angular.module("movistarApp")
           id: "@id"
         url: "/api/v1/user/recovery"
 
+      show:
+        method: 'GET'
+        params:
+          clientToken: '@clientToken'
+          accessToken: '@accessToken'
+          id: '@id'
+        url: '/api/v1/user/:id'
+        
       index:
         method: "GET"
         params:

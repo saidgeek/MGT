@@ -46,7 +46,7 @@
 
     <div id="right" class="col ui-widget ui-widget-content">
       <div class="relativo">
-        <div data-ng-switch-default>
+        <div data-ng-switch-default data-ng-controller="UserShowCtrl">
           <div data-ng-include="'partials/admin/user/_user'"></div><!-- user -->
           <div data-ng-include="'partials/admin/user/_menu'"></div>
           <div data-ng-include="'partials/admin/user/_tools'"></div>
@@ -69,7 +69,10 @@
     </div>
     <div data-ng-switch-when="newUser" data-ng-controller="UserSaveCtrl">
       <div data-ng-include="'partials/admin/user/new'"></div> 
-    </div>  
+    </div>
+    <div data-ng-switch-when="updateUser" data-ng-controller="UserSaveCtrl">
+      <div data-ng-include="'partials/admin/user/edit'"></div> 
+    </div>
   </div>
   
   

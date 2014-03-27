@@ -5,7 +5,8 @@ angular.module('movistarApp')
     restrict: 'A'
     link: (scope, el, attrs) ->
       el.on 'click', (e) ->
-        el.toggleClass 'active'
+        el.parent().parent().find('.note').removeClass 'active'
+        el.addClass 'active'
 
   .directive 'sgkCheck', ($window, $rootScope) ->
     restrict: 'A'
@@ -13,6 +14,16 @@ angular.module('movistarApp')
       el.on 'click', (e) ->
         el.parent().find('.hide').trigger('click')
         el.toggleClass 'active'
+
+  .directive 'sgkFileUploadUser', (filepickerApi) ->
+    restrict: 'A'
+    require: 'ngModel'
+    link: (scope, el, attrs, ngModel) ->
+      el.find('input[type="file"]').on 'change', (e) ->
+        input = angular.element(e.target)
+        filepickerApi.storeConvert input[0].files[0], { width: 80, height: 80, fit: 'scale', align: 'face' }, (err, res) ->
+          ngModel.$setViewValue(res.url)
+          scope.$digest()
 
   
 

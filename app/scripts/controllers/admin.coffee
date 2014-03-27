@@ -27,11 +27,32 @@ angular.module('movistarApp')
       if err
         $scope.errors = err
       else
+        $rootScope.$emit 'loadUserShow', users[0]._id
         $scope.users = users
 
     $rootScope.$on 'updateUsers', (e, user) ->
-      console.log user
-      $scope.users.unshift user
+      $scope.users.push user
+
+    $scope.loadUser = (id) ->
+      $rootScope.$emit 'loadUserShow', id
+
+  .controller 'UserShowCtrl', ($scope, UserFactory, $rootScope, UserUpdateParams) ->
+    $scope.user = {}
+    $scope.errors = {}
+
+    $rootScope.$on 'loadUserShow', (e, id) ->
+      loadUser(id)
+    if UserUpdateParams?.id?
+      loadUser(UserUpdateParams.id)
+
+    loadUser = (id) ->
+      $scope.user = ''
+      UserFactory.show id, (err, user) ->
+        if err
+          $scope.errors = err
+        else
+          $scope.user = user
+          console.log $scope.user
 
   .controller 'UserSaveCtrl', ($scope, UserFactory, $rootScope) ->
     $scope.user = {}
@@ -39,6 +60,7 @@ angular.module('movistarApp')
 
     $scope.create = (form) ->
       if form.$valid
+        console.log $scope.user
         UserFactory.save $scope.user, (err, user) ->
           if err
             $scope.errors = err

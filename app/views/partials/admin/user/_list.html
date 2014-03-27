@@ -1,7 +1,7 @@
 <div class="overflow top-admin">
 
   <div class="margin" data-ng-repeat="user in users">
-    <div class="note round" id="works_01" data-sgk-active>
+    <div class="note round" id="works_01" data-sgk-active data-ng-click="loadUser(user._id)">
       <div class="note-left">
 
         <div class="table-user">
@@ -13,7 +13,7 @@
             <li class="img-user">
               <div>
                 <span></span>
-                <img src="images/img-user-female.jpg" alt="Ana Espinoza">
+                <img ng-src="{{ user.profile.avatar }}" alt="Ana Espinoza">
               </div>
             </li>
             <li>
