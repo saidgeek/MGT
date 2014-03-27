@@ -1,0 +1,69 @@
+<div data-sgk-resize></div>
+<div id="side" data-ng-switch="module">
+  <div class="relativo">
+    <div data-ng-include="'partials/_profile'"></div><!-- perfil sidebox -->
+    
+    <div id="crear" class="sidebox">
+      <div data-ng-switch-default>
+        <a class="boton1 round" href="#"><span class="admin"></span>Crear nuevo usuario</a>
+      </div>
+      <div data-ng-switch-when="category">
+        <a class="boton1 round" href="#">Crear nueva clasificación</a>
+      </div>
+    </div>
+    
+    <div data-ng-switch-default>    
+      <div data-ng-include="'partials/admin/user/_sidebar'"></div>
+    </div>
+  </div>        
+</div><!-- side -->
+
+<div id="main" class="ui-widget-content"  data-ng-switch="module">
+  <div class="wrap">
+
+    <div data-ng-include="'partials/_logo'"></div>
+
+    <div id="menu-admin">
+      <div data-ng-include="'partials/_menu'"></div>
+    </div>
+
+    <div id="left" class="col">
+      <div class="relativo ui-widget ui-widget-content">
+        <div id="menu-admin">
+            <div data-ng-include="'partials/admin/_menu'"></div>
+        </div>
+        <div data-ng-include="'partials/admin/_filters'"></div>
+        
+        <div data-ng-switch-default data-ng-controller="UserCtrl">        
+          <div data-ng-include="'partials/admin/user/_list'"></div><!--// .overflow //-->
+        </div>
+        <div data-ng-switch-when="category">
+          <div data-ng-include="'partials/admin/category/_list'"></div><!--// .overflow //-->
+        </div>
+
+      </div>
+    </div><!--// #left //-->
+
+    <div id="right" class="col ui-widget ui-widget-content">
+      <div class="relativo">
+        <div data-ng-switch-default>
+          <div data-ng-include="'partials/admin/user/_user'"></div><!-- user -->
+          <div data-ng-include="'partials/admin/user/_menu'"></div>
+          <div data-ng-include="'partials/admin/user/_tools'"></div>
+          <div data-ng-include="'partials/admin/user/_filters'"></div><!--// .contenedor-filtros //-->
+          <div data-ng-include="'partials/admin/user/_solicitude'"></div>
+        </div>
+        <div data-ng-switch-when="category">
+          <div data-ng-include="'partials/admin/category/_detail'"></div>
+        </div>
+
+      </div><!-- relativo -->
+    </div><!-- col right -->
+
+  </div><!-- wrap -->
+
+  <div data-ng-include="'partials/admin/_search'"></div>
+
+  <div data-ng-include="'partials/admin/user/_formUser'"></div> 
+
+</div><!-- main -->

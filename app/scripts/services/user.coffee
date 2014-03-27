@@ -1,13 +1,12 @@
 "use strict"
 
 angular.module("movistarApp")
-  .factory "User", ($resource) ->
-    $resource "",
-      id: "@id"
-    ,
+  .factory "UserService", ($resource) ->
+    $resource "", {},
       update:
         method: "PUT"
-        params: {}
+        params: 
+          id: "@id"
         url: '/api/v1/user/:id'
 
       get:
@@ -16,8 +15,17 @@ angular.module("movistarApp")
           id: "me"
         url: '/api/v1/user/:id'
 
+      index:
+        method: "GET"
+        params:
+          clientToken: '@clientToken'
+          accessToken: '@accessToken'
+        url: '/api/v1/users'
+        isArray: true
+
       recovery:
         method: "PUT"
-        params: {}
+        params: 
+          id: "@id"
         url: "/api/v1/user/recovery"
 

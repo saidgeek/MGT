@@ -1,0 +1,99 @@
+<div class="overflow top-admin">
+
+  <div class="margin" data-ng-repeat="user in users">
+    <div class="note round" id="works_01" data-sgk-active>
+      <div class="note-left">
+
+        <div class="table-user">
+          <ul class="lista-opt">
+            <li>
+              <span data-sgk-check class="opt-check left"></span> 
+              <input class="hide" type="checkbox" id="check_todos">
+            </li>
+            <li class="img-user">
+              <div>
+                <span></span>
+                <img src="images/img-user-female.jpg" alt="Ana Espinoza">
+              </div>
+            </li>
+            <li>
+              <h3>{{ user.profile.firstName }} {{ user.profile.lastName }}</h3>
+              <span>{{ user.role }}</span>
+            </li>
+          </ul>
+        </div><!-- table-user -->
+
+        <div class="contact-user">
+          <ul>
+            <li data-ng-if="user.email">
+              <span class="ico ema"></span> {{ user.email }}
+            </li>
+            <li data-ng-if="user.profile.celNumber">
+              <span class="ico cel"></span> {{ user.profile.celNumber }}
+            </li>
+            <li data-ng-if="user.profile.phoneNumber">
+              <span class="ico tel"></span> {{ user.profile.phoneNumber }}
+            </li>
+          </ul>
+        </div><!-- ontact-user -->
+      </div>
+
+      <div class="note-right">
+          <h3>Solicitudes</h3>
+          <ul>
+              <li>
+                  <a href="#;" class="bold">
+                      <span class="ico val"></span>
+                      <p>Por validar</p>
+                      <span class="right">11</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="#;" class="bold">
+                      <span class="ico epr"></span>
+                      <p>Espera proveedor</p>
+                      <span class="right">7</span>
+                  </a>
+              </li>                                                
+              <li>
+                  <a href="#;" class="bold">
+                      <span class="ico pro"></span>
+                      <p>En progreso</p>
+                      <span class="right">12</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="#;" class="bold">
+                      <span class="ico esp"></span>
+                      <p>Espera</p>
+                      <span class="right">7</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="#;" class="bold">
+                      <span class="ico atr"></span>
+                      <p>Atrasadas</p>
+                      <span class="right">1</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="#;" class="bold">
+                      <span class="ico pau"></span>
+                      <p>En pausa</p>
+                      <span class="right">0</span>
+                  </a>
+              </li>                                                
+              <li>
+                  <a href="#;" class="bold">
+                      <span class="ico fin"></span>
+                      <p>Finalizadas</p>
+                      <span class="right">120</span>
+                  </a>
+              </li>
+          </ul>
+      </div>
+
+    </div><!-- note round -->
+  </div><!-- margin -->
+
+</div>
