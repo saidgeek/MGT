@@ -1,7 +1,12 @@
 "use strict"
 
 angular.module("movistarApp")
-  .factory "CssFactory", ->
+  .factory "UserParams", ->
+    state = false
+    _change = (b) ->
+      state = b
     return {
-      css: []
+      change: (b) ->
+        _change(b)
+      closeModal: state
     }

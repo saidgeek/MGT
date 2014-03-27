@@ -1669,8 +1669,8 @@ ul.menu-usuarios li a:hover{
     width: 40%;
     display: table;
     background: #fff;
-    opacity: 0;
-    z-index: -1;
+    opacity: 1;
+    z-index: 999;
     -moz-border-radius: 4px 4px 0 0;
     -webkit-border-radius: 4px 4px 0 0;
     border-radius: 4px 4px 0 0;

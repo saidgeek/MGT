@@ -1,0 +1,33 @@
+
+<div id="nueva-solicitud" class="user">
+    
+  <div class="row">
+    <div class="relativo">
+      <h2>Crear nuevo Usuario</h2>
+      <ul>
+        <li class="hideshow"><a href="#;"><span class="down">_</span></a></li>
+        <li class="close"><a href="#;"><span class="close">X</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="table esconder">
+    <div class="relativo">
+      <div class="overflow">
+        <div>
+          <form name="form" data-ng-submit="create(form)">
+            <div data-ng-include="'partials/admin/user/_form'"></div>
+            <fieldset class="blue">
+              <ul>
+                <li><a href="#">Limpiar todos los Datos</a></li>
+                <li><a data-ng-click="closeModal()">Cancelar</a></li>
+              </ul> 
+              <input type="submit" class="boton1 round"><span></span>Crear Usuario</input>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

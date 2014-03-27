@@ -14,6 +14,8 @@ angular.module('movistarApp')
         el.parent().find('.hide').trigger('click')
         el.toggleClass 'active'
 
+  
+
 
 # $('span.opt-check').click(function(){                   
 #     $(this).parent().find('.hide').trigger('click');

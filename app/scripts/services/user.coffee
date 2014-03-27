@@ -8,12 +8,16 @@ angular.module("movistarApp")
         params: 
           id: "@id"
         url: '/api/v1/user/:id'
-
       get:
         method: "GET"
         params:
           id: "me"
         url: '/api/v1/user/:id'
+      recovery:
+        method: "PUT"
+        params: 
+          id: "@id"
+        url: "/api/v1/user/recovery"
 
       index:
         method: "GET"
@@ -23,9 +27,12 @@ angular.module("movistarApp")
         url: '/api/v1/users'
         isArray: true
 
-      recovery:
-        method: "PUT"
-        params: 
-          id: "@id"
-        url: "/api/v1/user/recovery"
+      save:
+        method: "POST"
+        params:
+          clientToken: '@clientToken'
+          accessToken: '@accessToken'
+        data:
+          user: '@user'
+        url: '/api/v1/user'
 

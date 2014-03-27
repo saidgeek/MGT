@@ -5,7 +5,7 @@
     
     <div id="crear" class="sidebox">
       <div data-ng-switch-default>
-        <a class="boton1 round" href="#"><span class="admin"></span>Crear nuevo usuario</a>
+        <a class="boton1 round" data-ng-click="showModals('newUser')"><span class="admin"></span>Crear nuevo usuario</a>
       </div>
       <div data-ng-switch-when="category">
         <a class="boton1 round" href="#">Crear nueva clasificación</a>
@@ -64,6 +64,14 @@
 
   <div data-ng-include="'partials/admin/_search'"></div>
 
-  <div data-ng-include="'partials/admin/user/_formUser'"></div> 
+  <div data-ng-switch="modals">
+    <div data-ng-switch-default>
+    </div>
+    <div data-ng-switch-when="newUser" data-ng-controller="UserSaveCtrl">
+      <div data-ng-include="'partials/admin/user/new'"></div> 
+    </div>  
+  </div>
+  
+  
 
 </div><!-- main -->
