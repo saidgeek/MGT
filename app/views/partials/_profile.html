@@ -1,7 +1,7 @@
 <div id="perfil" class="sidebox"> 
-  <div class="t-c avatar"><img src="images/perfil.png"/><div class="avperfil"></div></div>                  
+  <div class="t-c avatar"><img ng-src="{{ currentUser.avatar || '' }}"/><div class="avperfil"></div></div>                  
   <div class="t-c">
-      <p>Ana Espinoza</br><span>Gestor de Contenidos</span></p> 
+      <p>{{ currentUser.name }}</br><span>{{ currentUser.role | RoleName }}</span></p> 
       <ul class="adm">
           <li>
               <a href="#" class="sub-not"><img src="images/bell.png"/>

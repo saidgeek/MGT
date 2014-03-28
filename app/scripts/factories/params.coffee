@@ -1,7 +1,7 @@
 "use strict"
 
 angular.module("movistarApp")
-  .factory "UserUpdateParams", ->
+  .factory "UserParams", ->
     return {
       id: null
     }

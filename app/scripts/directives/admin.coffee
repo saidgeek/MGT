@@ -15,6 +15,24 @@ angular.module('movistarApp')
         el.parent().find('.hide').trigger('click')
         el.toggleClass 'active'
 
+  .directive 'sgkSubmitLink', ->
+    restrict: 'A'
+    link: (scope, element, attrs) ->
+      element.on 'click', (e)->
+        e.preventDefault()
+        element.parents('form').trigger('submit')
+        false
+
+  .directive 'sgkDownModal', ->
+    restrict: 'A'
+    link: (scope, element, attrs) ->
+      element.on 'click', (e) ->
+        e.preventDefault()
+        angular.element(this).find('span.down').toggleClass 'up'
+        angular.element('.esconder').slideToggle(0);
+        angular.element('#nueva-solicitud').toggleClass 'auto'
+        false
+
   .directive 'sgkFileUploadUser', (filepickerApi) ->
     restrict: 'A'
     require: 'ngModel'

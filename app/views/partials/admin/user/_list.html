@@ -1,7 +1,7 @@
 <div class="overflow top-admin">
 
   <div class="margin" data-ng-repeat="user in users">
-    <div class="note round" id="works_01" data-sgk-active data-ng-click="loadUser(user._id)">
+    <div class="note round" data-ng-class="{active: $index===0}" id="works_01" data-sgk-active data-ng-click="loadUser(user._id)">
       <div class="note-left">
 
         <div class="table-user">
@@ -18,7 +18,7 @@
             </li>
             <li>
               <h3>{{ user.profile.firstName }} {{ user.profile.lastName }}</h3>
-              <span>{{ user.role }}</span>
+              <span>{{ user.role | RoleName }}</span>
             </li>
           </ul>
         </div><!-- table-user -->

@@ -6,6 +6,8 @@ angular.module("movistarApp")
       update:
         method: "PUT"
         params: 
+          clientToken: '@clientToken'
+          accessToken: '@accessToken'
           id: "@id"
         url: '/api/v1/user/:id'
       get:
@@ -34,6 +36,16 @@ angular.module("movistarApp")
           accessToken: '@accessToken'
         url: '/api/v1/users'
         isArray: true
+
+      updateProfile:
+        method: 'PUT'
+        params:
+          clientToken: '@clientToken'
+          accessToken: '@accessToken'
+          id: '@id'
+        data:
+          user: '@user'
+        url: '/api/v1/user/:id/update/profile'
 
       save:
         method: "POST"

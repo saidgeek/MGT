@@ -1,9 +1,9 @@
 <div class="menu-admin second">
   <ul>
-    <li class="active">
+    <li ng-class="{active: isActiveLink('/admin')}">
       <a ng-href="/admin">Administración de Usuarios</a>
     </li>
-    <li class="last">
+    <li ng-class="{active: isActiveLink('/admin/category')}">
       <a ng-href="/admin/category">Clasificación de Contenidos</a>
     </li>
   </ul>

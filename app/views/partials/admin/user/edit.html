@@ -5,7 +5,7 @@
     <div class="relativo">
       <h2>{{ user.profile.firstName }} {{ user.profile.lastName }}</h2>
       <ul>
-        <li class="hideshow"><a href="#;"><span class="down">_</span></a></li>
+        <li class="hideshow"><a href="javascript:{}" data-sgk-down-modal><span class="down">_</span></a></li>
         <li class="close"><a href="#;"><span class="close">X</span></a></li>
       </ul>
     </div>
@@ -15,14 +15,51 @@
     <div class="relativo">
       <div class="overflow">
         <div>
-          <form name="form" data-ng-submit="create(form)">
-            <div data-ng-include="'partials/admin/user/_form'"></div>
+          <form name="form" data-ng-submit="update(form)">
+            <fieldset class="odd">
+              <div class="t-c img-user">
+                <div class="relativo">
+                  <div class="img-user" data-sgk-file-upload-user data-ng-model="user.profile.avatar">
+                    <span class="mask"></span>
+                    <span class="edit-avatar-user">Editar</span>
+                    <img ng-src="{{ user.profile.avatar }}" alt="Nombre Usuario">
+                    <input class="att" type="file" name="attachment">
+                  </div>
+                </div>
+              </div>
+              <ul class="t-c">
+                <li><input type="text" id="nombre" name="nombre" placeholder="Nombre" data-ng-model="user.profile.firstName"/></li>
+                <li><input type="text" id="nombre" name="nombre" placeholder="Apellido" data-ng-model="user.profile.lastName"/></li>
+                <li class="dropdown"><span></span>
+                  <select data-ng-model="user.role" data-ng-options="r.id as r.name for r in roles"></select>
+                </li>
+              </ul>                                           
+            </fieldset>
+
+            <fieldset class="even">  
+              <ul>
+                <li>
+                  <input type="text" id="nombre" name="movil" placeholder="Teléfono Móvil" data-ng-model="user.profile.celNumber"/>
+                </li>
+                <li>
+                  <input type="text" id="nombre" name="oficina" placeholder="Teléfono Oficina" data-ng-model="user.profile.phoneNumber"/>
+                </li>
+              </ul>   
+            </fieldset>
+
+            <fieldset class="odd">                                            
+              <ul>
+                <li>
+                  <textarea id="descripcion" name="descripcion" placeholder="Comentario" data-ng-model="user.profile.description"></textarea>
+                </li>
+              </ul>
+            </fieldset>
             <fieldset class="blue">
               <ul>
                 <li><a href="#">Limpiar todos los Datos</a></li>
-                <li><a data-ng-click="closeModal()">Cancelar</a></li>
+                <li><a href="javascript:{}" data-ng-click="closeModal()">Cancelar</a></li>
               </ul> 
-              <input type="submit" class="boton1 round"><span></span>Crear Usuario</input>
+              <button type="submit" class="boton1 round"><span></span>Crear Usuario</button>
             </fieldset>
           </form>
         </div>

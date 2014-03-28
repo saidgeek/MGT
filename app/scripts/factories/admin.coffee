@@ -27,6 +27,19 @@ angular.module("movistarApp")
         cb err.data
       ).$promise
 
+    _update = (id, data, cb) ->
+      console.log data
+      UserService.updateProfile(
+        clientToken: _clientToken
+        accessToken: _accessToken
+        id: id
+        user: data
+      , (user) ->
+        cb null, user
+      , (err) ->
+        cb err.data
+      ).$promise
+
     _save = (data, cb) ->
       UserService.save(
         clientToken: _clientToken
@@ -43,6 +56,8 @@ angular.module("movistarApp")
         _index(cb)
       save: (data, cb) ->
         _save(data, cb)
+      update: (id, data, cb) ->
+        _update(id, data, cb)
       show: (id, cb) ->
         _show(id, cb)
     }
