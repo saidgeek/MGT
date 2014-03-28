@@ -126,8 +126,9 @@ form fieldset{
 input {    
     text-align: left;
     outline: none; 
-    margin: 10px;
+    margin: 10px 0;
     height: 46px;
+    line-height: 46px;
     border: 1px solid #05d3ed;
     font-family: 'proxima_nova_rgbold';
     font-size: 15px;
@@ -141,7 +142,7 @@ label.error{
 }
 input.box {     
     padding-left: 48px;    
-    width: 410px;     
+    width: 430px;     
     color: #9da9b9;       
     background: #fff no-repeat 0 0;
 }

@@ -330,6 +330,12 @@ module.exports = function (grunt) {
           src: '**/*.jade'
         }, {
           expand: true,
+          dot: true,
+          cwd: '<%= yeoman.app %>/styles',
+          dest: '<%= yeoman.dist %>/public/styles',
+          src: '**/*.css'
+        }, {
+          expand: true,
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/public/images',
           src: ['generated/*']
@@ -519,7 +525,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'bower-install',
+    // 'bower-install',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
@@ -527,7 +533,7 @@ module.exports = function (grunt) {
     'ngmin',
     'copy:dist',
     'cdnify',
-    'cssmin',
+    // 'cssmin',
     'uglify',
     // 'rev',
     'usemin'
