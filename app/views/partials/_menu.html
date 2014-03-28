@@ -1,7 +1,7 @@
 <div class="menu-admin">
   <ul>
-    <li><a href="#;">Inicio</a></li>
-    <li><a href="#;">Solicitudes</a></li>
-    <li class="active"><a href="#;">Administración</a></li>
+    <li data-ng-class="{active: isActive('/inicio')}"><a ng-href="/inicio">Inicio</a></li>
+    <li data-ng-class="{active: isActive('/')}"><a ng-href="/">Solicitudes</a></li>
+    <li data-ng-class="{active: isActive('/admin')}"><a data-ng-href="/admin">Administración</a></li>
   </ul>
 </div>
