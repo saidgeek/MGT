@@ -1,0 +1,50 @@
+
+<div id="nueva-solicitud" class="user">
+    
+  <div class="row">
+    <div class="relativo">
+      <h2>Editar nueva Categoria</h2>
+      <ul>
+        <li class="hideshow"><a href="javascript:{}" data-sgk-down-modal><span class="down">_</span></a></li>
+        <li class="close"><a href="#;"><span class="close">X</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="table esconder">
+    <div class="relativo">
+      <div class="overflow">
+        <div>
+          <form name="form" data-ng-submit="update(form)">
+            <fieldset class="odd">
+              <ul class="even">
+                <li>
+                  <input type="text" id="nombre" name="category" placeholder="Category" data-ng-model="category.name"/>
+                </li>
+                <li>
+                  <input type="text" id="nombre" name="tags" placeholder="Tag, Tag, ..." data-ng-model="category.tags"/>
+                </li>
+              </ul>                                           
+            </fieldset>
+
+            <fieldset class="odd">                                            
+              <ul>
+                <li>
+                  <textarea id="descripcion" name="descripcion" placeholder="Comentario" data-ng-model="category.description"></textarea>
+                </li>
+              </ul>
+            </fieldset>
+            <fieldset class="blue">
+              <ul>
+                <li><a href="#">Limpiar todos los Datos</a></li>
+                <li><a href="javascript:{}" data-ng-click="closeModal()">Cancelar</a></li>
+              </ul> 
+              <button type="submit" class="boton1 round"><span></span>Crear Category</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

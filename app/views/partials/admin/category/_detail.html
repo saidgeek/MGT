@@ -1,24 +1,23 @@
 <div class="detalle">
-                                
-                                <div class="row">                                       
-                                    <div class="edit-user">
-                                        <ul>
-                                            <li><a href="#;">Editar información</a></li>
-                                            <li><a href="#;">Eliminar</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <h2>Maquetación</h2>
-                               
-                                    <p>
-                                        Aliquam interdum vehicula nulla et aliquam. Integer ornare euismod risus, vitae tristique leo fringilla in. Maecenas id nunc risus, sit amet sollicitudin odio.
-                                        Praesent condimentum auctor est, eu euismod magna lobortis sit amet. Duis venenatis ligula id turpis ultrices auctor. Pellentesque viverra neque nisl.
-                                    </p>
-                                </div>
-                                <div class="row">
-                                    <h4>Tags</h4>
-                                    <p><span class="tag round">Html</span><span class="tag round">Css</span></p>
-                                </div>
+    <div class="row">                                       
+      <div class="edit-user">
+        <ul>
+          <li><a href="javascript:{}" data-ng-click="EditCategory(category._id)">Editar información</a></li>
+          <li><a href="#;">Eliminar</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <h2>{{  category.name }}</h2>
+      <p>
+        {{ category.description }}
+      </p>
+    </div>
+    <div class="row">
+        <h4>Tags</h4>
+        <p>
+          <span class="tag round", data-ng-repeat="tag in category.tags  track by $index">{{ tag }}</span>
+        </p>
+    </div>
 
-                            </div>
+</div>

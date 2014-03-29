@@ -5,3 +5,8 @@ angular.module("movistarApp")
     return {
       id: null
     }
+
+  .factory "CategoryParams", ->
+    return {
+      id: null
+    }

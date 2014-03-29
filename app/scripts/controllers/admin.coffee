@@ -21,6 +21,7 @@ angular.module('movistarApp')
 
 
     $scope.showModals = (modal) ->
+      console.log modal
       _showModals(modal)
     
     $rootScope.$on 'showModals', (e, args) ->
@@ -60,7 +61,7 @@ angular.module('movistarApp')
 
     $rootScope.$on 'loadUserShow', (e, id) ->
       _loadUser(id)
-    if UserUpdateParams?.id?
+    if UserParams?.id?
       _loadUser(UserUpdateParams.id)
 
     $scope.EditUser = (id) ->
@@ -106,6 +107,88 @@ angular.module('movistarApp')
             $scope.errors = err
           else
             $rootScope.$emit 'updateUsers', user
+            $scope.$emit 'hideModals', true
+
+    $scope.closeModal = () ->
+      $scope.$emit 'hideModals', true
+
+  .controller 'CategoryCtrl', ($scope, CategoryFactory, $rootScope, CategoryParams) ->
+    $scope.categories = []
+    $scope.errors = {}
+
+    $rootScope.$on 'reloadCategories', (e, category) ->
+      _load()
+
+    $rootScope.$on 'updateCategory', (e, category) ->
+      $scope.categories.push category
+
+    $scope.loadCategory = (id) ->
+      $rootScope.$emit 'loadCategoryShow', id
+
+    _load = () ->
+      CategoryFactory.index (err, categories) ->
+        if err
+          $scope.errors = err
+        else
+          $scope.categories = categories
+          $rootScope.$emit 'loadCategoryShow', categories[0]._id
+
+    _load()
+
+  .controller 'CategoryShowCtrl', ($scope, CategoryFactory, $rootScope, CategoryParams) ->
+    $scope.category = {}
+    $scope.errors = {}
+
+    $rootScope.$on 'loadCategoryShow', (e, id) ->
+      _load(id)
+    if CategoryParams?.id?
+      _load(CategoryParams.id)
+
+    $scope.EditCategory = (id) ->
+      console.log id
+      CategoryParams.id = id
+      $rootScope.$emit 'showModals', { modal: 'updateCategory', id: id}
+      
+    _load = (id) ->
+      $scope.category = ''
+      CategoryFactory.show id, (err, category) ->
+        if err
+          $scope.errors = err
+        else
+          $scope.category = category
+
+  .controller 'CategorySaveCtrl', ($scope, CategoryFactory, $rootScope, CategoryParams) ->
+    $scope.category = {}
+    $scope.errors = {}
+
+    console.log CategoryParams.id
+
+    if CategoryParams?.id?
+      CategoryFactory.show CategoryParams.id, (err, category) ->
+        if err
+          $scope.errors = err
+        else
+          $scope.category = category
+
+    $scope.update = (form) ->
+      if form.$valid
+        if typeof $scope.category.tags isnt 'object'
+          $scope.category.tags = $scope.category.tags.split(',')
+        CategoryFactory.update CategoryParams.id, $scope.category, (err, category) ->
+          if err
+            $scope.errors = err
+          else
+            $rootScope.$emit 'reloadCategories', category
+            $scope.$emit 'hideModals', true
+
+    $scope.create = (form) ->
+      if form.$valid
+        $scope.category.tags = $scope.category.tags.split(',')
+        CategoryFactory.save $scope.category, (err, category) ->
+          if err
+            $scope.errors = err
+          else
+            $rootScope.$emit 'updateCategory', category
             $scope.$emit 'hideModals', true
 
     $scope.closeModal = () ->

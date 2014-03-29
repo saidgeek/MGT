@@ -1,168 +1,22 @@
 <div class="overflow top-admin">
 
-                                <div class="margin">
-                                    <div class="note round" id="works_01">
-                                        <div class="note-full">
-                                            <ul class="lista-opt">
-                                            <li>
-                                                    <span class="opt-check left"></span> 
-                                                    <input class="hide" type="checkbox" id="check_todos">
-                                                </li>
-                                                            
-                                                <li>
-                                                    <h3>Diseño Gráfico</h3>
-                                                    <p class="regular">Tags: <span>Color, Corporativo</span></p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div><!-- note round -->
-                                    
-                                </div><!-- margin -->
-                                <div class="margin">
-                                    <div class="note round" id="works_01">
-                                        <div class="note-full">
-                                            <ul class="lista-opt">
-                                            <li>
-                                                    <span class="opt-check left"></span> 
-                                                    <input class="hide" type="checkbox" id="check_todos">
-                                                </li>
-                                                            
-                                                <li>
-                                                    <h3>Maquetación</h3>
-                                                    <p class="regular">Tags: <span>Html, Css</span></p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div><!-- note round -->
-                                </div><!-- margin -->
-                                
-                                <div class="margin">
-                                    <div class="note round" id="works_01">
-                                        <div class="note-full">
-                                            <ul class="lista-opt">
-                                            <li>
-                                                    <span class="opt-check left"></span> 
-                                                    <input class="hide" type="checkbox" id="check_todos">
-                                                </li>
-                                                            
-                                                <li>
-                                                    <h3>Texto</h3>
-                                                    <p class="regular">Tags: <span>Ortografía</span></p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div><!-- note round -->
-                                </div><!-- margin -->
-                                
-                                <div class="margin">
-                                    <div class="note round" id="works_01">
-                                        <div class="note-full">
-                                            <ul class="lista-opt">
-                                            <li>
-                                                    <span class="opt-check left"></span> 
-                                                    <input class="hide" type="checkbox" id="check_todos">
-                                                </li>
-                                                            
-                                                <li>
-                                                    <h3>Front Enbd</h3>
-                                                    <p class="regular">Tags: <span>Color, Corporativo</span></p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div><!-- note round -->
-                                </div><!-- margin -->
-                                
-                                <div class="margin">
-                                    <div class="note round" id="works_01">
-                                        <div class="note-full">
-                                            <ul class="lista-opt">
-                                            <li>
-                                                    <span class="opt-check left"></span> 
-                                                    <input class="hide" type="checkbox" id="check_todos">
-                                                </li>
-                                                            
-                                                <li>
-                                                    <h3>Back End</h3>
-                                                    <p class="regular">Tags: <span>Color</span></p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div><!-- note round -->
-                                </div><!-- margin -->
-                                
-                                <div class="margin">
-                                    <div class="note round" id="works_01">
-                                        <div class="note-full">
-                                            <ul class="lista-opt">
-                                            <li>
-                                                    <span class="opt-check left"></span> 
-                                                    <input class="hide" type="checkbox" id="check_todos">
-                                                </li>
-                                                            
-                                                <li>
-                                                    <h3>Correcciones de Diseño o Visual</h3>
-                                                    <p class="regular">Tags: <span>Color</span></p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div><!-- note round -->
-                                </div><!-- margin -->
-                                
-                                <div class="margin">
-                                    <div class="note round" id="works_01">
-                                        <div class="note-full">
-                                            <ul class="lista-opt">
-                                            <li>
-                                                    <span class="opt-check left"></span> 
-                                                    <input class="hide" type="checkbox" id="check_todos">
-                                                </li>
-                                                            
-                                                <li>
-                                                    <h3>Front Enbd</h3>
-                                                    <p class="regular">Tags: <span>Color, Corporativo</span></p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div><!-- note round -->
-                                </div><!-- margin -->
-                                
-                                <div class="margin">
-                                    <div class="note round" id="works_01">
-                                        <div class="note-full">
-                                            <ul class="lista-opt">
-                                            <li>
-                                                    <span class="opt-check left"></span> 
-                                                    <input class="hide" type="checkbox" id="check_todos">
-                                                </li>
-                                                            
-                                                <li>
-                                                    <h3>Back End</h3>
-                                                    <p class="regular">Tags: <span>Color</span></p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div><!-- note round -->
-                                </div><!-- margin -->
-                                
-                                <div class="margin">
-                                    <div class="note round" id="works_01">
-                                        <div class="note-full">
-                                            <ul class="lista-opt">
-                                            <li>
-                                                    <span class="opt-check left"></span> 
-                                                    <input class="hide" type="checkbox" id="check_todos">
-                                                </li>
-                                                            
-                                                <li>
-                                                    <h3>Correcciones de Diseño o Visual</h3>
-                                                    <p class="regular">Tags: <span>Color</span></p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div><!-- note round -->
-                                </div><!-- margin -->
+  <div class="margin" data-ng-repeat="category in categories">
+    <div class="note round" data-ng-class="{active: $index===0}" id="works_01" data-sgk-active data-ng-click="loadCategory(category._id)">
+      <div class="note-full">
+        <ul class="lista-opt">
+          <li>
+            <span data-sgk-check class="opt-check left"></span> 
+            <input class="hide" type="checkbox" id="check_todos">
+          </li>
+                        
+          <li>
+            <h3>{{ category.name }}</h3>
+            <p class="regular">Tags: <span>{{ category.tags.join(', ') }}</span></p>
+          </li>
+        </ul>
+      </div>
+    </div><!-- note round -->
+      
+  </div><!-- margin -->
 
-
-                               
-
-                            </div>
+</div>
