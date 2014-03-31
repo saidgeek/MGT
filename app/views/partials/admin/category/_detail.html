@@ -1,5 +1,5 @@
 <div class="detalle">
-    <div class="row">                                       
+    <div class="row">
       <div class="edit-user">
         <ul>
           <li><a href="javascript:{}" data-ng-click="EditCategory(category._id)">Editar información</a></li>
@@ -16,8 +16,7 @@
     <div class="row">
         <h4>Tags</h4>
         <p>
-          <span class="tag round", data-ng-repeat="tag in category.tags  track by $index">{{ tag }}</span>
+          <span class="tag round" data-ng-repeat="tag in category.tags  track by $index">{{ tag }}</span>
         </p>
     </div>
-
 </div>
