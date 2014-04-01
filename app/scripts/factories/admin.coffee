@@ -6,12 +6,33 @@ angular.module("movistarApp")
     _clientToken = $rootScope.currentUser.access.clientToken
     _accessToken = $rootScope.currentUser.access.accessToken
 
-    _index = (cb) ->
+    _index = (role, cb) ->
       UserService.index(
           clientToken: _clientToken
           accessToken: _accessToken
+          role: role
         , (users) ->
           cb null, users
+        , (err) ->
+          cb err.data
+      ).$promise
+
+    _makeGroups = (groups) ->
+      result = {}
+      _total = 0
+      for g in groups
+        result[g._id] = g.count
+        _total += g.count
+      result['total'] = _total
+      result
+
+    _groups = (cb) ->
+      UserService.groups(
+          clientToken: _clientToken
+          accessToken: _accessToken
+        , (groups) ->
+          groups = _makeGroups(groups)
+          cb null, groups
         , (err) ->
           cb err.data
       ).$promise
@@ -52,8 +73,10 @@ angular.module("movistarApp")
       ).$promise
 
     return {
-      index: (cb) ->
-        _index(cb)
+      index: (role, cb) ->
+        _index(role, cb)
+      groups: (cb) ->
+        _groups(cb)
       save: (data, cb) ->
         _save(data, cb)
       update: (id, data, cb) ->

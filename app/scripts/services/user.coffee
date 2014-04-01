@@ -5,7 +5,7 @@ angular.module("movistarApp")
     $resource "", {},
       update:
         method: "PUT"
-        params: 
+        params:
           clientToken: '@clientToken'
           accessToken: '@accessToken'
           id: "@id"
@@ -17,7 +17,7 @@ angular.module("movistarApp")
         url: '/api/v1/user/:id'
       recovery:
         method: "PUT"
-        params: 
+        params:
           id: "@id"
         url: "/api/v1/user/recovery"
 
@@ -28,13 +28,23 @@ angular.module("movistarApp")
           accessToken: '@accessToken'
           id: '@id'
         url: '/api/v1/user/:id'
-        
+
       index:
         method: "GET"
         params:
           clientToken: '@clientToken'
           accessToken: '@accessToken'
+        data:
+          role: '@role'
         url: '/api/v1/users'
+        isArray: true
+
+      groups:
+        method: "GET"
+        params:
+          clientToken: '@clientToken'
+          accessToken: '@accessToken'
+        url: '/api/v1/users/groups'
         isArray: true
 
       updateProfile:
@@ -55,4 +65,3 @@ angular.module("movistarApp")
         data:
           user: '@user'
         url: '/api/v1/user'
-

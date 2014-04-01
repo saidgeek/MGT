@@ -2,7 +2,7 @@
 <div id="side" data-ng-switch="module">
   <div class="relativo">
     <div data-ng-include="'partials/_profile'"></div><!-- perfil sidebox -->
-    
+
     <div id="crear" class="sidebox">
       <div data-ng-switch-default>
         <a href="javascript:{}" class="boton1 round" data-ng-click="showModals('newUser')"><span class="admin"></span>Crear nuevo usuario</a>
@@ -11,11 +11,11 @@
         <a class="boton1 round" href="javascript:{}" data-ng-click="showModals('newCategory')">Crear nueva clasificación</a>
       </div>
     </div>
-    
-    <div data-ng-switch-default>    
-      <div data-ng-include="'partials/admin/user/_sidebar'"></div>
+
+    <div data-ng-switch-default>
+      <div data-ng-include="'partials/admin/user/_sidebar'" ng-controller="SidebarUsersCtrl"></div>
     </div>
-  </div>        
+  </div>
 </div><!-- side -->
 
 <div id="main" class="ui-widget-content"  data-ng-switch="module">
@@ -33,8 +33,8 @@
             <div data-ng-include="'partials/admin/_menu'"></div>
         </div>
         <div data-ng-include="'partials/admin/_filters'"></div>
-        
-        <div data-ng-switch-default data-ng-controller="UserCtrl">        
+
+        <div data-ng-switch-default data-ng-controller="UserCtrl">
           <div data-ng-include="'partials/admin/user/_list'"></div><!--// .overflow //-->
         </div>
         <div data-ng-switch-when="category" data-ng-controller="CategoryCtrl">
@@ -48,7 +48,7 @@
       <div class="relativo">
         <div data-ng-switch-default data-ng-controller="UserShowCtrl">
           <div data-ng-include="'partials/admin/user/_user'"></div><!-- user -->
-          
+
           <!-- <div data-ng-include="'partials/admin/user/_menu'"></div>
           <div data-ng-include="'partials/admin/user/_tools'"></div>
           <div data-ng-include="'partials/admin/user/_filters'"></div>
@@ -69,17 +69,17 @@
     <div data-ng-switch-default>
     </div>
     <div data-ng-switch-when="newUser" data-ng-controller="UserSaveCtrl">
-      <div data-ng-include="'partials/admin/user/new'"></div> 
+      <div data-ng-include="'partials/admin/user/new'"></div>
     </div>
     <div data-ng-switch-when="updateUser" data-ng-controller="UserSaveCtrl">
-      <div data-ng-include="'partials/admin/user/edit'"></div> 
+      <div data-ng-include="'partials/admin/user/edit'"></div>
     </div>
     <div data-ng-switch-when="newCategory" data-ng-controller="CategorySaveCtrl">
-      <div data-ng-include="'partials/admin/category/new'"></div> 
+      <div data-ng-include="'partials/admin/category/new'"></div>
     </div>
     <div data-ng-switch-when="updateCategory" data-ng-controller="CategorySaveCtrl">
-      <div data-ng-include="'partials/admin/category/edit'"></div> 
+      <div data-ng-include="'partials/admin/category/edit'"></div>
     </div>
   </div>
-  
+
 </div><!-- main -->

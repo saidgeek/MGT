@@ -1,6 +1,6 @@
 
 <div id="nueva-solicitud" class="user">
-    
+
   <div class="row">
     <div class="relativo">
       <h2>Crear nuevo Usuario</h2>
@@ -33,10 +33,10 @@
                 <li class="dropdown"><span></span>
                   <select data-ng-model="user.role" data-ng-options="r.id as r.name for r in roles"></select>
                 </li>
-              </ul>                                           
+              </ul>
             </fieldset>
 
-            <fieldset class="even">  
+            <fieldset class="even">
               <ul>
                 <li>
                   <input type="email" id="nombre" name="email" placeholder="Correo Electrónico" data-ng-model="user.email" />
@@ -47,10 +47,10 @@
                 <li>
                   <input type="text" id="nombre" name="oficina" placeholder="Teléfono Oficina" data-ng-model="user.profile.phoneNumber"/>
                 </li>
-              </ul>   
+              </ul>
             </fieldset>
 
-            <fieldset class="odd">                                            
+            <fieldset class="odd">
               <ul>
                 <li>
                   <textarea id="descripcion" name="descripcion" placeholder="Comentario" data-ng-model="user.profile.description"></textarea>
@@ -61,7 +61,7 @@
               <ul>
                 <li><a href="#">Limpiar todos los Datos</a></li>
                 <li><a href="javascript:{}" data-ng-click="closeModal()">Cancelar</a></li>
-              </ul> 
+              </ul>
               <button type="submit" class="boton1 round"><span></span>Crear Usuario</button>
             </fieldset>
           </form>

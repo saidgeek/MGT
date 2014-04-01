@@ -3,12 +3,11 @@
 angular.module('movistarApp')
   .controller 'AdminCtrl', ($rootScope, $scope, Auth, $location, RolesData) ->
     $rootScope.cssInclude = [
-      'styles/admin.css', 
-      'styles/jquery.mCustomScrollbar.css', 
+      'styles/admin.css',
+      'styles/jquery.mCustomScrollbar.css',
       'styles/adminFonts.css'
     ]
-
-    $scope.roles = RolesData.getArray()
+    $scope.groups = {}
 
     switch $location.$$path
       when '/admin/category'
@@ -21,39 +20,60 @@ angular.module('movistarApp')
 
 
     $scope.showModals = (modal) ->
-      console.log modal
       _showModals(modal)
-    
+
     $rootScope.$on 'showModals', (e, args) ->
       _showModals(args.modal)
+
     $scope.$on 'hideModals', (e, args) ->
       $scope.modals = ''
 
     _showModals = (modal) ->
       $scope.modals = modal
 
+  .controller 'SidebarUsersCtrl', ($scope, UserFactory, $rootScope, RolesData) ->
+    $scope.groups = null
+    $scope.errors = {}
+    $scope.roles = RolesData.getArray()
+
+    _load = () ->
+      UserFactory.groups (err, groups) ->
+        if err
+          $scope.errors = err
+        else
+          $scope.groups = groups
+
+    $rootScope.$on 'reloadGroups', (e) ->
+      _load()
+
+    $scope.filter = (role) ->
+      $rootScope.$emit 'reloadUsers', role
+
+    _load()
+
   .controller 'UserCtrl', ($scope, UserFactory, $rootScope) ->
     $scope.users = []
     $scope.errors = {}
 
-    $rootScope.$on 'reloadUsers', (e, user) ->
-      _loadUsers()
-    $rootScope.$on 'updateUsers', (e, user) ->
-      $scope.users.push user
+    $rootScope.$on 'reloadUsers', (e, role) ->
+      _loadUsers(role)
+
+    $rootScope.$on 'updateUsers', (e) ->
+      _loadUsers('')
+      $rootScope.$emit 'reloadGroups'
 
     $scope.loadUser = (id) ->
       $rootScope.$emit 'loadUserShow', id
 
-    _loadUsers = () ->
-      UserFactory.index (err, users) ->
+    _loadUsers = (role) ->
+      UserFactory.index role, (err, users) ->
         if err
           $scope.errors = err
         else
-
           $rootScope.$emit 'loadUserShow', users[0]._id
           $scope.users = users
 
-    _loadUsers()
+    _loadUsers('')
 
   .controller 'UserShowCtrl', ($scope, UserFactory, $rootScope, UserParams) ->
     $scope.user = {}
@@ -67,7 +87,7 @@ angular.module('movistarApp')
     $scope.EditUser = (id) ->
       UserParams.id = id
       $rootScope.$emit 'showModals', { modal: 'updateUser', id: id}
-      
+
     _loadUser = (id) ->
       $scope.user = ''
       UserFactory.show id, (err, user) ->
@@ -76,9 +96,10 @@ angular.module('movistarApp')
         else
           $scope.user = user
 
-  .controller 'UserSaveCtrl', ($scope, UserFactory, $rootScope, UserParams) ->
+  .controller 'UserSaveCtrl', ($scope, UserFactory, $rootScope, UserParams, RolesData) ->
     $scope.user = {}
     $scope.errors = {}
+    $scope.roles = RolesData.getArray()
 
     if UserParams?.id?
       UserFactory.show UserParams.id, (err, user) ->
@@ -86,10 +107,11 @@ angular.module('movistarApp')
           $scope.errors = err
         else
           $scope.user = user
+          UserParams.id = null
 
     $scope.update = (form) ->
       if form.$valid
-        UserFactory.update UserParams.id, $scope.user, (err, user) ->
+        UserFactory.update $scope.user._id, $scope.user, (err, user) ->
           if err
             $scope.errors = err
           else
@@ -97,7 +119,7 @@ angular.module('movistarApp')
               $rootScope.currentUser.avatar = user.profile.avatar
               $rootScope.currentUser.name = user.profile.firstName+' '+user.profile.lastName
               $rootScope.currentUser.role = user.role
-            $rootScope.$emit 'reloadUsers', user
+            $rootScope.$emit 'reloadUsers', ''
             $scope.$emit 'hideModals', true
 
     $scope.create = (form) ->
@@ -106,7 +128,7 @@ angular.module('movistarApp')
           if err
             $scope.errors = err
           else
-            $rootScope.$emit 'updateUsers', user
+            $rootScope.$emit 'updateUsers'
             $scope.$emit 'hideModals', true
 
     $scope.closeModal = () ->
@@ -145,10 +167,9 @@ angular.module('movistarApp')
       _load(CategoryParams.id)
 
     $scope.EditCategory = (id) ->
-      console.log id
       CategoryParams.id = id
       $rootScope.$emit 'showModals', { modal: 'updateCategory', id: id}
-      
+
     _load = (id) ->
       $scope.category = ''
       CategoryFactory.show id, (err, category) ->
@@ -161,20 +182,19 @@ angular.module('movistarApp')
     $scope.category = {}
     $scope.errors = {}
 
-    console.log CategoryParams.id
-
     if CategoryParams?.id?
       CategoryFactory.show CategoryParams.id, (err, category) ->
         if err
           $scope.errors = err
         else
           $scope.category = category
+          CategoryParams.id = null
 
     $scope.update = (form) ->
       if form.$valid
         if typeof $scope.category.tags isnt 'object'
           $scope.category.tags = $scope.category.tags.split(',')
-        CategoryFactory.update CategoryParams.id, $scope.category, (err, category) ->
+        CategoryFactory.update $scope.category._id, $scope.category, (err, category) ->
           if err
             $scope.errors = err
           else
@@ -193,10 +213,3 @@ angular.module('movistarApp')
 
     $scope.closeModal = () ->
       $scope.$emit 'hideModals', true
-
-
-
-
-
-
-
