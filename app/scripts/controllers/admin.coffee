@@ -94,6 +94,8 @@ angular.module('movistarApp')
         if err
           $scope.errors = err
         else
+          if user.profile.avatar is ''
+            user.profile.avatar = '../images/avatar-user.png'
           $scope.user = user
 
   .controller 'UserSaveCtrl', ($scope, UserFactory, $rootScope, UserParams, RolesData) ->
