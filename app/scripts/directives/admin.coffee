@@ -8,6 +8,28 @@ angular.module('movistarApp')
         el.parent().parent().find('.note').removeClass 'active'
         el.addClass 'active'
 
+  .directive 'sgkSubmenuNotifications', ($window, $rootScope) ->
+    restrict: 'A'
+    link: (scope, el, attrs) ->
+      el.on 'click', (e) ->
+        _notifications = angular.element('#submenu.notifications')
+        _options = angular.element('#submenu.options')
+        if _options.css('display') is 'block'
+          _options.slideToggle 200
+        _notifications.slideToggle 200
+
+  .directive 'sgkSubmenuOptions', ($window, $rootScope) ->
+    restrict: 'A'
+    link: (scope, el, attrs) ->
+      _notifications = angular.element('#submenu.notifications')
+      _options = angular.element('#submenu.options')
+      el.on 'click', (e) ->
+        if _notifications.css('display') is 'block'
+          _notifications.slideToggle 200
+        _options.slideToggle 200
+      el.parent().find('a.t-c').on 'click', (e) ->
+        _options.slideToggle 200
+
   .directive 'sgkCheck', ($window, $rootScope) ->
     restrict: 'A'
     link: (scope, el, attrs) ->
@@ -43,10 +65,10 @@ angular.module('movistarApp')
           ngModel.$setViewValue(res.url)
           scope.$digest()
 
-  
 
 
-# $('span.opt-check').click(function(){                   
+
+# $('span.opt-check').click(function(){
 #     $(this).parent().find('.hide').trigger('click');
 #     $(this).toggleClass('active');
 # });
@@ -56,7 +78,7 @@ angular.module('movistarApp')
 #     $(this).addClass('active');
 
 #     if($('.overflow.admin').find('.note.round').attr('title') == $(this).attr('id')){
-      
+
 #         console.log('iguales!');
 
 #     }

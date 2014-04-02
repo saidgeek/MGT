@@ -32,7 +32,7 @@
         <div id="menu-admin">
             <div data-ng-include="'partials/admin/_menu'"></div>
         </div>
-        <div data-ng-include="'partials/admin/_filters'"></div>
+<!--         <div data-ng-include="'partials/admin/_filters'"></div> -->
 
         <div data-ng-switch-default data-ng-controller="UserCtrl">
           <div data-ng-include="'partials/admin/user/_list'"></div><!--// .overflow //-->
@@ -49,7 +49,7 @@
         <div data-ng-switch-default data-ng-controller="UserShowCtrl">
           <div data-ng-include="'partials/admin/user/_user'"></div><!-- user -->
 
-          <!-- <div data-ng-include="'partials/admin/user/_menu'"></div>
+<!--           <div data-ng-include="'partials/admin/user/_menu'"></div>
           <div data-ng-include="'partials/admin/user/_tools'"></div>
           <div data-ng-include="'partials/admin/user/_filters'"></div>
           <div data-ng-include="'partials/admin/user/_solicitude'"></div> -->
@@ -79,6 +79,12 @@
     </div>
     <div data-ng-switch-when="updateCategory" data-ng-controller="CategorySaveCtrl">
       <div data-ng-include="'partials/admin/category/edit'"></div>
+    </div>
+  </div>
+
+  <div ng-switch="masterModals">
+    <div data-ng-switch-when="profileEdit" data-ng-controller="ProfileEditCtrl">
+      <div data-ng-include="'partials/_profileEdit'"></div>
     </div>
   </div>
 

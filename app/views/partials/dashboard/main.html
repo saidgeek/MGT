@@ -2,7 +2,7 @@
 <div id="side" data-ng-switch="module">
   <div class="relativo">
     <div data-ng-include="'partials/_profile'"></div><!-- perfil sidebox -->
-    
+
     <div id="crear" class="sidebox">
       <div data-ng-switch-default>
         <!-- <a href="javascript:{}" class="boton1 round" data-ng-click="showModals('newUser')"><span class="admin"></span>Crear nuevo usuario</a> -->
@@ -11,11 +11,11 @@
         <!-- <a class="boton1 round" href="javascript:{}">Crear nueva clasificación</a> -->
       </div>
     </div>
-    
-    <div data-ng-switch-default>    
+
+    <div data-ng-switch-default>
       <!-- <div data-ng-include="'partials/admin/user/_sidebar'"></div> -->
     </div>
-  </div>        
+  </div>
 </div><!-- side -->
 
 <div id="main" class="ui-widget-content"  data-ng-switch="module">
@@ -34,8 +34,8 @@
             <div data-ng-include="'partials/admin/_menu'"></div>
         </div>
         <div data-ng-include="'partials/admin/_filters'"></div> -->
-        
-        <div data-ng-switch-default data-ng-controller="UserCtrl">        
+
+        <div data-ng-switch-default data-ng-controller="UserCtrl">
           <!-- <div data-ng-include="'partials/admin/user/_list'"></div> -->
         </div>
         <div data-ng-switch-when="category">
@@ -49,7 +49,7 @@
       <div class="relativo">
         <!-- <div data-ng-switch-default data-ng-controller="UserShowCtrl"> -->
           <!-- <div data-ng-include="'partials/admin/user/_user'"></div> -->
-          
+
           <!-- <div data-ng-include="'partials/admin/user/_menu'"></div>
           <div data-ng-include="'partials/admin/user/_tools'"></div>
           <div data-ng-include="'partials/admin/user/_filters'"></div>
@@ -66,17 +66,13 @@
 
   <div data-ng-include="'partials/admin/_search'"></div>
 
-  <!-- <div data-ng-switch="modals">
-    <div data-ng-switch-default>
+  <div data-ng-switch="masterModals">
+    <div data-ng-switch-default></div>
+    <div data-ng-switch-when="profileEdit" data-ng-controller="ProfileEditCtrl">
+      <div data-ng-include="'partials/_profileEdit'"></div>
     </div>
-    <div data-ng-switch-when="newUser" data-ng-controller="UserSaveCtrl">
-      <div data-ng-include="'partials/admin/user/new'"></div> 
-    </div>
-    <div data-ng-switch-when="updateUser" data-ng-controller="UserSaveCtrl">
-      <div data-ng-include="'partials/admin/user/edit'"></div> 
-    </div>
-  </div> -->
-  
-  
+  </div>
+
+
 
 </div><!-- main -->
