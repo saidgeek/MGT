@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'DashboardCtrl', ($rootScope, $scope, Auth, $location, RolesData) ->
+  .controller 'SolicitudeCtrl', ($rootScope, $scope, Auth, $location, RolesData) ->
     $rootScope.cssInclude = [
       'styles/jquery.mCustomScrollbar.css',
       'styles/styles.css',

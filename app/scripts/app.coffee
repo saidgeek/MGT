@@ -26,8 +26,8 @@ angular.module('movistarApp', [
         authenticate: true
 
       .when '/',
-        templateUrl: 'partials/dashboard/main'
-        controller: 'DashboardCtrl'
+        templateUrl: 'partials/solicitude/main'
+        controller: 'SolicitudeCtrl'
         authenticate: true
       .when '/settings',
         templateUrl: 'partials/settings'
