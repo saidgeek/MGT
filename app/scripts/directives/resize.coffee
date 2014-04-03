@@ -21,7 +21,7 @@ angular.module('movistarApp')
         sidebar = angular.element('#side').width()
         medida = total_width - sidebar
 
-        maxAncho = medida / 100 * 65
+        maxAncho = medida / 100 * 55
         minAncho = medida / 100 * 36
 
         angular.element('#main').width(medida)
