@@ -67,15 +67,22 @@ angular.module('movistarApp')
           , 5000
 
 
-  .directive 'sgkFileUploadUser', (filepickerApi) ->
+  .directive 'sgkFileUploadUser', (filepickerApi, $timeout) ->
     restrict: 'A'
+    templateUrl: 'partials/_userUploader'
     require: 'ngModel'
     link: (scope, el, attrs, ngModel) ->
       el.find('input[type="file"]').on 'change', (e) ->
+        el.find('.edit-avatar-user').css 'display', 'none'
+        el.find('#loader').css 'display', 'block'
         input = angular.element(e.target)
         filepickerApi.storeConvert input[0].files[0], { width: 80, height: 80, fit: 'scale', align: 'face' }, (err, res) ->
           ngModel.$setViewValue(res.url)
-          scope.$digest()
+          scope.$apply () ->
+            $timeout () ->
+              el.find('#loader').css 'display', 'none'
+              el.find('.edit-avatar-user').css 'display', 'block'
+            , 600
 
 
 
