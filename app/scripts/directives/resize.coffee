@@ -1,58 +1,64 @@
 'use strict'
 
 angular.module('movistarApp')
+  .directive 'sgkOverflow', ($timeout) ->
+    restrict: 'A'
+    link: (scope, element, attrs) ->
+      $timeout () ->
+        $timeout () ->
+          angular.element( ".overflow" ).mCustomScrollbar
+            scrollButtons:
+                enable:false
+        , 500
+      , 0
+
   .directive 'sgkResize', ($window, $timeout) ->
     restrict: 'A'
     link: (scope, element, attrs) ->
       init = () ->
-        angular.element(document).ready () ->
-          alto = angular.element($window).height()
-          total_width = angular.element('#wrap').width()
-          sidebar = angular.element('#side').width()
-          medida = total_width - sidebar
+        alto = angular.element($window).height()
+        total_width = angular.element('#wrap').width()
+        sidebar = angular.element('#side').width()
+        medida = total_width - sidebar
 
-          maxAncho = medida / 100 * 65
-          minAncho = medida / 100 * 35
+        maxAncho = medida / 100 * 65
+        minAncho = medida / 100 * 35
 
-          angular.element('#main').width(medida)
+        angular.element('#main').width(medida)
 
-          angular.element('#main .wrap, #side').height(alto)
+        angular.element('#main .wrap, #side').height(alto)
 
-          resize_other = (event, ui) ->
-            width = angular.element('#left .relativo').width()
-            total_width = angular.element('#main').width()
-            if width > total_width
-              width = total_width
-              angular.element('#left').css 'width', width
-            angular.element('#right').css 'width', total_width - width
-            angular.element('.ui-resizable-handle').css 'left', width
+        resize_other = (event, ui) ->
+          width = angular.element('#left .relativo').width()
+          total_width = angular.element('#main').width()
+          if width > total_width
+            width = total_width
+            angular.element('#left').css 'width', width
+          angular.element('#right').css 'width', total_width - width
+          angular.element('.ui-resizable-handle').css 'left', width
 
-          resize_right = (event, ui) ->
-            right = angular.element('#right').width()
-            if right < 600
-                angular.element('.menu-middle p, .tools ul li p').css 'display', 'none'
-                angular.element('.edit-user ul li a').css {'textIndent':'-9999px', 'overflow':'hidden'}
-            else
-                angular.element('.menu-middle p, .tools ul li p').css 'display', 'inline'
-                angular.element('.edit-user ul li a').css {'textIndent':0, 'overflow':'auto'}
-
+        resize_right = (event, ui) ->
+          right = angular.element('#right').width()
+          if right < 600
+              angular.element('.menu-middle p, .tools ul li p').css 'display', 'none'
+              angular.element('.edit-user ul li a').css {'textIndent':'-9999px', 'overflow':'hidden'}
+          else
+              angular.element('.menu-middle p, .tools ul li p').css 'display', 'inline'
+              angular.element('.edit-user ul li a').css {'textIndent':0, 'overflow':'auto'}
 
 
-          angular.element('#left .relativo').resizable(
-            maxWidth: maxAncho
-            minWidth: minAncho
-            containment: '#main'
-            handles: "ew"
-            grid: [ 0, 0 ]
-          ).bind 'resize', resize_other, resize_right
 
-          angular.element( ".overflow" ).mCustomScrollbar
-            scrollButtons:
-                enable:false
+        angular.element('#left .relativo').resizable(
+          maxWidth: maxAncho
+          minWidth: minAncho
+          containment: '#main'
+          handles: "ew"
+          grid: [ 0, 0 ]
+        ).bind 'resize', resize_other, resize_right
 
-          angular.element($window).on 'resize', resize_other
-          angular.element('#right').on 'resize', resize_right
+        angular.element($window).on 'resize', resize_other
+        angular.element('#right').on 'resize', resize_right
 
       $timeout () ->
-        $timeout init, 200
+        $timeout init, 100
       , 0
