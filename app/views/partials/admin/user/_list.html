@@ -12,9 +12,9 @@
             </li>
             <li class="img-user">
               <div>
-                <span class="az"><img src="images/mask-user-az.png"/></span>
+                <span class="az" ng-style="{display: ($index === 0 ? 'block' : 'none')}"><img src="images/mask-user-az.png"/></span>
                 <span><img src="images/mask-user-pic2.png"/></span>
-                <img ng-src="{{ user.profile.avatar }}" alt="{{ user.profile.firstName }} {{ user.profile.lastName }}">
+                <img ng-src="{{ user.profile.avatar || 'images/avatar-user.png' }}" alt="{{ user.profile.firstName }} {{ user.profile.lastName }}">
               </div>
             </li>
             <li>
