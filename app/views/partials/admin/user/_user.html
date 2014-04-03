@@ -35,9 +35,9 @@
 
       <div class="contact-user">
         <ul>
-          <li><span class="ico ema"></span> {{ user.email }}</li>
-          <li><span class="ico cel"></span> {{ user.profile.celNumber }}</li>
-          <li><span class="ico tel"></span> {{ user.profile.phoneNumber }}</li>
+          <li data-ng-if="user.email"><span class="ico ema"></span> {{ user.email }}</li>
+          <li data-ng-if="user.profile.celNumber"><span class="ico cel"></span> {{ user.profile.celNumber }}</li>
+          <li data-ng-if="user.profile.phoneNumber"><span class="ico tel"></span> {{ user.profile.phoneNumber }}</li>
         </ul>
       </div>
 
