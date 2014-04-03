@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="t-c">
-      <p>{{ currentUser.name }}</br><span>{{ currentUser.role | RoleName }}</span></p>
+      <p>{{ currentUser.name }}<br /><span>{{ currentUser.role | RoleName }}</span></p>
       <ul class="adm">
           <li ng-controller="NotificationsCtrl">
             <div ng-include="'partials/_notifications'"></div>
