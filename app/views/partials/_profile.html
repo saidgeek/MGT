@@ -1,5 +1,12 @@
 <div id="perfil" class="sidebox">
-  <div class="t-c avatar"><img ng-src="{{ currentUser.avatar || '' }}"/><div class="avperfil"></div></div>
+  <div class="t-c p-avatar">
+    <div>
+      <span>
+        <img src="images/mask-user-azo.png"/>
+      </span>
+      <img ng-src="{{ currentUser.avatar || '' }}"/><div class="avperfil"></div>
+    </div>
+  </div>
   <div class="t-c">
       <p>{{ currentUser.name }}</br><span>{{ currentUser.role | RoleName }}</span></p>
       <ul class="adm">

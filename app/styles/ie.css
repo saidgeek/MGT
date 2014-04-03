@@ -1,0 +1,25 @@
+
+.tools ul li a{
+    /*white-space: nowrap;*/
+}
+
+#side{
+    min-width: 250px \9;
+}
+.tools {
+    padding: 0 \9;
+    padding:14px 0;
+}
+.tools ul li{
+    padding: 5px 10px \9;
+
+}
+
+#right .admin.overflow {
+    top: 285px \9;
+}
+
+*{
+	*display: inline;
+	zoom:1;
+}

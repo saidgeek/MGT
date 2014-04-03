@@ -1,67 +1,58 @@
 'use strict'
 
 angular.module('movistarApp')
-  .directive 'sgkResize', ($window, $rootScope) ->
+  .directive 'sgkResize', ($window, $timeout) ->
     restrict: 'A'
     link: (scope, element, attrs) ->
-      _window = angular.element($window)
-      _main = angular.element('#main')
-      _side = angular.element('#side')
-      _left_relativo = angular.element('#left .relativo')
-      _left = angular.element('#left')
-      _right = angular.element('#right')
+      init = () ->
+        angular.element(document).ready () ->
+          alto = angular.element($window).height()
+          total_width = angular.element('#wrap').width()
+          sidebar = angular.element('#side').width()
+          medida = total_width - sidebar
 
-      alto = _window.height()
-      total_width = _main.width()
-      sidebar = _side.width()
-      medida = total_width - sidebar
-      maxAncho = medida / 100 * 75
-      minAncho = medida / 100 * 25
+          maxAncho = medida / 100 * 65
+          minAncho = medida / 100 * 35
 
-      angular.element(".overflow").mCustomScrollbar
-        scrollButtons:
-          enable: false
+          angular.element('#main').width(medida)
 
-      _left_relativo.resizable(
-        maxWidth: maxAncho
-        minWidth: minAncho
-        containment: '#main'
-        handles: "ew"
-        grid: [ 0, 0 ]
-      ).bind "resize", resizeOther
+          angular.element('#main .wrap, #side').height(alto)
 
-      _window.on 'resize', resizeOther
-      
-      resizeOther = (e, ui) ->
-        _width = _left_relativo.width()
-        console.log 'width', _width
-        total_width = _main.width()
-        console.log 'total_width', total_width
+          resize_other = (event, ui) ->
+            width = angular.element('#left .relativo').width()
+            total_width = angular.element('#main').width()
+            if width > total_width
+              width = total_width
+              angular.element('#left').css 'width', width
+            angular.element('#right').css 'width', total_width - width
+            angular.element('.ui-resizable-handle').css 'left', width
 
-        console.log 'result', (total_width - _width)
-
-        if width > total_width
-          _width = total_width
-          _left.css 'width', _width
-
-        _right.css 'width', (total_width - _width)
-        angular.element('.ui-resizable-handle').css 'left', _width
-
-      _right.on 'resize', resize_right
-
-      resize_right = (e, ui) ->
-          right = _right.width()
-
-          if right < 535
-            angular.element('.menu-middle p').css 'display', 'none'
-          else
-            angular.element('.menu-middle p').css 'display', 'inline'
+          resize_right = (event, ui) ->
+            right = angular.element('#right').width()
+            if right < 600
+                angular.element('.menu-middle p, .tools ul li p').css 'display', 'none'
+                angular.element('.edit-user ul li a').css {'textIndent':'-9999px', 'overflow':'hidden'}
+            else
+                angular.element('.menu-middle p, .tools ul li p').css 'display', 'inline'
+                angular.element('.edit-user ul li a').css {'textIndent':0, 'overflow':'auto'}
 
 
 
+          angular.element('#left .relativo').resizable(
+            maxWidth: maxAncho
+            minWidth: minAncho
+            containment: '#main'
+            handles: "ew"
+            grid: [ 0, 0 ]
+          ).bind 'resize', resize_other, resize_right
 
+          angular.element( ".overflow" ).mCustomScrollbar
+            scrollButtons:
+                enable:false
 
+          angular.element($window).on 'resize', resize_other
+          angular.element('#right').on 'resize', resize_right
 
-
-
-
+      $timeout () ->
+        $timeout init, 200
+      , 0

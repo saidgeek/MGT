@@ -45,14 +45,15 @@
     </div><!--// #left //-->
 
     <div id="right" class="col ui-widget ui-widget-content">
+      <div data-sgk-alerts></div>
       <div class="relativo">
         <div data-ng-switch-default data-ng-controller="UserShowCtrl">
           <div data-ng-include="'partials/admin/user/_user'"></div><!-- user -->
 
-<!--           <div data-ng-include="'partials/admin/user/_menu'"></div>
+          <div data-ng-include="'partials/admin/user/_menu'"></div>
           <div data-ng-include="'partials/admin/user/_tools'"></div>
           <div data-ng-include="'partials/admin/user/_filters'"></div>
-          <div data-ng-include="'partials/admin/user/_solicitude'"></div> -->
+          <div data-ng-include="'partials/admin/user/_solicitude'"></div>
         </div>
         <div data-ng-switch-when="category" data-ng-controller="CategoryShowCtrl">
           <div data-ng-include="'partials/admin/category/_detail'"></div>

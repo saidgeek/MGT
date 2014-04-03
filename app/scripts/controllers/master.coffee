@@ -3,6 +3,7 @@
 angular.module('movistarApp')
   .controller 'CssCtrl', ($rootScope, $scope, $location) ->
     $scope.masterModals = null
+    $rootScope.alert = {}
     $rootScope.$watch 'cssInclude', () ->
       $scope.includeCss = $rootScope.cssInclude
 
