@@ -1,7 +1,7 @@
 <div class="user">
   <div class="t-c img-user">
     <div>
-      <span></span>
+      <span><img src="images/mask-user-pic2.png"/></span>
       <img ng-src="{{ user.profile.avatar }}" alt="{{ user.profile.firstName }} {{ user.profile.lastName }}">
     </div>
   </div>
@@ -17,17 +17,27 @@
 
         <div class="edit-user">
           <ul>
-            <li><a href="javascript:{}" data-ng-click="EditUser(user._id)">Editar información</a></li>
-            <li><a href="#;">Eliminar</a></li>
+            <li>
+              <a href="javascript:{}" data-ng-click="EditUser(user._id)">
+                <span class="ico edi"></span>
+                Editar información
+              </a>
+            </li>
+            <li>
+              <a href="javascript:{}">
+                <span class="ico eli"></span>
+                Eliminar
+              </a>
+            </li>
           </ul>
         </div>
       </div>
 
       <div class="contact-user">
         <ul>
-          <li><span class="ico ema"></span> {{ user.email }}</li>
-          <li><span class="ico cel"></span> {{ user.profile.celNumber }}</li>
-          <li><span class="ico tel"></span> {{ user.profile.phoneNumber }}</li>
+          <li data-ng-if="user.email"><span class="ico ema"></span> {{ user.email }}</li>
+          <li data-ng-if="user.profile.celNumber"><span class="ico cel"></span> {{ user.profile.celNumber }}</li>
+          <li data-ng-if="user.profile.phoneNumber"><span class="ico tel"></span> {{ user.profile.phoneNumber }}</li>
         </ul>
       </div>
 

@@ -5,7 +5,7 @@
       <h2>{{ user.profile.firstName }} {{ user.profile.lastName }}</h2>
       <ul>
         <li class="hideshow"><a href="javascript:{}" data-sgk-down-modal><span class="down">_</span></a></li>
-        <li class="close"><a href="#;"><span class="close">X</span></a></li>
+        <li class="close"><a href="javascript:{}" data-ng-click="closeModal()"><span class="close">X</span></a></li>
       </ul>
     </div>
   </div>
@@ -18,12 +18,7 @@
             <fieldset class="odd">
               <div class="t-c img-user">
                 <div class="relativo">
-                  <div class="img-user" data-sgk-file-upload-user data-ng-model="user.profile.avatar">
-                    <span class="mask"></span>
-                    <span class="edit-avatar-user">Editar</span>
-                    <img ng-src="{{ user.profile.avatar }}" alt="Nombre Usuario">
-                    <input class="att" type="file" name="attachment">
-                  </div>
+                  <div class="img-user" data-sgk-file-upload-user data-ng-model="user.profile.avatar"></div>
                 </div>
               </div>
               <ul class="t-c">
@@ -55,7 +50,7 @@
             </fieldset>
             <fieldset class="blue">
               <ul>
-                <li><a href="#">Limpiar todos los Datos</a></li>
+                <li><a href="javascript:{}">Limpiar todos los Datos</a></li>
                 <li><a href="javascript:{}" data-ng-click="closeModal()">Cancelar</a></li>
               </ul>
               <button type="submit" class="boton1 round"><span></span>Crear Usuario</button>

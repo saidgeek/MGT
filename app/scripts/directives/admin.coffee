@@ -5,8 +5,9 @@ angular.module('movistarApp')
     restrict: 'A'
     link: (scope, el, attrs) ->
       el.on 'click', (e) ->
-        el.parent().parent().find('.note').removeClass 'active'
-        el.addClass 'active'
+        angular.element('.note.round').removeClass 'active'
+        angular.element(this).addClass 'active'
+        angular.element('.note.round.active span').css {'display':'block'}
 
   .directive 'sgkSubmenuNotifications', ($window, $rootScope) ->
     restrict: 'A'
@@ -37,14 +38,6 @@ angular.module('movistarApp')
         el.parent().find('.hide').trigger('click')
         el.toggleClass 'active'
 
-  .directive 'sgkSubmitLink', ->
-    restrict: 'A'
-    link: (scope, element, attrs) ->
-      element.on 'click', (e)->
-        e.preventDefault()
-        element.parents('form').trigger('submit')
-        false
-
   .directive 'sgkDownModal', ->
     restrict: 'A'
     link: (scope, element, attrs) ->
@@ -55,15 +48,41 @@ angular.module('movistarApp')
         angular.element('#nueva-solicitud').toggleClass 'auto'
         false
 
-  .directive 'sgkFileUploadUser', (filepickerApi) ->
+  .directive 'sgkAlerts', ($rootScope, $timeout) ->
     restrict: 'A'
+    templateUrl: 'partials/_alerts'
+    replace: true
+    controller: ($scope, $element) ->
+
+      $element.find('a.cerrar').on 'click', (e) ->
+        $element.slideToggle(400)
+
+      $rootScope.$watch 'alert', () ->
+        if $rootScope.alert?.content?
+          $scope.content = $rootScope.alert.content
+          $element.slideToggle(400)
+          $timeout () ->
+            if $element.css('display') is 'block'
+              $element.slideToggle(400)
+          , 5000
+
+
+  .directive 'sgkFileUploadUser', (filepickerApi, $timeout) ->
+    restrict: 'A'
+    templateUrl: 'partials/_userUploader'
     require: 'ngModel'
     link: (scope, el, attrs, ngModel) ->
       el.find('input[type="file"]').on 'change', (e) ->
+        el.find('.edit-avatar-user').css 'display', 'none'
+        el.find('#loader').css 'display', 'block'
         input = angular.element(e.target)
         filepickerApi.storeConvert input[0].files[0], { width: 80, height: 80, fit: 'scale', align: 'face' }, (err, res) ->
           ngModel.$setViewValue(res.url)
-          scope.$digest()
+          scope.$apply () ->
+            $timeout () ->
+              el.find('#loader').css 'display', 'none'
+              el.find('.edit-avatar-user').css 'display', 'block'
+            , 600
 
 
 

@@ -3,8 +3,9 @@
 angular.module('movistarApp')
   .controller 'AdminCtrl', ($rootScope, $scope, Auth, $location, RolesData) ->
     $rootScope.cssInclude = [
-      'styles/admin.css',
       'styles/jquery.mCustomScrollbar.css',
+      'styles/styles.css',
+      'styles/ie.css',
       'styles/adminFonts.css'
     ]
     $scope.groups = {}
@@ -123,6 +124,11 @@ angular.module('movistarApp')
               $rootScope.currentUser.role = user.role
             $rootScope.$emit 'reloadUsers', ''
             $scope.$emit 'hideModals', true
+            $rootScope.alert =
+              type: 'success'
+              content: """
+                          El usuario #{ user.profile.firstName } #{ user.profile.lastName } se a actualizado correctamente.
+                       """
 
     $scope.create = (form) ->
       if form.$valid
@@ -132,6 +138,11 @@ angular.module('movistarApp')
           else
             $rootScope.$emit 'updateUsers'
             $scope.$emit 'hideModals', true
+            $rootScope.alert =
+              type: 'success'
+              content: """
+                          El usuario #{ user.profile.firstName } #{ user.profile.lastName } se a agregado correctamente.
+                       """
 
     $scope.closeModal = () ->
       $scope.$emit 'hideModals', true

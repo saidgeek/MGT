@@ -37,7 +37,7 @@ angular.module('movistarApp', [
         redirectTo: '/'
 
     $locationProvider.html5Mode true
-  
+
     # Intercept 401s and redirect you to login
     $httpProvider.interceptors.push ['$q', '$location', ($q, $location) ->
       responseError: (response) ->
@@ -48,7 +48,7 @@ angular.module('movistarApp', [
           $q.reject response
     ]
   .run ($rootScope, $location, Auth) ->
-    
+
     # Redirect to login if route requires auth and you're not logged in
     $rootScope.$on '$routeChangeStart', (event, next) ->
       $location.path '/login'  if next.authenticate and not Auth.isLoggedIn()
