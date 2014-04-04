@@ -1396,7 +1396,7 @@ ul.menu-usuarios li a:hover{
     opacity: 1;
 }
 #left .overflow.top-admin{
-    top: 90px;
+    top: 46px;
 }
 .user{
     padding: 18px;
@@ -1891,7 +1891,9 @@ ul.menu-usuarios li a:hover{
 }
 
 #nueva-solicitud form .boton1{
-    float: right;
+  float: right;
+  border: none;
+  height: 34px;
 }
 #nueva-solicitud form .boton1 span {
     background-position: -240px -20px;

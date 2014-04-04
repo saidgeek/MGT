@@ -13,6 +13,9 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <link data-ng-repeat="css in includeCss" rel="stylesheet" href="{{css}}" class="ng-scope">
+    <!--[if IE]>
+      <link rel="stylesheet" href="styles/ie.css" />
+    <![endif]-->
   </head>
   <body data-filepicker-run data-sgk-overflow>
     <!--[if lt IE 7]>

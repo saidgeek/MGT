@@ -5,6 +5,5 @@ angular.module('movistarApp')
     $rootScope.cssInclude = [
       'styles/jquery.mCustomScrollbar.css',
       'styles/styles.css',
-      'styles/ie.css',
       'styles/adminFonts.css'
     ]

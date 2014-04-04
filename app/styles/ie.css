@@ -5,6 +5,7 @@
 
 #side{
     min-width: 250px \9;
+    display: inline-block;
 }
 .tools {
     padding: 0 \9;
