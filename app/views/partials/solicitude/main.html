@@ -1,19 +1,16 @@
 <div data-sgk-resize></div>
 <div id="side" data-ng-switch="module">
   <div class="relativo">
-    <div data-ng-include="'partials/_profile'"></div><!-- perfil sidebox -->
+    <div id="perfil" class="sidebox">
+      <div data-ng-include="'partials/_profile'"></div><!-- perfil sidebox -->
+    </div>
 
     <div id="crear" class="sidebox">
-      <div data-ng-switch-default>
-        <!-- <a href="javascript:{}" class="boton1 round" data-ng-click="showModals('newUser')"><span class="admin"></span>Crear nuevo usuario</a> -->
-      </div>
-      <div data-ng-switch-when="category">
-        <!-- <a class="boton1 round" href="javascript:{}">Crear nueva clasificación</a> -->
-      </div>
+
     </div>
 
     <div data-ng-switch-default>
-      <!-- <div data-ng-include="'partials/admin/user/_sidebar'"></div> -->
+
     </div>
   </div>
 </div><!-- side -->
@@ -21,7 +18,9 @@
 <div id="main" class="ui-widget-content"  data-ng-switch="module">
   <div class="wrap">
 
-    <div data-ng-include="'partials/_logo'"></div>
+    <div id="top">
+      <div data-ng-include="'partials/_logo'"></div>
+    </div>
 
     <div id="menu-admin">
       <div data-ng-include="'partials/_menu'"></div>
@@ -29,49 +28,36 @@
 
     <div id="left" class="col">
       <div class="relativo ui-widget ui-widget-content">
-        <!-- <div id="menu-admin">
-            <div data-ng-include="'partials/admin/_menu'"></div>
-        </div>
-        <div data-ng-include="'partials/admin/_filters'"></div> -->
+        
 
-        <div data-ng-switch-default data-ng-controller="UserCtrl">
-          <!-- <div data-ng-include="'partials/admin/user/_list'"></div> -->
-        </div>
-        <div data-ng-switch-when="category">
-          <!-- <div data-ng-include="'partials/admin/category/_list'"></div> -->
-        </div>
+
 
       </div>
     </div><!--// #left //-->
 
     <div id="right" class="col ui-widget ui-widget-content">
+      <div data-sgk-alerts></div>
       <div class="relativo">
-        <!-- <div data-ng-switch-default data-ng-controller="UserShowCtrl"> -->
-          <!-- <div data-ng-include="'partials/admin/user/_user'"></div> -->
 
-          <!-- <div data-ng-include="'partials/admin/user/_menu'"></div>
-          <div data-ng-include="'partials/admin/user/_tools'"></div>
-          <div data-ng-include="'partials/admin/user/_filters'"></div>
-          <div data-ng-include="'partials/admin/user/_solicitude'"></div> -->
-        <!-- </div> -->
-        <div data-ng-switch-when="category">
-          <!-- <div data-ng-include="'partials/admin/category/_detail'"></div> -->
-        </div>
 
       </div><!-- relativo -->
     </div><!-- col right -->
 
   </div><!-- wrap -->
 
-  <div data-ng-include="'partials/admin/_search'"></div>
+  <div id="search-form">
+    <div data-ng-include="'partials/admin/_search'"></div>
+  </div>
 
-  <div data-ng-switch="masterModals">
-    <div data-ng-switch-default></div>
+  <div data-ng-switch="modals">
+    <div data-ng-switch-default>
+    </div>
+  </div>
+
+  <div ng-switch="masterModals">
     <div data-ng-switch-when="profileEdit" data-ng-controller="ProfileEditCtrl">
       <div data-ng-include="'partials/_profileEdit'"></div>
     </div>
   </div>
-
-
 
 </div><!-- main -->

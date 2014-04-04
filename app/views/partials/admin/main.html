@@ -1,7 +1,9 @@
 <div data-sgk-resize></div>
 <div id="side" data-ng-switch="module">
   <div class="relativo">
-    <div data-ng-include="'partials/_profile'"></div><!-- perfil sidebox -->
+    <div id="perfil" class="sidebox">
+      <div data-ng-include="'partials/_profile'"></div><!-- perfil sidebox -->
+    </div>
 
     <div id="crear" class="sidebox">
       <div data-ng-switch-default>

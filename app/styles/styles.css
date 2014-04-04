@@ -171,8 +171,8 @@ h4{ font-size:  1.154em;}
 #side{
     background: #2f364a;
     width:250px;
-    /*display: table-cell;*/
-    display: inline-block;
+    display: table-cell;
+/*    display: inline-block;*/
     vertical-align: top;
     font-family: 'proxima_nova_rgregular';
     height: 100%;
@@ -529,7 +529,6 @@ h4{ font-size:  1.154em;}
     display: table-cell;
     overflow:hidden;
     height: 100%;
-    vertical-align: top;
 }
 #top{
     background: #2f364a;
@@ -1779,7 +1778,7 @@ ul.menu-usuarios li a:hover{
     background: #f8fafc;
 }
 #nueva-solicitud .overflow{
-/*    position: absolute; sacando esto funciona el modal del formulario*/
+/*    position: absolute;*/
     left: 0;
     top: 0;
     bottom: 0;

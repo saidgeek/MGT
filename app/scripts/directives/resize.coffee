@@ -59,6 +59,10 @@ angular.module('movistarApp')
         angular.element($window).on 'resize', resize_other
         angular.element('#right').on 'resize', resize_right
 
+        full = angular.element('.full-heigth').height();
+        angular.element('.half-a').css('height', (angular.element('.full-heigth').height() / 2) - 21)
+        $('.half-b').css('height', (full / 2) - 21)
+
       $timeout () ->
-        $timeout init, 100
+        $timeout init, 0
       , 0
