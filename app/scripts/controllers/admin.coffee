@@ -71,8 +71,9 @@ angular.module('movistarApp')
         if err
           $scope.errors = err
         else
-          $rootScope.$emit 'loadUserShow', users[0]._id
-          $scope.users = users
+          if users.length > 0
+            $rootScope.$emit 'loadUserShow', users[0]._id
+            $scope.users = users
 
     _loadUsers('')
 
@@ -155,7 +156,7 @@ angular.module('movistarApp')
       _load()
 
     $rootScope.$on 'updateCategory', (e, category) ->
-      $scope.categories.push category
+      _load()
 
     $scope.loadCategory = (id) ->
       $rootScope.$emit 'loadCategoryShow', id
@@ -165,8 +166,9 @@ angular.module('movistarApp')
         if err
           $scope.errors = err
         else
-          $scope.categories = categories
-          $rootScope.$emit 'loadCategoryShow', categories[0]._id
+          if categories.length > 0
+            $scope.categories = categories
+            $rootScope.$emit 'loadCategoryShow', categories[0]._id
 
     _load()
 
@@ -205,8 +207,6 @@ angular.module('movistarApp')
 
     $scope.update = (form) ->
       if form.$valid
-        if typeof $scope.category.tags isnt 'object'
-          $scope.category.tags = $scope.category.tags.split(',')
         CategoryFactory.update $scope.category._id, $scope.category, (err, category) ->
           if err
             $scope.errors = err
@@ -216,7 +216,6 @@ angular.module('movistarApp')
 
     $scope.create = (form) ->
       if form.$valid
-        $scope.category.tags = $scope.category.tags.split(',')
         CategoryFactory.save $scope.category, (err, category) ->
           if err
             $scope.errors = err
