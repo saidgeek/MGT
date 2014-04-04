@@ -64,6 +64,7 @@ angular.module('movistarApp')
           $timeout () ->
             if $element.css('display') is 'block'
               $element.slideToggle(400)
+              $rootScope.alert = {}
           , 5000
 
 

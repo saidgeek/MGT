@@ -4,10 +4,7 @@ var express = require('express'),
     path = require('path'),
     fs = require('fs'),
     mongoose = require('mongoose'),
-    mandrill = require('mandrill-api/mandrill'),
-    mandrill_client = new mandrill.Mandrill('9cyYwqPH5H0YbKF1zjUvpg');
-
-global.mandrill = mandrill_client;
+    mandrill = require('mandrill-api/mandrill');
 
 /**
  * Main application file
@@ -18,6 +15,9 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 // Application Config
 var config = require('./lib/config/config');
+
+var mandrill_client = new mandrill.Mandrill(config.mandrill);
+global.mandrill = mandrill_client;
 
 // Connect to database
 var db = mongoose.connect(config.mongo.uri, config.mongo.options);
@@ -37,7 +37,7 @@ require(modelsPath + '/solicitude');
 //     require(modelsPath + '/' + file);
 //   }
 // });
-  
+
 // Passport Configuration
 var passport = require('./lib/config/passport');
 
@@ -51,7 +51,7 @@ if (app.get('env') === 'development' || app.get('env') === 'test') {
 };
 
 if (app.get('env') === 'production' && config.dummyDataPro) {
-  require('./lib/config/dummydataPro'); 
+  require('./lib/config/dummydataPro');
 };
 
 // Express settings
