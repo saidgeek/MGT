@@ -8,6 +8,7 @@ angular.module('movistarApp')
       'styles/ie.css',
       'styles/adminFonts.css'
     ]
+    $rootScope.title = "Administración"
     $scope.groups = {}
 
     switch $location.$$path

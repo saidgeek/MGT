@@ -2,6 +2,7 @@
 
 angular.module('movistarApp')
   .controller 'CssCtrl', ($rootScope, $scope, $location) ->
+    $rootScope.title = "Gestor de tareas"
     $scope.masterModals = null
     $rootScope.alert = {}
     $rootScope.$watch 'cssInclude', () ->
