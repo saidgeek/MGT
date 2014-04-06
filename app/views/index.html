@@ -12,7 +12,10 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <link data-ng-repeat="css in includeCss" rel="stylesheet" href="{{css}}" class="ng-scope">
+    <link ng-if="!currentUser" rel="stylesheet" href="styles/auth.css" />
+    <link ng-if="currentUser" rel="stylesheet" href="styles/fonts.css" />
+    <link ng-if="currentUser" rel="stylesheet" href="styles/styles.css" />
+    <link ng-if="currentUser" rel="stylesheet" href="styles/jquery.mCustomScrollbar.css" />
     <!--[if IE]>
       <link rel="stylesheet" href="styles/ie.css" />
     <![endif]-->

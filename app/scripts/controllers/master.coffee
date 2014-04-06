@@ -5,8 +5,6 @@ angular.module('movistarApp')
     $rootScope.title = "Gestor de tareas"
     $scope.masterModals = null
     $rootScope.alert = {}
-    $rootScope.$watch 'cssInclude', () ->
-      $scope.includeCss = $rootScope.cssInclude
 
     _showModals = (modal) ->
       $scope.masterModals = modal

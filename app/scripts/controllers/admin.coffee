@@ -2,11 +2,6 @@
 
 angular.module('movistarApp')
   .controller 'AdminCtrl', ($rootScope, $scope, Auth, $location, RolesData) ->
-    $rootScope.cssInclude = [
-      'styles/jquery.mCustomScrollbar.css',
-      'styles/styles.css',
-      'styles/adminFonts.css'
-    ]
     $rootScope.title = "Administración"
     $scope.groups = {}
 
