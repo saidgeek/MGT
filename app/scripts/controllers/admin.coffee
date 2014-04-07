@@ -3,7 +3,6 @@
 angular.module('movistarApp')
   .controller 'AdminCtrl', ($rootScope, $scope, Auth, $location, RolesData) ->
     $rootScope.title = "Administración"
-    $scope.groups = {}
 
     switch $location.$$path
       when '/admin/category'

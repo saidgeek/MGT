@@ -6,12 +6,15 @@
     </div>
 
     <div id="crear" class="sidebox">
-
+      <a class="boton1 round" href="javascript:{}"><span></span>Crear nueva solicitud</a>
     </div>
 
-    <div data-ng-switch-default>
-
-    </div>
+    <div class="overflow">
+      <div ng-include="'partials/solicitude/sidebar/_state'"></div>
+      <div ng-include="'partials/solicitude/sidebar/_priority'"></div>
+      <div ng-include="'partials/solicitude/sidebar/_involved'"></div>
+      <div ng-include="'partials/solicitude/sidebar/_category'"></div>
+  </div>
   </div>
 </div><!-- side -->
 
@@ -28,9 +31,9 @@
 
     <div id="left" class="col">
       <div class="relativo ui-widget ui-widget-content">
-        
 
-
+        <div ng-include="'partials/solicitude/left/_filter'"></div>
+        <div ng-include="'partials/solicitude/left/_list'"></div>
 
       </div>
     </div><!--// #left //-->
@@ -39,6 +42,18 @@
       <div data-sgk-alerts></div>
       <div class="relativo">
 
+        <div ng-include="'partials/solicitude/right/_filter'"></div>
+        <div class="full-heigth">
+          <div class="half-a">
+            <div ng-include="'partials/solicitude/right/_detail'"></div>
+          </div>
+          <div class="half-b">
+            <div ng-include="'partials/solicitude/right/_tabs'"></div>
+          </div>
+          <div ng-include="'partials/solicitude/right/_menu'"></div>
+        </div>
+
+        <div ng-include="'partials/solicitude/right/_commentForm'"></div>
 
       </div><!-- relativo -->
     </div><!-- col right -->
@@ -51,6 +66,9 @@
 
   <div data-ng-switch="modals">
     <div data-ng-switch-default>
+    </div>
+    <div ng-switch-when="newSolicitude">
+      <div ng-include="'partials/solicitude/_new'"></div>
     </div>
   </div>
 
