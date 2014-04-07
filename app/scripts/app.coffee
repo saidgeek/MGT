@@ -8,6 +8,7 @@ angular.module('movistarApp', [
   'filepicker'
 ])
   .config ($routeProvider, $locationProvider, $httpProvider) ->
+    $httpProvider.interceptors.push 'noCacheInterceptor'
     $routeProvider
       .when '/login',
         templateUrl: 'partials/login'
@@ -47,6 +48,14 @@ angular.module('movistarApp', [
         else
           $q.reject response
     ]
+  .factory 'noCacheInterceptor', () ->
+    request: (config) ->
+      if config.method is 'GET' and config.url.indexOf('partials/') is -1
+        separator = '&'
+        if config.url.indexOf('?') is -1
+          separator = '?'
+        config.url = config.url+separator+'noCache=' + new Date().getTime()
+      return config;
   .run ($rootScope, $location, Auth) ->
 
     # Redirect to login if route requires auth and you're not logged in
