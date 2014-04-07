@@ -6,7 +6,9 @@
     </div>
 
     <div id="crear" class="sidebox">
-      <a class="boton1 round" href="javascript:{}"><span></span>Crear nueva solicitud</a>
+      <a class="boton1 round" href="javascript:{}" data-ng-click="showModals('newSolicitude')">
+        <span></span>Crear nueva solicitud
+      </a>
     </div>
 
     <div class="overflow">
@@ -18,7 +20,7 @@
   </div>
 </div><!-- side -->
 
-<div id="main" class="ui-widget-content"  data-ng-switch="module">
+<div id="main" class="ui-widget-content">
   <div class="wrap">
 
     <div id="top">
@@ -33,27 +35,36 @@
       <div class="relativo ui-widget ui-widget-content">
 
         <div ng-include="'partials/solicitude/left/_filter'"></div>
-        <div ng-include="'partials/solicitude/left/_list'"></div>
+        <div ng-include="'partials/solicitude/left/_list'" ng-controller="SolicitudeCtrl"></div>
 
       </div>
     </div><!--// #left //-->
 
     <div id="right" class="col ui-widget ui-widget-content">
       <div data-sgk-alerts></div>
-      <div class="relativo">
+      <div class="relativo" ng-controller="SolicitudeShowCtrl">
 
-        <div ng-include="'partials/solicitude/right/_filter'"></div>
-        <div class="full-heigth">
-          <div class="half-a">
-            <div ng-include="'partials/solicitude/right/_detail'"></div>
+        <div ng-switch="viewDetail">
+          <div ng-switch-default>
+            <div ng-include="'partials/solicitude/right/_filter'"></div>
+            <div class="full-heigth">
+              <div class="half-a">
+                <div ng-include="'partials/solicitude/right/_detail'"></div>
+              </div>
+              <div class="half-b">
+                <div ng-include="'partials/solicitude/right/_tabs'"></div>
+              </div>
+              <div ng-include="'partials/solicitude/right/_menu'"></div>
+            </div>
+
+            <div ng-include="'partials/solicitude/right/_commentForm'"></div>
           </div>
-          <div class="half-b">
-            <div ng-include="'partials/solicitude/right/_tabs'"></div>
+
+          <div ng-switch-when="updateByContentManager">
+<!--             <div ng-include="'partials/solicitude/_updateByContentManager'"></div> -->
           </div>
-          <div ng-include="'partials/solicitude/right/_menu'"></div>
+
         </div>
-
-        <div ng-include="'partials/solicitude/right/_commentForm'"></div>
 
       </div><!-- relativo -->
     </div><!-- col right -->
@@ -67,7 +78,7 @@
   <div data-ng-switch="modals">
     <div data-ng-switch-default>
     </div>
-    <div ng-switch-when="newSolicitude">
+    <div ng-switch-when="newSolicitude" ng-controller="SolicitudeSaveCtrl">
       <div ng-include="'partials/solicitude/_new'"></div>
     </div>
   </div>

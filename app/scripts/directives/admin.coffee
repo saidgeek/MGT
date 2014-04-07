@@ -9,6 +9,13 @@ angular.module('movistarApp')
         angular.element(this).addClass 'active'
         angular.element('.note.round.active span').css {'display':'block'}
 
+  .directive 'sgkActiveSolicitude', ($window, $rootScope) ->
+    restrict: 'A'
+    link: (scope, el, attrs) ->
+      el.on 'click', (e) ->
+        angular.element('.note.round').removeClass 'active'
+        angular.element(this).addClass 'active'
+
   .directive 'sgkSubmenuNotifications', ($window, $rootScope) ->
     restrict: 'A'
     link: (scope, el, attrs) ->

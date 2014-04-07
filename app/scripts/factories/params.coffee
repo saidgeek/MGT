@@ -10,3 +10,8 @@ angular.module("movistarApp")
     return {
       id: null
     }
+
+  .factory "SolicitudeParams", ->
+    return {
+      id: null
+    }
