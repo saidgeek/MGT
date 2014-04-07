@@ -2,7 +2,7 @@
 
 angular.module("movistarApp")
   .factory "RolesData", ->
-    roles = 
+    roles =
       ROOT: 'Super administrador'
       ADMIN: 'Administrador'
       EDITOR: 'Editor'

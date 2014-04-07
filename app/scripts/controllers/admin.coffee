@@ -208,6 +208,11 @@ angular.module('movistarApp')
           else
             $rootScope.$emit 'reloadCategories', category
             $scope.$emit 'hideModals', true
+            $rootScope.alert =
+              type: 'success'
+              content: """
+                          La categoría #{ category.name } se actualizo correctamente.
+                       """
 
     $scope.create = (form) ->
       if form.$valid
@@ -217,6 +222,11 @@ angular.module('movistarApp')
           else
             $rootScope.$emit 'updateCategory', category
             $scope.$emit 'hideModals', true
+            $rootScope.alert =
+              type: 'success'
+              content: """
+                          La categoría #{ category.name } se a creado correctamente.
+                       """
 
     $scope.closeModal = () ->
       $scope.$emit 'hideModals', true
