@@ -11,6 +11,14 @@ angular.module("movistarApp")
         url: '/api/v1/solicitudes'
         isArray: true
 
+      groups:
+        method: "GET"
+        params:
+          clientToken: '@clientToken'
+          accessToken: '@accessToken'
+        url: '/api/v1/solicitudes/groups'
+        isArray: true
+
       show:
         method: 'GET'
         params:

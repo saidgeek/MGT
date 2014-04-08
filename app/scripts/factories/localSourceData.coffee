@@ -60,7 +60,7 @@ angular.module("movistarApp")
 
     return {
       getArray: () ->
-        _getArray()
+        _makeArray()
       get: (key) ->
         _get(key)
       getAll: () ->
@@ -85,7 +85,12 @@ angular.module("movistarApp")
     _get = (key) ->
       icons[key]
 
+    _getAll = () ->
+      icons
+
     return {
       get: (key) ->
         _get(key)
+      getAll: () ->
+        _getAll()
     }

@@ -5,56 +5,14 @@
       <a href="javascript:{}">
         <div class="ico tod"></div>
         Todas
-        <span class="round light">120</span>
+        <span class="round light">{{ statesGroups.total }}</span>
       </a>
     </li>
-    <li>
+    <li ng-repeat="state in states">
       <a href="javascript:{}">
-        <div class="ico val"></div>
-        Por Validar
-        <span class="round light">3</span>
-      </a>
-    </li>
-    <li>
-      <a href="javascript:{}">
-        <div class="ico epr"></div>
-        Espera Proveedor
-        <span class="round light">3</span>
-      </a>
-    </li>
-    <li>
-      <a href="javascript:{}">
-        <div class="ico pro"></div>
-        En Progreso
-        <span class="round light">5</span>
-      </a>
-    </li>
-    <li>
-      <a href="javascript:{}">
-        <div class="ico esp"></div>
-        En Espera
-        <span class="round light">2</span>
-      </a>
-    </li>
-    <li>
-      <a href="javascript:{}">
-        <div class="ico atr"></div>
-        Atrasadas
-        <span class="round light">2</span>
-      </a>
-    </li>
-    <li>
-      <a href="javascript:{}">
-        <div class="ico pau"></div>
-        En Pausa
-        <span class="round light">2</span>
-      </a>
-    </li>
-    <li>
-      <a href="javascript:{}">
-        <div class="ico fin"></div>
-        Finalizadas
-        <span class="round light">2</span>
+        <div class="ico {{ statesIcons[state.id] }}"></div>
+        {{ state.name }}
+        <span class="round light">{{ statesGroups[state.id] || 0 }}</span>
       </a>
     </li>
   </ul>

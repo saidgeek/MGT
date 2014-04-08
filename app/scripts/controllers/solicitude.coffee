@@ -1,6 +1,28 @@
 'use strict'
 
 angular.module('movistarApp')
+  .controller 'SidebarCtrl', ($scope, SolicitudeFactory, $rootScope, StateData, StateIconsData) ->
+    $scope.statesGroups = null
+    $scope.errors = {}
+    $scope.states = StateData.getArray()
+    $scope.statesIcons = StateIconsData.getAll()
+
+    _loadStates = () ->
+      SolicitudeFactory.groups (err, groups) ->
+        if err
+          $scope.errors = err
+        else
+          console.log groups
+          $scope.statesGroups = groups
+
+    $rootScope.$on 'reloadStates', (e) ->
+      _loadStates()
+
+    # $scope.filter = (role) ->
+    #   $rootScope.$emit 'reloadUsers', role
+
+    _loadStates()
+
   .controller 'SolicitudeCtrl', ($rootScope, $scope, Auth, $location, SolicitudeFactory, RolesData) ->
     $rootScope.title = "Solicitudes"
     $scope.solicitudes = []

@@ -15,6 +15,26 @@ angular.module("movistarApp")
         cb err.data
       ).$premise
 
+    _makeGroups = (groups) ->
+      result = {}
+      _total = 0
+      for g in groups
+        result[g._id] = g.count
+        _total += g.count
+      result['total'] = _total
+      result
+
+    _groups = (cb) ->
+      SolicitudeService.groups(
+        clientToken: _clientToken
+        accessToken: _accessToken
+      , (groups) ->
+        groups = _makeGroups(groups)
+        cb null, groups
+      , (err) ->
+        cb err.data
+      ).$premise
+
     _show = (id, cb) ->
       SolicitudeService.show(
         clientToken: _clientToken
@@ -52,6 +72,8 @@ angular.module("movistarApp")
     return {
       index: (cb) ->
         _index(cb)
+      groups: (cb) ->
+        _groups(cb)
       show: (id, cb) ->
         _show(id, cb)
       create: (data, cb) ->
