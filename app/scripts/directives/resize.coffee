@@ -9,20 +9,27 @@ angular.module('movistarApp')
           angular.element( ".overflow" ).mCustomScrollbar
             scrollButtons:
                 enable:false
-        , 500
+        , 1000
       , 0
 
   .directive 'sgkResize', ($window, $timeout) ->
     restrict: 'A'
     link: (scope, element, attrs) ->
+      _maxWidth = attrs.maxWidth || 55
+      _minWidth = attrs.minWidth || 36
+      _leftDefaultWidth = attrs.leftWidth || null
       init = () ->
+
+        if _leftDefaultWidth?
+          angular.element('#left').css 'width', _leftDefaultWidth}
+
         alto = angular.element($window).height()
         total_width = angular.element('#wrap').width()
         sidebar = angular.element('#side').width()
         medida = total_width - sidebar
 
-        maxAncho = medida / 100 * 55
-        minAncho = medida / 100 * 36
+        maxAncho = medida / 100 * _maxWidth
+        minAncho = medida / 100 * _minWidth
 
         angular.element('#main').width(medida)
 
@@ -36,6 +43,7 @@ angular.module('movistarApp')
             angular.element('#left').css 'width', width
           angular.element('#right').css 'width', total_width - width
           angular.element('.ui-resizable-handle').css 'left', width
+
 
         resize_right = (event, ui) ->
           right = angular.element('#right').width()

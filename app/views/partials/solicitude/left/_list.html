@@ -2,7 +2,7 @@
   <div class="note round" data-ng-class="{active: $index===0}" ng-repeat="solicitude in solicitudes" data-sgk-active-solicitude ng-click="loadSolicitude(solicitude._id)">
       <div class="t-c verde round">
           <ul>
-              <li><div class="ico tim"></div>Quedan <span>5 días</span></li>
+              <li><div class="ico tim"></div><p>Quedan <span>5 días</span></p></li>
               <li><div class="ico {{ solicitude.state | StateIcons }}"></div>{{ solicitude.state | StateSolicitude }}</li>
               <li class="last">Prioridad: <span>{{ solicitude.priority }}</span></li>
           </ul>
