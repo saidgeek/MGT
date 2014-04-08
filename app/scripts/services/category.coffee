@@ -5,7 +5,7 @@ angular.module("movistarApp")
     $resource "", {},
       index:
         method: "GET"
-        params: 
+        params:
           clientToken: '@clientToken'
           accessToken: '@accessToken'
         url: '/api/v1/categories'
@@ -28,7 +28,7 @@ angular.module("movistarApp")
           category: '@category'
         url: '/api/v1/category'
 
-      update: 
+      update:
         method: 'PUT'
         params:
           clientToken: '@clientToken'
@@ -37,4 +37,11 @@ angular.module("movistarApp")
         data:
           category: '@category'
         url: '/api/v1/category/:id'
-        
+
+      remove:
+        method: 'DELETE'
+        params:
+          clientToken: '@clientToken'
+          accessToken: '@accessToken'
+          id: '@id'
+        url: '/api/v1/category/:id'

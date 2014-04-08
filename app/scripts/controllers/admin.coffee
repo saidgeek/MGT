@@ -180,6 +180,13 @@ angular.module('movistarApp')
       CategoryParams.id = id
       $rootScope.$emit 'showModals', { modal: 'updateCategory', id: id}
 
+    $scope.remove = (id) ->
+      CategoryFactory.remove id, (err) ->
+        if err
+          $scope.errors = err
+        else
+          $rootScope.$emit 'reloadCategories', ''
+
     _load = (id) ->
       $scope.category = ''
       CategoryFactory.show id, (err, category) ->

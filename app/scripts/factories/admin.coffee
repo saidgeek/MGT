@@ -134,6 +134,17 @@ angular.module("movistarApp")
           cb err.data
       ).$promise
 
+    _remove = (id, cb) ->
+      CategoryService.remove(
+        clientToken: _clientToken
+        accessToken: _accessToken
+        id: id
+      , ->
+        cb()
+      , (err) ->
+        cb err.data
+      ).$promise
+
     return {
       index: (cb) ->
         _index(cb)
@@ -143,4 +154,6 @@ angular.module("movistarApp")
         _save(data, cb)
       update: (id, data, cb) ->
         _update(id, data, cb)
+      remove: (id, cb) ->
+        _remove(id, cb)
     }
