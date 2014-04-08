@@ -5,7 +5,8 @@ angular.module('movistarApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'filepicker'
+  'filepicker',
+  'confirmClick'
 ])
   .config ($routeProvider, $locationProvider, $httpProvider) ->
     $httpProvider.interceptors.push 'noCacheInterceptor'
