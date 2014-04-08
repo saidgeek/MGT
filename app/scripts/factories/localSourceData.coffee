@@ -33,18 +33,18 @@ angular.module("movistarApp")
 
   .factory "StateData", ->
     states =
-      QUEUE_VALIDATION: "Espera de validación"
-      QUEUE_ALLOCATION: "Espere de asignación"
-      CANCEL: "Cancelada"
+      QUEUE_VALIDATION: "Por validar" # esperando a que el editor lo valide
+      QUEUE_ALLOCATION: "Por asignar" # esperando a que el gestor de contenido lo asigne a un proveedor
+      CANCEL: "Cancelada" # el editor puede rechazar la solicitud
       QUEUE_PROVIDER: "Espera de proveedor"
       PROCCESS: "En proceso"
-      QUEUE_VALIDATION_MANAGER: "Espera de validación del Gestor de contenido"
+      QUEUE_VALIDATION_MANAGER: "Por validar (Gestor Contenido)"
       PAUSE: "Pausada"
-      REJECTED_BY_MANAGER: "Rechazada por el Gestor de contenido"
-      OK_BY_MANAGER: "Aceptada por el Gestor de contenido"
-      QUEUE_VALIDATION_CLIENT: "Espera de validación del cliente"
-      REJECTED_BY_CLIENT: "Rechazado por Cliente"
-      OK_BY_CLIENT: "Aceptado por Cliente"
+      REJECTED_BY_MANAGER: "Rechazada (Gestor Contenido)"
+      OK_BY_MANAGER: "Aceptada (Gestor Contenido)"
+      QUEUE_VALIDATION_CLIENT: "Por validar (Cliente)"
+      REJECTED_BY_CLIENT: "Rechazada (Cliente)"
+      OK_BY_CLIENT: "Aceptada (Cliente)"
 
     _makeArray = () ->
       _states = []
