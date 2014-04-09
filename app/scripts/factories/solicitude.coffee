@@ -72,6 +72,18 @@ angular.module("movistarApp")
         cb err.data
       ).$promise
 
+    _addComments = (id, comment, cb) ->
+      SolicitudeService.addComments(
+        clientToken: _clientToken
+        accessToken: _accessToken
+        id: id
+        comment: comment
+      , (solicitude) ->
+        cb()
+      , (err) ->
+        cb err.data
+      ).$promise
+
     return {
       index: (state, cb) ->
         _index(state, cb)
@@ -83,4 +95,6 @@ angular.module("movistarApp")
         _create(data, cb)
       update: (id, data, cb) ->
         _update(id, data, cb)
+      addComments: (id, comment, cb) ->
+        _addComments(id, comment, cb)
     }

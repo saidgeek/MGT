@@ -66,6 +66,7 @@ angular.module('movistarApp')
     $scope.solicitude = {}
     $scope.errors = {}
     $scope.viewDetail = null
+    $scope.tabs = ''
 
     $rootScope.$on 'loadSolicitudeShow', (e, id) ->
       _loadSolicitude(id)
@@ -82,6 +83,21 @@ angular.module('movistarApp')
           # if solicitude.state is 'QUEUE_VALIDATION'
           #   $scope.viewDetail = 'updateByContentManager'
           $scope.solicitude = solicitude
+
+    $scope.showTabs = (tab) ->
+      $scope.tabs = tab
+
+    $scope.activeTab = (tab) ->
+      $scope.tabs is tab
+
+    $scope.addComment = (form) ->
+      if form.$valid
+        console.log $scope.solicitude._id, $scope.solicitude.message
+        SolicitudeFactory.addComments $scope.solicitude._id, $scope.solicitude.message, (err) ->
+          if err
+            $scope.errors = err
+          else
+            _loadSolicitude($scope.solicitude._id)
 
   .controller 'SolicitudeSaveCtrl', ($scope, $rootScope, SolicitudeFactory, SolicitudeParams) ->
     $scope.solicitude = {}

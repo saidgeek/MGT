@@ -16,3 +16,15 @@ angular.module("movistarApp")
   .filter 'StateIcons', (StateIconsData) ->
     (key) ->
       StateIconsData.get(key)
+
+  .filter 'InvolvedRole', ->
+    (key) ->
+      role =
+        ROOT: 'Cliente interno'
+        ADMIN: 'Cliente interno'
+        CLIENT: 'Cliente interno'
+        EDITOR: 'Editor'
+        CONTENT_MANAGER: 'Gestor de contenido'
+        PROVIDER: 'Proveedor'
+
+      role[key]

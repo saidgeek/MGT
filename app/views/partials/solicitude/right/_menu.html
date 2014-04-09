@@ -1,8 +1,26 @@
-<div class="menu-middle">
-  <ul>
-    <li><a href="javascript:{}" title="Comentarios"><span class="ico com"></span><p class="bold">Comentarios</p> (35)</a></li>
-    <li><a href="javascript:{}" title="Documentos"><span class="ico doc"></span><p class="bold">Documentos</p> (5)</a></li>
-    <li><a href="javascript:{}" title="Involucrados"><span class="ico inv"></span><p class="bold">Involucrados</p> (9)</a></li>
-    <li><a href="javascript:{}" title="Sub tareas"><span class="ico sub"></span><p class="bold">Sub tareas</p> (13)</a></li>
-  </ul>
-</div>
+<ul>
+  <li>
+    <a href="javascript:{}" ng-class="{ active: activeTab('') }" title="Comentarios" ng-click="showTabs('')">
+      <span class="ico com"></span>
+      <p class="bold">Comentarios</p> ({{ solicitude.comments.length }})
+    </a>
+  </li>
+  <li>
+    <a href="javascript:{}" ng-class="{ active: activeTab('documents') }" title="Documentos" ng-click="showTabs('documents')">
+      <span class="ico doc"></span>
+      <p class="bold">Documentos</p> ({{ solicitude.ticket.attachments.length }})
+    </a>
+  </li>
+  <li>
+    <a href="javascript:{}" ng-class="{ active: activeTab('involved') }" title="Involucrados" ng-click="showTabs('involved')">
+      <span class="ico inv"></span>
+      <p class="bold">Involucrados</p> ({{ solicitude.involved.length }})
+    </a>
+  </li>
+  <li>
+    <a href="javascript:{}" ng-class="{ active: activeTab('tasks') }" title="Sub tareas" ng-click="showTabs('tasks')">
+      <span class="ico sub"></span>
+      <p class="bold">Sub tareas</p> ({{ solicitude.tasks.length }})
+    </a>
+  </li>
+</ul>

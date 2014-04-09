@@ -2,24 +2,20 @@
     <div class="overflow">
         <div class="padding">
             <div class="title">
-                <h1>Cambio de imagen principal en inversionistas lorem ipsum dolor.</h1>
+                <h1>{{ solicitude.ticket.title }}</h1>
                 <div class="fecha">
-                    <span>Solicitada 27/09/2014</span>
-                    <span>Iniciada 01/10/2014</span>
+                    <span>Solicitada {{ solicitude.createdAt | DateFormat }}</span>
+                    <span ng-if="solicitude.startedAt">Iniciada {{ solicitude.startedAt | DateFormat }}</span>
                 </div>
             </div>
-            <div class="categoria">Categoría: <span>Mejoras o correcciones de Diseño</span></div>
+            <div class="categoria" ng-if="solicitude.ticket.category">Categoría: <span>{{ solicitude.ticket.category }}</span></div>
 
             <ul class="otros-datos">
-                <li class="first">Segmento: <span>Personas</span></li>
-                <li>Solicitante: <span>Alfredo Castro</span></li>
+                <li class="first" ng-if="solicitude.ticket.segments">Segmento: <span>{{ solicitude.ticket.segments.join(',') }}</span></li>
+                <li>Solicitante: <span>{{ solicitude.createdBy.profile.firstName }} {{ solicitude.createdBy.profile.lastName }}</span></li>
                 <li class="last">Proveedor: <span>Ingenia (Joselito Perez)</span></li>
             </ul>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque blandit, elit ut interdum adipiscing, felis odio ultricies nisi, eu aliquam quam augue sed ipsum. Nam leo ipsum, convallis sed pharetra vitae, ornare a mi. Pellentesque lacinia velit nisi, ac semper sem pulvinar ac. Donec sagittis, magna vel tincidunt condimentum, dui ipsum posuere sem, ut volutpat turpis dolor quis neque. Praesent dignissim egestas sem vel luctus. Phasellus cursus felis a lectus adipiscing, nec rutrum lacus faucibus. Praesent tincidunt viverra consectetur. Etiam fringilla ipsum ac adipiscing feugiat. Aenean condimentum turpis non magna condimentum auctor. Sed laoreet elit metus, at fermentum turpis tincidunt sit amet. Aliquam erat volutpat. Curabitur elementum justo neque, ut hendrerit justo aliquet eu. Maecenas blandit metus a elit cursus ultricies at ut justo. Curabitur egestas, augue et tristique posuere, metus nibh ullamcorper nisl, sed scelerisque augue purus et quam. Aliquam varius nisl augue, quis tincidunt risus tempus at.</p>
-
-            <p>Vestibulum venenatis tortor sapien. Aliquam sit amet urna et purus condimentum hendrerit at vitae urna. Suspendisse potenti. Vestibulum vel lacinia erat. Sed vehicula sagittis massa, vitae cursus odio mollis a. Morbi eu volutpat arcu. Nam feugiat fringilla quam, ut lobortis felis pharetra ut. Donec orci diam, dictum vel semper id, iaculis sit amet diam. Ut pharetra diam nisl, vitae ornare magna bibendum a. Vestibulum mattis mollis purus, in sagittis eros vulputate sed.</p>
-
-            <p>Donec ut mattis ipsum. Nunc volutpat posuere metus, nec ultricies urna convallis vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a condimentum ante. Phasellus bibendum, ipsum ac volutpat luctus, risus libero suscipit odio, vel elementum arcu libero eu augue. Duis et vehicula est. Curabitur in tempor nunc, non volutpat tellus. Sed viverra ultricies nunc. Nunc lobortis urna non quam vehicula, et auctor dui lacinia. Nulla fermentum euismod nisi, vitae suscipit elit placerat non. Donec vestibulum ante nunc, a semper nulla pulvinar sit amet. Quisque accumsan tortor ut euismod tincidunt.</p>
+            <p>{{ solicitude.ticket.description }}</p>
         </div>
     </div>

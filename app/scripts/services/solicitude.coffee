@@ -48,3 +48,13 @@ angular.module("movistarApp")
         data:
           solicitude: '@solicitude'
         url: '/api/v1/solicitude/:id'
+
+      addComments:
+        method: 'PUT'
+        params:
+          clientToken: '@clientToken'
+          accessToken: '@accessToken'
+          id: "@id"
+        data:
+          comment: '@comment'
+        url: '/api/v1/solicitude/:id/add/comments'

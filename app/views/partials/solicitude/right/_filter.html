@@ -2,13 +2,11 @@
     <div class="half">
         <ul class="menu-tarea-top">
             <li><div class="ico tim"></div><span>Quedan 5 días</span></li>
-            <li><div class="ico fin"></div><span>Finalizada</span></li>
-            <li class="last"><span>Prioridad: Alta</span></li>
+            <li>
+              <div class="ico {{ solicitude.state | StateIcons }}"></div>
+              <span>{{ solicitude.state | StateSolicitude }}</span>
+            </li>
+            <li class="last" ng-if="solicitude.priority"><span>Prioridad: {{ solicitude.priority }}</span></li>
         </ul>
     </div>
-<!--     <div class="half">
-        <div class="editar-info">
-            <a href="javascript:{}"><span class="ico edi"></span>Editar información</a>
-        </div>
-    </div> -->
 </div>
