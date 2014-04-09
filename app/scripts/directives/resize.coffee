@@ -18,15 +18,17 @@ angular.module('movistarApp')
       _maxWidth = attrs.maxWidth || 55
       _minWidth = attrs.minWidth || 36
       _leftDefaultWidth = attrs.leftWidth || null
+      _type = attrs.type
       init = () ->
-
-        if _leftDefaultWidth?
-          angular.element('#left').css 'width', _leftDefaultWidth}
 
         alto = angular.element($window).height()
         total_width = angular.element('#wrap').width()
         sidebar = angular.element('#side').width()
         medida = total_width - sidebar
+
+        if _leftDefaultWidth?
+          angular.element('#left .relativo').css 'width', _leftDefaultWidth
+          angular.element('#right').css 'width', total_width - _leftDefaultWidth
 
         maxAncho = medida / 100 * _maxWidth
         minAncho = medida / 100 * _minWidth
@@ -44,6 +46,21 @@ angular.module('movistarApp')
           angular.element('#right').css 'width', total_width - width
           angular.element('.ui-resizable-handle').css 'left', width
 
+          if (width < 460 and _type is 'solicitude') or (width < 450 and _type is 'users')
+            angular.element('div.ico, span.ico').parent().find('p, span.text').css 'display', 'none'
+            angular.element('.t-c.verde ul li, .t-c.rojo ul li, .t-c.amarillo ul li').css 'width', 'auto'
+            if _type is 'users'
+              angular.element('div.ico, span.ico').parent().find('span.right').css 'float', 'none'
+          else
+            angular.element('div.ico, span.ico').parent().find('p, span.text').css 'display', 'inline'
+            angular.element('.t-c.verde ul li, .t-c.rojo ul li, .t-c.amarillo ul li').css 'width', '30%'
+            if _type is 'users'
+              angular.element('div.ico, span.ico').parent().find('span.right').css 'float', 'right'
+
+          if width < 525
+            angular.element('#left .relativo div.botones ul li a div.ico').parent().find('span.text').css 'display', 'none'
+          else
+            angular.element('#left .relativo div.botones ul li a div.ico').parent().find('span.text').css 'display', 'inline'
 
         resize_right = (event, ui) ->
           right = angular.element('#right').width()

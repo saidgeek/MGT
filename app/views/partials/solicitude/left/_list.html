@@ -3,7 +3,7 @@
       <div class="t-c verde round">
           <ul>
               <li><div class="ico tim"></div><p>Quedan <span>5 días</span></p></li>
-              <li><div class="ico {{ solicitude.state | StateIcons }}"></div>{{ solicitude.state | StateSolicitude }}</li>
+              <li><div class="ico {{ solicitude.state | StateIcons }}"></div><p>{{ solicitude.state | StateSolicitude }}</p></li>
               <li class="last">Prioridad: <span>{{ solicitude.priority }}</span></li>
           </ul>
           <h4>{{ solicitude.ticket.title }}</h4>
@@ -26,22 +26,22 @@
           <ul>
               <li class="bold">
                 <a href="javascript:{}"><div class="ico com">
-                </div>Comentarios <span class="regular">({{ solicitude.comments.length }})</span>
+                </div><span class="text">Comentarios</span> <span class="regular">({{ solicitude.comments.length }})</span>
                 </a>
               </li>
               <li class="bold">
                 <a href="javascript:{}"><div class="ico doc">
-                </div>Documentos <span class="regular">({{ solicitude.ticket.attachments.length }})</span>
+                </div><span class="text">Documentos</span> <span class="regular">({{ solicitude.ticket.attachments.length }})</span>
                 </a>
               </li>
               <li class="bold">
                 <a href="javascript:{}"><div class="ico inv">
-                </div>Involucrados <span class="regular">({{ solicitude.involved.length }})</span>
+                </div><span class="text">Involucrados</span> <span class="regular">({{ solicitude.involved.length }})</span>
                 </a>
               </li>
               <li class="bold last">
                 <a href="javascript:{}"><div class="ico sub">
-                  </div>Sub tareas <span class="regular">({{ solicitude.tasks.length }})</span>
+                </div><span class="text">Sub tareas</span> <span class="regular">({{ solicitude.tasks.length }})</span>
                 </a>
               </li>
           </ul>
