@@ -47,15 +47,15 @@ angular.module('movistarApp')
           angular.element('.ui-resizable-handle').css 'left', width
 
           if (width < 460 and _type is 'solicitude') or (width < 450 and _type is 'users')
-            angular.element('div.ico, span.ico').parent().find('p, span.text').css 'display', 'none'
+            angular.element('#left div.ico, #left span.ico').parent().find('p, span.text').css 'display', 'none'
             angular.element('.t-c.verde ul li, .t-c.rojo ul li, .t-c.amarillo ul li').css 'width', 'auto'
             if _type is 'users'
-              angular.element('div.ico, span.ico').parent().find('span.right').css 'float', 'none'
+              angular.element('#left div.ico, #left span.ico').parent().find('span.right').css 'float', 'none'
           else
-            angular.element('div.ico, span.ico').parent().find('p, span.text').css 'display', 'inline'
+            angular.element('#left div.ico, #left span.ico').parent().find('p, span.text').css 'display', 'inline'
             angular.element('.t-c.verde ul li, .t-c.rojo ul li, .t-c.amarillo ul li').css 'width', '30%'
             if _type is 'users'
-              angular.element('div.ico, span.ico').parent().find('span.right').css 'float', 'right'
+              angular.element('#left div.ico, #left span.ico').parent().find('span.right').css 'float', 'right'
 
           if width < 525
             angular.element('#left .relativo div.botones ul li a div.ico').parent().find('span.text').css 'display', 'none'
@@ -65,11 +65,11 @@ angular.module('movistarApp')
         resize_right = (event, ui) ->
           right = angular.element('#right').width()
           if right < 600
-              angular.element('.menu-middle p, .tools ul li p').css 'display', 'none'
-              angular.element('.edit-user ul li a').css {'textIndent':'-9999px', 'overflow':'hidden'}
+            angular.element('#right .menu-middle p, #right .tools ul li p').css 'display', 'none'
+            angular.element('#right .edit-user ul li a').css {'textIndent':'-9999px', 'overflow':'hidden'}
           else
-              angular.element('.menu-middle p, .tools ul li p').css 'display', 'inline'
-              angular.element('.edit-user ul li a').css {'textIndent':0, 'overflow':'auto'}
+            angular.element('#right .menu-middle p, #right .tools ul li p').css 'display', 'inline'
+            angular.element('#right .edit-user ul li a').css {'textIndent':0, 'overflow':'auto'}
 
 
 
