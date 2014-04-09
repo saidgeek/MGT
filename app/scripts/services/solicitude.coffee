@@ -8,6 +8,8 @@ angular.module("movistarApp")
         params:
           clientToken: '@clientToken'
           accessToken: '@accessToken'
+        data:
+          state: '@state'
         url: '/api/v1/solicitudes'
         isArray: true
 
@@ -16,6 +18,7 @@ angular.module("movistarApp")
         params:
           clientToken: '@clientToken'
           accessToken: '@accessToken'
+          states: '@states'
         url: '/api/v1/solicitudes/groups'
         isArray: true
 

@@ -44,6 +44,8 @@ angular.module("movistarApp")
         params:
           clientToken: '@clientToken'
           accessToken: '@accessToken'
+        data:
+          roles: '@roles'
         url: '/api/v1/users/groups'
         isArray: true
 

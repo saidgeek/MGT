@@ -5,12 +5,13 @@ angular.module("movistarApp")
 
     _clientToken = $rootScope.currentUser.access.clientToken
     _accessToken = $rootScope.currentUser.access.accessToken
+    _roles = $rootScope.currentUser.permissions.roles
 
     _index = (role, cb) ->
       UserService.index(
           clientToken: _clientToken
           accessToken: _accessToken
-          role: role
+          role: role || _roles
         , (users) ->
           cb null, users
         , (err) ->
@@ -30,6 +31,7 @@ angular.module("movistarApp")
       UserService.groups(
           clientToken: _clientToken
           accessToken: _accessToken
+          roles: _roles
         , (groups) ->
           groups = _makeGroups(groups)
           cb null, groups

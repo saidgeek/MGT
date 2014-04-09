@@ -4,11 +4,13 @@ angular.module("movistarApp")
   .factory "SolicitudeFactory", (SolicitudeService, $rootScope) ->
     _clientToken = $rootScope.currentUser.access.clientToken
     _accessToken = $rootScope.currentUser.access.accessToken
+    _states = $rootScope.currentUser.permissions.states
 
-    _index = (cb) ->
+    _index = (state, cb) ->
       SolicitudeService.index(
         clientToken: _clientToken
         accessToken: _accessToken
+        state: state || _states
       , (solicitudes) ->
         cb null, solicitudes
       , (err) ->
@@ -28,6 +30,7 @@ angular.module("movistarApp")
       SolicitudeService.groups(
         clientToken: _clientToken
         accessToken: _accessToken
+        states: _states
       , (groups) ->
         groups = _makeGroups(groups)
         cb null, groups
@@ -70,8 +73,8 @@ angular.module("movistarApp")
       ).$promise
 
     return {
-      index: (cb) ->
-        _index(cb)
+      index: (state, cb) ->
+        _index(state, cb)
       groups: (cb) ->
         _groups(cb)
       show: (id, cb) ->

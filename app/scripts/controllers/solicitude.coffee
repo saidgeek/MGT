@@ -18,8 +18,8 @@ angular.module('movistarApp')
     $rootScope.$on 'reloadStates', (e) ->
       _loadStates()
 
-    # $scope.filter = (role) ->
-    #   $rootScope.$emit 'reloadUsers', role
+    $scope.filter = (state) ->
+      $rootScope.$emit 'reloadSolicitudes', state
 
     _loadStates()
 
@@ -41,18 +41,18 @@ angular.module('movistarApp')
     _showModals = (modal) ->
       $scope.modals = modal
 
-    $rootScope.$on 'reloadSolicitudes', (e) ->
-      _loadSolicitudes()
+    $rootScope.$on 'reloadSolicitudes', (e, state) ->
+      _loadSolicitudes('')
 
     $rootScope.$on 'updateSolicitudes', (e) ->
-      _loadSolicitudes()
+      _loadSolicitudes('')
       # $rootScope.$emit 'reloadGroups'
 
     $scope.loadSolicitude = (id) ->
       $rootScope.$emit 'loadSolicitudeShow', id
 
-    _loadSolicitudes = () ->
-      SolicitudeFactory.index (err, solicitudes) ->
+    _loadSolicitudes = (state) ->
+      SolicitudeFactory.index state, (err, solicitudes) ->
         if err
           $scope.errors = err
         else
@@ -60,7 +60,7 @@ angular.module('movistarApp')
             $rootScope.$emit 'loadSolicitudeShow', solicitudes[0]._id
             $scope.solicitudes = solicitudes
 
-    _loadSolicitudes()
+    _loadSolicitudes('')
 
   .controller 'SolicitudeShowCtrl', ($scope, SolicitudeFactory, $rootScope, SolicitudeParams) ->
     $scope.solicitude = {}
