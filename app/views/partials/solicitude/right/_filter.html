@@ -1,12 +1,12 @@
 <div class="contenedor-filtros">
     <div class="half">
         <ul class="menu-tarea-top">
-            <li><div class="ico tim"></div><span>Quedan 5 días</span></li>
+            <li ng-if="solicitude.duration"><div class="ico tim"></div><span>Quedan 5 días</span></li>
             <li>
               <div class="ico {{ solicitude.state | StateIcons }}"></div>
               <span>{{ solicitude.state | StateSolicitude }}</span>
             </li>
-            <li class="last" ng-if="solicitude.priority"><span>Prioridad: {{ solicitude.priority }}</span></li>
+            <li class="last" ng-if="solicitude.priority"><span>Prioridad: {{ solicitude.priority | Priority }}</span></li>
         </ul>
     </div>
 </div>

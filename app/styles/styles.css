@@ -172,7 +172,6 @@ h4{ font-size:  1.154em;}
     background: #2f364a;
     width:250px;
     display: table-cell;
-/*    display: inline-block;*/
     vertical-align: top;
     font-family: 'proxima_nova_rgregular';
     height: 100%;
@@ -955,23 +954,11 @@ ul.menu-tarea-top li{
     white-space: nowrap;
     border-right: 1px solid #e4e5e7;
 }
-ul.menu-tarea-top li .ico{
-    width: 16px;
-    height: 16px;
-    display: inline-block;
-    margin:-2px 5px -2px 0;
-    background: url(../images/sprite_main.png) no-repeat 0px 0px;
-}
 ul.menu-tarea-top li span{
     margin: 0 0 0 3px;
     display: inline-block;
 }
-ul.menu-tarea-top li .ico.tim {
-    background-position: 0px 0px;
-}
-ul.menu-tarea-top li .ico.fin {
-    background-position: -112px 0;
-}
+
 ul.menu-tarea-top li.last{
     border:none;
 }
@@ -1071,7 +1058,7 @@ ul.otros-datos li.last{
     left: 0;
     right: 0;
 }
-.half-a .padding, .half-b .padding{
+.half-a .padding, .half-b .padding, .full .padding{
     padding: 20px;
 }
 
@@ -1396,7 +1383,7 @@ ul.menu-usuarios li a:hover{
     opacity: 1;
 }
 #left .overflow.top-admin{
-    top: 46px;
+    top: 90px;
 }
 .user{
     padding: 18px;
@@ -1682,8 +1669,8 @@ ul.menu-usuarios li a:hover{
     width: 40%;
     display: table;
     background: #fff;
-    opacity: 1;
-    z-index: 999;
+    opacity: 0;
+    z-index: -1;
     -moz-border-radius: 4px 4px 0 0;
     -webkit-border-radius: 4px 4px 0 0;
     border-radius: 4px 4px 0 0;
@@ -2187,13 +2174,18 @@ ul.menu-usuarios li a:hover{
 /* crear categoria */
 
 /*formulario*/
-#nueva-solicitud.user li.Tag{
+#nueva-solicitud li.Tag{
     border: 1px solid #d2e2e8;
     width: 96%;
     margin: 0 1%;
+    background: #fff;
 }
-#nueva-solicitud.user li.Tag input#nombre{
-    border-color: #fff;
+#nueva-solicitud li.Tag input#nombre{
+    width: auto;
+    border: 1px solid #fff;
+    padding: 7px;
+    margin: 4px 0;
+    color: #9da9b9;
 }
 #nueva-solicitud.user li .tags{
     width: 96%;
@@ -2203,7 +2195,7 @@ ul.menu-usuarios li a:hover{
     padding: 2%;
     margin-top: -4px;
 }
-#nueva-solicitud.user li .tags span{
+#nueva-solicitud li .tags span{
     background: #d7e3f0;
     width: auto;
     padding: 4px 24px 4px 7px;
@@ -2212,7 +2204,7 @@ ul.menu-usuarios li a:hover{
     position: relative;
     display: inline-block;
 }
-#nueva-solicitud.user li .tags span a.cerrar {
+#nueva-solicitud li .tags span a.cerrar {
     display: block;
     width: 10px;
     height: 10px;
@@ -2221,10 +2213,10 @@ ul.menu-usuarios li a:hover{
     top: 4px;
     right: 7px;
 }
-#nueva-solicitud.user li .tags span a.cerrar:hover {
+#nueva-solicitud li .tags span a.cerrar:hover {
     background-position: 0px 0;
 }
-#nueva-solicitud.user li .tags span a.cerrar:active {
+#nueva-solicitud li .tags span a.cerrar:active {
    background-position: -20px 0;
 }
 
@@ -2347,7 +2339,7 @@ ul.menu-usuarios li a:hover{
     -ms-filter:"alpha(opacity=1)";
 }
 #right .mCSB_container{
-    padding-right: 15px;
+    padding-right: 6px;
 }
 
 .half{
@@ -2358,7 +2350,7 @@ ul.menu-usuarios li a:hover{
 
 /* alertas */
 .alerta{
-    background: #01cc82;
+    background: #fedb18;
     padding: 20px 0;
     margin: 1%;
     color: #fff;
@@ -2370,17 +2362,21 @@ ul.menu-usuarios li a:hover{
     left: 0;
     z-index: 9999;
     width: 98%;
+    text-align: center;
 }
 .alerta p{
-    padding: 0 20px;
+    padding: 0 40px;
 }
-.alerta .ico.ok {
-    background: url(../images/sprite_side.png) no-repeat -140px 0px;
+.alerta p span{
+    font-size: 0.85em;
+}
+.alerta .ico {
+    background: url(../images/sprite_side.png) no-repeat -100px 0px;
     width: 20px;
     height: 20px;
     display: block;
     float: left;
-    margin: 0 10px 0 0;
+    margin: 0 0 0 -20px;
 }
 .alerta a.cerrar{
     display: block;
@@ -2393,3 +2389,39 @@ ul.menu-usuarios li a:hover{
     right: 10px;
 }
 .alerta a.cerrar:hover { background-position: -20px 0}
+
+.alerta.error{
+    background: #ff6b6b;
+}
+.alerta.error .ico{
+    background-position: -220px -20px;
+}
+.alerta.ok{
+    background: #01cc82;
+}
+.alerta.ok .ico{
+    background-position: -140px 0;
+}
+
+
+
+/* validar solicitud */
+
+#nueva-solicitud.validar{
+    height: auto;
+    position: relative;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    display: table;
+    background: #fff;
+    opacity: 1;
+    z-index: 999;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    overflow: auto;
+}

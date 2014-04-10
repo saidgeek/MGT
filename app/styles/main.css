@@ -40,3 +40,31 @@
 .menu-middle {
   top: 40%;
 }
+
+#nueva-solicitud{
+  opacity: 1;
+  z-index: 999;
+}
+
+#right .relativo .full .padding p {
+  text-align: justify;
+  white-space: pre-line;
+}
+
+#right .relativo .full .padding p a {
+  float: right;
+}
+
+#right .relativo .full .padding p br {
+  clear: both;
+}
+
+#right .validar fieldset.segments ul li,
+#right .validar fieldset.sections ul li {
+  width: 120px;
+}
+
+#right .validar fieldset.segments ul li label,
+#right .validar fieldset.sections ul li label{
+  width: 100%;
+}

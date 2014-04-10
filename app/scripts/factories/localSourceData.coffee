@@ -94,3 +94,91 @@ angular.module("movistarApp")
       getAll: () ->
         _getAll()
     }
+
+  .factory 'PriorityData', ->
+    priority =
+      CRITIQUE: 'Crítica'
+      HIGH: 'Alta'
+      AVERAGE: 'Media'
+      DECLINE: 'Baja'
+
+    _makeArray = () ->
+      _priority = []
+      for k,v of priority
+        _priority.push { id: k, name: v }
+      _priority
+
+    _get = (key) ->
+      priority[key]
+
+    _getAll = () ->
+      priority
+
+    return {
+      getArray: () ->
+        _makeArray()
+      get: (key) ->
+        _get(key)
+      getAll: () ->
+        _getAll()
+    }
+
+  .factory 'SegmentsData', ->
+    segments =
+      PEOPLE: 'Personas'
+      BUSINESS: 'Negocios'
+      COMPANIES: 'Empresas'
+
+    _makeArray = () ->
+      _segments = []
+      for k,v of segments
+        _segments.push { id: k, name: v }
+      _segments
+
+    _get = (key) ->
+      segments[key]
+
+    _getAll = () ->
+      segments
+
+    return {
+      getArray: () ->
+        _makeArray()
+      get: (key) ->
+        _get(key)
+      getAll: () ->
+        _getAll()
+    }
+
+  .factory 'SectionsData', ->
+    sections =
+      CELL_PHONE: 'Tel. Movil'
+      DUOS_TRIOS: 'Duos y Trios'
+      HOME_PHONE: 'Tel. Hogar'
+      CLUB_MOVISTAR: 'Club Movistar'
+      INTERNET: 'Internet'
+      HARDWARE: 'Equipos'
+      CEN_HELP: 'Cen. de Ayuda'
+      SUC_VIRTUAL: 'Suc. Virtual'
+      TV: 'Televisión'
+
+    _makeArray = () ->
+      _sections = []
+      for k,v of sections
+        _sections.push { id: k, name: v }
+      _sections
+
+    _get = (key) ->
+      sections[key]
+
+    _getAll = () ->
+      sections
+
+    return {
+      getArray: () ->
+        _makeArray()
+      get: (key) ->
+        _get(key)
+      getAll: () ->
+        _getAll()
+    }

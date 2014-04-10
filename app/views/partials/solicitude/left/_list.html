@@ -2,17 +2,19 @@
   <div class="note round" data-ng-class="{active: $index===0}" ng-repeat="solicitude in solicitudes" data-sgk-active-solicitude ng-click="loadSolicitude(solicitude._id)">
       <div class="t-c verde round">
           <ul>
-              <li><div class="ico tim"></div><p>Quedan <span>5 días</span></p></li>
+              <li ng-if="solicitude.duration"><div class="ico tim"></div><p>Quedan <span>5 días</span></p></li>
               <li><div class="ico {{ solicitude.state | StateIcons }}"></div><p>{{ solicitude.state | StateSolicitude }}</p></li>
-              <li class="last">Prioridad: <span>{{ solicitude.priority }}</span></li>
+              <li class="last" ng-if="solicitude.priority">Prioridad: <span>{{ solicitude.priority | Priority }}</span></li>
           </ul>
           <h4>{{ solicitude.ticket.title }}</h4>
           <ul>
               <li class="bold" ng-if="solicitude.ticket.category">
                 Categoría: <span class="light">{{ solicitude.ticket.category.name }}</span>
               </li>
-              <li class="light" ng-if="false">Personas</li>
-              <li class="bold last" ng-if="false">Proveedor: <span class="light">Ingenia</span></li>
+              <li class="light" ng-if="solicitude.ticket.segments">{{ solicitude.ticket.segments | SegmentArray }}</li>
+              <li class="bold last" ng-if="solicitude.provider">
+                Proveedor: <span class="light">- ({{ solicitude.provider.profile.firstName }} {{ solicitude.provider.profile.lastName }})</span>
+              </li>
           </ul>
       </div>
       <div class="t-c stats">

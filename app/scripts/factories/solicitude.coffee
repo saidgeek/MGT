@@ -61,7 +61,7 @@ angular.module("movistarApp")
       ).$promise
 
     _update = (id, data, cb) ->
-      SolicitudeService(
+      SolicitudeService.update(
         clientToken: _clientToken
         accessToken: _accessToken
         id: id

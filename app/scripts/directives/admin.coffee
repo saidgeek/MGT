@@ -109,3 +109,32 @@ angular.module('movistarApp')
     link: (scope, element, attrs) ->
       element.on 'click', (e) ->
         element.parent().parent().find('.docu').slideToggle 400
+
+  .directive 'sgkShortParagraph', ->
+    restrict: 'A'
+    link: (scope, element, attrs) ->
+      _maxLength = attrs.sgkShortParagraph || 1500
+
+      _btnClick = (e) ->
+        if element.hasClass('short')
+          _showContent()
+          element.find("a").bind 'click', _btnClick
+        else
+          _hideContent()
+          element.find("a").bind 'click', _btnClick
+
+      _hideContent = () ->
+        text = scope.solicitude.ticket.description.substring 0, _maxLength
+        index = text.lastIndexOf(' ')
+        text = text.substring 0, index
+        text += "...<br /><a href='javascript:{}'>Ver mas</a>"
+        element.addClass('short').html(text)
+
+      _showContent = () ->
+        text = scope.solicitude.ticket.description
+        text += "<br /><a href='javascript:{}'>Ocultar</a>"
+        element.removeClass('short').html(text)
+
+      if scope.solicitude.ticket.description.length > _maxLength
+        _hideContent()
+        element.find("a").bind 'click', _btnClick

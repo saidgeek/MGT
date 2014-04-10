@@ -45,8 +45,11 @@
       <div class="relativo" ng-controller="SolicitudeShowCtrl">
 
         <div ng-switch="viewDetail">
+
+
+          <div ng-include="'partials/solicitude/right/_filter'"></div>
+
           <div ng-switch-default>
-            <div ng-include="'partials/solicitude/right/_filter'"></div>
             <div class="full-heigth">
               <div class="half-a">
                 <div class="overflow">
@@ -78,8 +81,11 @@
             <div ng-include="'partials/solicitude/right/_commentForm'"></div>
           </div>
 
+          <div ng-switch-when="updateByEditor">
+            <div ng-include="'partials/solicitude/_updateByEditor'"></div>
+          </div>
           <div ng-switch-when="updateByContentManager">
-<!--             <div ng-include="'partials/solicitude/_updateByContentManager'"></div> -->
+
           </div>
 
         </div>
