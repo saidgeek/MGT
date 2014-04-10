@@ -67,12 +67,17 @@ angular.module('movistarApp')
       $rootScope.$watch 'alert', () ->
         if $rootScope.alert?.content?
           $scope.content = $rootScope.alert.content
+          switch $rootScope.alert.type
+            when 'success'
+              $element.addClass('ok')
+            when 'error'
+              $element.addClass('error')
           $element.slideToggle(400)
           $timeout () ->
             if $element.css('display') is 'block'
               $element.slideToggle(400)
               $rootScope.alert = {}
-          , 5000
+          , 1000
 
 
   .directive 'sgkFileUploadUser', (filepickerApi, $timeout) ->
