@@ -150,8 +150,6 @@ angular.module('movistarApp')
           else
             $rootScope.$emit 'reloadSolicitudes', ''
 
-  .cn
-
   .controller 'SolicitudeSaveCtrl', ($scope, $rootScope, SolicitudeFactory, SolicitudeParams) ->
     $scope.solicitude = {}
     $scope.errors = {}
