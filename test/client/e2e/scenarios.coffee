@@ -29,7 +29,7 @@ describe 'test', () ->
     it 'deberia existir el input email', () ->
       browser().navigateTo '/login'
       expect(element('[name="email"]').count()).toEqual 1
-      
+
     it 'deberia existir el input contraseña', () ->
       browser().navigateTo '/login'
       expect(element('[name="Contrasena"]').count()).toEqual 1
@@ -65,11 +65,11 @@ describe 'test', () ->
       sleep 1
       expect(element('div#alerta:visible').count()).toEqual 1
       expect(element('label.error:visible').count()).toEqual 2
-    
+
     it 'deberia loguarse y entrar a /', () ->
       browser().navigateTo '/login'
       input('user.email').enter 'atarix.010101@gmail.com'
-      input('user.password').enter '532b93c9'
+      input('user.password').enter '533b959c'
       element('[type="submit"]').click()
       sleep 1
       expect(browser().location().url()).toEqual '/'
@@ -83,7 +83,7 @@ describe 'test', () ->
     it 'deberia existir el input email', () ->
       browser().navigateTo '/recovery'
       expect(element('[name="Email"]').count()).toEqual 1
-    
+
     it 'deberian aparecer las alertas al ingresar correo erroneo', () ->
       browser().navigateTo '/recovery'
       input('user.email').enter 'test@test.com'
@@ -98,5 +98,79 @@ describe 'test', () ->
       sleep 1
       expect(element('div.success:visible').count()).toEqual 1
 
+  describe 'Admin', () ->
 
+    beforeEach ->
+      browser().navigateTo '/login'
+      input('user.email').enter 'atarix.010101@gmail.com'
+      input('user.password').enter '533b959c'
+      element('[type="submit"]').click()
+      sleep 1
+      expect(browser().location().url()).toEqual '/'
 
+    afterEach ->
+      browser().navigateTo '/logout'
+      sleep 3
+
+    it 'Deberia poder entrar en el path "/admin"', () ->
+      browser().navigateTo '/admin'
+      expect(browser().location().url()).toEqual '/admin'
+
+    it 'En el sidebar deberia estar el listado de filtros por roles', () ->
+      browser().navigateTo '/admin'
+      expect(element('div#estado').count()).toEqual 1
+      expect(element('div#estado ul li').count()).toEqual 7
+
+    it 'La lista de usuarios deberia tener elementos', () ->
+      browser().navigateTo '/admin'
+      expect(element('#left .top-admin').count()).toEqual 1
+      expect(element('#left .top-admin div.note').count()).toBeGreaterThan 1
+
+    it 'El boton para crear usuarios deberia estar en el DOM', () ->
+      browser().navigateTo '/admin'
+      expect(element('a.boton1').count()).toEqual 1
+
+    it 'Al hacer click en el boton crear usuario deberia aprrecer el modal de crear usuario', () ->
+      browser().navigateTo '/admin'
+      expect(browser().location().url()).toEqual '/admin'
+
+    it 'Al llenar los capos del formulario de nuevo usuario y dar submit se crear el nuevo usaurio agreandose uno mas a la lista y apareciendo el alerta', () ->
+      browser().navigateTo '/admin'
+      expect(browser().location().url()).toEqual '/admin'
+
+    it 'Al hacer click en el boton editar clasificacion deberia aprrecer el modal de editar clasificacion', () ->
+      browser().navigateTo '/admin'
+      expect(browser().location().url()).toEqual '/admin'
+
+    it 'Al llenar los capos del formulario de nuevo clasificacion y dar submit se editar el nuevo clasificacion agreandose uno mas a la lista y apareciendo el alerta', () ->
+      browser().navigateTo '/admin'
+      expect(browser().location().url()).toEqual '/admin'
+
+    it 'Deberia poder entrar en el path "/admin/category"', () ->
+      browser().navigateTo '/admin/category'
+      expect(browser().location().url()).toEqual '/admin/category'
+
+    it 'El boton para crear clasificacion deberia estar en el DOM', () ->
+      browser().navigateTo '/admin/category'
+      expect(element('a.boton1').count()).toEqual 1
+
+    it 'La lista de usuarios deberia tener elementos', () ->
+      browser().navigateTo '/admin/category'
+      expect(element('#left .top-admin').count()).toEqual 1
+      expect(element('#left .top-admin div.note').count()).toBeGreaterThan 1
+
+    it 'Al hacer click en el boton crear clasificacion deberia aprrecer el modal de crear clasificacion', () ->
+      browser().navigateTo '/admin/category'
+      expect(browser().location().url()).toEqual '/admin/category'
+
+    it 'Al llenar los capos del formulario de nuevo clasificacion y dar submit se crear el nuevo clasificacion agreandose uno mas a la lista y apareciendo el alerta', () ->
+      browser().navigateTo '/admin/category'
+      expect(browser().location().url()).toEqual '/admin/category'
+
+    it 'Al hacer click en el boton editar clasificacion deberia aprrecer el modal de editar clasificacion', () ->
+      browser().navigateTo '/admin/category'
+      expect(browser().location().url()).toEqual '/admin/category'
+
+    it 'Al llenar los capos del formulario de nuevo clasificacion y dar submit se editar el nuevo clasificacion agreandose uno mas a la lista y apareciendo el alerta', () ->
+      browser().navigateTo '/admin/category'
+      expect(browser().location().url()).toEqual '/admin/category'

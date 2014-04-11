@@ -7,16 +7,21 @@ module.exports = function(config) {
     basePath: '',
 
     // testing framework to use (jasmine/mocha/qunit/...)
-    frameworks: ['ng-scenario'],
+    frameworks: ['jasmine'],
 
     // list of files / patterns to load in the browser
     files: [
-      'test/client/e2e/**/*.coffee'
+      'app/bower_components/angular/angular.js',
+      'app/bower_components/angular-resource/angular-resource.js',
+      'app/bower_components/angular-cookies/angular-cookies.js',
+      'app/bower_components/angular-sanitize/angular-sanitize.js',
+      'app/bower_components/angular-route/angular-route.js',
+      'app/bower_components/angular-mocks/angular-mocks.js',
+      'app/scripts/*.coffee',
+      'app/scripts/**/*.coffee',
+      'test/spec/**/*.coffee'
     ],
-    reporters: ['progress', 'html'],
-    htmlReporter: {
-      outputFile: 'test/client/e2e/e2e.html'
-    },
+
     // list of files / patterns to exclude
     exclude: [],
 
@@ -45,13 +50,6 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: true,
-
-    // Uncomment the following lines if you are using grunt's server to run the tests
-    proxies: {
-      '/': 'http://localhost:9000/'
-    },
-    // URL root prevent conflicts with the site root
-    urlRoot: '_karma_'
+    singleRun: false
   });
 };

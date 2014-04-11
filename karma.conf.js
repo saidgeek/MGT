@@ -22,7 +22,7 @@ module.exports = function(config) {
       'test/client/mock/**/*.coffee',
       'test/client/spec/**/*.coffee'
     ],
-    reporters: ['html'],
+    reporters: ['progress', 'html'],
     htmlReporter: {
       outputFile: 'test/client/spec/units.html'
     },

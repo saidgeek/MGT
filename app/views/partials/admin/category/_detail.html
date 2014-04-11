@@ -1,9 +1,9 @@
-<div class="detalle">
+<div class="detalle" ng-if="category">
     <div class="row">
       <div class="edit-user">
         <ul>
           <li><a href="javascript:{}" data-ng-click="EditCategory(category._id)">Editar información</a></li>
-          <li><a href="javascript:{}">Eliminar</a></li>
+          <li><a href="javascript:{}" confirm-click="remove(category._id)" confirm-message="Estas seguro?">Eliminar</a></li>
         </ul>
       </div>
     </div>

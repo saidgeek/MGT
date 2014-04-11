@@ -164,6 +164,9 @@ angular.module('movistarApp')
           if categories.length > 0
             $scope.categories = categories
             $rootScope.$emit 'loadCategoryShow', categories[0]._id
+          else
+            $scope.categories = {}
+            $rootScope.$emit 'loadCategoryShow', null
 
     _load()
 
@@ -172,13 +175,25 @@ angular.module('movistarApp')
     $scope.errors = {}
 
     $rootScope.$on 'loadCategoryShow', (e, id) ->
-      _load(id)
+      if id
+        _load(id)
+      else
+        $scope.category = null
+
     if CategoryParams?.id?
       _load(CategoryParams.id)
 
     $scope.EditCategory = (id) ->
       CategoryParams.id = id
       $rootScope.$emit 'showModals', { modal: 'updateCategory', id: id}
+
+    $scope.remove = (id) ->
+      console.log id
+      CategoryFactory.remove id, (err) ->
+        if err
+          $scope.errors = err
+        else
+          $rootScope.$emit 'reloadCategories', ''
 
     _load = (id) ->
       $scope.category = ''
