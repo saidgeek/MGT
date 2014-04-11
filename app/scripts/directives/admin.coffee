@@ -104,7 +104,6 @@ angular.module('movistarApp')
       _value = attrs.permissionValue || null
       if _value?
         _value = _value.toUpperCase()
-      console.log typeof $rootScope.currentUser.permissions[_permission] isnt 'undefined'
       return element.remove() if typeof $rootScope.currentUser.permissions[_permission] is 'undefined' and !_value?
       return element.remove() if _value? and !~$rootScope.currentUser.permissions[_permission].indexOf _value
       return false

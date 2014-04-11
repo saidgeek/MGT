@@ -1,16 +1,26 @@
 'use strict'
 
 angular.module('movistarApp')
-  .directive 'sgkOverflow', ($timeout) ->
+  .directive 'sgkHalf', ($timeout) ->
     restrict: 'A'
     link: (scope, element, attrs) ->
       $timeout () ->
         $timeout () ->
-          angular.element( ".overflow" ).mCustomScrollbar
-            scrollButtons:
-                enable:false
-        , 1000
+          full = angular.element('.full-heigth').height();
+          angular.element('.half-a').css('height', (angular.element('.full-heigth').height() / 2) - 21)
+          $('.half-b').css('height', (full / 2) - 21)
+        , 0
       , 0
+
+  .directive 'sgkOverflow', ($timeout) ->
+    restrict: 'A'
+    link: (scope, element, attrs) ->
+      _time = attrs.sgkOverFlow || 1000
+      $timeout () ->
+        element.mCustomScrollbar
+          scrollButtons:
+              enable:false
+      , _time
 
   .directive 'sgkResize', ($window, $timeout) ->
     restrict: 'A'
@@ -83,10 +93,6 @@ angular.module('movistarApp')
 
         angular.element($window).on 'resize', resize_other
         angular.element('#right').on 'resize', resize_right
-
-        full = angular.element('.full-heigth').height();
-        angular.element('.half-a').css('height', (angular.element('.full-heigth').height() / 2) - 21)
-        $('.half-b').css('height', (full / 2) - 21)
 
       $timeout () ->
         $timeout init, 0

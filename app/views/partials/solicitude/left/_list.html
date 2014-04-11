@@ -1,4 +1,4 @@
-<div class="overflow">
+<div data-sgk-overflow class="overflow">
   <div class="note round" data-ng-class="{active: $index===0}" ng-repeat="solicitude in solicitudes" data-sgk-active-solicitude ng-click="loadSolicitude(solicitude._id)">
       <div class="t-c verde round">
           <ul>
@@ -13,7 +13,7 @@
               </li>
               <li class="light" ng-if="solicitude.ticket.segments">{{ solicitude.ticket.segments | SegmentArray }}</li>
               <li class="bold last" ng-if="solicitude.provider">
-                Proveedor: <span class="light">- ({{ solicitude.provider.profile.firstName }} {{ solicitude.provider.profile.lastName }})</span>
+                Proveedor: <span class="light">{{ solicitude.provider.profile.company }} ({{ solicitude.provider.profile.firstName }} {{ solicitude.provider.profile.lastName }})</span>
               </li>
           </ul>
       </div>

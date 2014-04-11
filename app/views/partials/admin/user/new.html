@@ -13,7 +13,7 @@
 
   <div class="table esconder">
     <div class="relativo">
-      <div class="overflow">
+      <div data-sgk-overflow class="overflow"  >
         <div>
           <form name="form" data-ng-submit="create(form)">
             <fieldset class="odd">
@@ -35,6 +35,9 @@
               <ul>
                 <li>
                   <input type="email" id="nombre" name="email" placeholder="Correo Electrónico" data-ng-model="user.email" />
+                </li>
+                <li ng-show="user.role === 'PROVIDER'">
+                  <input type="text" id="nombre" name="movil" placeholder="Empresa" data-ng-model="user.profile.company"/>
                 </li>
                 <li>
                   <input type="text" id="nombre" name="movil" placeholder="Teléfono Móvil" data-ng-model="user.profile.celNumber"/>

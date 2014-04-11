@@ -37,9 +37,9 @@
   padding: 40px 20px;
 }
 
-.menu-middle {
+/*.menu-middle {
   top: 40%;
-}
+}*/
 
 #nueva-solicitud{
   opacity: 1;
@@ -67,4 +67,12 @@
 #right .validar fieldset.segments ul li label,
 #right .validar fieldset.sections ul li label{
   width: 100%;
+}
+
+.overflow {
+  overflow-y: hidden;
+  position: relative;
+}
+.ps-container .ps-scrollbar-y {
+  background-color: #4a6a8c;
 }

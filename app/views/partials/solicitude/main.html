@@ -11,7 +11,7 @@
       </a>
     </div>
 
-    <div class="overflow" ng-controller="SidebarCtrl">
+    <div data-sgk-overflow class="overflow" ng-controller="SidebarCtrl">
       <div ng-include="'partials/solicitude/sidebar/_state'"></div>
       <div ng-include="'partials/solicitude/sidebar/_priority'"></div>
       <div ng-include="'partials/solicitude/sidebar/_involved'"></div>
@@ -40,24 +40,20 @@
       </div>
     </div><!--// #left //-->
 
-    <div id="right" class="col ui-widget ui-widget-content">
+    <div id="right" class="col ui-widget ui-widget-content" ng-controller="SolicitudeShowCtrl">
       <div data-sgk-alerts></div>
-      <div class="relativo" ng-controller="SolicitudeShowCtrl">
-
-        <div ng-switch="viewDetail">
-
+      <div class="relativo" ng-switch="viewDetail">
 
           <div ng-include="'partials/solicitude/right/_filter'"></div>
 
           <div ng-switch-default>
-            <div class="full-heigth">
+            <div class="full-heigth" data-sgk-half>
+
               <div class="half-a">
-                <div class="overflow">
                   <div ng-include="'partials/solicitude/right/_detail'"></div>
-                </div>
               </div>
+
               <div class="half-b" ng-switch="tabs">
-                <div class="overflow">
                   <div ng-switch-default>
                     <div ng-include="'partials/solicitude/right/_comments'"></div>
                   </div>
@@ -70,25 +66,22 @@
                   <div ng-switch-when="tasks">
                     <div ng-include="'partials/solicitude/right/_tasks'"></div>
                   </div>
-                </div>
-
               </div>
+
               <div class="menu-middle">
                 <div ng-include="'partials/solicitude/right/_menu'"></div>
               </div>
-            </div>
 
+            </div>
             <div ng-include="'partials/solicitude/right/_commentForm'"></div>
           </div>
 
           <div ng-switch-when="updateByEditor">
-            <div ng-include="'partials/solicitude/_updateByEditor'"></div>
+            <div ng-include="'partials/solicitude/right/_updateByEditor'"></div>
           </div>
           <div ng-switch-when="updateByContentManager">
-
+            <div ng-include="'partials/solicitude/right/_updateByContentManager'"></div>
           </div>
-
-        </div>
 
       </div><!-- relativo -->
     </div><!-- col right -->

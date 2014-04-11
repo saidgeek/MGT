@@ -12,7 +12,6 @@ angular.module('movistarApp')
         if err
           $scope.errors = err
         else
-          console.log groups
           $scope.statesGroups = groups
 
     $rootScope.$on 'reloadStates', (e) ->
@@ -29,7 +28,6 @@ angular.module('movistarApp')
     $scope.errors = {}
 
     $scope.showModals = (modal) ->
-      console.log 'showModals:', modal
       _showModals(modal)
 
     $rootScope.$on 'showModals', (e, args) ->
@@ -42,7 +40,7 @@ angular.module('movistarApp')
       $scope.modals = modal
 
     $rootScope.$on 'reloadSolicitudes', (e, state) ->
-      _loadSolicitudes('')
+      _loadSolicitudes(state)
 
     $rootScope.$on 'updateSolicitudes', (e) ->
       _loadSolicitudes('')
@@ -69,8 +67,10 @@ angular.module('movistarApp')
     $scope.errors = {}
     $scope.viewDetail = null
     $scope.tabs = ''
-    $scope.categories
-    $scope.contentManagers
+    $scope.viewDetail = null
+    $scope.categories = null
+    $scope.contentManagers = null
+    $scope.provider = null
 
     $scope.priorities = PriorityData.getArray()
     $scope.segments = SegmentsData.getArray()
@@ -81,24 +81,34 @@ angular.module('movistarApp')
         $scope.errors = err
       else
         $scope.categories = categories
+
     UserFactory.index 'CONTENT_MANAGER', (err, users) ->
       if err
         $scope.errors = err
       else
         $scope.contentManagers = users
 
+    UserFactory.index 'PROVIDER', (err, users) ->
+      if err
+        $scope.errors = err
+      else
+        $scope.provider = users
+
     $rootScope.$on 'loadSolicitudeShow', (e, id) ->
+      $scope.viewDetail = null
       _loadSolicitude(id)
 
     if SolicitudeParams?.id?
       _loadUser(SolicitudeParams.id)
 
     _changeViewByRole = (solicitude) ->
-      if solicitude.state is 'QUEUE_VALIDATION' and ~['EDITOR', 'ADMIN', 'ROOT'].indexOf $rootScope.currentUser.role
+      _role = $rootScope.currentUser.role
+      if solicitude.state is 'QUEUE_VALIDATION' and ~['EDITOR', 'ADMIN', 'ROOT'].indexOf _role
         $scope.viewDetail = 'updateByEditor'
-
-      if solicitude.state is 'QUEUE_ALLOCATION' and ~['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf $rootScope.currentUser.role
+      if solicitude.state is 'QUEUE_ALLOCATION' and ~['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf _role
         $scope.viewDetail = 'updateByContentManager'
+      if solicitude.state is 'QUEUE_PROVIDER'
+        $scope.viewDetail = null
 
     _loadSolicitude = (id) ->
       $scope.solicitude = ''
@@ -107,7 +117,7 @@ angular.module('movistarApp')
           $scope.errors = err
         else
           $scope.solicitude = solicitude
-          _changeViewByRole(solicitude)
+          _changeViewByRole($scope.solicitude)
 
     $scope.showTabs = (tab) ->
       $scope.tabs = tab
@@ -132,14 +142,15 @@ angular.module('movistarApp')
         $scope.solicitude.tag = ''
         return false
 
-    $scope.updateByEditor = (form) ->
-      console.log '$scope.solicitude: ', $scope.solicitude
+    $scope.update = (form) ->
       if form.$valid
         SolicitudeFactory.update $scope.solicitude._id, $scope.solicitude, (err) ->
           if err
             $scope.errors = err
           else
             $rootScope.$emit 'reloadSolicitudes', ''
+
+  .cn
 
   .controller 'SolicitudeSaveCtrl', ($scope, $rootScope, SolicitudeFactory, SolicitudeParams) ->
     $scope.solicitude = {}

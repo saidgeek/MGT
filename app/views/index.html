@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
+    <link rel="stylesheet" href="lib/angular-perfect-scrollbar/dependencies/perfect-scrollbar.css" />
     <link ng-if="!currentUser" rel="stylesheet" href="styles/auth.css" />
     <link ng-if="currentUser" rel="stylesheet" href="styles/fonts.css" />
     <link ng-if="currentUser" rel="stylesheet" href="styles/styles.css" />
@@ -21,7 +21,7 @@
       <link rel="stylesheet" href="styles/ie.css" />
     <![endif]-->
   </head>
-  <body data-filepicker-run data-sgk-overflow>
+  <body data-filepicker-run>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -49,6 +49,11 @@
     <script src="lib/angular-cookies/angular-cookies.js"></script>
     <script src="lib/angular-sanitize/angular-sanitize.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
+
+    <script src="lib/angular-perfect-scrollbar/src/angular-perfect-scrollbar.js"></script>
+    <script src="lib/angular-perfect-scrollbar/dependencies/perfect-scrollbar.js"></script>
+
+
     <script src="lib/jquery-placeholder/jquery-placeholder.js"></script>
     <script src="lib/jquery-mousewheel/jquery.mousewheel.js"></script>
     <script src="lib/jqueryui/ui/jquery-ui.js"></script>

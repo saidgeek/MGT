@@ -11,7 +11,7 @@
   <div class="table esconder">
     <div class="relativo">
       <form name="form", ng-submit="create(form)" novalidate>
-        <div class="overflow">
+        <div data-sgk-overflow class="overflow">
           <fieldset class="odd">
             <input type="text" id="titulo" name="titulo" placeholder="Titulo de la solicitud" ng-model="solicitude.ticket.title" required/>
             <textarea id="descripcion" name="descripcion" rows="10" placeholder="Descripción de la Solicitud" ng-model="solicitude.ticket.description" required>

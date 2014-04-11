@@ -1,21 +1,22 @@
-
-    <div class="overflow">
-        <div class="padding">
-            <div class="title">
-                <h1>{{ solicitude.ticket.title }}</h1>
-                <div class="fecha">
-                    <span>Solicitada {{ solicitude.createdAt | DateFormat }}</span>
-                    <span ng-if="solicitude.startedAt">Iniciada {{ solicitude.startedAt | DateFormat }}</span>
-                </div>
-            </div>
-            <div class="categoria" ng-if="solicitude.ticket.category">Categoría: <span>{{ solicitude.ticket.category }}</span></div>
-
-            <ul class="otros-datos">
-                <li class="first" ng-if="solicitude.ticket.segments">Segmento: <span>{{ solicitude.ticket.segments.join(',') }}</span></li>
-                <li>Solicitante: <span>{{ solicitude.createdBy.profile.firstName }} {{ solicitude.createdBy.profile.lastName }}</span></li>
-                <li class="last">Proveedor: <span>Ingenia (Joselito Perez)</span></li>
-            </ul>
-
-            <p>{{ solicitude.ticket.description }}</p>
-        </div>
+<div data-sgk-overflow class="overflow">
+  <div class="padding">
+    <div class="title">
+      <h1>{{ solicitude.ticket.title }}</h1>
+      <div class="fecha">
+        <span>Solicitada {{ solicitude.createdAt | DateFormat }}</span>
+        <span ng-if="solicitude.startedAt">Iniciada {{ solicitude.startedAt | DateFormat }}</span>
+      </div>
     </div>
+      <div class="categoria" ng-if="solicitude.ticket.category">Categoría: <span>{{ solicitude.ticket.category.name }}</span></div>
+
+      <ul class="otros-datos">
+          <li class="first" ng-if="solicitude.ticket.segments">Segmento: <span>{{ solicitude.ticket.segments | SegmentArray }}</span></li>
+          <li>Solicitante: <span>{{ solicitude.createdBy.profile.firstName }} {{ solicitude.createdBy.profile.lastName }}</span></li>
+          <li class="last" ng-if="solicitude.provider">
+            Proveedor: <span>{{ solicitude.provider.profile.company }} ({{ solicitude.provider.profile.firstName }} {{ solicitude.provider.profile.lastName }})</span>
+          </li>
+      </ul>
+
+      <p>{{ solicitude.ticket.description }}</p>
+  </div>
+</div>

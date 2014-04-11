@@ -1,7 +1,5 @@
-
-
 <div class="full">
-    <div class="overflow">
+    <div data-sgk-overflow class="overflow" data-sgk-overflow >
         <div class="padding">
             <div class="title">
                 <h1>{{ solicitude.ticket.title }}</h1>
@@ -10,19 +8,17 @@
                     <span ng-if="solicitude.startedAt">Iniciada {{ solicitude.startedAt | DateFormat }}</span>
                 </div>
             </div>
-            <div class="categoria" ng-if="solicitude.ticket.category">Categoría: <span>{{ solicitude.ticket.category.name }}</span></div>
 
             <ul class="otros-datos">
                 <li class="first"  ng-if="solicitude.ticket.segments">Segmento: <span>{{ solicitudes.segments.join(', ') }}</span></li>
                 <li>Solicitante: <span>{{ solicitude.createdBy.profile.firstName }} {{ solicitude.createdBy.profile.lastName }}</span></li>
-                <li class="last" ng-if="solicitude.provider">Proveedor: <span> - ({{ solicitude.provider.profile.firstName }} {{ solicitude.provider.profile.lastName }})</span></li>
             </ul>
 
             <p data-sgk-short-paragraph="500"></p>
 
         </div><!-- fin padding -->
         <div id="nueva-solicitud" class="validar">
-            <form name="form" ng-submit="updateByEditor(form)">
+            <form name="form" ng-submit="update(form)">
                 <fieldset class="even">
                     <p>Ingreso de información de solicitud</p>
                     <ul>
