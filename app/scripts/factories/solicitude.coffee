@@ -6,11 +6,14 @@ angular.module("movistarApp")
     _accessToken = $rootScope.currentUser.access.accessToken
     _states = $rootScope.currentUser.permissions.states
 
-    _index = (state, cb) ->
+    _index = (state, category, priority, involved, cb) ->
       SolicitudeService.index(
         clientToken: _clientToken
         accessToken: _accessToken
         state: state || _states
+        category: category
+        priority: priority
+        involved: involved
       , (solicitudes) ->
         cb null, solicitudes
       , (err) ->
@@ -85,8 +88,8 @@ angular.module("movistarApp")
       ).$promise
 
     return {
-      index: (state, cb) ->
-        _index(state, cb)
+      index: (state, category, priority, involved, cb) ->
+        _index(state, category, priority, involved, cb)
       groups: (cb) ->
         _groups(cb)
       show: (id, cb) ->

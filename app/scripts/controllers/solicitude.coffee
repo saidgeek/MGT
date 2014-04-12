@@ -1,11 +1,27 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'SidebarCtrl', ($scope, SolicitudeFactory, $rootScope, StateData, StateIconsData) ->
+  .controller 'SidebarCtrl', ($scope, SolicitudeFactory, $rootScope, StateData, StateIconsData, PriorityData, CategoryFactory, UserFactory) ->
     $scope.statesGroups = null
     $scope.errors = {}
     $scope.states = StateData.getArray()
     $scope.statesIcons = StateIconsData.getAll()
+    $scope.categories = null
+    $scope.users = null
+
+    $scope.priorities = PriorityData.getArray()
+
+    CategoryFactory.index (err, categories) ->
+      if err
+        $scope.errors = err
+      else
+        $scope.categories = categories
+
+    UserFactory.index '', (err, users) ->
+      if err
+        $scope.errors = err
+      else
+        $scope.users = users
 
     _loadStates = () ->
       SolicitudeFactory.groups (err, groups) ->
@@ -17,8 +33,8 @@ angular.module('movistarApp')
     $rootScope.$on 'reloadStates', (e) ->
       _loadStates()
 
-    $scope.filter = (state) ->
-      $rootScope.$emit 'reloadSolicitudes', state
+    $scope.filter = (state, category, priority, involved) ->
+      $rootScope.$emit 'reloadSolicitudes', state, category, priority, involved
 
     _loadStates()
 
@@ -39,18 +55,18 @@ angular.module('movistarApp')
     _showModals = (modal) ->
       $scope.modals = modal
 
-    $rootScope.$on 'reloadSolicitudes', (e, state) ->
-      _loadSolicitudes(state)
+    $rootScope.$on 'reloadSolicitudes', (e, state, category, priority, involved) ->
+      _loadSolicitudes(state, category, priority, involved)
 
     $rootScope.$on 'updateSolicitudes', (e) ->
-      _loadSolicitudes('')
+      _loadSolicitudes('', '', '', '')
       # $rootScope.$emit 'reloadGroups'
 
     $scope.loadSolicitude = (id) ->
       $rootScope.$emit 'loadSolicitudeShow', id
 
-    _loadSolicitudes = (state) ->
-      SolicitudeFactory.index state, (err, solicitudes) ->
+    _loadSolicitudes = (state, category, priority, involved) ->
+      SolicitudeFactory.index state, category, priority, involved, (err, solicitudes) ->
         if err
           $scope.errors = err
         else
@@ -59,7 +75,7 @@ angular.module('movistarApp')
             $rootScope.$emit 'reloadStates'
             $scope.solicitudes = solicitudes
 
-    _loadSolicitudes('')
+    _loadSolicitudes('', '', '', '')
 
   .controller 'SolicitudeShowCtrl', ($scope, SolicitudeFactory, $rootScope, SolicitudeParams, PriorityData, CategoryFactory, UserFactory, SegmentsData, SectionsData) ->
     $scope.solicitude = {}
@@ -127,7 +143,6 @@ angular.module('movistarApp')
 
     $scope.addComment = (form) ->
       if form.$valid
-        console.log $scope.solicitude._id, $scope.solicitude.message
         SolicitudeFactory.addComments $scope.solicitude._id, $scope.solicitude.message, (err) ->
           if err
             $scope.errors = err
@@ -148,7 +163,7 @@ angular.module('movistarApp')
           if err
             $scope.errors = err
           else
-            $rootScope.$emit 'reloadSolicitudes', ''
+            $rootScope.$emit 'reloadSolicitudes', '', '', '', ''
 
   .controller 'SolicitudeSaveCtrl', ($scope, $rootScope, SolicitudeFactory, SolicitudeParams) ->
     $scope.solicitude = {}

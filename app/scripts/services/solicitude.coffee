@@ -10,6 +10,9 @@ angular.module("movistarApp")
           accessToken: '@accessToken'
         data:
           state: '@state'
+          category: '@category'
+          priority: '@priority'
+          involved: '@involved'
         url: '/api/v1/solicitudes'
         isArray: true
 
