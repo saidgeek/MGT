@@ -23,7 +23,6 @@ angular.module("movistarApp")
           accessToken: '@accessToken'
           states: '@states'
         url: '/api/v1/solicitudes/groups'
-        isArray: true
 
       show:
         method: 'GET'

@@ -21,12 +21,25 @@ angular.module("movistarApp")
       ).$premise
 
     _makeGroups = (groups) ->
-      result = {}
-      _total = 0
-      for g in groups
-        result[g._id] = g.count
-        _total += g.count
-      result['total'] = _total
+      result = {
+        states: {}
+        priorities: {}
+      }
+      _statesTotal = 0
+      _prioritiesTotal = 0
+
+      for s in groups.states
+        result.states[s._id] = s.count
+        _statesTotal += s.count
+
+      for p in groups.priorities
+        if p._id
+          result.priorities[p._id] = p.count
+          _prioritiesTotal += p.count
+
+      result.states['total'] = _statesTotal
+      result.priorities['total'] = _prioritiesTotal
+
       result
 
     _groups = (cb) ->

@@ -3,6 +3,7 @@
 angular.module('movistarApp')
   .controller 'SidebarCtrl', ($scope, SolicitudeFactory, $rootScope, StateData, StateIconsData, PriorityData, CategoryFactory, UserFactory) ->
     $scope.statesGroups = null
+    $scope.priorityGroups = null
     $scope.errors = {}
     $scope.states = StateData.getArray()
     $scope.statesIcons = StateIconsData.getAll()
@@ -28,7 +29,8 @@ angular.module('movistarApp')
         if err
           $scope.errors = err
         else
-          $scope.statesGroups = groups
+          $scope.statesGroups = groups.states
+          $scope.priorityGroups = groups.priorities
 
     $rootScope.$on 'reloadStates', (e) ->
       _loadStates()
@@ -66,6 +68,7 @@ angular.module('movistarApp')
       $rootScope.$emit 'loadSolicitudeShow', id
 
     _loadSolicitudes = (state, category, priority, involved) ->
+      $scope.solicitudes = null
       SolicitudeFactory.index state, category, priority, involved, (err, solicitudes) ->
         if err
           $scope.errors = err
