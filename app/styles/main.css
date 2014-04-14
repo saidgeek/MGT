@@ -46,6 +46,10 @@
   z-index: 999;
 }
 
+#nueva-solicitud.validar{
+  width: 100%;
+}
+
 #right .relativo .full .padding p {
   text-align: justify;
   white-space: pre-line;
