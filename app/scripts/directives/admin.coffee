@@ -7,7 +7,7 @@ angular.module('movistarApp')
       el.on 'click', (e) ->
         angular.element('.note.round').removeClass 'active'
         angular.element(this).addClass 'active'
-        angular.element('.note.round.active span').css {'display':'block'}
+        angular.element('.note.round.active span.az').css {'display':'block'}
 
   .directive 'sgkActiveSolicitude', ($window, $rootScope) ->
     restrict: 'A'
@@ -19,24 +19,28 @@ angular.module('movistarApp')
   .directive 'sgkSubmenuNotifications', ($window, $rootScope) ->
     restrict: 'A'
     link: (scope, el, attrs) ->
+      angular.element(document).click () ->
+        angular.element('#submenu.notifications').slideUp 200
       el.on 'click', (e) ->
         _notifications = angular.element('#submenu.notifications')
         _options = angular.element('#submenu.options')
         if _options.css('display') is 'block'
-          _options.slideToggle 200
+          _options.slideUp 200
         _notifications.slideToggle 200
+        e.stopPropagation()
 
   .directive 'sgkSubmenuOptions', ($window, $rootScope) ->
     restrict: 'A'
     link: (scope, el, attrs) ->
+      angular.element(document).click () ->
+        angular.element('#submenu.options').slideUp 200
       _notifications = angular.element('#submenu.notifications')
       _options = angular.element('#submenu.options')
       el.on 'click', (e) ->
         if _notifications.css('display') is 'block'
-          _notifications.slideToggle 200
+          _notifications.slideUp 200
         _options.slideToggle 200
-      el.parent().find('a.t-c').on 'click', (e) ->
-        _options.slideToggle 200
+        e.stopPropagation()
 
   .directive 'sgkCheck', ($window, $rootScope) ->
     restrict: 'A'

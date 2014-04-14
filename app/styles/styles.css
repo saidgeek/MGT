@@ -530,7 +530,6 @@ h4{ font-size:  1.154em;}
     height: 100%;
 }
 #top{
-    background: #2f364a;
     padding: 13px;
     display: table-row;
     width: auto;
@@ -1383,7 +1382,7 @@ ul.menu-usuarios li a:hover{
     opacity: 1;
 }
 #left .overflow.top-admin{
-    top: 90px;
+    top: 46px;
 }
 .user{
     padding: 18px;
