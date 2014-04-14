@@ -17,6 +17,13 @@
             <textarea id="descripcion" name="descripcion" rows="10" placeholder="Descripción de la Solicitud" ng-model="solicitude.ticket.description" required>
             </textarea>
           </fieldset>
+          <fieldset>
+            <ul class="upload-list">
+            </ul>
+            <div class="upload" data-sgk-upload-multi ng-model="solicitude.attachments">
+              <input class="att" type="file" name="attachment" multiple>
+            </div>
+          </fieldset>
           <fieldset class="blue">
             <ul>
               <li><a href="javascript:{}">Limpiar todos los Datos</a></li>

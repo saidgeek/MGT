@@ -76,3 +76,45 @@
 .ps-container .ps-scrollbar-y {
   background-color: #4a6a8c;
 }
+
+fieldset div.upload {
+    width: 69px;
+    height: 16px;
+    margin: 16px 0 0 16px;
+    background: url(../images/att.png) 0 0;
+    overflow: hidden;
+    display: inline-block;
+    float: left;
+}
+fieldset div.upload:hover {
+    background-position: 0 -17px;
+}
+fieldset div.upload input.att {
+    display: block !important;
+    width: 69px !important;
+    height: 16px !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+}
+
+fieldset ul.upload-list {
+  display:' inline-block'
+}
+
+fieldset ul.upload-list li {
+  display: 'inline-table';
+  width: 100% !important;
+  padding: 4px 4px 2px 4px !important;
+  border: 1px solid #e2e8ef;
+  margin-bottom: 2px;
+}
+
+fieldset ul.upload-list li span {
+  position: absolute;
+  margin: 8px;
+}
+
+fieldset ul.upload-list li img {
+  width: 32px !important;
+  height: 32px !important;
+}

@@ -97,6 +97,39 @@ angular.module('movistarApp')
               el.find('.edit-avatar-user').css 'display', 'block'
             , 600
 
+  .directive 'sgkUploadMulti', (filepickerApi, $timeout) ->
+    restrict: 'A'
+    require: 'ngModel'
+    link: (scope, element, attrs, ngModel) ->
+      console.log 'ngmodel:', ngModel.$viewValue
+      attachments = []
+      if ngModel.$viewValue instanceof Array and ngModel.$viewValue?
+        attachments = ngModel.$viewValue
+      element.find('input[type="file"]').on 'change', (e) ->
+        MD5 = new Hashes.MD5
+        input = angular.element(e.target)
+        for file in input[0].files
+          MD5 = new Hashes.MD5
+          hash = MD5.hex file.lastModifiedDate+Date.now()
+          opts =
+            id: hash
+            data: file
+          name = opts.data.name
+          if name.length > 100
+            name = "#{ name.substr(0,10) }...#{ name.substr((name.length - 10), name.length) }"
+          element.parent().find('ul.upload-list').append "<li id='#{ opts.id }'><img src='images/loader_30.GIF' /><span>#{ name }</span></li>"
+
+          filepickerApi.storeAndThumbnail opts, (err, res) ->
+            attachments.push res.data
+            ngModel.$setViewValue attachments
+            scope.$apply () ->
+              query = "ul.upload-list li##{ res.hash } img"
+              if typeof res.data.thumbnails._32x32_ isnt 'undefined'
+                element.parent().find(query).attr 'src', res.data.thumbnails._32x32_
+              else
+                element.parent().find(query).attr 'src', ''
+
+
   .directive 'sgkPermission', ($rootScope) ->
     restrict: 'A'
     link: (scope, element, attrs) ->

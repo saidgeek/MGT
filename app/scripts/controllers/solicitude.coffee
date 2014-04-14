@@ -186,7 +186,7 @@ angular.module('movistarApp')
           if err
             $scope.errors = err
           else
-            $rootScope.$emit 'reloadSolicitudes'
+            $rootScope.$emit 'reloadSolicitudes', '', '', '', ''
             $scope.$emit 'hideModals'
             $rootScope.alert =
               type: 'success'
