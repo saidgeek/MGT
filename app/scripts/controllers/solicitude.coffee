@@ -162,10 +162,15 @@ angular.module('movistarApp')
 
     $scope.update = (form) ->
       if form.$valid
-        SolicitudeFactory.update $scope.solicitude._id, $scope.solicitude, (err) ->
+        SolicitudeFactory.update $scope.solicitude._id, $scope.solicitude, (err, solicitude) ->
           if err
             $scope.errors = err
           else
+            $rootScope.alert =
+              type: 'success'
+              content: """
+                          La solicitude #{ solicitude.code } se actualizo correctamente.
+                       """
             $rootScope.$emit 'reloadSolicitudes', '', '', '', ''
 
   .controller 'SolicitudeSaveCtrl', ($scope, $rootScope, SolicitudeFactory, SolicitudeParams) ->
