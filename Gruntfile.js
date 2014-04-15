@@ -22,7 +22,8 @@ module.exports = function (grunt) {
     yeoman: {
       // configurable paths
       app: require('./bower.json').appPath || 'app',
-      dist: 'dist'
+      dist: 'dist',
+      dist_pre: 'dist_pre'
     },
     express: {
       options: {
@@ -113,6 +114,17 @@ module.exports = function (grunt) {
             '<%= yeoman.dist %>/*',
             '!<%= yeoman.dist %>/.git*',
             '!<%= yeoman.dist %>/Procfile'
+          ]
+        }]
+      },
+      dist_pre: {
+        files: [{
+          dot: true,
+          src: [
+            '.tmp',
+            '<%= yeoman.dist_pre %>/*',
+            '!<%= yeoman.dist_pre %>/.git*',
+            '!<%= yeoman.dist_pre %>/Procfile'
           ]
         }]
       },
@@ -349,6 +361,52 @@ module.exports = function (grunt) {
           ]
         }]
       },
+
+      dist_pre: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.dist %>/public',
+          dest: '<%= yeoman.dist_pre %>/public',
+          src: [
+            '*.{ico,png,txt}',
+            '.htaccess',
+            'lib/**/*',
+            'images/{,*/}*.{webp}',
+            'fonts/**/*',
+            'scripts/**/*.js'
+          ]
+        }, {
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.dist %>/views',
+          dest: '<%= yeoman.dist_pre %>/views',
+          src: [
+            '**/*.html',
+            '**/**/*.html'
+          ]
+        }, {
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.dist %>/public/styles',
+          dest: '<%= yeoman.dist_pre %>/public/styles',
+          src: '**/*.css'
+        }, {
+          expand: true,
+          cwd: '<%= yeoman.dist %>/public/images',
+          dest: '<%= yeoman.dist_pre %>/public/images',
+          src: ['*']
+        }, {
+          expand: true,
+          dest: '<%= yeoman.dist_pre %>',
+          src: [
+            'package.json',
+            'server.js',
+            'lib/**/*'
+          ]
+        }]
+      },
+
       styles: {
         expand: true,
         cwd: '<%= yeoman.app %>/styles',
@@ -523,21 +581,31 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('build', [
-    'clean:dist',
-    // 'bower-install',
-    'useminPrepare',
-    'concurrent:dist',
-    'autoprefixer',
-    'concat',
-    'ngmin',
-    'copy:dist',
-    'cdnify',
-    // 'cssmin',
-    'uglify',
-    // 'rev',
-    'usemin'
-  ]);
+  grunt.registerTask('build', function (target) {
+    if (target === 'pre') {
+      return grunt.task.run([
+        'clean:dist_pre',
+        'copy:dist_pre'
+      ]);
+    }
+
+    grunt.task.run([
+      'clean:dist',
+      // 'bower-install',
+      'useminPrepare',
+      'concurrent:dist',
+      'autoprefixer',
+      'concat',
+      'ngmin',
+      'copy:dist',
+      'cdnify',
+      // 'cssmin',
+      'uglify',
+      // 'rev',
+      'usemin'
+    ]);
+  });
+
 
   grunt.registerTask('heroku', function () {
     grunt.log.warn('The `heroku` task has been deprecated. Use `grunt build` to build for deployment.');
