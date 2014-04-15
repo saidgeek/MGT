@@ -51,7 +51,6 @@ angular.module("movistarApp")
       ).$promise
 
     _update = (id, data, cb) ->
-      console.log data
       UserService.updateProfile(
         clientToken: _clientToken
         accessToken: _accessToken
