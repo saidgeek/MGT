@@ -336,9 +336,9 @@ module.exports = function (grunt) {
           src: '**/*.css'
         }, {
           expand: true,
-          cwd: '.tmp/images',
+          cwd: '<%= yeoman.app %>/images',
           dest: '<%= yeoman.dist %>/public/images',
-          src: ['generated/*']
+          src: ['*']
         }, {
           expand: true,
           dest: '<%= yeoman.dist %>',
