@@ -74,13 +74,13 @@ angular.module("movistarApp")
       CANCEL: ""
       QUEUE_PROVIDER: "epr"
       PROCCESS: "pro"
-      QUEUE_VALIDATION_MANAGER: "esp"
+      QUEUE_VALIDATION_MANAGER: "valg"
       PAUSE: "pau"
-      REJECTED_BY_MANAGER: "atr"
-      OK_BY_MANAGER: "fin"
-      QUEUE_VALIDATION_CLIENT: "esp"
-      REJECTED_BY_CLIENT: "atr"
-      OK_BY_CLIENT: "fin"
+      REJECTED_BY_MANAGER: "recg"
+      OK_BY_MANAGER: "ceg"
+      QUEUE_VALIDATION_CLIENT: "valc"
+      REJECTED_BY_CLIENT: "recc"
+      OK_BY_CLIENT: "acec"
 
     _get = (key) ->
       icons[key]
