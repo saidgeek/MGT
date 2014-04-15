@@ -1947,13 +1947,13 @@ ul.menu-usuarios li a:hover{
     overflow: hidden;
     position: relative;
 }
-#nueva-solicitud.user .mask{
+/*#nueva-solicitud.user .mask{
     width: 80px;
     height: 80px;
     background: url(../images/mask-new-user.png) no-repeat 0 0;
     background-size: cover;
     z-index: 5;
-}
+}*/
 #nueva-solicitud.user span.edit-avatar-user{
     position: absolute;
     width: 51px;
@@ -2039,9 +2039,9 @@ ul.menu-usuarios li a:hover{
     top: 117px;
     background: #fff;
 }
-.perfil-general .user .img-user div span {
+/*.perfil-general .user .img-user div span {
     background: url(../images/mask-user-pic3.png) no-repeat 0 0;
-}
+}*/
 #perfil-editar{
     margin: 20px;
     width: 50%;
@@ -2079,7 +2079,7 @@ ul.menu-usuarios li a:hover{
     background: url(../images/avatar-user.png) no-repeat 0 0;
     background-size: cover;
 }
-#perfil-editar .t-c.img-user div span {
+/*#perfil-editar .t-c.img-user div span {
     background: url(../images/mask-user-pic.png) no-repeat 0 0;
     position: absolute;
     left: 0;
@@ -2088,7 +2088,7 @@ ul.menu-usuarios li a:hover{
     right: 0;
     background-size: cover;
     z-index: 10;
-}
+}*/
 #perfil-editar .t-c .upload {
     width: 104px;
     height: 15px;
@@ -2437,4 +2437,10 @@ ul.menu-usuarios li a:hover{
     -webkit-box-shadow: none;
     box-shadow: none;
     overflow: auto;
+}
+
+.t-c.img-user img, .t-c.p-avatar div img, .t-c.avatar img, #involucrados ul li .ico.avatar div img, .t-c.img-user img, .note-left ul.lista-opt li.img-user div img {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
 }
