@@ -2439,7 +2439,11 @@ ul.menu-usuarios li a:hover{
     overflow: auto;
 }
 
-.t-c.img-user img, .t-c.p-avatar div img, .t-c.avatar img, #involucrados ul li .ico.avatar div img, .t-c.img-user img, .note-left ul.lista-opt li.img-user div img {
+.t-c.p-avatar div img,
+.t-c.avatar img, #involucrados ul li
+.ico.avatar div img,
+.t-c.img-user img,
+.note-left ul.lista-opt li.img-user div img {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;

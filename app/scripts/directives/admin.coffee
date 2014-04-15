@@ -91,7 +91,9 @@ angular.module('movistarApp')
     link: (scope, el, attrs, ngModel) ->
       el.find('input[type="file"]').on 'change', (e) ->
         el.find('.edit-avatar-user').css 'display', 'none'
-        el.find('#loader').css 'display', 'block'
+        el.find('#loader').css
+          'display': 'block'
+          'position': 'absolute'
         input = angular.element(e.target)
         filepickerApi.storeConvert input[0].files[0], { width: 80, height: 80, fit: 'scale', align: 'face' }, (err, res) ->
           ngModel.$setViewValue(res.url)
