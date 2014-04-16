@@ -6,7 +6,10 @@
               <div class="ico {{ solicitude.state | StateIcons }}"></div>
               <span>{{ solicitude.state | StateSolicitude }}</span>
             </li>
-            <li class="last" ng-if="solicitude.priority"><span>Prioridad: {{ solicitude.priority | Priority }}</span></li>
+            <li class="last" ng-if="solicitude.priority">
+              <div class="ico {{ solicitude.priority | PriorityIcons }}"></div>
+              <span>{{ solicitude.priority | Priority }}</span>
+            </li>
         </ul>
     </div>
 </div>

@@ -70,14 +70,14 @@ angular.module("movistarApp")
   .factory 'StateIconsData', ->
     icons =
       QUEUE_VALIDATION: "val"
-      QUEUE_ALLOCATION: "esp"
-      CANCEL: ""
+      QUEUE_ALLOCATION: "asi"
+      CANCEL: "can"
       QUEUE_PROVIDER: "epr"
       PROCCESS: "pro"
       QUEUE_VALIDATION_MANAGER: "valg"
       PAUSE: "pau"
-      REJECTED_BY_MANAGER: "recg"
-      OK_BY_MANAGER: "ceg"
+      REJECTED_BY_MANAGER: "aceg"
+      OK_BY_MANAGER: "recg"
       QUEUE_VALIDATION_CLIENT: "valc"
       REJECTED_BY_CLIENT: "recc"
       OK_BY_CLIENT: "acec"
@@ -117,6 +117,26 @@ angular.module("movistarApp")
     return {
       getArray: () ->
         _makeArray()
+      get: (key) ->
+        _get(key)
+      getAll: () ->
+        _getAll()
+    }
+
+  .factory 'PriorityIconData', ->
+    icons =
+      CRITIQUE: 'cri'
+      HIGH: 'alt'
+      AVERAGE: 'med'
+      DECLINE: 'baj'
+
+    _get = (key) ->
+      icons[key]
+
+    _getAll = () ->
+      icons
+
+    return {
       get: (key) ->
         _get(key)
       getAll: () ->

@@ -17,6 +17,10 @@ angular.module("movistarApp")
     (key) ->
       StateIconsData.get(key)
 
+  .filter 'PriorityIcons', (PriorityIconData) ->
+    (key) ->
+      PriorityIconData.get(key)
+
   .filter 'InvolvedRole', ->
     (key) ->
       role =

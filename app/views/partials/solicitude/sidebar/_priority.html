@@ -1,14 +1,9 @@
 <div id="prioridad" class="sidebox">
   <h3>Prioridad</h3>
   <ul class="bold">
-    <li>
-      <a href="javascript:{}" ng-click="filter('', '', '', '')">
-        Todos
-        <span class="round light">{{ priorityGroups.total }}</span>
-      </a>
-    </li>
     <li ng-repeat="p in priorities">
       <a href="javascript:{}" ng-click="filter('', '', p.id, '')">
+        <div class="ico {{ priorityIcons[p.id] }}"></div>
         {{ p.name }}
         <span class="round light">{{ priorityGroups[p.id] || 0 }}</span>
       </a>

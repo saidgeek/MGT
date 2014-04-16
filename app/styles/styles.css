@@ -474,6 +474,8 @@ h4{ font-size:  1.154em;}
 #estado ul li .ico.valc{ background-position: -400px 0;}
 #estado ul li .ico.acec{ background-position: -380px 0;}
 #estado ul li .ico.recc{ background-position: -360px 0;}
+#estado ul li .ico.can{ background-position: -500px 0;}
+#estado ul li .ico.asi{ background-position: -520px 0;}
 
 
 #estado ul li:hover .ico.tod, #estado ul li.active .ico.tod{ background-position: 0px -20px;}
@@ -491,6 +493,19 @@ h4{ font-size:  1.154em;}
 #estado ul li:hover .ico.valc, #estado ul li.active .ico.valc{ background-position: -400px -20px;}
 #estado ul li:hover .ico.acec, #estado ul li.active .ico.acec{ background-position: -380px -20px;}
 #estado ul li:hover .ico.recc, #estado ul li.active .ico.recc{ background-position: -360px -20px;}
+#estado ul li:hover .ico.can, #estado ul li.active .ico.can{ background-position: -500px -20px;}
+#estado ul li:hover .ico.asi, #estado ul li.active .ico.asi{ background-position: -520px -20px;}
+
+/* prioridad*/
+#prioridad ul li .ico.cri{ background-position: -480px 0;}
+#prioridad ul li .ico.alt{ background-position: -420px 0;}
+#prioridad ul li .ico.med{ background-position: -440px 0;}
+#prioridad ul li .ico.baj{ background-position: -460px 0;}
+
+#prioridad ul li:hover .ico.cri, #prioridad ul li.active .ico.cri{ background-position: -480px -20px;}
+#prioridad ul li:hover .ico.alt, #prioridad ul li.active .ico.alt{ background-position: -420px -20px;}
+#prioridad ul li:hover .ico.med, #prioridad ul li.active .ico.med{ background-position: -440px -20px;}
+#prioridad ul li:hover .ico.baj, #prioridad ul li.active .ico.baj{ background-position: -460px -20px;}
 
 /* estado categoria hover-active */
 #estado ul li:hover, #estado ul li.active,
@@ -1244,6 +1259,15 @@ ul.otros-datos li.last{
 .ico.pau{ background-position: -96px 0;}
 .ico.fin{ background-position: -112px 0;}
 
+.ico.valg{ background-position: -368px 0;}
+.ico.aceg{ background-position: -384px 0;}
+.ico.recg{ background-position: -400px 0;}
+.ico.valc{ background-position: -448px 0;}
+.ico.acec{ background-position: -432px 0;}
+.ico.recc{ background-position: -416px 0;}
+.ico.can{ background-position: -528px 0;}
+.ico.asi{ background-position: -544px 0;}
+
 .active .ico.tim, a:hover .ico.tim{    background-position: 0px -16px;}
 .active .ico.val, a:hover .ico.val{    background-position: -16px -16px;}
 .active .ico.epr, a:hover .ico.epr{    background-position: -32px -16px;}
@@ -1252,6 +1276,26 @@ ul.otros-datos li.last{
 .active .ico.atr, a:hover .ico.atr{    background-position: -80px -16px;}
 .active .ico.pau, a:hover .ico.pau{    background-position: -96px -16px;}
 .active .ico.fin, a:hover .ico.fin{    background-position: -112px -16px;}
+
+.active .ico.valg, a:hover .ico.valg{ background-position: -368px -16px;}
+.active .ico.aceg, a:hover .ico.aceg{ background-position: -384px -16px;}
+.active .ico.recg, a:hover .ico.recg{ background-position: -400px -16px;}
+.active .ico.valc, a:hover .ico.valc{ background-position: -448px -16px;}
+.active .ico.acec, a:hover .ico.acec{ background-position: -432px -16px;}
+.active .ico.recc, a:hover .ico.recc{ background-position: -416px -16px;}
+.active .ico.can, a:hover .ico.can{ background-position: -528px -16px;}
+.active .ico.asi, a:hover .ico.asi{ background-position: -544px -16px;}
+
+/*prioridad*/
+.ico.cri{ background-position: -512px 0;}
+.ico.alt{ background-position: -464px 0;}
+.ico.med{ background-position: -480px 0;}
+.ico.baj{ background-position: -496px 0;}
+
+.active .ico.cri, a:hover .ico.cri{ background-position: -512px -16px;}
+.active .ico.alt, a:hover .ico.alt{ background-position: -464px -16px;}
+.active .ico.med, a:hover .ico.med{ background-position: -480px -16px;}
+.active .ico.baj, a:hover .ico.baj{ background-position: -496px -16px;}
 
 /* menu middle - botones */
 .ico.com { background-position: -160px 0;}

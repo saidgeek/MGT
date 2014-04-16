@@ -4,7 +4,7 @@
           <ul>
               <li ng-if="solicitude.duration"><div class="ico tim"></div><p>Quedan <span>5 días</span></p></li>
               <li><div class="ico {{ solicitude.state | StateIcons }}"></div><p>{{ solicitude.state | StateSolicitude }}</p></li>
-              <li class="last" ng-if="solicitude.priority">Prioridad: <span>{{ solicitude.priority | Priority }}</span></li>
+              <li class="last" ng-if="solicitude.priority"><div class="ico {{ solicitude.priority | PriorityIcons }}"></div><p>{{ solicitude.priority | Priority }}</p></li>
           </ul>
           <h4>{{ solicitude.ticket.title }}</h4>
           <ul>

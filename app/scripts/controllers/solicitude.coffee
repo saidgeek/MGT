@@ -1,12 +1,13 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'SidebarCtrl', ($scope, SolicitudeFactory, $rootScope, StateData, StateIconsData, PriorityData, CategoryFactory, UserFactory) ->
+  .controller 'SidebarCtrl', ($scope, SolicitudeFactory, $rootScope, StateData, StateIconsData, PriorityData, PriorityIconData, CategoryFactory, UserFactory) ->
     $scope.statesGroups = null
     $scope.priorityGroups = null
     $scope.errors = {}
     $scope.states = StateData.getArray()
     $scope.statesIcons = StateIconsData.getAll()
+    $scope.priorityIcons = PriorityIconData.getAll()
     $scope.categories = null
     $scope.users = null
 
