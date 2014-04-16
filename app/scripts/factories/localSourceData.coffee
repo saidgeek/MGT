@@ -38,11 +38,11 @@ angular.module("movistarApp")
       CANCEL: "Cancelada" # el editor puede rechazar la solicitud
       QUEUE_PROVIDER: "Espera de proveedor"
       PROCCESS: "En proceso"
-      QUEUE_VALIDATION_MANAGER: "Por validar (Gestor Contenido)"
       PAUSE: "Pausada"
-      REJECTED_BY_MANAGER: "Rechazada (Gestor Contenido)"
-      OK_BY_MANAGER: "Aceptada (Gestor Contenido)"
-      QUEUE_VALIDATION_CLIENT: "Por validar (Cliente)"
+      QUEUE_VALIDATION_MANAGER: "Por revisar (Gestor)"
+      REJECTED_BY_MANAGER: "Rechazada (Gestor)"
+      OK_BY_MANAGER: "Aceptada (Gestor)"
+      QUEUE_VALIDATION_CLIENT: "Por revisar (Cliente)"
       REJECTED_BY_CLIENT: "Rechazada (Cliente)"
       OK_BY_CLIENT: "Aceptada (Cliente)"
 
