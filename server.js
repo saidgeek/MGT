@@ -46,8 +46,12 @@ var app = express();
 var jobs = require('./lib/config/kue')(app);
 
 // Populate empty DB with sample data
-if (app.get('env') === 'development' || app.get('env') === 'test') {
+if (app.get('env') === 'development') {
   require('./lib/config/dummydata');
+};
+
+if (app.get('env') === 'test') {
+  require('./lib/config/dummydataTest');
 };
 
 if (app.get('env') === 'production' && config.dummyDataPro) {

@@ -9,18 +9,18 @@
     <h1>Unit Test Results</h1>
     <table cellspacing="0" cellpadding="0" border="0">
       <tr class="overview">
-        <td colspan="3" title="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36">Browser: Chrome 33.0.1750 (Mac OS X 10.9.2)</td>
+        <td colspan="3" title="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36">Browser: Chrome 34.0.1847 (Mac OS X 10.9.2)</td>
       </tr>
       <tr class="overview">
-        <td colspan="3">Timestamp: 2014-04-08T09:24:33</td>
+        <td colspan="3">Timestamp: 2014-04-17T06:25:27</td>
       </tr>
       <tr>
         <td colspan="3">
-          38 tests / 
+          62 tests / 
           0 errors / 
           0 failures / 
           0 skipped / 
-          runtime: 0.197s
+          runtime: 0.324s
         </td>
       </tr>
       <tr class="header">
@@ -29,22 +29,22 @@
         <td>Suite / Results</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.04s</td>
+        <td>Passed in 0.044s</td>
         <td>El scope categories deberia estar con 0 elementos</td>
         <td>Controller: CategoryCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.006s</td>
+        <td>Passed in 0.007s</td>
         <td>El scope categories se deberia cargar con mas de un elemento</td>
         <td>Controller: CategoryCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.005s</td>
+        <td>Passed in 0.008s</td>
         <td>El scope categories se carga con mas de un elemento despues de invokar el evento $emit &quot;reloadCategories&quot;</td>
         <td>Controller: CategoryCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.006s</td>
+        <td>Passed in 0.008s</td>
         <td>El scope categories se carga con mas de un elemento despues de invokar el evento $emit &quot;reloadCategories&quot; con role &quot;ROOT&quot;</td>
         <td>Controller: CategoryCtrl</td>
       </tr>
@@ -54,42 +54,127 @@
         <td>Controller: CategoryCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.006s</td>
+        <td>Passed in 0.009s</td>
         <td>El scope categories se carga con mas de un elemento despues de invokar el evento $emit &quot;updateCategories&quot; con role &quot;ROOT&quot;</td>
         <td>Controller: CategoryCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.004s</td>
+        <td>Passed in 0.006s</td>
         <td>El scope category deberia estar vacio</td>
         <td>Controller: CategorySaveCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.004s</td>
+        <td>Passed in 0.005s</td>
         <td>El scope category se deberia llenar despues de crear un usueario</td>
         <td>Controller: CategorySaveCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.003s</td>
+        <td>Passed in 0.004s</td>
         <td>El scope category deberia llenarse con los datos del usaurio encontrado con el id</td>
         <td>Controller: CategorySaveCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.003s</td>
+        <td>Passed in 0.004s</td>
         <td>El scope category deberia llenarse con los datos del usaurio actualizado</td>
         <td>Controller: CategorySaveCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.004s</td>
+        <td>Passed in 0.005s</td>
         <td>El scope category deberia estar vacio</td>
         <td>Controller: CategoryShowCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.007s</td>
+        <td>Passed in 0.004s</td>
         <td>El scope category deberia contenet un elemento al consultarle un id despues de invocar el evento $emit &quot;loadCategoryShow&quot;</td>
         <td>Controller: CategoryShowCtrl</td>
       </tr>
       <tr class="pass">
+        <td>Passed in 0.005s</td>
+        <td>El scope solicitudes deberia tener items</td>
+        <td>Controller: SolicitudeCtrl</td>
+      </tr>
+      <tr class="pass">
         <td>Passed in 0.004s</td>
+        <td>Al invocar el metodo del scope showModals deberia scope modals valer &quot;newSolicitude&quot;</td>
+        <td>Controller: SolicitudeCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.004s</td>
+        <td>Al invocar el $emit showModals el scope modals deberia valer &quot;newSolicitude&quot;</td>
+        <td>Controller: SolicitudeCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.005s</td>
+        <td>Al invocar el $emit hideModals el scope modals deberia valer &quot;&quot;</td>
+        <td>Controller: SolicitudeCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>Al invocar el $emit reloadSolicitudes el scope solicitude deberia tener mas de un item</td>
+        <td>Controller: SolicitudeCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>Al invocar el $emit uploadSolicitudes el scope solicitude deberia tener mas de un item</td>
+        <td>Controller: SolicitudeCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>El scope solicitude deberia estar vacio</td>
+        <td>Controller: SolicitudeSaveCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.005s</td>
+        <td>Se deberia guardar la solicitud y el scope alert deberia ser de tipo &quot;success&quot;</td>
+        <td>Controller: SolicitudeSaveCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.009s</td>
+        <td>El scope priorities deberia tener items</td>
+        <td>Controller: SolicitudeShowCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.004s</td>
+        <td>El scope segments deberia tener items</td>
+        <td>Controller: SolicitudeShowCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.004s</td>
+        <td>El scope sections deberia tener items</td>
+        <td>Controller: SolicitudeShowCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.004s</td>
+        <td>El scope categories deberia tener items</td>
+        <td>Controller: SolicitudeShowCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.004s</td>
+        <td>El scope provider deberia tener items</td>
+        <td>Controller: SolicitudeShowCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.004s</td>
+        <td>Al invocar el $emit loadSolicitudeShow el scopesolicitude no deberia estar vacio</td>
+        <td>Controller: SolicitudeShowCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.006s</td>
+        <td>Al invocar el metodo showTabs el scope tabs deberia valer &quot;comments&quot;</td>
+        <td>Controller: SolicitudeShowCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.004s</td>
+        <td>Se deberia crear un comentario en la solicitud</td>
+        <td>Controller: SolicitudeShowCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.008s</td>
+        <td>El estado de la solicitude deberia cambiar a &quot;QUEUE_ALLOCATION&quot;</td>
+        <td>Controller: SolicitudeShowCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.006s</td>
         <td>El scope users deberia estar con 0 elementos</td>
         <td>Controller: UserCtrl</td>
       </tr>
@@ -99,7 +184,7 @@
         <td>Controller: UserCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.004s</td>
+        <td>Passed in 0.003s</td>
         <td>El scope users se carga con mas de un elemento despues de invokar el evento $emit &quot;reloadUsers&quot;</td>
         <td>Controller: UserCtrl</td>
       </tr>
@@ -109,7 +194,7 @@
         <td>Controller: UserCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.004s</td>
+        <td>Passed in 0.003s</td>
         <td>El scope users se carga con mas de un elemento despues de invokar el evento $emit &quot;updateUsers&quot;</td>
         <td>Controller: UserCtrl</td>
       </tr>
@@ -119,22 +204,22 @@
         <td>Controller: UserCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.005s</td>
+        <td>Passed in 0.003s</td>
         <td>El scope user deberia estar vacio</td>
         <td>Controller: UserSaveCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.003s</td>
+        <td>Passed in 0.002s</td>
         <td>El scope roles deberia tener 6 elementos</td>
         <td>Controller: UserSaveCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.003s</td>
+        <td>Passed in 0.002s</td>
         <td>El scope user se deberia llenar despues de crear un usueario</td>
         <td>Controller: UserSaveCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.002s</td>
+        <td>Passed in 0.007s</td>
         <td>El scope user deberia llenarse con los datos del usaurio encontrado con el id</td>
         <td>Controller: UserSaveCtrl</td>
       </tr>
@@ -144,37 +229,37 @@
         <td>Controller: UserSaveCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.008s</td>
+        <td>Passed in 0.002s</td>
         <td>El scope user deberia estar vacio</td>
         <td>Controller: UserShowCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.004s</td>
+        <td>Passed in 0.003s</td>
         <td>El scope user deberia contenet un elemento al consultarle un id despues de invocar el evento $emit &quot;loaduserShow&quot;</td>
         <td>Controller: UserShowCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.003s</td>
+        <td>Passed in 0.005s</td>
         <td>El rootScope title debería decir &quot;Administración&quot;</td>
         <td>Controller: AdminCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.003s</td>
+        <td>Passed in 0.005s</td>
         <td>isActiveLink debería dar verdadero si el path es &quot;/admin&quot;</td>
         <td>Controller: AdminCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.004s</td>
+        <td>Passed in 0.006s</td>
         <td>El scope modals no deberia estar definido al inicio</td>
         <td>Controller: AdminCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.003s</td>
+        <td>Passed in 0.005s</td>
         <td>El scope modals deberia estar definido y con valor &quot;updateUser&quot; despues de invocar el $emit del evento &quot;showModals&quot;</td>
         <td>Controller: AdminCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.003s</td>
+        <td>Passed in 0.004s</td>
         <td>El scope de modals deberia tener un valor &quot;&quot; despues de invocar el $emit del evento &quot;hideModals&quot;</td>
         <td>Controller: AdminCtrl</td>
       </tr>
@@ -184,7 +269,7 @@
         <td>Controller: AdminCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.004s</td>
+        <td>Passed in 0.002s</td>
         <td>Si el path de la url es &quot;/admin/category&quot; el scope module deberia ser &quot;category&quot;</td>
         <td>Controller: AdminCtrl</td>
       </tr>
@@ -199,17 +284,52 @@
         <td>Controller: LoginCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.011s</td>
+        <td>Passed in 0.005s</td>
+        <td>El scope statesGroups deberia tener items</td>
+        <td>Controller: SidebarCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.005s</td>
+        <td>El scope priorityGroups deberia tener items</td>
+        <td>Controller: SidebarCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>El scope states deberia tener items</td>
+        <td>Controller: SidebarCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>El scope priorities deberia tener items</td>
+        <td>Controller: SidebarCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.004s</td>
+        <td>El scope categories deberia tener items</td>
+        <td>Controller: SidebarCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.004s</td>
+        <td>El scope users deberia tener items</td>
+        <td>Controller: SidebarCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.004s</td>
+        <td>Al invocar el $emit reloadStates deberia recargar los statesGroups y priorityGroup</td>
+        <td>Controller: SidebarCtrl</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.004s</td>
         <td>El scope groups deberia estar null</td>
         <td>Controller: SidebarUsersCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.004s</td>
+        <td>Passed in 0.003s</td>
         <td>El scope roles deberia estar definido y con tener 6 elementos</td>
         <td>Controller: SidebarUsersCtrl</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.003s</td>
+        <td>Passed in 0.014s</td>
         <td>El scope groups deberia tener mas de un elemento</td>
         <td>Controller: SidebarUsersCtrl</td>
       </tr>

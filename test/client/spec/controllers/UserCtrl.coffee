@@ -20,6 +20,12 @@ describe 'Controller: UserCtrl', () ->
       access:
         accessToken: "1nQydcFIQvqzF1tnRbqS2A=="
         clientToken: "ZaYrezhysR4S5Ki3D+vLPw=="
+      permissions:
+        module: ['SOLICITUDE', 'ADMINISTRATION'],
+        states: ['QUEUE_VALIDATION', 'QUEUE_ALLOCATION', 'CANCEL', 'QUEUE_PROVIDER', 'PROCCESS', 'QUEUE_VALIDATION_MANAGER', 'PAUSE', 'REJECTED_BY_MANAGER', 'OK_BY_MANAGER', 'QUEUE_VALIDATION_CLIENT', 'REJECTED_BY_CLIENT', 'OK_BY_CLIENT'],
+        roles:  ['ROOT', 'ADMIN', 'EDITOR', 'CONTENT_MANAGER', 'PROVIDER', 'CLIENT'],
+        solicitude: ['CREATE', 'UPDATE', 'DELETE'],
+        administration: ['CREATE', 'UPDATE', 'DELETE']
 
     UserCtrl = $controller 'UserCtrl', {
       '$scope': $scope

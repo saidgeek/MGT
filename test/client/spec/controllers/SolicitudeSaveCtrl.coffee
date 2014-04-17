@@ -1,14 +1,16 @@
 'use strict'
 
-describe 'Controller: SidebarUsersCtrl', () ->
+describe 'Controller: SolicitudeSaveCtrl', () ->
 
   beforeEach module 'movistarApp'
 
-  SidebarUsersCtrl = null
+  SolicitudeSaveCtrl = null
   $timeout = null
   $rootScope = null
   $scope = null
   $controller = null
+  _id = null
+  _form = null
 
   beforeEach inject ($injector) ->
     $timeout = $injector.get '$timeout'
@@ -27,25 +29,24 @@ describe 'Controller: SidebarUsersCtrl', () ->
         solicitude: ['CREATE', 'UPDATE', 'DELETE'],
         administration: ['CREATE', 'UPDATE', 'DELETE']
 
-    SidebarUsersCtrl = $controller 'SidebarUsersCtrl', {
+    _form =
+      '$validate': true
+
+    SolicitudeSaveCtrl = $controller 'SolicitudeSaveCtrl', {
       '$scope': $scope
     }
 
-  it 'El scope groups deberia estar null', () ->
-    expect(typeof $scope.groups).not.toBe 'undefined'
-    expect($scope.groups).toBe null
+  it 'El scope solicitude deberia estar vacio', () ->
+    expect($scope.solicitude).not.toBeUndefined()
+    expect($scope.solicitude).toEqual { }
 
-  it 'El scope roles deberia estar definido y con tener 6 elementos', () ->
-    expect(typeof $scope.roles).not.toBe 'undefined'
-    expect($scope.roles.length).toBe 6
-
-  it 'El scope groups deberia tener mas de un elemento',  () ->
+  it 'Se deberia guardar la solicitud y el scope alert deberia ser de tipo "success"', () ->
+    $scope.solicitude =
+      ticket:
+        title: 'test'
+        description: 'test'
+    $scope.create(_form)
     $timeout () ->
-      expect($scope.groups).toBeGreaterThan 1
-    , 1
-
-  it 'El scope groups deberia tener mas de un elemento despues de invokar el $emit "reloadGroups"', () ->
-    $rootScope.$emit 'reloadGroups'
-    $timeout () ->
-      expect($scope.groups).toBeGreaterThan 1
+      expect(typeof $scope.alert.type).not.toBeUndefined()
+      ecpect($scope.alert.type).toBe 'success'
     , 1

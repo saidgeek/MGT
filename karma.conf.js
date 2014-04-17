@@ -17,9 +17,9 @@ module.exports = function(config) {
       'app/lib/angular-cookies/angular-cookies.js',
       'app/lib/angular-sanitize/angular-sanitize.js',
       'app/lib/angular-route/angular-route.js',
+      'app/lib/angular-confirm-click/dist/confirmClick.js',
       'app/scripts/*.coffee',
       'app/scripts/**/*.coffee',
-      'test/client/mock/**/*.coffee',
       'test/client/spec/**/*.coffee'
     ],
     reporters: ['progress', 'html'],
