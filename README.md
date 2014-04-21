@@ -3,6 +3,9 @@ MGT
 
 Requisitos de sistema para el ambiente de desarrollo
 ----------------------------------------------------
+
+  > Paginas de referencia a las instalación en windows son solo una referencia
+
 + NVM: https://github.com/creationix/nvm (solo para mac o linux)
 
   > NVM es un manejador de versiones para node, este permite poder tener mas de una version de node instalada
@@ -42,5 +45,46 @@ Requisitos de sistema para el ambiente de desarrollo
     http://docs.mongodb.org/manual/tutorial/install-mongodb-on-windows/
 
 + Redis: http://redis.io/
+
+  ### Instalación con brew (mac o linux):
+
+  ``
+    $ brew install redis
+  ``
+
+  ### Instalación en windows
+    http://www.codeproject.com/Articles/715967/Running-Redis-as-a-Windows-Service
+
 + Bower: http://bower.io/
+
+  > Esto es cuando ya esta instalado nodejs
+
+  ### instalación:
+
+  ``
+    $ npm install bower -g
+  ``
+
 + GruntJS: http://gruntjs.com/
+
+  > Esto es cuando ya esta instalado nodejs
+
+  ### instalación:
+
+  ``
+    $ npm install grunt -g
+  ``
+
+Pasos para ejecutar el projecto
+-------------------------------
+
+  > Entrar a la carpeta del proyecto para realizar los siguientes pasos
+
+  + En el caso de usar ***NVM***:
+    ``
+      $ nvm use
+    ``
+  + Ejecutar el servidor
+    ``
+      $ grunt serve
+    ``
