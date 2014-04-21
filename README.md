@@ -10,7 +10,7 @@ Requisitos de sistema para el ambiente de desarrollo
 
   ### Instalación:
     ``
-      curl https://raw.github.com/creationix/nvm/v0.5.0/install.sh | sh
+      $ curl https://raw.github.com/creationix/nvm/v0.5.0/install.sh | sh
     ``
 
 + NodeJs: http://nodejs.org/
@@ -20,7 +20,7 @@ Requisitos de sistema para el ambiente de desarrollo
   ### Instalación al usar NVM:
 
   ``
-    nvm install 0.10.25
+    $ nvm install 0.10.25
   ``
 
   ### instalación:
@@ -29,6 +29,18 @@ Requisitos de sistema para el ambiente de desarrollo
 
 
 + MongoDB: https://www.mongodb.org/
+
+  ### Instalación con brew (mac o linux):
+
+  ``
+    $ brew install mongodb
+    # create db directory
+    $ mkdir /usr/local/db
+  ``
+
+  ### Instalación en windows:
+    http://docs.mongodb.org/manual/tutorial/install-mongodb-on-windows/
+
 + Redis: http://redis.io/
 + Bower: http://bower.io/
 + GruntJS: http://gruntjs.com/
