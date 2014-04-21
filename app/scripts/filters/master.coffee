@@ -69,3 +69,12 @@ angular.module("movistarApp")
         TV: 'Televisión'
 
       sections[key]
+
+  .filter 'Notification', ->
+    (key) ->
+      notifications =
+        QUEUE_VALIDATION: 'Ha enviado nueva solicitud'
+        QUEUE_ALLOCATION: 'Ha asignado una solicitud'
+        QUEUE_PROVIDER: 'Ha asignado una solicitud'
+
+      notifications[key]

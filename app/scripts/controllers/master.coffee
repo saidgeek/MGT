@@ -5,6 +5,7 @@ angular.module('movistarApp')
     $rootScope.title = "Gestor de tareas"
     $scope.masterModals = null
     $rootScope.alert = {}
+    $scope.notifications = null
 
     if $rootScope.currentUser && !$rootScope.currentUser.confirmAt
       $location.path '/change/password'
@@ -21,8 +22,13 @@ angular.module('movistarApp')
     $scope.isActive = (path) ->
       path is $location.$$path
 
-  .controller 'NotificationsCtrl', ($rootScope, $scope) ->
+  .controller 'NotificationsCtrl', ($rootScope, $scope, NotificationFactory) ->
     $scope.notification = {}
+
+    NotificationFactory.index (err, notifications) ->
+      if !err
+        console.log 'notifications: ', notifications
+        $scope.notifications = notifications
 
   .controller 'OptionsCtrl', ($rootScope, $scope, Auth, $location) ->
 

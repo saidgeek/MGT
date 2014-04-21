@@ -32,11 +32,6 @@ require(modelsPath + '/category');
 require(modelsPath + '/notification');
 require(modelsPath + '/report');
 require(modelsPath + '/solicitude');
-// fs.readdirSync(modelsPath).forEach(function (file) {
-//   if (/(.*)\.(js$|coffee$)/.test(file)) {
-//     require(modelsPath + '/' + file);
-//   }
-// });
 
 // Passport Configuration
 var passport = require('./lib/config/passport');

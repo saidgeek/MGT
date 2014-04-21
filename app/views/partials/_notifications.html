@@ -1,5 +1,5 @@
 <a href="javascript:{}" class="sub-not" data-sgk-submenu-notifications ><img src="images/bell.png"/>
-    <div class="cant">86</div>
+    <div class="cant">{{ notifications.length || 0}}</div>
 </a>
 <div id="submenu" class="notifications">
     <div id="notificacion" class="wrap round hide">
@@ -8,18 +8,19 @@
             <h3>Notificaciones</h3>
             <a href="javascript:{}">Ver todas</a>
         </div>
-        <div class="wrap">
+        <div class="wrap" ng-repeat="notify in notifications">
             <div class="t-c avatar">
-                <img src="images/img-user-female.jpg"/>
+                <img ng-src="{{ notify.from.profile.avatar || 'images/avatar-user.png' }}"/>
                 <div class="avnotif"></div>
             </div>
             <div class="t-c">
                 <a href="javascript:{}" class="cerrar">X</a>
                 <p class="avatar bold">
-                    <span>Ana Espinoza</span>
-                    <span class="regular">Jefe de Lorem Ipsum</span>
+                    <span>{{ notify.from.profile.firstName }} {{ notify.from.profile.lastName }}</span>
+                    <span class="regular">{{ notify.from.role | RoleName }}</span>
                 </p>
-                <p>Ha enviado nueva solicitud</p>
+                <br>
+                <p>{{ notify._type | Notification }}</p>
             </div>
         </div>
     </div><!-- notificaciones -->
