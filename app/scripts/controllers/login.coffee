@@ -17,8 +17,11 @@ angular.module('movistarApp')
           remember: $scope.user.remember
         )
         .then ->
-          # Logged in, redirect to home
-          $location.path '/'
+          if !$rootScope.currentUser.confirmAt
+            $location.path '/change/password'
+          else
+            # Logged in, redirect to home
+            $location.path '/'
         .catch (err) ->
           err = err.data;
           $scope.errors.other = err;

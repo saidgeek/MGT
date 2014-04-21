@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link ng-if="!currentUser" rel="stylesheet" href="styles/auth.css" />
+    <link ng-if="!currentUser || !currentUser.confirmAt" rel="stylesheet" href="styles/auth.css" />
     <link ng-if="currentUser" rel="stylesheet" href="styles/fonts.css" />
     <link ng-if="currentUser" rel="stylesheet" href="styles/styles.css" />
     <link ng-if="currentUser" rel="stylesheet" href="styles/jquery.mCustomScrollbar.css" />
@@ -67,6 +67,7 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/navbar.js"></script>
         <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/change.js"></script>
         <script src="scripts/controllers/recovery.js"></script>
         <script src="scripts/controllers/settings.js"></script>
 

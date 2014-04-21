@@ -2,14 +2,14 @@
 
 angular.module('movistarApp')
   .factory 'Auth', ($location, $rootScope, Session, UserService, $cookieStore) ->
-    
+
     # Get currentUser from cookie
     $rootScope.currentUser = $cookieStore.get('user') or null
     $cookieStore.remove 'user'
-    
+
     ###
     Authenticate user
-    
+
     @param  {Object}   user     - login info
     @param  {Function} callback - optional
     @return {Promise}
@@ -27,10 +27,10 @@ angular.module('movistarApp')
         cb err
       ).$promise
 
-    
+
     ###
     Unauthenticate user
-    
+
     @param  {Function} callback - optional
     @return {Promise}
     ###
@@ -52,39 +52,46 @@ angular.module('movistarApp')
       , (err) ->
         cb err
       ).$promise
-    
+
     ###
     Change password
-    
+
     @param  {String}   oldPassword
     @param  {String}   newPassword
     @param  {Function} callback    - optional
     @return {Promise}
     ###
-    changePassword: (oldPassword, newPassword, callback) ->
+    changePassword: (user, callback) ->
+      console.log user
+      _clientToken = $rootScope.currentUser.access.clientToken
+      _accessToken = $rootScope.currentUser.access.accessToken
       cb = callback or angular.noop
-      UserService.update(
-        oldPassword: oldPassword
-        newPassword: newPassword
+      UserService.change(
+        clientToken: _clientToken
+        accessToken: _accessToken
+        oldPassword: user.oldPassword
+        newPassword: user.newPassword
+        confirmPassword: user.confirmPassword
+        id: user.id
       , (user) ->
         cb user
       , (err) ->
         cb err
       ).$promise
 
-    
+
     ###
     Gets all available info on authenticated user
-    
+
     @return {Object} user
     ###
     currentUser: ->
       UserService.get()
 
-    
+
     ###
     Simple check to see if a user is logged in
-    
+
     @return {Boolean}
     ###
     isLoggedIn: ->

@@ -18,6 +18,10 @@ angular.module('movistarApp', [
         templateUrl: 'partials/recovery'
         controller: 'RecoveryCtrl'
 
+      .when '/change/password',
+        templateUrl: 'partials/change'
+        controller: 'ChangeCtrl'
+
       .when '/admin',
         templateUrl: 'partials/admin/main'
         controller: 'AdminCtrl'

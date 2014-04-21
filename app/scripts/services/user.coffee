@@ -3,6 +3,20 @@
 angular.module("movistarApp")
   .factory "UserService", ($resource) ->
     $resource "", {},
+
+      change:
+        method: 'PUT'
+        params:
+          clientToken: '@clientToken'
+          accessToken: '@accessToken'
+          id: '@id'
+        data:
+          oldPassword: '@oldPassword'
+          newPassword: '@newPassword'
+          confirmPassword: '@confirmPassword'
+        url: '/api/v1/user/:id/change/password'
+
+
       update:
         method: "PUT"
         params:

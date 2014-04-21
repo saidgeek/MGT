@@ -1,0 +1,55 @@
+<div class="bkg">
+  <div id="wrapper">
+
+    <div class="bienvenida">
+      <div class="logo">
+        <img src="images/movistar-logo.png" />
+      </div>
+      <p>
+        <strong>Por favor,</strong>crea tu nueva clave de ingreso
+      </p>
+    </div>
+
+    <div id="login">
+
+      <div id="alerta" class="round error" ng-show="submitted && (form.$invalid || errors.other.show )">
+        <p>Hay un error en el ingreso de sus datos, por favor revise si está correcta la información</p>
+      </div>
+
+      <form name="form" ng-submit="change(form)" novalidate>
+
+        <fieldset>
+            <label class="error" ng-show="submitted && (form.$error.required || errors.other.invalidPassword )">
+              * La contraseña no está correctamente ingresada
+            </label>
+            <input class="box round" type="password" id="Contrasena" name="oldPassword" ng-model="user.oldPassword" value="" placeholder="Contraseña actual" required>
+        </fieldset>
+
+        <fieldset>
+            <label class="error" ng-show="submitted && (form.$error.required || errors.other.invalidPassword )">
+              * La contraseña no está correctamente ingresada
+            </label>
+            <input class="box round" type="password" id="Contrasena" name="newPassword" ng-model="user.newPassword" value="" placeholder="Nueva contraseña" required>
+        </fieldset>
+
+        <fieldset>
+            <label class="error" ng-show="submitted && ( user.newPassword !== user.confirmPassword )">
+              * La contraseña no corresponde a la anteriormente ingresada
+            </label>
+            <input class="box round" type="password" id="Contrasena" name="confirmPassword" ng-model="user.confirmPassword" value="" placeholder="Confirmacion de contraseña" required>
+        </fieldset>
+
+        <div class="center">
+            <input class="submit round"  type="submit" value="Aceptar">
+        </div>
+
+      </form>
+    </div>
+
+    <!-- <div ng-include="'partials/navbar.html'"></div> -->
+
+  </div>
+  <div class="punta">
+      <img src="images/punta.png">
+  </div>
+</div>

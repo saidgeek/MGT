@@ -6,6 +6,9 @@ angular.module('movistarApp')
     $scope.masterModals = null
     $rootScope.alert = {}
 
+    if $rootScope.currentUser && !$rootScope.currentUser.confirmAt
+      $location.path '/change/password'
+
     _showModals = (modal) ->
       $scope.masterModals = modal
 
