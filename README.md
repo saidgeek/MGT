@@ -21,7 +21,6 @@ Requisitos de sistema para el ambiente de desarrollo
 
   ``
     nvm install 0.10.25
-
   ``
 
   ### instalación:
