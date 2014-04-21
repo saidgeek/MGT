@@ -14,7 +14,9 @@
     "jqueryui": "~1.10.4",
     "moment": "~2.5.1",
     "angular-confirm-click": "~0.0.1",
-    "jshashes": "~1.0.4"
+    "jshashes": "~1.0.4",
+    "jquery": "2.0.0",
+    "jquery-legacy": "jquery#1.9.1"
   },
   "devDependencies": {
     "angular-mocks": "1.2.11",
