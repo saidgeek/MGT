@@ -9,9 +9,7 @@ Requisitos de sistema para el ambiente de desarrollo
   > en el computador
 
   ### Instalación:
-    '''
-      curl https://raw.github.com/creationix/nvm/v0.5.0/install.sh | sh
-    '''
+    ```curl https://raw.github.com/creationix/nvm/v0.5.0/install.sh | sh ``
 
 + NodeJs: http://nodejs.org/
 + MongoDB: https://www.mongodb.org/
