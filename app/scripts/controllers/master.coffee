@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'CssCtrl', ($rootScope, $scope, $location) ->
+  .controller 'CssCtrl', ($rootScope, $scope, $location, IO) ->
     $rootScope.title = "Gestor de tareas"
     $scope.masterModals = null
     $rootScope.alert = {}
@@ -22,13 +22,19 @@ angular.module('movistarApp')
     $scope.isActive = (path) ->
       path is $location.$$path
 
-  .controller 'NotificationsCtrl', ($rootScope, $scope, NotificationFactory) ->
+  .controller 'NotificationsCtrl', ($rootScope, $scope, NotificationFactory, IO) ->
     $scope.notification = {}
 
-    NotificationFactory.index (err, notifications) ->
-      if !err
-        console.log 'notifications: ', notifications
-        $scope.notifications = notifications
+    IO.emit 'register.notifications', id: $rootScope.currentUser.id
+    IO.on 'reload.notifications', () => _load()
+
+    _load = () ->
+      NotificationFactory.index (err, notifications) ->
+        if !err
+          console.log 'notifications: ', notifications
+          $scope.notifications = notifications
+
+    _load()
 
   .controller 'OptionsCtrl', ($rootScope, $scope, Auth, $location) ->
 

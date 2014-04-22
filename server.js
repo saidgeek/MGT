@@ -4,7 +4,12 @@ var express = require('express'),
     path = require('path'),
     fs = require('fs'),
     mongoose = require('mongoose'),
-    mandrill = require('mandrill-api/mandrill');
+    mandrill = require('mandrill-api/mandrill'),
+    app = express(),
+    http = require('http'),
+    server = http.createServer(app);
+
+global.io = require('socket.io').listen(server);
 
 /**
  * Main application file
@@ -36,9 +41,17 @@ require(modelsPath + '/solicitude');
 // Passport Configuration
 var passport = require('./lib/config/passport');
 
-var app = express();
 
 var jobs = require('./lib/config/kue')(app);
+
+// Socket.io
+global.io.sockets.on('connection', function (sckt) {
+  sckt.on('register.notifications', function (data) {
+    if (typeof(data) !== 'undefined' && typeof(data.id) !== 'undefined') {
+      sckt.join('notifications/'+data.id);
+    }
+  });
+});
 
 // Populate empty DB with sample data
 if (app.get('env') === 'development') {
@@ -60,7 +73,7 @@ require('./lib/config/express')(app);
 require('./lib/routes')(app);
 
 // Start server
-app.listen(config.port, function () {
+server.listen(config.port, function () {
   console.log('Express server listening on port %d in %s mode', config.port, app.get('env'));
 });
 

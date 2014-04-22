@@ -6,7 +6,8 @@ angular.module('movistarApp', [
   'ngSanitize',
   'ngRoute',
   'filepicker',
-  'confirmClick'
+  'confirmClick',
+  'btford.socket-io'
 ])
   .config ($routeProvider, $locationProvider, $httpProvider) ->
     $httpProvider.interceptors.push 'noCacheInterceptor'
