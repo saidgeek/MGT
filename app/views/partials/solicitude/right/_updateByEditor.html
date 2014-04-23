@@ -1,5 +1,5 @@
 <div class="full">
-    <div data-sgk-overflow class="overflow" data-sgk-overflow >
+    <div data-sgk-overflow class="overflow">
         <div class="padding">
             <div class="title">
                 <h1>{{ solicitude.ticket.title }}</h1>
@@ -73,7 +73,7 @@
                     <ul>
                         <li><a href="javascript:{}">Limpiar todos los Datos</a></li>
                     </ul>
-                    <button type="submit" class="boton1 round"><span></span>Validar Solicitud</button>
+                    <button type="submit" class="boton1 round" ng-click="nextState('queue_allocation')"><span></span>Validar Solicitud</button>
                 </fieldset>
             </form>
         </div>

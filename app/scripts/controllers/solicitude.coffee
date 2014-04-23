@@ -161,7 +161,10 @@ angular.module('movistarApp')
         $scope.solicitude.tag = ''
         return false
 
-    $scope.update = (form) ->
+    $scope.nextState = (state) =>
+      $scope.solicitude.nextState = state
+
+    $scope.update = (form) =>
       if form.$valid
         SolicitudeFactory.update $scope.solicitude._id, $scope.solicitude, (err, solicitude) ->
           if err
