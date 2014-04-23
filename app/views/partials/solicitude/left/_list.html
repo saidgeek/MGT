@@ -19,7 +19,7 @@
       </div>
       <div class="t-c stats">
           <ul>
-              <li class="light first"><span class="round">Code: {{ solicitude.code }}</span><a href="javascript:{}" class="ico sta"></a></li>
+              <li class="light first"><span class="round">Code: {{ solicitude.code }}</span><a ng-if="false" href="javascript:{}" class="ico sta"></a></li>
               <li class="light">Sol. <span>{{ solicitude.createdAt | DateFormat }}</span></li>
               <li class="light" ng-if="solicitude.startedAt">Ini. <span>{{ solicitude.startedAt | DateFormat }}</span></li>
           </ul>
