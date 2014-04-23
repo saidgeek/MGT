@@ -168,7 +168,11 @@ angular.module('movistarApp')
       if form.$valid
         SolicitudeFactory.update $scope.solicitude._id, $scope.solicitude, (err, solicitude) ->
           if err
-            $scope.errors = err
+            $rootScope.alert =
+              type: 'error'
+              content: """
+                          Ha ocurrido un error al crear la solicitud.
+                       """
           else
             $rootScope.alert =
               type: 'success'

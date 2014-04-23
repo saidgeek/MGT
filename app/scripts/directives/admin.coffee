@@ -77,11 +77,12 @@ angular.module('movistarApp')
             when 'error'
               $element.addClass('error')
           $element.slideToggle(400)
-          $timeout () ->
-            if $element.css('display') is 'block'
-              $element.slideToggle(400)
-              $rootScope.alert = {}
-          , 1000
+          if $rootScope.alert.type is 'success'
+            $timeout () ->
+              if $element.css('display') is 'block'
+                $element.slideToggle(400)
+                $rootScope.alert = {}
+            , 2000
 
 
   .directive 'sgkFileUploadUser', (filepickerApi, $timeout) ->
