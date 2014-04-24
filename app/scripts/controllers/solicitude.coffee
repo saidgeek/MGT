@@ -171,7 +171,7 @@ angular.module('movistarApp')
             $rootScope.alert =
               type: 'error'
               content: """
-                          Ha ocurrido un error al crear la solicitud.
+                          Ha ocurrido un error al actualizar la solicitud.
                        """
           else
             $rootScope.alert =
@@ -198,6 +198,11 @@ angular.module('movistarApp')
         SolicitudeFactory.create $scope.solicitude, (err, solicitude) ->
           if err
             $scope.errors = err
+            $rootScope.alert =
+              type: 'error'
+              content: """
+                          Ha ocurrido un error al crear la solicitud.
+                       """
           else
             $rootScope.$emit 'reloadSolicitudes', '', '', '', ''
             $scope.$emit 'hideModals'

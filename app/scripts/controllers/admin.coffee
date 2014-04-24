@@ -113,6 +113,11 @@ angular.module('movistarApp')
         UserFactory.update $scope.user._id, $scope.user, (err, user) ->
           if err
             $scope.errors = err
+            $rootScope.alert =
+              type: 'error'
+              content: """
+                          Ha ocurrido un error al actualizar el usuario.
+                       """
           else
             if $rootScope.currentUser.id is user._id
               $rootScope.currentUser.avatar = user.profile.avatar
@@ -131,6 +136,11 @@ angular.module('movistarApp')
         UserFactory.save $scope.user, (err, user) ->
           if err
             $scope.errors = err
+            $rootScope.alert =
+              type: 'error'
+              content: """
+                          Ha ocurrido un error al crear el usuario.
+                       """
           else
             $rootScope.$emit 'updateUsers'
             $scope.$emit 'hideModals', true
@@ -220,6 +230,11 @@ angular.module('movistarApp')
         CategoryFactory.update $scope.category._id, $scope.category, (err, category) ->
           if err
             $scope.errors = err
+            $rootScope.alert =
+              type: 'error'
+              content: """
+                          Ha ucurrido un error al actualizar la clasificación.
+                       """
           else
             $rootScope.$emit 'reloadCategories', category
             $scope.$emit 'hideModals', true
@@ -234,6 +249,11 @@ angular.module('movistarApp')
         CategoryFactory.save $scope.category, (err, category) ->
           if err
             $scope.errors = err
+            $rootScope.alert =
+              type: 'error'
+              content: """
+                          Ha ucurrido un error al crear la clasificación.
+                       """
           else
             $rootScope.$emit 'updateCategory', category
             $scope.$emit 'hideModals', true
