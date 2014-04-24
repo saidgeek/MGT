@@ -1,22 +1,34 @@
 <div data-sgk-resize data-sgk-overflow data-max-width="55" data-left-width="460" data-type="users"></div>
 <div id="side" data-ng-switch="module">
-  <div class="relativo">
-    <div id="perfil" class="sidebox">
-      <div data-ng-include="'partials/_profile'"></div><!-- perfil sidebox -->
+  <div class="thetable">
+    
+    <div class="therowAlt">
+      <div class="thecell">
+        <div id="perfil" class="sidebox">
+          <div data-ng-include="'partials/_profile'"></div><!-- perfil sidebox -->
+        </div>
+
+        <div id="crear" class="sidebox">
+          <div data-ng-switch-default>
+            <a href="javascript:{}" class="boton1 round" data-ng-click="showModals('newUser')"><span class="admin"></span>Crear nuevo usuario</a>
+          </div>
+          <div data-ng-switch-when="category">
+            <a class="boton1 round" href="javascript:{}" data-ng-click="showModals('newCategory')">Crear nueva clasificación</a>
+          </div>
+        </div>        
+      </div>
     </div>
 
-    <div id="crear" class="sidebox">
-      <div data-ng-switch-default>
-        <a href="javascript:{}" class="boton1 round" data-ng-click="showModals('newUser')"><span class="admin"></span>Crear nuevo usuario</a>
-      </div>
-      <div data-ng-switch-when="category">
-        <a class="boton1 round" href="javascript:{}" data-ng-click="showModals('newCategory')">Crear nueva clasificación</a>
+    <div class="therow">
+      <div class="thecell">
+        <div class="relativo">
+          <div data-ng-switch-default>
+            <div data-ng-include="'partials/admin/user/_sidebar'" ng-controller="SidebarUsersCtrl"></div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div data-ng-switch-default>
-      <div data-ng-include="'partials/admin/user/_sidebar'" ng-controller="SidebarUsersCtrl"></div>
-    </div>
   </div>
 </div><!-- side -->
 

@@ -104,6 +104,7 @@ h4{ font-size:  1.154em;}
     line-height: 21px;
     padding: 7px 12px;
     height: 20px;
+    cursor: pointer;
 }
 .boton1 span {
     background: url(../images/sprite_side.png) no-repeat -240px 0px;
@@ -183,7 +184,7 @@ h4{ font-size:  1.154em;}
     left: 0;
     right: 0;
     bottom: 0;
-    top: 178px;
+    top: 0;
 }
 .sidebox{
     display: block;
@@ -821,6 +822,7 @@ h4{ font-size:  1.154em;}
     overflow: hidden;
     display: inline-block;
     float: left;
+    cursor: pointer;
 }
 .note.input .upload:hover {
     background-position: 0 -17px;
@@ -831,6 +833,7 @@ h4{ font-size:  1.154em;}
     height: 16px !important;
     opacity: 0 !important;
     overflow: hidden !important;
+    cursor: pointer;
 }
 
 
@@ -2519,4 +2522,18 @@ ul.menu-usuarios li a:hover{
 }
 .half ul.acciones li.aceptar a{
     background: #89ba14;
+}
+#side .thetable{
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+#side .thetable .therow{
+    display: block;
+    height: 100%;
+}
+#side .thetable .therow .thecell{
+    display: block;
+    vertical-align: top;
+    height: 100%;
 }

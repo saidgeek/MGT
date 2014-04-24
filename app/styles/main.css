@@ -89,6 +89,7 @@ fieldset div.upload {
     overflow: hidden;
     display: inline-block;
     float: left;
+    cursor: pointer;
 }
 fieldset div.upload:hover {
     background-position: 0 -17px;
@@ -99,6 +100,7 @@ fieldset div.upload input.att {
     height: 16px !important;
     opacity: 0 !important;
     overflow: hidden !important;
+    cursor: pointer;
 }
 
 fieldset ul.upload-list {
