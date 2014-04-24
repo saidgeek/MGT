@@ -2492,3 +2492,31 @@ ul.menu-usuarios li a:hover{
     -moz-border-radius: 50%;
     border-radius: 50%;
 }
+
+/*-- // ALGO DE CSS // --*/
+.half ul.acciones{
+    display: table;
+    vertical-align: middle;
+    /*width: 100%;*/
+}
+.half ul.acciones li{
+    padding: 7px;
+    display: table-cell;
+}
+.half ul.acciones li a{
+    padding: 7px 12px;
+    border-radius: 4px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    display: inline-block;
+    font: 0.923em 'proxima_nova_rgbold';
+    text-transform: uppercase;
+    color: #fff;
+}
+.half ul.acciones li.rechazar a{
+    background: #ff6b6b;
+}
+.half ul.acciones li.aceptar a{
+    background: #89ba14;
+}
