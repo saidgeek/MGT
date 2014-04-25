@@ -1,13 +1,32 @@
 'use strict'
 
 angular.module('movistarApp')
+  .directive 'sgkMedidaDetail', ($window, $rootScope, $timeout) ->
+    restrict: 'A'
+    link: (scope, el, attrs) ->
+      $timeout () ->
+        $timeout () ->
+          altR = el.height()
+          altFirst = el.find('.altFirst').height()
+          console.log altFirst
+          medida = altR - altFirst
+          angular.element('#right .medida').height(medida)
+          angular.element('#right .medida .ng-scope').height(medida)
+        , 1000
+      , 0
+  
   .directive 'sgkActive', ($window, $rootScope) ->
     restrict: 'A'
     link: (scope, el, attrs) ->
+      angular.element('ul.lista-estados').first().css 'display', 'block'
       el.on 'click', (e) ->
         angular.element('.note.round').removeClass 'active'
         angular.element(this).addClass 'active'
         angular.element('.note.round.active span.az').css {'display':'block'}
+        angular.element('.note-right h3').removeClass 'active'
+        angular.element('ul.lista-estados').slideUp 300
+        el.find('.note-right h3').toggleClass 'active'
+        el.parent().find('ul.lista-estados').slideToggle 300
 
   .directive 'sgkActiveSolicitude', ($window, $rootScope) ->
     restrict: 'A'

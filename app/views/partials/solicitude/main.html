@@ -51,22 +51,20 @@
 
     <div id="right" class="col ui-widget ui-widget-content" ng-controller="SolicitudeShowCtrl">
       <div data-sgk-alerts></div>
-      <div class="relativo" ng-switch="viewDetail">
+      <div class="relativo altura" ng-switch="viewDetail">
 
           <div ng-include="'partials/solicitude/right/_filter'"></div>
 
           <div ng-switch-default>
             <div class="full-heigth" data-sgk-half>
 
-              <div class="half-a">
-                  <div ng-include="'partials/solicitude/right/_detail'"></div>
-              </div>
-
-              <div class="half-b" ng-switch="tabs">
+              <div class="half-a" ng-switch="tabs">
                   <div ng-switch-default>
-                    <div ng-include="'partials/solicitude/right/_comments'"></div>
+                    <div ng-include="'partials/solicitude/right/_detail'"></div>
                   </div>
-                  <div ng-switch-when="documents">
+                  <div ng-switch-when="comments">
+                    <div ng-include="'partials/solicitude/right/_comments'"></div>
+                  </div>                  <div ng-switch-when="documents">
                     <div ng-include="'partials/solicitude/right/_documents'"></div>
                   </div>
                   <div ng-switch-when="involved">
@@ -82,7 +80,6 @@
               </div>
 
             </div>
-            <div ng-include="'partials/solicitude/right/_commentForm'"></div>
           </div>
 
           <div ng-switch-when="updateByEditor">

@@ -83,11 +83,11 @@ h4{ font-size:  1.154em;}
     -webkit-box-shadow: 0px 0px 16px 0px #bfccda;
     box-shadow:         0px 0px 16px 0px #bfccda;
 }
-.shadowup {
+/*.shadowup {
     -moz-box-shadow:    0px -8px 10px 0px #bfccda;
     -webkit-box-shadow: 0px -8px 10px 0px #bfccda;
     box-shadow:         0px -8px 10px 0px #bfccda;
-}
+}*/
 .shadowdown {
     -moz-box-shadow:    0px 8px 10px 0px #bfccda;
     -webkit-box-shadow: 0px 8px 10px 0px #bfccda;
@@ -610,7 +610,7 @@ h4{ font-size:  1.154em;}
 .note ul li{
     float: left;
     display: block;
-    border-right: 1px solid #9da9b9;
+    /*border-right: 1px solid #9da9b9;*/
     margin-right: 4px;
     padding-right: 4px;
 }
@@ -659,7 +659,7 @@ h4{ font-size:  1.154em;}
 }
 .note h4{
     display: block;
-    margin: 6px 0;
+    margin: 10px 0;
     color: #485e75;
 }
 .note .botones{
@@ -788,16 +788,17 @@ h4{ font-size:  1.154em;}
 
 /* zona comentarios */
 .note.input{
-    background: #e6ecf3;
+    /*background: #e6ecf3;
     position: absolute;
     bottom: 0;
-    right: 0;
+    right: 0;*/
     width: 100%;
     height: 160px;
     margin: 0;
+    background: none;
+    border:none;
 }
 .note.input form{
-    margin: 10px;
     border: 1px solid #d7e3f0;
 }
 .note.input textarea {
@@ -1072,7 +1073,7 @@ ul.otros-datos li.last{
 .full-heigth{
     position: absolute;
     top: 45px;
-    bottom: 162px;
+    bottom: 0;
     left: 0;
     right: 0;
 }
@@ -1083,11 +1084,15 @@ ul.otros-datos li.last{
     top: 0;
     left: 0;
     right: 0;
+    bottom:40px;
+    overflow: hidden;
 }
 .half-b{
     bottom: 0;
     left: 0;
     right: 0;
+    height: 0;
+    overflow: hidden;
 }
 .half-a .padding, .half-b .padding, .full .padding{
     padding: 20px;
@@ -1225,8 +1230,8 @@ ul.otros-datos li.last{
     position: absolute;
     left: 0;
     right: 0;
-    top: 50%;
-    margin: -21px 0 0 0;
+    bottom:0;
+    margin:0;
     border-top: 1px solid #d7e3f0;
     border-bottom: 1px solid #d7e3f0;
     height: 40px;
@@ -1589,17 +1594,18 @@ ul.menu-usuarios li a:hover{
     color: #00b8cf;
 }
 #right .overflow.admin{
-    top: 242px;
+    top: 0;
     background: #e4eaf1;
 }
 .note-left, .note-right{
     padding: 18px;
-    display: table-cell;
-    width: 50%;
+    display:block;
+    width: auto;
     vertical-align: top;
 }
 .note .note-right{
     background: #f2f6fa;
+    border-radius:0 0 4px 4px;
 }
 .note .note-right ul li{
     float: none;
@@ -1629,7 +1635,26 @@ ul.menu-usuarios li a:hover{
     font-size: 1.154em;
     font-family: 'proxima_novasemibold';
     color: #9da9b9;
-    margin: 0 0 10px 0;
+    margin:0;
+    position: relative;
+}
+.note .note-right h3 span{
+    width: 8px;
+    height: 5px;
+    display: inline-block;
+    background: url(../images/down.png) no-repeat 0 -5px;
+    margin: 0;
+    position: absolute;
+    right:0;
+    top: 7px;
+}
+.note .note-right h3.active span{
+    background: url(../images/down.png) no-repeat -8px -5px;
+}
+
+.top-admin .note ul.lista-estados{
+    display: none;
+    margin: 10px 0 0 0;
 }
 .top-admin .note{
     display: table;
@@ -1686,6 +1711,7 @@ ul.menu-usuarios li a:hover{
 }
 .note.active .note-right{
     background: #222735;
+    border-radius: 0 0 4px 4px
 }
 
 .note.active .note-left ul.lista-opt li.img-user div span.az{
@@ -2370,6 +2396,11 @@ ul.menu-usuarios li a:hover{
     right: 0;
     bottom: 0;
 }
+
+#right .listarComentarios .overflow{
+    position: inherit;
+    margin: 40px 0;
+}
 .ui-widget-content{
     border:none;
 }
@@ -2407,6 +2438,47 @@ ul.menu-usuarios li a:hover{
     float: left;
 }
 
+.docu .table{
+    width: 100%;
+    border-bottom: 1px solid #d7e3f0;
+}
+
+.docu:last-child .table{
+    border:none;
+}
+
+.docu .table .t-c:nth-child(2), .listarComentarios .docu .table .t-c{
+    padding:10px;
+}
+
+.half-a .padding .listarComentarios .docu .table .t-c .ng-binding{
+    margin:15px 0;
+}
+.half-a .padding .listarComentarios .docu .table .t-c .avatar.ng-binding{
+    margin: 0;
+}
+.involucrados .docu .table .t-c:nth-child(2){
+    padding:0; 
+}
+
+.involucrados .docu .table .t-c.avatar, .listarComentarios .docu .table .t-c.avatar{
+    width: 30%;
+}
+.involucrados .docu .table .t-c{
+    padding:10px;
+    vertical-align: middle;
+}
+
+.half-a .padding .docu .table .t-c p{
+    margin: 0;
+}
+
+.half-a .padding .docu .table .t-c p.sendby{
+    text-transform: uppercase;
+    font-size: 0.8em;
+}
+
+.half-a .padding .docu .table .t-c .bold{font-family: 'proxima_novasemibold';}
 
 /* alertas */
 .alerta{
