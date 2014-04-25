@@ -31,7 +31,6 @@ angular.module('movistarApp')
     _load = () ->
       NotificationFactory.index (err, notifications) ->
         if !err
-          console.log 'notifications: ', notifications
           $scope.notifications = notifications
 
     _load()

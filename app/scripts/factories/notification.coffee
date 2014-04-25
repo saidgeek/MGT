@@ -6,7 +6,6 @@ angular.module("movistarApp")
     _accessToken = $rootScope.currentUser.access.accessToken
 
     _index = (cb) ->
-      console.log $rootScope.currentUser.id
       NotificationService.index(
         clientToken: _clientToken
         accessToken: _accessToken

@@ -9,7 +9,7 @@
     "angular-cookies": "1.2.11",
     "angular-sanitize": "1.2.11",
     "angular-route": "1.2.11",
-    "jquery-placeholder": "~2.0.7",
+    "jquery-placeholder": "~2.0.8",
     "malihu-custom-scrollbar-plugin": "~2.8.3",
     "jqueryui": "~1.10.4",
     "moment": "~2.5.1",
