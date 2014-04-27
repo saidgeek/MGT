@@ -1,18 +1,22 @@
 <div data-sgk-overflow class="overflow">
-<div class="padding"><!-- comentarios -->
-    <div class="table comentario" ng-repeat="c in solicitude.comments"><!-- contenedor para comentarios -->
-        <div class="t-c avatar">
-            <div>
-                <span><img src="images/mask-user-pic.png"/></span>
-                <img src="{{ c.createdBy.profile.avatar }}">
+    <div class="padding">
+        <div class="listarComentarios">  
+            <div class="docu" ng-repeat="c in solicitude.comments">
+                <div class="table comentario"><!-- contenedor para comentarios -->
+                    <div class="t-c avatar">
+                        <img src="{{ c.createdBy.profile.avatar }}">
+                    </div>
+                    <div class="t-c">
+                        <p class="avatar bold">{{ c.createdBy.profile.firstName }} {{ c.createdBy.profile.lastName }}<span class="regular">• hace 2 días</span></p>
+                        <p>
+                          {{ c.content }}
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="t-c">
-            <p class="avatar bold">{{ c.createdBy.profile.firstName }} {{ c.createdBy.profile.lastName }}<span class="regular">• hace 2 días</span></p>
-            <p>
-              {{ c.content }}
-            </p>
-        </div>
+        <div ng-include="'partials/solicitude/right/_commentForm'"></div>
     </div>
 </div>
-</div>
+
+

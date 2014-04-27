@@ -1,6 +1,11 @@
 <ul>
   <li>
-    <a href="javascript:{}" ng-class="{ active: activeTab('') }" title="Comentarios" ng-click="showTabs('')">
+    <a href="javascript:{}" ng-class="{ active: activeTab('') }" title="Detalle" ng-click="showTabs('')">
+      <span class="ico tod"></span>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:{}" ng-class="{ active: activeTab('') }" title="Comentarios" ng-click="showTabs('comments')">
       <span class="ico com"></span>
       <p class="bold">Comentarios</p> ({{ solicitude.comments.length }})
     </a>

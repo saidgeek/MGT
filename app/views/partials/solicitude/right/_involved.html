@@ -1,29 +1,15 @@
 <div data-sgk-overflow class="overflow">
 <div class="padding"><!-- involucrados -->
-    <div id="filtros">
-        <span>Ordenar por</span>
-        <div class="filtrodiv"><span></span>
-            <select class="filtro" id="filtro" name="filtro">
-                <option value="0">Todos</option>
-                <option value="1">Opcion 02</option>
-                <option value="1">Opcion 02</option>
-                <option value="2">Opcion 03</option>
-                <option value="3">Opcion 04</option>
-            </select>
-        </div>
-    </div>
     <div class="involucrados" ng-repeat="i in solicitude.involved"><!-- contenedor para involucrados -->
-        <div class="dato">
-            <a href="javascript:{}" data-sgk-toggle-accordion><span></span>{{ i.role | InvolvedRole }}</a>
-        </div>
         <div class="docu">
             <div class="table">
                 <div class="t-c avatar">
-                    <div>
-                        <img src="{{i.user.profile.avatar || 'images/avatar-user.png'}}">
-                    </div>
+                    <img src="{{i.user.profile.avatar || 'images/avatar-user.png'}}">
                 </div>
-                <div class="t-c"><p class="avatar bold">{{ i.user.profile.firstName }}  {{ i.user.profile.lastName }}</p></div>
+                <div class="t-c">
+                    <p class="avatar bold">{{ i.user.profile.firstName }}  {{ i.user.profile.lastName }}</p>
+                    <p class="sendby">{{ i.role | InvolvedRole }}</p>
+                </div>
             </div>
         </div>
     </div>

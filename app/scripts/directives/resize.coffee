@@ -7,8 +7,8 @@ angular.module('movistarApp')
       $timeout () ->
         $timeout () ->
           full = angular.element('.full-heigth').height();
-          angular.element('.half-a').css('height', (angular.element('.full-heigth').height() / 2) - 21)
-          $('.half-b').css('height', (full / 2) - 21)
+          #angular.element('.half-a').css('height', (angular.element('.full-heigth').height()) - 40)
+          #$('.half-b').css('height', (full / 2) - 21)
         , 0
       , 0
 

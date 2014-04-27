@@ -66,6 +66,7 @@ angular.module('movistarApp')
       # $rootScope.$emit 'reloadGroups'
 
     $scope.loadSolicitude = (id) ->
+      $rootScope.$emit 'showTabs', ''
       $rootScope.$emit 'loadSolicitudeShow', id
 
     _loadSolicitudes = (state, category, priority, involved) ->
@@ -139,8 +140,14 @@ angular.module('movistarApp')
           $scope.solicitude = solicitude
           _changeViewByRole($scope.solicitude)
 
-    $scope.showTabs = (tab) ->
+    _showTabs = (tab) ->
       $scope.tabs = tab
+
+    $rootScope.$on 'showTabs', (e, tab) ->
+      _showTabs(tab)
+    
+    $scope.showTabs = (tab) ->
+      _showTabs(tab)  
 
     $scope.activeTab = (tab) ->
       $scope.tabs is tab
