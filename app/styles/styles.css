@@ -906,16 +906,16 @@ h4{ font-size:  1.154em;}
     background: #e6ecf3;
     border-left: 1px solid #fff;
 }
-#filtros span, #filtros select{
+#filtros span, #filtros select, #nueva-solicitud .filtrodiv span, #nueva-solicitud .filtrodiv select{
     display: table-cell;
     vertical-align: middle;
 }
-#filtros .filtrodiv{
+#filtros .filtrodiv, #nueva-solicitud .filtrodiv{
     overflow: hidden;
     background: #fff;
     position: relative;
 }
-#filtros .filtrodiv span{
+#filtros .filtrodiv span, #nueva-solicitud .filtrodiv span{
     width: 8px;
     height: 5px;
     display: block;
@@ -926,7 +926,7 @@ h4{ font-size:  1.154em;}
     padding: 0;
     margin: 0 10px 0 0;
 }
-#filtros select{
+#filtros select, #nueva-solicitud .filtrodiv select{
     border:1px solid #d3e2e8;
     padding: 5px 10px;
     width: 100%;
@@ -946,7 +946,7 @@ h4{ font-size:  1.154em;}
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
 }
-#filtros select::-ms-expand{
+#filtros select::-ms-expand, #nueva-solicitud .filtrodiv select::-ms-expand{
     display: none;
 }
 
@@ -962,13 +962,12 @@ optgroup{
 }
 
 
-#filtros select, #filtros, #paginador ul li a, #paginador, ul.menu-tarea-top, ul.menu-tarea-top li, .editar-info, .note.full, .note .botones, #top .logo, .user, .padding-left, .half, .note-left, .note-right, .top-admin .note,
+#filtros select, #filtros, #nueva-solicitud .filtrodiv select, #paginador ul li a, #paginador, ul.menu-tarea-top, ul.menu-tarea-top li, .editar-info, .note.full, .note .botones, #top .logo, .user, .padding-left, .half, .note-left, .note-right, .top-admin .note,
 #search-form form #search, .detalle, #nueva-solicitud.user form input#nombre, #nueva-solicitud.user form textarea, .alerta{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-
 
 #right{ background: #fff;}
 
@@ -1751,7 +1750,7 @@ ul.menu-usuarios li a:hover{
     height: 80%;
     position: absolute;
     right: 60px;
-    bottom: 0;
+    bottom: 23px;
     width: 40%;
     display: table;
     background: #fff;
@@ -1783,7 +1782,9 @@ ul.menu-usuarios li a:hover{
     box-sizing: border-box;
     overflow: hidden;
 }
-
+#nueva-solicitud.delete .row .relativo{
+    background: #ff6b6b;
+}
 #nueva-solicitud .row .relativo h2{
     font-size: 1.154em;
     font-family: 'proxima_novasemibold';
@@ -1803,14 +1804,17 @@ ul.menu-usuarios li a:hover{
     display: block;
     border-left: 1px solid #3a4255;
 }
+#nueva-solicitud.delete .row .relativo ul li a{
+    border-left: 1px solid #fa5858;
+}
 #nueva-solicitud .row .relativo ul li a:last-child{
     -moz-border-radius: 0 4px 0 0;
     -webkit-border-radius: 0 4px 0 0;
     border-radius: 0 4px 0 0;
 }
-#nueva-solicitud .row .relativo ul li a:hover{
+/*#nueva-solicitud .row .relativo ul li a:hover{
     background:#2b3245;
-}
+}*/
 #nueva-solicitud .row .relativo ul li a span{
     width: 16px;
     height: 16px;
@@ -1821,20 +1825,38 @@ ul.menu-usuarios li a:hover{
 #nueva-solicitud .row .relativo ul li a span.up, #nueva-solicitud .row .relativo ul li a span.up.down{
     background: url(../images/sprite-solicitudes.png) no-repeat 50% 0;
 }
+#nueva-solicitud.delete .row .relativo ul li a span.up, #nueva-solicitud.delete .row .relativo ul li a span.up.down{
+    background: url(../images/sprite-eliminar.png) no-repeat 50% 0;
+}
 #nueva-solicitud .row .relativo ul li a span.down{
     background: url(../images/sprite-solicitudes.png) no-repeat 100% 0;
+}
+#nueva-solicitud.delete .row .relativo ul li a span.down{
+    background: url(../images/sprite-eliminar.png) no-repeat 100% 0;
 }
 #nueva-solicitud .row .relativo ul li a span.close{
     background: url(../images/sprite-solicitudes.png) no-repeat 0 0;
 }
+#nueva-solicitud.delete .row .relativo ul li a span.close{
+    background: url(../images/sprite-eliminar.png) no-repeat 0 0;
+}
 #nueva-solicitud .row .relativo ul li a:hover span.up, #nueva-solicitud .row .relativo ul li a:hover span.up.down{
     background: url(../images/sprite-solicitudes.png) no-repeat 50% 100%;
+}
+#nueva-solicitud.delete .row .relativo ul li a:hover span.up, #nueva-solicitud.delete .row .relativo ul li a:hover span.up.down{
+    background: url(../images/sprite-eliminar.png) no-repeat 50% 100%;
 }
 #nueva-solicitud .row .relativo ul li a:hover span.down{
     background: url(../images/sprite-solicitudes.png) no-repeat 100% 100%;
 }
+#nueva-solicitud.delete .row .relativo ul li a:hover span.down{
+    background: url(../images/sprite-eliminar.png) no-repeat 100% 100%;
+}
 #nueva-solicitud .row .relativo ul li a:hover span.close{
     background: url(../images/sprite-solicitudes.png) no-repeat 0 100% ;
+}
+#nueva-solicitud.delete .row .relativo ul li a:hover span.close{
+    background: url(../images/sprite-eliminar.png) no-repeat 0 100% ;
 }
 #nueva-solicitud .table{
     display: table-cell;
@@ -1854,7 +1876,7 @@ ul.menu-usuarios li a:hover{
 /*    position: absolute;*/
     left: 0;
     top: 0;
-    bottom: 0;
+    bottom:0;
     right: 0;
 }
 
@@ -1876,6 +1898,12 @@ ul.menu-usuarios li a:hover{
     color: #55637a;
     font-size: 1.154em;
     margin-bottom: 8px;
+}
+#nueva-solicitud.delete form p{
+    color: #9da9b9;
+}
+#nueva-solicitud form p strong{
+    font-family: 'proxima_novasemibold';
 }
 #nueva-solicitud form ul{
     width: 100%;
@@ -1968,6 +1996,9 @@ ul.menu-usuarios li a:hover{
   border: none;
   height: 34px;
 }
+#nueva-solicitud.delete form .boton1{
+    background: #9b0000;
+}
 #nueva-solicitud form .boton1 span {
     background-position: -240px -20px;
 }
@@ -1993,6 +2024,10 @@ ul.menu-usuarios li a:hover{
     display: inline-block;
     width: 96%;
 }
+#nueva-solicitud.delete form .blue{
+    background: #ff6b6b;
+}
+
 #nueva-solicitud form .blue.bottom{
     position: absolute;
     bottom: 0;
@@ -2003,10 +2038,14 @@ ul.menu-usuarios li a:hover{
 
 }
 #nueva-solicitud form .blue li a{
-    height: 35px;
-    line-height: 35px;
+    line-height: 26px;
     color: #9da9b9;
 }
+
+#nueva-solicitud.delete form .blue li a{
+    color: #9b0000;
+}
+
 #nueva-solicitud form .blue li a:hover{
     color: #fff;
 }
