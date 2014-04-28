@@ -598,8 +598,9 @@ h4{ font-size:  1.154em;}
 .note{
     margin: 10px;
     background: #fff;
-    border: 1px solid #d7e3f0;
-    /*display: block;*/
+    /*border: 1px solid #d7e3f0;*/
+    display: table;
+    cursor: pointer;
 }
 .note .t-c{
     padding: 13px 10px 8px 10px;
@@ -665,8 +666,12 @@ h4{ font-size:  1.154em;}
 }
 .note h4{
     display: block;
-    margin: 10px 0;
+    margin: 15px 0;
     color: #485e75;
+    font-family: 'proxima_novasemibold';
+}
+.note.active h4{
+    color: #fff;
 }
 .note .botones{
     background: #f2f6fa;
@@ -1053,7 +1058,7 @@ ul.menu-tarea-top li.last{
     width: 100%;
 }
 .title h1{ margin: 0; padding: 0; font-size: 1.615em; font-family: 'proxima_novasemibold';  color: #444c63;}
-.title .fecha{ font-size: 0.923em; border-left: 1px solid #e9eef4; text-align: right;}
+.title .fecha{ font-size: 0.923em; /*border-left: 1px solid #e9eef4;*/ text-align: right;}
 .title h1, .title .fecha{ display: table-cell;}
 .categoria{ padding:10px 0; clear: both; font-family: 'proxima_nova_rgbold';}
 .categoria span, ul.otros-datos li span{ font-family: 'proxima_nova_rgregular';}
@@ -1061,15 +1066,16 @@ ul.menu-tarea-top li.last{
 ul.otros-datos{
     display: table;
     width: 100%;
-    padding: 0 0 20px 0;
+    padding: 15px 0;
 }
 ul.otros-datos li{
     display:table-cell;
     padding: 0 10px;
     font-family: 'proxima_nova_rgbold';
-    border-right: 1px solid #e0e2e4;
+    /*border-right: 1px solid #e0e2e4;*/
 }
-ul.otros-datos li.first{
+
+ul.otros-datos li.first, ul.otros-datos li:first-child{
     padding: 0 10px 0 0;
 }
 ul.otros-datos li.last{
@@ -1194,40 +1200,58 @@ ul.otros-datos li.last{
     color: #2f364a;
     margin: 8px 0;
 }
-.half-b .subtarea .dato{
+.half-a .subtarea .dato{
     border-bottom: 1px solid #e6ecf3;
     position: relative;
 }
-.half-b .subtarea .dato .che span.opt-check {
+.half-a .subtarea .dato .che span.opt-check {
     width: 16px;
     height: 16px;
     display: inline-block;
     background: url(../images/bkg-opt-check.png) no-repeat 0 0;
     cursor: pointer;
 }
-.half-b .subtarea .dato .che span.opt-check.active{
+.half-a .subtarea .dato .che span.opt-check.active{
     background: url(../images/bkg-opt-check-checked.png) no-repeat 0 0;
 }
-.half-b .subtarea .dato .che .hide {
+.half-a .subtarea .dato .che .hide {
     display: none;
 }
-.half-b .subtarea a{
+.half-a .subtarea a{
     display: none;
     position: absolute;
-    bottom: 8px;
+    bottom: 15px;
     right: 0;
     font-size: 0.923em;
     font-family: 'proxima_novalight';
 }
-.half-b .subtarea .dato.done{
+
+.half-a .subtarea .dato.active a{
+    display: inline-block;
+}
+
+.half-a .subtarea .dato.done{
     color: #b9c4d3;
 }
-.half-b .subtarea .dato.done a{
+.half-a .subtarea .dato.done a{
     display: block;
 }
-.half-b .subtarea .dato.done .che span.opt-check{
+.half-a .subtarea .dato.done .che span.opt-check{
     background: url(../images/bkg-opt-check-checked.png) no-repeat 0 0;
     cursor: default;
+}
+
+.half-a .subtarea .t-c p{
+    margin: 0;
+}
+.half-a .subtarea .t-c{
+    padding:13px 5px;
+}
+
+.half-a .padding p.nivel{
+    font-family: 'proxima_novasemibold';
+    font-size: 1.2em;
+    color: #222735;
 }
 
 /* menu intermedio */
@@ -1235,7 +1259,7 @@ ul.otros-datos li.last{
     position: absolute;
     left: 0;
     right: 0;
-    bottom:0;
+    bottom:6px;
     margin:0;
     border-top: 1px solid #d7e3f0;
     border-bottom: 1px solid #d7e3f0;
@@ -1943,8 +1967,9 @@ ul.menu-usuarios li a:hover{
     display: block;
     background: url(../images/down.png) no-repeat 0 -5px;
     position: absolute;
-    top: 14px;
-    right: 14px;
+    top: 50%;
+    right: 1%;
+    margin: -3px 10px 0 0;
 }
 #nueva-solicitud form .dropdown select{
     width: 100%;
@@ -1986,6 +2011,10 @@ ul.menu-usuarios li a:hover{
     margin: 0 0 -3px 16px;
     background: url(../images/bkg-opt-check.png) no-repeat 0 0;
     cursor: pointer;
+    float: right;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    overflow: hidden;
 }
 #nueva-solicitud li span.opt-check.left{
     margin: 0 8px -3px 0;
@@ -2315,12 +2344,15 @@ ul.menu-usuarios li a:hover{
     margin: 0 1%;
     background: #fff;
 }
-#nueva-solicitud li.Tag input#nombre{
+#nueva-solicitud li.Tag input#nombre, input.ng-pristine, input.ng-valid-number{
     width: auto;
     border: 1px solid #fff;
     padding: 7px;
     margin: 4px 0;
     color: #9da9b9;
+}
+input.ng-pristine, input.ng-valid-number{
+    border: 1px solid #d2e2e8;
 }
 #nueva-solicitud.user li .tags{
     width: 96%;

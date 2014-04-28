@@ -20,6 +20,14 @@
   width: 31%;
 }
 
+#left .relativo .note .t-c.verde ul.full li{
+  width: auto;
+  display: block;
+}
+#left .relativo .note .t-c.verde ul.full li:first-child{
+  margin: 0 15px 0 0;
+}
+
 .note .t-c.stats ul li {
   display: 'block';
 }
@@ -65,12 +73,23 @@
 
 #right .validar fieldset.segments ul li,
 #right .validar fieldset.sections ul li {
-  width: 120px;
+  width: 25%;
+  padding: 0;
+}
+
+#right .validar fieldset.segments ul li.active label,
+#right .validar fieldset.sections ul li.active label {
+  background: #444c63;
+  color: #ccd4dd;
 }
 
 #right .validar fieldset.segments ul li label,
 #right .validar fieldset.sections ul li label{
-  width: 100%;
+  display: block;
+  padding: 10px;
+  margin: 3px;
+  -webkit-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
 }
 
 .overflow {

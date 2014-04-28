@@ -25,9 +25,9 @@
         <ul>
             <li class="Tag">
                 <input class="Tag" id="nombre" name="tags" type="text" placeholder="Tags de Clasificación" ng-keypress="addTag($event)" ng-model="solicitude.tag"/>
-                    <div class="tags">
-                        <span class="tag round" ng-repeat="t in solicitude.ticket.tags track by $index">{{ t }}<a class="cerrar" href="javascript:{}"></a></span>
-                    </div>
+                <div class="tags">
+                    <span class="tag round" ng-repeat="t in solicitude.ticket.tags track by $index">{{ t }}<a class="cerrar" href="javascript:{}"></a></span>
+                </div>
             </li>
         </ul>
     </fieldset>
@@ -35,9 +35,10 @@
         <p>Seleccionar segmentos a los que aplica la solicitud</p>
         <ul>
             <li class="lab" ng-repeat="s in segments">
-              <label>{{ s.name }}</label>
-              <span class="opt-check right" data-sgk-check></span>
-              <input class="hide" type="checkbox" id="check_todos" name="segments" ng-true-value="{{s.id}}" ng-model="solicitude.ticket.segments[$index]">
+              <label>{{ s.name }}
+                <span class="opt-check right" data-sgk-check></span>
+                <input class="hide" type="checkbox" id="check_todos" name="segments" ng-true-value="{{s.id}}" ng-model="solicitude.ticket.segments[$index]">
+              </label>
             </li>
         </ul>
     </fieldset>
@@ -45,9 +46,10 @@
         <p>Seleccionar secciones a los que aplica la solicitud</p>
         <ul>
             <li class="lab" ng-repeat="s in sections">
-              <label>{{ s.name }}</label>
-              <span class="opt-check right" data-sgk-check></span>
-              <input class="hide" type="checkbox" id="check_todos" name="sections" ng-true-value="{{s.id}}" ng-model="solicitude.ticket.sections[$index]">
+              <label>{{ s.name }}
+                <span class="opt-check right" data-sgk-check></span>
+                <input class="hide" type="checkbox" id="check_todos" name="sections" ng-true-value="{{s.id}}" ng-model="solicitude.ticket.sections[$index]">
+              </label>
             </li>
         </ul>
     </fieldset>
