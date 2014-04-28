@@ -46,6 +46,12 @@ h1{ font-size:  1.615em;}
 h3{ font-size:  1.231em;}
 h4{ font-size:  1.154em;}
 
+.modal{
+    position: absolute; left: 0; right: 0; bottom: 0;
+}
+.medida{
+    position: relative;
+}
 
 /* clases comunes */
 
@@ -1750,7 +1756,7 @@ ul.menu-usuarios li a:hover{
     height: 80%;
     position: absolute;
     right: 60px;
-    bottom: 23px;
+    bottom: 0;
     width: 40%;
     display: table;
     background: #fff;
@@ -2021,8 +2027,7 @@ ul.menu-usuarios li a:hover{
     border: none;
     color: #fff;
     padding: 2%;
-    display: inline-block;
-    width: 96%;
+    display:block;
 }
 #nueva-solicitud.delete form .blue{
     background: #ff6b6b;
@@ -2136,6 +2141,11 @@ ul.menu-usuarios li a:hover{
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
 }
+
+#nueva-solicitud.user form .dropdown select.ng-invalid-required{
+    border: 1px solid red !important;
+}
+
 .dropdown select::-ms-expand{
     display: none;
 }
