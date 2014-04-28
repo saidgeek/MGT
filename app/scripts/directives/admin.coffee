@@ -1,6 +1,16 @@
 'use strict'
 
 angular.module('movistarApp')
+  .directive 'sgkDuration', ($interval) ->
+    restrict: 'A'
+    require: 'ngModel'
+    link: (scope, element, attrs, ngModel) ->
+      $interval () =>
+        element.find('p').html moment(ngModel.$viewValue).fromNow()
+      , 500
+
+
+
   .directive 'sgkMedidaDetail', ($window, $rootScope, $timeout) ->
     restrict: 'A'
     link: (scope, el, attrs) ->
@@ -14,7 +24,7 @@ angular.module('movistarApp')
           angular.element('#right .medida .ng-scope').height(medida)
         , 1000
       , 0
-  
+
   .directive 'sgkActive', ($window, $rootScope) ->
     restrict: 'A'
     link: (scope, el, attrs) ->

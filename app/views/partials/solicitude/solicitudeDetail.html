@@ -1,0 +1,43 @@
+<div class="relativo altura" ng-switch="section" ng-if="solicitude">
+
+    <div ng-include="'partials/solicitude/right/_filter'"></div>
+
+    <div class="full-heigth" ng-switch-default>
+
+      <div class="half-a" ng-switch="tabs">
+        <div ng-switch-default>
+          <div ng-include="'partials/solicitude/right/_detail'"></div>
+        </div>
+        <div ng-switch-when="comments">
+          <div ng-include="'partials/solicitude/right/_comments'"></div>
+        </div>
+        <div ng-switch-when="documents">
+          <div ng-include="'partials/solicitude/right/_documents'"></div>
+        </div>
+        <div ng-switch-when="involved">
+          <div ng-include="'partials/solicitude/right/_involved'"></div>
+        </div>
+        <div ng-switch-when="tasks">
+          <div ng-include="'partials/solicitude/right/_tasks'"></div>
+        </div>
+      </div>
+
+      <div class="menu-middle">
+        <div ng-include="'partials/solicitude/right/_menu'"></div>
+      </div>
+
+    </div>
+
+    <div ng-switch-when="QUEUE_VALIDATION">
+      <div ng-include="'partials/solicitude/right/_updateByEditor'"></div>
+    </div>
+
+    <div ng-switch-when="ASSIGNED_TO_MANAGER">
+      <div ng-include="'partials/solicitude/right/_updateByContentManager'"></div>
+    </div>
+
+    <div ng-switch-when="ASSIGNED_TO_PROVIDER">
+      <div ng-include="'partials/solicitude/right/_updateByprovider'"></div>
+    </div>
+
+</div><!-- relativo -->

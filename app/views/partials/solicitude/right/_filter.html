@@ -1,10 +1,13 @@
 <div class="contenedor-filtros">
     <div class="half">
         <ul class="menu-tarea-top">
-            <li ng-if="solicitude.duration"><div class="ico tim"></div><span>Quedan 5 días</span></li>
+            <li ng-if="solicitude.duration" data-sgk-duration ng-model="solicitude.endedAt">
+              <div class="ico tim"></div>
+              <p></p>
+            </li>
             <li>
-              <div class="ico {{ solicitude.state | StateIcons }}"></div>
-              <span>{{ solicitude.state | StateSolicitude }}</span>
+              <div id="state" class="ico"></div>
+              <span>{{ solicitude.state[currentUser.role] | StateSolicitude }}</span>
             </li>
             <li class="last" ng-if="solicitude.priority">
               <div class="ico {{ solicitude.priority | PriorityIcons }}"></div>
@@ -13,11 +16,11 @@
         </ul>
     </div>
     <!--// ACEPTAR - RECHAZAR //-->
-    <div class="half">
+    <div class="half" ng-if="section !== 'QUEUE_VALIDATION'">
       <ul class="acciones">
-        <li class="aceptar"><a href="#;">Aceptar</a></li>
-        <li class="rechazar"><a href="#;">Rechazar</a></li>
-      </ul>
+        <li class="aceptar"><a href="javascript:{}" ng-click="changeSection(solicitude.state[currentUser.role])">Aceptar</a></li>
+        <li class="rechazar"><a href="javascript:{}">Rechazar</a></li>
+    </ul>
     </div>
     <!--// ACEPTAR - RECHAZAR //-->
 </div>

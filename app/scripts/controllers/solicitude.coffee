@@ -1,12 +1,13 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'SidebarCtrl', ($scope, SolicitudeFactory, $rootScope, StateData, StateIconsData, PriorityData, PriorityIconData, CategoryFactory, UserFactory) ->
+  .controller 'SidebarCtrl', ($scope, SolicitudeFactory, $rootScope, AllStateData, StateData, PriorityData, PriorityIconData, CategoryFactory, UserFactory) ->
     $scope.statesGroups = null
     $scope.priorityGroups = null
     $scope.errors = {}
+    $scope.allStates = AllStateData.getAll()
+    console.log 'allStates:', $scope.allStates
     $scope.states = StateData.getArray()
-    $scope.statesIcons = StateIconsData.getAll()
     $scope.priorityIcons = PriorityIconData.getAll()
     $scope.categories = null
     $scope.users = null
@@ -124,7 +125,7 @@ angular.module('movistarApp')
 
     _changeViewByRole = (solicitude) ->
       _role = $rootScope.currentUser.role
-      if solicitude.state is 'QUEUE_VALIDATION' and ~['EDITOR', 'ADMIN', 'ROOT'].indexOf _role
+      if solicitude.state[_role] is 'QUEUE_VALIDATION' and ~['EDITOR', 'ADMIN', 'ROOT'].indexOf _role
         $scope.viewDetail = 'updateByEditor'
       if solicitude.state is 'QUEUE_ALLOCATION' and ~['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf _role
         $scope.viewDetail = 'updateByContentManager'
@@ -132,7 +133,6 @@ angular.module('movistarApp')
         $scope.viewDetail = null
 
     _loadSolicitude = (id) ->
-      $scope.solicitude = ''
       SolicitudeFactory.show id, (err, solicitude) ->
         if err
           $scope.errors = err
@@ -145,9 +145,9 @@ angular.module('movistarApp')
 
     $rootScope.$on 'showTabs', (e, tab) ->
       _showTabs(tab)
-    
+
     $scope.showTabs = (tab) ->
-      _showTabs(tab)  
+      _showTabs(tab)
 
     $scope.activeTab = (tab) ->
       $scope.tabs is tab

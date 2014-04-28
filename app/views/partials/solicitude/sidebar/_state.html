@@ -8,11 +8,11 @@
         <span class="round light">{{ statesGroups.total }}</span>
       </a>
     </li>
-    <li ng-repeat="state in states" data-sgk-permission="states" data-permission-value="{{state.id}}">
-      <a href="javascript:{}" ng-click="filter(state.id, '', '', '')">
-        <div class="ico {{ statesIcons[state.id] }}"></div>
-        {{ state.name }}
-        <span class="round light">{{ statesGroups[state.id] || 0 }}</span>
+    <li ng-repeat="state in currentUser.permissions.states">
+      <a href="javascript:{}" ng-click="filter(state, '', '', '')">
+        <div class="ico {{ state | StateIcons }}"></div>
+        {{ state | StateSolicitude }}
+        <span class="round light">{{ statesGroups[state] || 0 }}</span>
       </a>
     </li>
   </ul>

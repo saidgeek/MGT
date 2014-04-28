@@ -15,14 +15,14 @@ angular.module('movistarApp')
   .directive 'sgkOverflow', ($timeout) ->
     restrict: 'A'
     link: (scope, element, attrs) ->
-      _time = attrs.sgkOverFlow || 1000
-      $timeout () ->
-        element.mCustomScrollbar
-          scrollButtons:
-              enable:false
-      , _time
+      # _time = attrs.sgkOverFlow || 1000
+      # $timeout () ->
+      #   # element.mCustomScrollbar
+      #   #   scrollButtons:
+      #   #       enable:false
+      # , _time
 
-  .directive 'sgkResize', ($window, $timeout) ->
+  .directive 'sgkResize', ($window, $timeout, $rootScope) ->
     restrict: 'A'
     link: (scope, element, attrs) ->
       _maxWidth = attrs.maxWidth || 55
@@ -93,6 +93,11 @@ angular.module('movistarApp')
 
         angular.element($window).on 'resize', resize_other
         angular.element('#right').on 'resize', resize_right
+
+        $rootScope.$watch 'resize', (value) ->
+          if value
+            resize_other()
+            resize_right()
 
       $timeout () ->
         $timeout init, 0

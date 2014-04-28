@@ -5,17 +5,28 @@ angular.module("movistarApp")
     return (key) ->
       RolesData.get(key)
 
+  .filter 'DateFrom', ($interval) ->
+    (start, end) ->
+      _start = moment(start)
+      _end = moment(Date.now())
+      $interval () =>
+        return _end.from(_start)
+      , 1000
+
+
   .filter 'DateFormat', ->
     (date) ->
-      moment(date).format('DD-MM-YYYY')
+      moment(date).format('DD-MM-YYYY HH:mm')
 
   .filter 'StateSolicitude', (StateData) ->
     (key) ->
-      StateData.get(key)
+      data = StateData.get(key)
+      data.name
 
-  .filter 'StateIcons', (StateIconsData) ->
+  .filter 'StateIcons', (StateData) ->
     (key) ->
-      StateIconsData.get(key)
+      data = StateData.get(key)
+      data.icon
 
   .filter 'PriorityIcons', (PriorityIconData) ->
     (key) ->
