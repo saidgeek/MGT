@@ -5,26 +5,7 @@ angular.module('movistarApp')
     $scope.statesGroups = null
     $scope.priorityGroups = null
     $scope.errors = {}
-    $scope.allStates = AllStateData.getAll()
-    console.log 'allStates:', $scope.allStates
-    $scope.states = StateData.getArray()
-    $scope.priorityIcons = PriorityIconData.getAll()
-    $scope.categories = null
-    $scope.users = null
-
-    $scope.priorities = PriorityData.getArray()
-
-    CategoryFactory.index (err, categories) ->
-      if err
-        $scope.errors = err
-      else
-        $scope.categories = categories
-
-    UserFactory.index '', (err, users) ->
-      if err
-        $scope.errors = err
-      else
-        $scope.users = users
+    
 
     _loadStates = () ->
       SolicitudeFactory.groups (err, groups) ->

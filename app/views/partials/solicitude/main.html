@@ -16,13 +16,14 @@
     </div>
     <div class="therow">
       <div class="thecell">
-        <div class="relativo">
-          <div data-sgk-overflow class="overflow" ng-controller="SidebarCtrl">
+        <div class="relativo" ng-controller="SidebarCtrl">
+          <div data-sgk-solicitude-sidebar></div>
+          <!-- div data-sgk-overflow class="overflow" ng-controller="SidebarCtrl">
             <div ng-include="'partials/solicitude/sidebar/_state'"></div>
             <div ng-include="'partials/solicitude/sidebar/_priority'"></div>
             <div ng-include="'partials/solicitude/sidebar/_involved'"></div>
             <div ng-include="'partials/solicitude/sidebar/_category'"></div>
-          </div>
+          </div-->
         </div>
       </div>
     </div>
@@ -41,10 +42,11 @@
     </div>
 
     <div id="left" class="col">
-      <div class="relativo ui-widget ui-widget-content">
 
-        <div ng-include="'partials/solicitude/left/_filter'"></div>
-        <div ng-include="'partials/solicitude/left/_list'" ng-controller="SolicitudeCtrl"></div>
+      <div class="relativo ui-widget ui-widget-content">
+        <div data-sgk-solicitude-list></div>
+        <!--div ng-include="'partials/solicitude/left/_filter'"></div>
+        <div ng-include="'partials/solicitude/left/_list'" ng-controller="SolicitudeCtrl"></div-->
 
       </div>
     </div><!--// #left //-->
