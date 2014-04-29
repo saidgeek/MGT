@@ -1,7 +1,7 @@
-<div data-sgk-overflow class="overflow top-admin"  >
+<div class="overflow top-admin"  >
 
   <div class="margin" data-ng-repeat="user in users">
-    <div class="note round" data-ng-class="{active: $index===0}" id="works_01" data-sgk-active data-ng-click="loadUser(user._id)">
+    <div class="note round" id="works_01">
       <div class="note-left">
 
         <div class="table-user">
@@ -18,7 +18,7 @@
           </ul>
         </div><!-- table-user -->
 
-        <div class="contact-user">
+        <!--div class="contact-user">
           <ul>
             <li data-ng-if="user.email">
               <span class="ico ema"></span> {{ user.email }}
