@@ -10,46 +10,22 @@
               <li class="last" ng-if="solicitude.priority"><div class="ico {{ solicitude.priority | PriorityIcons }}"></div><p>{{ solicitude.priority | Priority }}</p></li>
           </ul>
           <h4>{{ solicitude.ticket.title }}</h4>
-          <ul>
-              <li class="bold" ng-if="solicitude.ticket.category">
+          <ul class="full">
+              <li class="light">Sol. <span>{{ solicitude.createdAt | DateFormat }}</span></li>
+              <li class="light" ng-if="solicitude.startedAt">Ini. <span>{{ solicitude.startedAt | DateFormat }}</span></li>
+              <!--li class="bold" ng-if="solicitude.ticket.category">
                 Categoría: <span class="light">{{ solicitude.ticket.category.name }}</span>
               </li>
               <li class="light" ng-if="solicitude.ticket.segments">{{ solicitude.ticket.segments | SegmentArray }}</li>
               <li class="bold last" ng-if="solicitude.provider">
                 Proveedor: <span class="light">{{ solicitude.provider.profile.company }} ({{ solicitude.provider.profile.firstName }} {{ solicitude.provider.profile.lastName }})</span>
-              </li>
+              </li-->
           </ul>
       </div>
       <div class="t-c stats">
           <ul>
               <li class="light first"><span class="round">Code: {{ solicitude.code }}</span><a ng-if="false" href="javascript:{}" class="ico sta"></a></li>
-              <li class="light">Sol. <span>{{ solicitude.createdAt | DateFormat }}</span></li>
-              <li class="light" ng-if="solicitude.startedAt">Ini. <span>{{ solicitude.startedAt | DateFormat }}</span></li>
           </ul>
       </div>
-      <!--div class="botones rounddown">
-          <ul>
-              <li class="bold">
-                <a href="javascript:{}"><div class="ico com">
-                </div><span class="text">Comentarios</span> <span class="regular">({{ solicitude.comments.length }})</span>
-                </a>
-              </li>
-              <li class="bold">
-                <a href="javascript:{}"><div class="ico doc">
-                </div><span class="text">Documentos</span> <span class="regular">({{ solicitude.ticket.attachments.length }})</span>
-                </a>
-              </li>
-              <li class="bold">
-                <a href="javascript:{}"><div class="ico inv">
-                </div><span class="text">Involucrados</span> <span class="regular">({{ solicitude.involved.length }})</span>
-                </a>
-              </li>
-              <li class="bold last">
-                <a href="javascript:{}"><div class="ico sub">
-                </div><span class="text">Sub tareas</span> <span class="regular">({{ solicitude.tasks.length }})</span>
-                </a>
-              </li>
-          </ul>
-      </div-->
   </div>
 </div>

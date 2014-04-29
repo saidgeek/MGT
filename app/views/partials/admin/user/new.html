@@ -1,4 +1,5 @@
 
+<div class="modal">
 <div id="nueva-solicitud" class="user">
 
   <div class="row">
@@ -26,7 +27,7 @@
                 <li><input type="text" id="nombre" name="nombre" placeholder="Nombre" data-ng-model="user.profile.firstName"/></li>
                 <li><input type="text" id="nombre" name="nombre" placeholder="Apellido" data-ng-model="user.profile.lastName"/></li>
                 <li class="dropdown"><span></span>
-                  <select data-ng-model="user.role" data-ng-options="r.id as r.name for r in roles"></select>
+                  <select data-ng-model="user.role" data-ng-options="r.id as r.name for r in roles" required></select>
                 </li>
               </ul>
             </fieldset>
@@ -68,4 +69,5 @@
     </div>
   </div>
 
+</div>
 </div>

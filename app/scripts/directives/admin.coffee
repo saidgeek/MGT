@@ -77,6 +77,8 @@ angular.module('movistarApp')
       el.on 'click', (e) ->
         el.parent().find('.hide').trigger('click')
         el.toggleClass 'active'
+        el.parent().parent().toggleClass 'active'
+        el.parent().parent().parent().toggleClass 'active'
 
   .directive 'sgkDownModal', ->
     restrict: 'A'

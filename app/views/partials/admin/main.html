@@ -60,24 +60,30 @@
       </div>
     </div><!--// #left //-->
 
-    <div id="right" class="col ui-widget ui-widget-content" data-sgk-medida-detail>
+    <div id="right" class="col altR ui-widget ui-widget-content" data-sgk-medida-detail>
       <div data-sgk-alerts></div>
 
-      <div class="altFirst">
-        <div data-ng-switch-default data-ng-controller="UserShowCtrl">
+      <div data-ng-switch-default data-ng-controller="UserShowCtrl">
+        <div class="altFirst">
           <div data-ng-include="'partials/admin/user/_user'"></div><!-- user -->
           <div data-ng-include="'partials/admin/user/_filters'"></div>
           <!--div data-ng-include="'partials/admin/user/_menu'"></div>
           <div data-ng-include="'partials/admin/user/_tools'"></div-->
+        </div>
+        <div class="medida">
           <div data-ng-include="'partials/admin/user/_solicitude'"></div>
         </div>
       </div>
-      <div class="medida">
-      <div class="relativo">
-        <div data-ng-switch-when="category" data-ng-controller="CategoryShowCtrl">
-          <div data-ng-include="'partials/admin/category/_detail'"></div>
-        </div>
-      </div><!-- relativo -->
+
+      <div data-ng-switch-when="category" data-ng-controller="CategoryShowCtrl">
+
+        <div class="relativo">
+          <div>
+            <div data-ng-include="'partials/admin/category/_detail'"></div>
+          </div>
+
+
+        </div><!-- relativo -->
 
       </div>
 
@@ -92,22 +98,22 @@
   <div data-ng-switch="modals">
     <div data-ng-switch-default>
     </div>
-    <div data-ng-switch-when="newUser" data-ng-controller="UserSaveCtrl">
+    <div data-ng-switch-when="newUser" data-ng-controller="UserSaveCtrl" class="modal">
       <div data-ng-include="'partials/admin/user/new'"></div>
     </div>
-    <div data-ng-switch-when="updateUser" data-ng-controller="UserSaveCtrl">
+    <div data-ng-switch-when="updateUser" data-ng-controller="UserSaveCtrl" class="modal">
       <div data-ng-include="'partials/admin/user/edit'"></div>
     </div>
-    <div data-ng-switch-when="newCategory" data-ng-controller="CategorySaveCtrl">
+    <div data-ng-switch-when="newCategory" data-ng-controller="CategorySaveCtrl" class="modal">
       <div data-ng-include="'partials/admin/category/new'"></div>
     </div>
-    <div data-ng-switch-when="updateCategory" data-ng-controller="CategorySaveCtrl">
+    <div data-ng-switch-when="updateCategory" data-ng-controller="CategorySaveCtrl" class="modal">
       <div data-ng-include="'partials/admin/category/edit'"></div>
     </div>
   </div>
 
   <div ng-switch="masterModals">
-    <div data-ng-switch-when="profileEdit" data-ng-controller="ProfileEditCtrl">
+    <div data-ng-switch-when="profileEdit" data-ng-controller="ProfileEditCtrl" class="modal">
       <div data-ng-include="'partials/_profileEdit'"></div>
     </div>
   </div>
