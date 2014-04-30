@@ -4,44 +4,52 @@ angular.module('movistarApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute',
+  'ui.router',
   'filepicker',
   'confirmClick',
   'btford.socket-io'
 ])
-  .config ($routeProvider, $locationProvider, $httpProvider) ->
+  .config ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) ->
     $httpProvider.interceptors.push 'noCacheInterceptor'
-    $routeProvider
-      .when '/login',
-        templateUrl: 'partials/login'
+
+    $urlRouterProvider.otherwise '/'
+
+    $stateProvider
+      # ACCESS ROUTERS
+      .state 'login',
+        url: '/login'
         controller: 'LoginCtrl'
-      .when '/recovery',
-        templateUrl: 'partials/recovery'
+        templateUrl: 'partials/login'
+        authenticate: false
+      .state 'recovery',
+        url: '/recovery'
         controller: 'RecoveryCtrl'
-
-      .when '/change/password',
-        templateUrl: 'partials/change'
+        templateUrl: 'partials/recovery'
+        authenticate: false
+      .state 'change.password',
+        url: '/change/password'
         controller: 'ChangeCtrl'
-
-      .when '/admin',
-        templateUrl: 'partials/admin/main'
-        controller: 'AdminCtrl'
-        authenticate: true
-      .when '/admin/:module',
-        templateUrl: 'partials/admin/main'
-        controller: 'AdminCtrl'
+        templateUrl: 'partials/change'
         authenticate: true
 
-      .when '/',
-        templateUrl: 'partials/solicitude/main'
+      # ADMIN ROUTERS
+      .state 'admin',
+        url: '/admin',
+        contorller: 'AdminCtrl'
+        templateUrl: 'partials/admin/main'
+        authenticate: true
+      .state 'admin.module',
+        url: '/:module'
+        controller: 'AdminCtrl'
+        templarteUrl: 'partials/admin/main'
+        authenticate: true
+
+      # SOLICITUDE ROUTERS
+      .state 'solicitude',
+        url: '/'
         controller: 'SolicitudeCtrl'
+        templateUrl: 'partials/solicitude/main'
         authenticate: true
-      .when '/settings',
-        templateUrl: 'partials/settings'
-        controller: 'SettingsCtrl'
-        authenticate: true
-      .otherwise
-        redirectTo: '/'
 
     $locationProvider.html5Mode true
 
@@ -62,8 +70,11 @@ angular.module('movistarApp', [
           separator = '?'
         config.url = config.url+separator+'noCache=' + new Date().getTime()
       return config;
-  .run ($rootScope, $location, Auth) ->
+  .run ($rootScope, $state, Auth) ->
 
     # Redirect to login if route requires auth and you're not logged in
-    $rootScope.$on '$routeChangeStart', (event, next) ->
-      $location.path '/login'  if next.authenticate and not Auth.isLoggedIn()
+    $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromParams) ->
+      console.log toState, toState.authenticate, Auth.isLoggedIn()
+      if toState.authenticate and not Auth.isLoggedIn()
+        $state.transitionTo "login"
+        event.preventDefault()
