@@ -34,14 +34,17 @@ angular.module('movistarApp', [
 
       # ADMIN ROUTERS
       .state 'admin',
-        url: '/admin',
-        contorller: 'AdminCtrl'
-        templateUrl: 'partials/admin/main'
+        templateUrl: 'partials/layout'
         authenticate: true
-      .state 'admin.module',
-        url: '/:module'
-        controller: 'AdminCtrl'
-        templarteUrl: 'partials/admin/main'
+      .state 'admin.users',
+        url: '/admin/users'
+        views:
+          'sidebar':
+            templateUrl: 'partials/admin/userSidebar'
+          'left':
+            templateUrl: 'partials/admin/user/_left'
+          'right':
+            templateUrl: 'partials/admin/user/_right'
         authenticate: true
 
       # SOLICITUDE ROUTERS
@@ -74,7 +77,6 @@ angular.module('movistarApp', [
 
     # Redirect to login if route requires auth and you're not logged in
     $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromParams) ->
-      console.log toState, toState.authenticate, Auth.isLoggedIn()
       if toState.authenticate and not Auth.isLoggedIn()
         $state.transitionTo "login"
         event.preventDefault()

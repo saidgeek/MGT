@@ -32,6 +32,8 @@ angular.module('filepicker', ['ngResource'])
             cb null, InkBlob
         , (FPError) ->
             cb FPError
+        , (proccess) =>
+          angular.element('[data-type="modal"] #loader').html "#{proccess}%"
 
     _storeConvert = (input, opts, cb) ->
       _store input, (err, resStore) ->

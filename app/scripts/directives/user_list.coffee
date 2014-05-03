@@ -5,18 +5,9 @@ angular.module('movistarApp')
     restrict: 'A'
     scope: {}
     templateUrl: 'partials/admin/userList'
-    controller: ($scope, $element, UserFactory) ->
-      $scope.users = []
-      role = ''
-
-      UserFactory.index role, (err, users) ->
-        if err
-          $scope.errors = err
-        else
-          if users.length > 0
-            $scope.users = users
-
+    controller: 'UserCtrl'
     link: ($scope, $element, $attrs) =>
+      selectId = null
 
       $_activateFirstElement = () =>
         $element
@@ -31,6 +22,7 @@ angular.module('movistarApp')
           .first()
           .find('.note-right h3')
           .addClass 'active'
+        $rootScope.$emit 'loadUserShow', $element.find('.note.round').first().data 'id'
 
       $_disableActiveAllElements = () =>
         $element
@@ -45,35 +37,47 @@ angular.module('movistarApp')
           .find('ul.lista-estados')
           .slideUp 300
 
+      $_activeUser = (id, activeFirst) =>
+        $el = $element.find("[data-id='#{id}']")
+        ms = if activeFirst then 300 else 0
+
+        unless $el.hasClass 'active'
+          $_disableActiveAllElements() if activeFirst
+          $_hideAllAccordions() if activeFirst
+
+          $el
+            .addClass('active')
+            .find('ul.lista-estados')
+            .slideDown ms
+          $el
+            .find('.note-right h3')
+            .addClass 'active'
+
+          $rootScope.$emit 'loadUserShow', id
+
       $_triggers = () ->
         $element
           .find('.note.round').on 'click', (e) =>
             e.preventDefault()
             $el = angular.element(e.target).parents '.note.round'
+            _id = $el.data 'id'
 
-            unless $el.hasClass 'active'
-
-              $_disableActiveAllElements()
-              $_hideAllAccordions()
-
-              $el
-                .addClass('active')
-                .find('ul.lista-estados')
-                .slideDown 300
-              $el
-                .find('.note-right h3')
-                .addClass 'active'
-
+            $_activeUser(_id, true)
 
             return false
 
+      $rootScope.$on 'reloadUser', (e, user) =>
+        selectId = user._id
+        $scope.reload()
 
       $scope.$watch 'users', (value) ->
         $rootScope.resize = true
         $timeout () =>
           $timeout () =>
-
-            $_activateFirstElement()
+            if selectId is null
+              $_activateFirstElement()
+            else
+              $_activeUser(selectId)
             $_triggers()
 
 
@@ -82,7 +86,7 @@ angular.module('movistarApp')
                 scrollButtons:
                     enable:false
             $element.find('.overflow').mCustomScrollbar "update"
-            $element.find('.overflow').mCustomScrollbar "scrollTo", "top"
+            $element.find('.overflow').mCustomScrollbar "scrollTo", ".note.round.active"
 
           , 0
         , 0

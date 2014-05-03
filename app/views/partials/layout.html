@@ -1,0 +1,87 @@
+<div data-sgk-resize data-sgk-overflow data-max-width="55" data-left-width="460" data-type="users"></div>
+<div id="side" data-ng-switch="module">
+  <div class="thetable">
+
+    <div class="therowAlt">
+      <div class="thecell">
+        <div id="perfil" class="sidebox">
+          <div data-ng-include="'partials/_profile'"></div><!-- perfil sidebox -->
+        </div>
+
+        <div id="crear" class="sidebox">
+          <div data-ng-switch-default>
+            <a href="javascript:{}" class="boton1 round" data-sgk-modal-form
+              data-sgk-ctrl="UserSaveCtrl"
+              data-sgk-tpl="partials/admin/user/new">
+              <span class="admin"></span>
+              Crear nuevo usuario
+            </a>
+          </div>
+          <div data-ng-switch-when="category">
+            <a class="boton1 round" href="javascript:{}" data-ng-click="showModals('newCategory')">Crear nueva clasificación</a>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="therow">
+      <div class="thecell">
+        <div class="relativo" ui-view="sidebar"></div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- side -->
+
+<div id="main" class="ui-widget-content"  data-ng-switch="module">
+  <div class="wrap">
+
+    <div id="top">
+      <div class="logo">
+        <img src="images/movistar.png"/>
+      </div>
+    </div>
+
+    <div id="menu-admin">
+      <div class="menu-admin" data-sgk-permission="administration">
+        <ul>
+      <!--     <li data-ng-class="{active: isActive('/inicio')}"><a ng-href="/inicio">Inicio</a></li> -->
+          <li ui-sref-active="active"><a ui-sref="solicitude">Solicitudes</a></li>
+          <li ui-sref-active="active"><a ui-sref="admin.users">Administración</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="left" class="col" ui-view="left"></div><!--// #left //-->
+
+    <div id="right" class="col altR ui-widget ui-widget-content" ui-view="right"></div><!-- col right -->
+
+  </div><!-- wrap -->
+
+  <div id="search-form">
+    <form>
+      <input type="text" name="search" id="search" class="round" placeholder="Buscar Solicitud o palabra clave" />
+    </form>
+  </div>
+
+  <!-- <div data-ng-switch="modals">
+    <div data-ng-switch-default>
+    </div>
+
+    <div data-ng-switch-when="newCategory" data-ng-controller="CategorySaveCtrl" class="modal">
+      <div data-ng-include="'partials/admin/category/new'"></div>
+    </div>
+    <div data-ng-switch-when="updateCategory" data-ng-controller="CategorySaveCtrl" class="modal">
+      <div data-ng-include="'partials/admin/category/edit'"></div>
+    </div>
+  </div>
+
+  <div ng-switch="masterModals">
+    <div data-ng-switch-when="profileEdit" data-ng-controller="ProfileEditCtrl" class="modal">
+      <div data-ng-include="'partials/_profileEdit'"></div>
+    </div>
+  </div> -->
+
+</div><!-- main -->

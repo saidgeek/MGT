@@ -1,66 +1,49 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'UserCtrl', ($scope, UserFactory, $rootScope) ->
-    $scope.users = []
-    $scope.errors = {}
+  .controller 'UserCtrl', ($scope, $rootScope, UserFactory) ->
+      $scope.users = []
 
-    $rootScope.$on 'reloadUsers', (e, role) ->
-      _loadUsers(role)
+      $rootScope.$watch 'filters.user.role', () =>
+        if $rootScope.filters?
+          $scope.reload ($rootScope.filters.user.role)
+      
 
-    $rootScope.$on 'updateUsers', (e) ->
-      _loadUsers('')
-      $rootScope.$emit 'reloadGroups'
+      $scope.reload = (role) =>
+        UserFactory.index role, (err, users) ->
+          if err
+            $scope.errors = err
+          else
+            if users.length > 0
+              $scope.users = users
 
-    $scope.loadUser = (id) ->
-      $rootScope.$emit 'loadUserShow', id
+      $scope.reload()
 
-    _loadUsers = (role) ->
-      UserFactory.index role, (err, users) ->
-        if err
-          $scope.errors = err
-        else
-          if users.length > 0
-            $rootScope.$emit 'loadUserShow', users[0]._id
-            $scope.users = users
-
-    _loadUsers('')
-
-  .controller 'UserShowCtrl', ($scope, UserFactory, $rootScope, UserParams) ->
+  .controller 'UserShowCtrl', ($scope, $rootScope, $element, UserFactory) =>
     $scope.user = {}
     $scope.errors = {}
 
-    $rootScope.$on 'loadUserShow', (e, id) ->
-      _loadUser(id)
-    if UserParams?.id?
-      _loadUser(UserUpdateParams.id)
+    $rootScope.$on 'loadUserShow', (e, id) =>
+      if typeof id isnt 'undefined'
+        UserFactory.show id, (err, user) =>
+          if err
+            $scope.errors = err
+          else
+            $scope.user = user
 
-    $scope.EditUser = (id) ->
-      UserParams.id = id
-      $rootScope.$emit 'showModals', { modal: 'updateUser', id: id}
-
-    _loadUser = (id) ->
-      $scope.user = ''
-      UserFactory.show id, (err, user) ->
-        if err
-          $scope.errors = err
-        else
-          if !user.profile?.avatar? or user.profile.avatar is ''
-            user.profile.avatar = 'images/avatar-user.png'
-          $scope.user = user
-
-  .controller 'UserSaveCtrl', ($scope, UserFactory, $rootScope, UserParams, RolesData) ->
+  .controller 'UserSaveCtrl', ($scope, $rootScope, UserFactory, RolesData) ->
+    $scope.title = 'Crear nuevo usuario'
     $scope.user = {}
     $scope.errors = {}
     $scope.roles = RolesData.getArray()
 
-    if UserParams?.id?
-      UserFactory.show UserParams.id, (err, user) ->
+    $scope.$watch 'id', (id) ->
+      UserFactory.show id, (err, user) ->
         if err
           $scope.errors = err
         else
           $scope.user = user
-          UserParams.id = null
+          $scope.title = "#{user.profile.firstName} #{user.profile.lastName}"
 
     $scope.update = (form) ->
       if form.$valid
@@ -77,8 +60,9 @@ angular.module('movistarApp')
               $rootScope.currentUser.avatar = user.profile.avatar
               $rootScope.currentUser.name = user.profile.firstName+' '+user.profile.lastName
               $rootScope.currentUser.role = user.role
-            $rootScope.$emit 'reloadUsers', ''
-            $scope.$emit 'hideModals', true
+            $rootScope.$emit 'reloadUser', user
+            $scope.$emit 'close', true
+
             $rootScope.alert =
               type: 'success'
               content: """
@@ -96,13 +80,11 @@ angular.module('movistarApp')
                           Ha ocurrido un error al crear el usuario.
                        """
           else
-            $rootScope.$emit 'updateUsers'
-            $scope.$emit 'hideModals', true
+            $rootScope.$emit 'reloadUser', user
+            $scope.$emit 'close', true
+            $scope.user = {}
             $rootScope.alert =
               type: 'success'
               content: """
                           El usuario #{ user.profile.firstName } #{ user.profile.lastName } se a agregado correctamente.
                        """
-
-    $scope.closeModal = () ->
-      $scope.$emit 'hideModals', true

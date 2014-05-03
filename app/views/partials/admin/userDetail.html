@@ -1,0 +1,87 @@
+<div class="altFirst">
+
+  <div class="user">
+    <div class="t-c img-user">
+      <div>
+        <img src="{{ user.profile.avatar }}" alt="{{ user.profile.firstName }} {{ user.profile.lastName }}">
+      </div>
+    </div>
+
+    <div class="t-c">
+      <div class="padding-left">
+
+        <div class="info-user">
+          <div class="name-user">
+            <h2>{{ user.profile.firstName }} {{ user.profile.lastName }}</h2>
+            <span>{{ user.role | RoleName }}</span>
+          </div>
+
+          <div class="edit-user">
+            <ul>
+              <li>
+                <a href="javascript:{}" data-sgk-modal-form
+                  data-sgk-ctrl="UserSaveCtrl"
+                  data-sgk-tpl="partials/admin/user/edit"
+                  data-sgk-id="{{ user._id }}">
+                  <span class="ico edi"></span>
+                  Editar información
+                </a>
+              </li>
+  <!--             <li>
+                <a href="javascript:{}">
+                  <span class="ico eli"></span>
+                  Eliminar
+                </a>
+              </li> -->
+            </ul>
+          </div>
+        </div>
+
+        <div class="contact-user">
+          <ul>
+            <li data-ng-if="user.email"><span class="ico ema"></span> {{ user.email }}</li>
+            <li data-ng-if="user.profile.celNumber"><span class="ico cel"></span> {{ user.profile.celNumber }}</li>
+            <li data-ng-if="user.profile.phoneNumber"><span class="ico tel"></span> {{ user.profile.phoneNumber }}</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="contenedor-filtros">
+    <div class="half">
+      <div id="paginador">
+        <ul>
+          <li><a href="javascript:{}" class="prev"><span>anterior</span></a></li>
+          <li><a href="javascript:{}">1</a></li>
+          <li><a href="javascript:{}">2</a></li>
+          <li><a href="javascript:{}">3</a></li>
+          <li><a href="javascript:{}">4</a></li>
+          <li><a href="javascript:{}">...</a></li>
+          <li><a href="javascript:{}">15</a></li>
+          <li><a href="javascript:{}" class="next"><span>siguiente</span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="half">
+      <div id="filtros">
+        <span>Ordenar por</span>
+        <div class="filtrodiv"><span></span>
+          <select class="filtro" id="filtro" name="filtro">
+            <option value="0">Nivel de prioridad</option>
+            <option value="1">Opcion 02</option>
+            <option value="2">Opcion 03</option>
+            <option value="3">Opcion 04</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="medida">
+  <div data-ng-include="'partials/admin/user/_solicitude'"></div>
+</div>
