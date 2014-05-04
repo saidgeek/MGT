@@ -1,48 +1,46 @@
-<form name="form" data-ng-submit="create(form)">
-  <fieldset class="odd">
-    <div class="t-c img-user">
-      <div class="relativo">
-        <div class="img-user" data-sgk-file-upload-user data-ng-model="user.profile.avatar"></div>
-      </div>
+<fieldset class="odd">
+  <div class="t-c img-user">
+    <div class="relativo">
+      <div class="img-user" data-sgk-file-upload-user data-ng-model="user.profile.avatar"></div>
     </div>
-    <ul class="t-c">
-      <li><input type="text" id="nombre" name="nombre" placeholder="Nombre" data-ng-model="user.profile.firstName"/></li>
-      <li><input type="text" id="nombre" name="nombre" placeholder="Apellido" data-ng-model="user.profile.lastName"/></li>
-      <li class="dropdown"><span></span>
-        <select data-ng-model="user.role" data-ng-options="r.id as r.name for r in roles" required></select>
-      </li>
-    </ul>
-  </fieldset>
+  </div>
+  <ul class="t-c">
+    <li><input type="text" id="nombre" name="nombre" placeholder="Nombre" data-ng-model="user.profile.firstName"/></li>
+    <li><input type="text" id="nombre" name="nombre" placeholder="Apellido" data-ng-model="user.profile.lastName"/></li>
+    <li class="dropdown"><span></span>
+      <select data-ng-model="user.role" data-ng-options="r.id as r.name for r in roles" required></select>
+    </li>
+  </ul>
+</fieldset>
 
-  <fieldset class="even">
-    <ul>
-      <li>
-        <input type="email" id="nombre" name="email" placeholder="Correo Electrónico" data-ng-model="user.email" />
-      </li>
-      <li ng-show="user.role === 'PROVIDER'">
-        <input type="text" id="nombre" name="movil" placeholder="Empresa" data-ng-model="user.profile.company"/>
-      </li>
-      <li>
-        <input type="text" id="nombre" name="movil" placeholder="Teléfono Móvil" data-ng-model="user.profile.celNumber"/>
-      </li>
-      <li>
-        <input type="text" id="nombre" name="oficina" placeholder="Teléfono Oficina" data-ng-model="user.profile.phoneNumber"/>
-      </li>
-    </ul>
-  </fieldset>
+<fieldset class="even">
+  <ul>
+    <li>
+      <input type="email" id="nombre" name="email" placeholder="Correo Electrónico" data-ng-model="user.email" />
+    </li>
+    <li ng-show="user.role === 'PROVIDER'">
+      <input type="text" id="nombre" name="movil" placeholder="Empresa" data-ng-model="user.profile.company"/>
+    </li>
+    <li>
+      <input type="text" id="nombre" name="movil" placeholder="Teléfono Móvil" data-ng-model="user.profile.celNumber"/>
+    </li>
+    <li>
+      <input type="text" id="nombre" name="oficina" placeholder="Teléfono Oficina" data-ng-model="user.profile.phoneNumber"/>
+    </li>
+  </ul>
+</fieldset>
 
-  <fieldset class="odd">
-    <ul>
-      <li>
-        <textarea id="descripcion" name="descripcion" placeholder="Comentario" data-ng-model="user.profile.description"></textarea>
-      </li>
-    </ul>
-  </fieldset>
-  <fieldset class="blue">
-    <ul>
-      <li><a href="javascript:{}">Limpiar todos los Datos</a></li>
-      <li><a href="javascript:{}" data-close>Cancelar</a></li>
-    </ul>
-    <button type="submit" class="boton1 round"><span></span>Crear Usuario</button>
-  </fieldset>
-</form>
+<fieldset class="odd">
+  <ul>
+    <li>
+      <textarea id="descripcion" name="descripcion" placeholder="Comentario" data-ng-model="user.profile.description"></textarea>
+    </li>
+  </ul>
+</fieldset>
+<fieldset class="blue">
+  <ul>
+    <li><a href="javascript:{}">Limpiar todos los Datos</a></li>
+    <li><a href="javascript:{}" data-close>Cancelar</a></li>
+  </ul>
+  <button type="submit" class="boton1 round"><span></span>Crear Usuario</button>
+</fieldset>

@@ -4,7 +4,7 @@ angular.module('movistarApp')
 	.directive 'sgkUserSidebar', ($rootScope) ->
 		restrict: 'A'
 		scope: {}
-		templateUrl: 'partials/admin/user/_sidebar'
+		templateUrl: 'directives/user/sidebar'
 		controller: ($scope, $rootScope, UserFactory, RolesData) =>
 			$scope.groups = null
 			$scope.roles = RolesData.getArray()

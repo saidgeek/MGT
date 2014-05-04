@@ -4,7 +4,7 @@ angular.module('movistarApp')
   .directive 'sgkUserDetail', ($window, $rootScope, $timeout) ->
     restrict: 'A'
     scope: {}
-    templateUrl: 'partials/admin/userDetail'
+    templateUrl: 'directives/user/detail'
     controller: 'UserShowCtrl'
     link: ($scope, $element, $attrs) =>
 

@@ -4,7 +4,7 @@ angular.module('movistarApp')
   .directive 'sgkUserList', ($window, $rootScope, $timeout) ->
     restrict: 'A'
     scope: {}
-    templateUrl: 'partials/admin/userList'
+    templateUrl: 'directives/user/list'
     controller: 'UserCtrl'
     link: ($scope, $element, $attrs) =>
       selectId = null

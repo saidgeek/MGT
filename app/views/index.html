@@ -60,46 +60,50 @@
 
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <!-- MODULES -->
         <script src="scripts/app.js"></script>
         <script src="scripts/filepicker.js"></script>
-
-        <script src="scripts/controllers/master.js"></script>
-        <script src="scripts/controllers/admin.js"></script>
+        <!-- CONTROLLERS -->
+        <script src="scripts/controllers/master.js"></script><!-- DELETE -->
         <script src="scripts/controllers/user.js"></script>
-        <script src="scripts/controllers/login.js"></script>
-        <script src="scripts/controllers/solicitude.js"></script>
-        <script src="scripts/controllers/change.js"></script>
-        <script src="scripts/controllers/recovery.js"></script>
-
-
+        <script src="scripts/controllers/category.js"></script>
+        <script src="scripts/controllers/login.js"></script><!-- DELETE (colocar en un solo controller auth) -->
+        <script src="scripts/controllers/change.js"></script><!-- DELETE (colocar en un solo controller auth) -->
+        <script src="scripts/controllers/recovery.js"></script><!-- DELETE (colocar en un solo controller auth) -->
+        <script src="scripts/controllers/solicitude.js"></script><!-- DELETE -->
+        <!-- DIRECTIVAS DE GENERALES -->
+        <script src="scripts/directives/modal.js"></script>
+        <script src="scripts/directives/mongooseError.js"></script>
+        <script src="scripts/directives/remember.js"></script>
+        <script src="scripts/directives/resize.js"></script>
+        <script src="scripts/directives/admin.js"></script>
+        <!-- DIRECTIVAS DE SOLICITUDE -->
+        <script src="scripts/directives/solicitude/detail.js"></script>
+        <script src="scripts/directives/solicitude/list.js"></script>
+        <script src="scripts/directives/solicitude/sidebar.js"></script>
+        <!-- DIRECTIVAS DE USUARIO -->
+        <script src="scripts/directives/user/list.js"></script>
+        <script src="scripts/directives/user/detail.js"></script>
+        <script src="scripts/directives/user/sidebar.js"></script>
+        <!-- DIRECTIVAS DE CATEGORIA -->
+        <script src="scripts/directives/category/list.js"></script>
+        <script src="scripts/directives/category/detail.js"></script>
+        <!-- FILTERS -->
+        <script src="scripts/filters/master.js"></script>
+        <!-- FACTORIES --> 
         <script src="scripts/factories/socketIO.js"></script>
-        <script src="scripts/factories/params.js"></script>
-        <script src="scripts/factories/admin.js"></script>
-        <script src="scripts/factories/solicitude.js"></script>
+        <script src="scripts/factories/params.js"></script><!-- DELETE -->
+        <script src="scripts/factories/admin.js"></script><!-- DELETE (Dejar como servicios) -->
+        <script src="scripts/factories/solicitude.js"></script><!-- DELETE (Dejar como servicios) -->
         <script src="scripts/factories/notification.js"></script>
         <script src="scripts/factories/localSourceData.js"></script>
-
-        <script src="scripts/filters/master.js"></script>
-
+        <!-- SERVICES -->
         <script src="scripts/services/auth.js"></script>
         <script src="scripts/services/session.js"></script>
         <script src="scripts/services/user.js"></script>
         <script src="scripts/services/solicitude.js"></script>
         <script src="scripts/services/category.js"></script>
         <script src="scripts/services/notification.js"></script>
-
-        <script src="scripts/directives/remember.js"></script>
-        <script src="scripts/directives/resize.js"></script>
-        <script src="scripts/directives/admin.js"></script>
-        <script src="scripts/directives/solicitude_detail.js"></script>
-        <script src="scripts/directives/solicitude_list.js"></script>
-        <script src="scripts/directives/solicitude_sidebar.js"></script>
-        <script src="scripts/directives/user_list.js"></script>
-        <script src="scripts/directives/user_detail.js"></script>
-        <script src="scripts/directives/user_sidebar.js"></script>
-        <script src="scripts/directives/category_list.js"></script>
-        <script src="scripts/directives/modal_form.js"></script>
-        <script src="scripts/directives/mongooseError.js"></script>
         <!-- endbuild -->
 
 

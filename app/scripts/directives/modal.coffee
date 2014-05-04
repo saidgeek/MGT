@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('movistarApp')
-  .directive 'sgkModalForm', ($window, $rootScope, $timeout, $http, $compile) ->
+  .directive 'sgkModal', ($window, $rootScope, $timeout, $http, $compile) ->
     restrict: 'A'
     scope: {}
     controller: '@'
@@ -16,7 +16,7 @@ angular.module('movistarApp')
           if attrs.sgkId?
             $scope.id = attrs.sgkId
 
-          $http.get("/partials/modalForm").success (data) =>
+          $http.get("/directives/modal/#{attrs.sgkModal}").success (data) =>
             angular.element('body').append data
 
             $el = angular.element('div[data-type="modal"]')
@@ -41,7 +41,9 @@ angular.module('movistarApp')
               return false
 
             $http.get("/#{attrs.sgkTpl}").success (data) =>
-              $el.find('.overflow div').html data
+              console.log 'attrs.sgkAction:', attrs.sgkAction
+              $el.find('.overflow div form').attr 'data-ng-submit', "#{attrs.sgkAction}(form)"
+              $el.find('.overflow div form').html data
               $compile($el.contents())($scope)
               $el.css 'display', 'block'
 

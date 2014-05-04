@@ -21,14 +21,11 @@ angular.module('movistarApp')
 
   .controller 'UserShowCtrl', ($scope, $rootScope, $element, UserFactory) =>
     $scope.user = {}
-    $scope.errors = {}
 
     $rootScope.$on 'loadUserShow', (e, id) =>
       if typeof id isnt 'undefined'
         UserFactory.show id, (err, user) =>
-          if err
-            $scope.errors = err
-          else
+          if !err
             $scope.user = user
 
   .controller 'UserSaveCtrl', ($scope, $rootScope, UserFactory, RolesData) ->

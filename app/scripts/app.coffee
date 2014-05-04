@@ -36,15 +36,29 @@ angular.module('movistarApp', [
       .state 'admin',
         templateUrl: 'partials/layout'
         authenticate: true
+      # ADIMIN.USERS ROUTE
       .state 'admin.users',
         url: '/admin/users'
         views:
+          'sidebox': 
+            templateUrl: 'partials/admin/user/_sidebox'
           'sidebar':
             templateUrl: 'partials/admin/userSidebar'
           'left':
             templateUrl: 'partials/admin/user/_left'
           'right':
             templateUrl: 'partials/admin/user/_right'
+        authenticate: true
+      # ADIMIN.CATEGORY ROUTE
+      .state 'admin.categories',
+        url: '/admin/categories',
+        views:
+          'sidebox': 
+            templateUrl: 'partials/admin/category/_sidebox'
+          'left':
+            templateUrl: 'partials/admin/category/_left'
+          'right':
+            templateUrl: 'partials/admin/category/_right'
         authenticate: true
 
       # SOLICITUDE ROUTERS
@@ -67,7 +81,7 @@ angular.module('movistarApp', [
     ]
   .factory 'noCacheInterceptor', () ->
     request: (config) ->
-      if config.method is 'GET' and config.url.indexOf('partials/') is -1
+      if config.method is 'GET' and config.url.indexOf('partials/') is -1 and config.url.indexOf('directives/') is -1
         separator = '&'
         if config.url.indexOf('?') is -1
           separator = '?'

@@ -8,19 +8,7 @@
           <div data-ng-include="'partials/_profile'"></div><!-- perfil sidebox -->
         </div>
 
-        <div id="crear" class="sidebox">
-          <div data-ng-switch-default>
-            <a href="javascript:{}" class="boton1 round" data-sgk-modal-form
-              data-sgk-ctrl="UserSaveCtrl"
-              data-sgk-tpl="partials/admin/user/new">
-              <span class="admin"></span>
-              Crear nuevo usuario
-            </a>
-          </div>
-          <div data-ng-switch-when="category">
-            <a class="boton1 round" href="javascript:{}" data-ng-click="showModals('newCategory')">Crear nueva clasificación</a>
-          </div>
-        </div>
+        <div id="crear" class="sidebox" ui-view="sidebox"></div>
 
 
       </div>
@@ -55,7 +43,6 @@
     </div>
 
     <div id="left" class="col" ui-view="left"></div><!--// #left //-->
-
     <div id="right" class="col altR ui-widget ui-widget-content" ui-view="right"></div><!-- col right -->
 
   </div><!-- wrap -->
