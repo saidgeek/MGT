@@ -5,12 +5,70 @@
     <div class="therowAlt">
       <div class="thecell">
         <div id="perfil" class="sidebox">
-          <div data-ng-include="'partials/_profile'"></div><!-- perfil sidebox -->
+          <div class="t-c p-avatar">
+            <div>
+              <img ng-src="{{ currentUser.avatar || 'images/avatar-user.png' }}"/><div class="avperfil"></div>
+            </div>
+          </div>
+          <div class="t-c">
+              <p>{{ currentUser.name }}<br /><span>{{ currentUser.role | RoleName }}</span></p>
+              <ul class="adm">
+                  <li ng-controller="NotificationsCtrl">
+                    <a href="javascript:{}" class="sub-not" data-sgk-submenu-notifications ><img src="images/bell.png"/>
+                        <div class="cant">{{ notifications.length || 0}}</div>
+                    </a>
+                    <div id="submenu" class="notifications">
+                        <div id="notificacion" class="wrap round hide">
+                            <div class="tit-not">
+                                <span class="arrow"></span>
+                                <h3>Notificaciones</h3>
+                                <a href="javascript:{}">Ver todas</a>
+                            </div>
+                            <div class="wrap" ng-repeat="notify in notifications">
+                                <div class="t-c avatar">
+                                    <img ng-src="{{ notify.from.profile.avatar || 'images/avatar-user.png' }}"/>
+                                    <div class="avnotif"></div>
+                                </div>
+                                <div class="t-c">
+                                    <a href="javascript:{}" class="cerrar">X</a>
+                                    <p class="avatar bold">
+                                        <span>{{ notify.from.profile.firstName }} {{ notify.from.profile.lastName }}</span>
+                                        <span class="regular">{{ notify.from.role | RoleName }}</span>
+                                    </p>
+                                    <br>
+                                    <p>{{ notify._type | Notification }}</p>
+                                </div>
+                            </div>
+                        </div><!-- notificaciones -->
+                    </div>
+                  </li>
+                  <li ng-controller="OptionsCtrl">
+                    <a href="javascript:{}" data-sgk-submenu-options><img src="images/gear.png"/></a>
+                      <div id="submenu" class="options">
+                          <div id="notificacion" class="wrap round hide">
+                              <div class="tit-not">
+                                  <span class="arrow"></span>
+                                  <h3>Opciones</h3>
+                              </div>
+                              <div class="wrap">
+                                <a href="javascript:{}" ng-click="showModals('profileEdit')" class="t-c">
+                                  Editar perfil
+                                </a>
+                              </div>
+                              <div class="wrap">
+                                <a href="javascript:{}" ng-click="logout()" class="t-c">
+                                  Salir
+                                </a>
+                              </div>
+                          </div><!-- notificaciones -->
+                      </div>
+
+                  </li>
+              </ul>
+          </div>
         </div>
 
         <div id="crear" class="sidebox" ui-view="sidebox"></div>
-
-
       </div>
     </div>
 
