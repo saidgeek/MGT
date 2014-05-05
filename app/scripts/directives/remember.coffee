@@ -4,7 +4,7 @@ angular.module('movistarApp')
   .directive 'sgkRemember', () ->
     conf = 
       restrict: 'A'
-      templateUrl: 'partials/remember'
+      templateUrl: 'directives/remember'
       link: (scope, element, attrs) ->
         scope.text = attrs.text || ''
 

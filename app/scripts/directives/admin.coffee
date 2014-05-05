@@ -92,7 +92,7 @@ angular.module('movistarApp')
 
   .directive 'sgkAlerts', ($rootScope, $timeout) ->
     restrict: 'A'
-    templateUrl: 'partials/_alerts'
+    templateUrl: 'directives/alerts'
     replace: true
     controller: ($scope, $element) ->
 
@@ -118,7 +118,7 @@ angular.module('movistarApp')
 
   .directive 'sgkFileUploadUser', (filepickerApi, $timeout) ->
     restrict: 'A'
-    templateUrl: 'partials/_userUploader'
+    templateUrl: 'directives/userUploader'
     require: 'ngModel'
     link: (scope, el, attrs, ngModel) ->
       el.find('input[type="file"]').on 'change', (e) ->
