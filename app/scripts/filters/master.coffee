@@ -89,3 +89,12 @@ angular.module("movistarApp")
         QUEUE_PROVIDER: 'Ha asignado una solicitud'
 
       notifications[key]
+
+  .filter 'RemoveThis', ->
+    (arr, id) ->
+      newArr = []
+      for a in arr
+        if a._id isnt id
+          newArr.push a
+
+      newArr

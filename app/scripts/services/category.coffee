@@ -44,4 +44,6 @@ angular.module("movistarApp")
           clientToken: '@clientToken'
           accessToken: '@accessToken'
           id: '@id'
+        data:
+          category: '@category'
         url: '/api/v1/category/:id'

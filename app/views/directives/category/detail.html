@@ -13,7 +13,11 @@
             </a>
           </li>
           <li>
-            <a href="javascript:{}" confirm-click="remove(category._id)" confirm-message="Estas seguro?">
+            <a href="javascript:{}" data-sgk-modal="confirm"
+              data-sgk-ctrl="CategorySaveCtrl"
+              data-sgk-tpl="partials/admin/category/delete" 
+              data-sgk-action="remove" 
+              data-sgk-id="{{ category._id }}">
               <span class="ico eli"></span>
               Eliminar
             </a>

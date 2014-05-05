@@ -1,0 +1,20 @@
+<fieldset>
+  <p><strong>Registro de elminación de "{{ category.name }}"</strong></p>
+  <p>Si Ud. desea eliminar "{{ category.name }}" debe: 
+    <ul>
+      <ol ng-if="false">Dejar asignar las tareas a otra categoría ya existente.</ol>
+      <ol>Dejar un comentario del por que la eliminación de la misma.</ol>
+    </ul>
+  </p>
+</fieldset> 
+<fieldset class="odd">
+  <div class="filtrodiv" ng-if="false"><span></span>
+    <select class="filtro" id="filtro" name="filtro" ng-model="category.newCategory" ng-options="c._id as c.name for c in categories | RemoveThis: id:c._id">
+      <option value="">Seleccionar</option>
+    </select>
+  </div>
+  <textarea id="descripcion" name="descripcion" rows="10" placeholder="¿Por qué?" ng-model="category.deleteMessage" required></textarea>
+</fieldset>
+<fieldset class="blue">
+  <input type="submit" class="boton1 round" value="Confirmar eliminación"/>
+</fieldset>

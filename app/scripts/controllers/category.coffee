@@ -23,18 +23,17 @@ angular.module('movistarApp')
           if !err
             $scope.category = category
 
-    # $scope.remove = (id) ->
-    #   console.log id
-    #   CategoryFactory.remove id, (err) ->
-    #     if err
-    #       $scope.errors = err
-    #     else
-    #       $rootScope.$emit 'reloadCategories', ''
-
   .controller 'CategorySaveCtrl', ($scope, $rootScope, CategoryFactory) ->
     $scope.title = 'Crear nueva clacificación'
     $scope.category = {}
     $scope.errors = {}
+    $scope.categories = []
+
+    CategoryFactory.index (err, categories) ->
+      if err
+        $scope.errors = err
+      else
+        $scope.categories = categories
 
     $scope.$watch 'id', (id) =>
       CategoryFactory.show id, (err, category) ->
@@ -81,4 +80,22 @@ angular.module('movistarApp')
               type: 'success'
               content: """
                           La categoría #{ category.name } se a creado correctamente.
+                       """
+
+    $scope.remove = (form) ->
+      if form.$valid
+        CategoryFactory.remove $scope.category._id, $scope.category, (err, category) ->
+          if err
+            $rootScope.alert =
+              type: 'error'
+              content: """
+                          Ha ucurrido un error al intentar eliminar la clasificación.
+                       """
+          else
+            $rootScope.$emit 'reloadCategory', category
+            $scope.$emit 'close', true
+            $rootScope.alert =
+              type: 'success'
+              content: """
+                          La categoría #{ category.name } se a eliminado con exito.
                        """
