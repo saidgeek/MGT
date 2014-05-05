@@ -41,24 +41,24 @@ angular.module('movistarApp', [
         url: '/admin/users'
         views:
           'sidebox': 
-            templateUrl: 'partials/admin/user/_sidebox'
+            templateUrl: 'partials/user/sidebox'
           'sidebar':
-            templateUrl: 'partials/admin/userSidebar'
+            templateUrl: 'partials/user/sidebar'
           'left':
-            templateUrl: 'partials/admin/user/_left'
+            templateUrl: 'partials/user/left'
           'right':
-            templateUrl: 'partials/admin/user/_right'
+            templateUrl: 'partials/user/right'
         authenticate: true
       # ADIMIN.CATEGORY ROUTE
       .state 'admin.categories',
         url: '/admin/categories',
         views:
           'sidebox': 
-            templateUrl: 'partials/admin/category/_sidebox'
+            templateUrl: 'partials/category/sidebox'
           'left':
-            templateUrl: 'partials/admin/category/_left'
+            templateUrl: 'partials/category/left'
           'right':
-            templateUrl: 'partials/admin/category/_right'
+            templateUrl: 'partials/category/right'
         authenticate: true
 
       # SOLICITUDE ROUTERS
