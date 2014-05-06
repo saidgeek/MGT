@@ -23,54 +23,31 @@ angular.module('movistarApp')
 
     _loadStates()
 
-  .controller 'SolicitudeCtrl', ($rootScope, $scope, Auth, $location, SolicitudeFactory, RolesData) ->
-    $rootScope.title = "Solicitudes"
+  .controller 'SolicitudeCtrl', ($scope, $rootScope, SolicitudeFactory) ->
     $scope.solicitudes = []
-    $scope.errors = {}
+    $scope.role = $rootScope.currentUser.role
 
-    $scope.showModals = (modal) ->
-      _showModals(modal)
-
-    $rootScope.$on 'showModals', (e, args) ->
-      _showModals(args.modal)
-
-    $scope.$on 'hideModals', (e) ->
-      $scope.modals = ''
-
-    _showModals = (modal) ->
-      $scope.modals = modal
-
-    $rootScope.$on 'reloadSolicitudes', (e, state, category, priority, involved) ->
-      _loadSolicitudes(state, category, priority, involved)
-
-    $rootScope.$on 'updateSolicitudes', (e) ->
-      _loadSolicitudes('', '', '', '')
-      # $rootScope.$emit 'reloadGroups'
-
-    $scope.loadSolicitude = (id) ->
-      $rootScope.$emit 'showTabs', ''
-      $rootScope.$emit 'loadSolicitudeShow', id
-
-    _loadSolicitudes = (state, category, priority, involved) ->
-      $scope.solicitudes = null
-      SolicitudeFactory.index state, category, priority, involved, (err, solicitudes) ->
+    # state, category, priority, involved
+    $scope.reload = () ->
+      SolicitudeFactory.index '', '', '', '', (err, solicitudes) ->
         if err
           $scope.errors = err
         else
           if solicitudes.length > 0
-            $rootScope.$emit 'loadSolicitudeShow', solicitudes[0]._id
-            $rootScope.$emit 'reloadStates'
             $scope.solicitudes = solicitudes
 
-    _loadSolicitudes('', '', '', '')
+    $scope.reload('', '', '', '')
 
   .controller 'SolicitudeShowCtrl', ($scope, SolicitudeFactory, $rootScope, SolicitudeParams, PriorityData, CategoryFactory, UserFactory, SegmentsData, SectionsData) ->
-    $scope.solicitude = {}
-    $scope.tags = []
-    $scope.errors = {}
-    $scope.viewDetail = null
+    $scope.solicitude = null
+    $scope.role = $rootScope.currentUser.role
+    $scope.rejectedState = ''
+
     $scope.tabs = ''
-    $scope.viewDetail = null
+    $scope.options = ''
+    $scope.section = ''
+    $scope.tags = []
+
     $scope.categories = null
     $scope.contentManagers = null
     $scope.provider = null
@@ -97,41 +74,16 @@ angular.module('movistarApp')
       else
         $scope.provider = users
 
-    $rootScope.$on 'loadSolicitudeShow', (e, id) ->
-      $scope.viewDetail = null
-      _loadSolicitude(id)
 
-    if SolicitudeParams?.id?
-      _loadUser(SolicitudeParams.id)
+    # $scope.showOption = (option) ->
+    #   if option is 'PAUSED'
+    #     ~['ROOT', 'ADMIN', 'CONTENT_MANAGER'].indexOf($rootScope.currentUser.role)
 
-    _changeViewByRole = (solicitude) ->
-      _role = $rootScope.currentUser.role
-      if solicitude.state[_role] is 'QUEUE_VALIDATION' and ~['EDITOR', 'ADMIN', 'ROOT'].indexOf _role
-        $scope.viewDetail = 'updateByEditor'
-      if solicitude.state is 'QUEUE_ALLOCATION' and ~['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf _role
-        $scope.viewDetail = 'updateByContentManager'
-      if solicitude.state is 'QUEUE_PROVIDER'
-        $scope.viewDetail = null
-
-    _loadSolicitude = (id) ->
-      SolicitudeFactory.show id, (err, solicitude) ->
-        if err
-          $scope.errors = err
-        else
-          $scope.solicitude = solicitude
-          _changeViewByRole($scope.solicitude)
-
-    _showTabs = (tab) ->
-      $scope.tabs = tab
-
-    $rootScope.$on 'showTabs', (e, tab) ->
-      _showTabs(tab)
-
-    $scope.showTabs = (tab) ->
-      _showTabs(tab)
-
-    $scope.activeTab = (tab) ->
-      $scope.tabs is tab
+    $rootScope.$on 'loadSolicitudeShow', (e, id) =>
+      if typeof id isnt 'undefined'
+        SolicitudeFactory.show id, (err, solicitude) ->
+          if !err
+            $scope.solicitude = solicitude
 
     $scope.addComment = (form) ->
       if form.$valid
@@ -139,15 +91,7 @@ angular.module('movistarApp')
           if err
             $scope.errors = err
           else
-            _loadSolicitude($scope.solicitude._id)
-
-    $scope.addTag = (e) ->
-      if e.keyCode is 13
-        e.preventDefault()
-        $scope.tags.push $scope.solicitude.tag
-        $scope.solicitude.ticket.tags = $scope.tags
-        $scope.solicitude.tag = ''
-        return false
+            $rootScope.$emit 'loadSolicitudeShow', $scope.solicitude._id
 
     $scope.nextState = (state) =>
       $scope.solicitude.nextState = state
@@ -162,24 +106,17 @@ angular.module('movistarApp')
                           Ha ocurrido un error al actualizar la solicitud.
                        """
           else
+            $rootScope.$emit 'reloadSolicitude', solicitude
             $rootScope.alert =
               type: 'success'
               content: """
                           La solicitude #{ solicitude.code } se actualizo correctamente.
                        """
-            $rootScope.$emit 'reloadSolicitudes', '', '', '', ''
 
   .controller 'SolicitudeSaveCtrl', ($scope, $rootScope, SolicitudeFactory, SolicitudeParams) ->
+    $scope.title = 'Crear nueva Solicitud'
     $scope.solicitude = {}
     $scope.errors = {}
-
-    if SolicitudeParams?.id?
-      SolicitudeFactory.show id, (err, solicitude) ->
-        if err
-          $scope.errors = err
-        else
-          $scope.solicitude = solicitude
-          SolicitudeParams.id = null
 
     $scope.create = (form) ->
       if form.$valid
@@ -192,13 +129,11 @@ angular.module('movistarApp')
                           Ha ocurrido un error al crear la solicitud.
                        """
           else
-            $rootScope.$emit 'reloadSolicitudes', '', '', '', ''
-            $scope.$emit 'hideModals'
+            $rootScope.$emit 'reloadSolicitude', solicitude
+            $scope.$emit 'close', true
+            $scope.solicitude = {}
             $rootScope.alert =
               type: 'success'
               content: """
                           La solicitude #{ solicitude.code } se creo correctamente.
                        """
-
-    $scope.closeModal = () ->
-      $scope.$emit 'hideModals'

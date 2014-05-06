@@ -1,38 +1,20 @@
-<div id="nueva-solicitud">
-  <div class="row">
-      <div class="relativo">
-          <h2>Crear nueva solicitud</h2>
-          <ul>
-              <li class="hideshow"><a href="javascript:{}" data-sgk-down-modal><span class="down">_</span></a></li>
-              <li class="close"><a href="javascript:{}" ng-click="closeModal()"><span class="close">X</span></a></li>
-          </ul>
-      </div>
+<fieldset class="odd">
+  <input type="text" id="titulo" name="titulo" placeholder="Titulo de la solicitud" ng-model="solicitude.ticket.title" required/>
+  <textarea id="descripcion" name="descripcion" rows="10" placeholder="Descripción de la Solicitud" ng-model="solicitude.ticket.description" required>
+  </textarea>
+</fieldset>
+<fieldset>
+  <ul class="upload-list">
+  </ul>
+  <div class="upload" data-sgk-upload-multi ng-model="solicitude.attachments">
+    <input class="att" type="file" name="attachment" multiple>
   </div>
-  <div class="table esconder">
-    <div class="relativo">
-      <form name="form", ng-submit="create(form)" novalidate>
-        <div data-sgk-overflow class="overflow">
-          <fieldset class="odd">
-            <input type="text" id="titulo" name="titulo" placeholder="Titulo de la solicitud" ng-model="solicitude.ticket.title" required/>
-            <textarea id="descripcion" name="descripcion" rows="10" placeholder="Descripción de la Solicitud" ng-model="solicitude.ticket.description" required>
-            </textarea>
-          </fieldset>
-          <fieldset>
-            <ul class="upload-list">
-            </ul>
-            <div class="upload" data-sgk-upload-multi ng-model="solicitude.attachments">
-              <input class="att" type="file" name="attachment" multiple>
-            </div>
-          </fieldset>
-          <fieldset class="blue">
-            <ul>
-              <li><a href="javascript:{}">Limpiar todos los Datos</a></li>
-              <li><a href="javascript:{}" ng-click="closeModal()">Cancelar</a></li>
-            </ul>
-            <button type="submit" class="boton1 round"><span></span>Generar Solicitud</button>
-          </fieldset>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+</fieldset>
+<fieldset class="blue">
+  <ul>
+    <li><button type="reset">Limpiar todos los Datos</button></li>
+    <li><a href="javascript:{}" ng-click="closeModal()">Cancelar</a></li>
+  </ul>
+  <button type="submit" class="boton1 round"><span></span>Generar Solicitud</button>
+</fieldset>
+        

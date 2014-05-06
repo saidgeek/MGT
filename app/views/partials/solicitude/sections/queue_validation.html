@@ -1,4 +1,3 @@
-
 <div id="nueva-solicitud" class="validar">
   <form name="form" ng-submit="update(form)">
     <fieldset class="even">
@@ -26,7 +25,7 @@
             <li class="Tag">
                 <input class="Tag" id="nombre" name="tags" type="text" placeholder="Tags de Clasificación" ng-keypress="addTag($event)" ng-model="solicitude.tag"/>
                 <div class="tags">
-                    <span class="tag round" ng-repeat="t in solicitude.ticket.tags track by $index">{{ t }}<a class="cerrar" href="javascript:{}"></a></span>
+                    <span class="tag round" ng-repeat="t in solicitude.ticket.tags track by $index" data-value="{{ t }}">{{ t }}<a class="cerrar" href="javascript:{}"></a></span>
                 </div>
             </li>
         </ul>
@@ -56,7 +55,7 @@
     <div class="fixed">
       <fieldset class="blue">
           <ul>
-              <li><a href="javascript:{}">Limpiar todos los Datos</a></li>
+              <li><button type="reset">Limpiar todos los Datos</button></li>
           </ul>
           <button type="submit" class="boton1 round" ng-click="nextState('assigned_to_manager')"><span></span>Validar Solicitud</button>
       </fieldset>

@@ -1,0 +1,41 @@
+<div class="full-heigth" ng-switch-default>
+
+  <div class="half-a" ng-switch="tabs">
+    
+  </div>
+
+  <div class="menu-middle">
+    <ul>
+      <li>
+        <a href="javascript:{}" class="active" title="Detalle" data-tab="todo">
+          <span class="ico tod"></span>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:{}" title="Comentarios" data-tab="comments">
+          <span class="ico com"></span>
+          <p class="bold">Comentarios</p> ({{ solicitude.comments.length }})
+        </a>
+      </li>
+      <li>
+        <a href="javascript:{}" title="Documentos" data-tab="documents">
+          <span class="ico doc"></span>
+          <p class="bold">Documentos</p> ({{ solicitude.ticket.attachments.length }})
+        </a>
+      </li>
+      <li>
+        <a href="javascript:{}"  title="Involucrados" data-tab="involved">
+          <span class="ico inv"></span>
+          <p class="bold">Involucrados</p> ({{ solicitude.involved.length }})
+        </a>
+      </li>
+      <li>
+        <a href="javascript:{}" title="Sub tareas" data-tab="tasks">
+          <span class="ico sub"></span>
+          <p class="bold">Sub tareas</p> ({{ solicitude.tasks.length }})
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</div>

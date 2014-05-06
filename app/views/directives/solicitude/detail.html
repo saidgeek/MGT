@@ -1,0 +1,30 @@
+<div class="relativo altura" ng-switch="section" ng-if="solicitude">
+
+    <!-- FILTERS -->
+    <div class="contenedor-filtros">
+      <div class="half">
+          <ul class="menu-tarea-top">
+              <li ng-if="solicitude.duration" data-sgk-duration ng-model="solicitude.endedAt">
+                <div class="ico tim"></div>
+                <p></p>
+              </li>
+              <li>
+                <div id="state" class="ico" ng-class="solicitude.state[role] | StateIcons"></div>
+                <span>{{ solicitude.state[role] | StateSolicitude }}</span>
+              </li>
+              <li class="last" ng-if="solicitude.priority">
+                <div class="ico" ng-class="solicitude.priority | PriorityIcons"></div>
+                <span>{{ solicitude.priority | Priority }}</span>
+              </li>
+          </ul>
+      </div>
+      <!--// ACEPTAR - RECHAZAR //-->
+      <div class="half" data-action>
+        <ul class="acciones"></ul>
+      </div>
+      <!--// ACEPTAR - RECHAZAR //-->
+    </div>
+    <!-- FILTERS -->
+
+
+</div><!-- relativo -->
