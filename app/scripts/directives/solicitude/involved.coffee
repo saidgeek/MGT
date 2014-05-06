@@ -8,6 +8,15 @@ angular.module('movistarApp')
     controller: ($scope, $rootScope, UserFactory) ->
       $scope.users = null
 
+      $scope.filter = (value) =>
+        value = null unless value?
+        if $rootScope.filters?.solicitude?.involved?
+          $rootScope.filters.solicitude.involved = value
+        else
+          $rootScope.filters = 
+            solicitude:
+              involved: value
+
       UserFactory.index '', (err, users) ->
         if !err
           $scope.users = users

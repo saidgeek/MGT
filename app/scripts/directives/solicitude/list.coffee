@@ -43,7 +43,7 @@ angular.module('movistarApp')
       $rootScope.$on 'reloadSolicitude', (e, solicitude) =>
         console.log solicitude
         selectedId = solicitude._id
-        $scope.reload()
+        $scope.reload('','','','')
 
       $scope.$watch 'solicitudes', (value) ->
         $rootScope.resize = true

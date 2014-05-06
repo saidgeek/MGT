@@ -9,7 +9,7 @@
                   </select>
               </li>
               <li class="dropdown"><span></span>
-                  <select ng-model="solicitude.ticket.category" ng-options="c._id as c.name for c in categories">
+                  <select ng-model="solicitude.ticket.category" ng-options="c._id as c.name for c in categories | RemoveThis: id:c._id">
                     <option value="">Categoría</option>
                   </select>
               </li>

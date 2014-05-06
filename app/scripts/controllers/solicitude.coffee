@@ -1,40 +1,27 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'SidebarCtrl', ($scope, SolicitudeFactory, $rootScope, AllStateData, StateData, PriorityData, PriorityIconData, CategoryFactory, UserFactory) ->
-    $scope.statesGroups = null
-    $scope.priorityGroups = null
-    $scope.errors = {}
-    
-
-    _loadStates = () ->
-      SolicitudeFactory.groups (err, groups) ->
-        if err
-          $scope.errors = err
-        else
-          $scope.statesGroups = groups.states
-          $scope.priorityGroups = groups.priorities
-
-    $rootScope.$on 'reloadStates', (e) ->
-      _loadStates()
-
-    $scope.filter = (state, category, priority, involved) ->
-      $rootScope.$emit 'reloadSolicitudes', state, category, priority, involved
-
-    _loadStates()
-
   .controller 'SolicitudeCtrl', ($scope, $rootScope, SolicitudeFactory) ->
     $scope.solicitudes = []
     $scope.role = $rootScope.currentUser.role
 
+    $rootScope.$watchCollection '[filters.solicitude.state, filters.solicitude.category, filters.solicitude.priority, filters.solicitude.involved]', () =>
+      state = if $rootScope.filters?.solicitude?.state? then $rootScope.filters.solicitude.state else ''
+      category = if $rootScope.filters?.solicitude?.category? then $rootScope.filters.solicitude.category else ''
+      priority = if $rootScope.filters?.solicitude?.priority? then $rootScope.filters.solicitude.priority else ''
+      involved = if $rootScope.filters?.solicitude?.involved? then $rootScope.filters.solicitude.involved else ''
+      $scope.reload(state, category, priority, involved)
+
     # state, category, priority, involved
-    $scope.reload = () ->
-      SolicitudeFactory.index '', '', '', '', (err, solicitudes) ->
+    $scope.reload = (state, category, priority, involved) ->
+      SolicitudeFactory.index state, category, priority, involved, (err, solicitudes) ->
         if err
           $scope.errors = err
         else
           if solicitudes.length > 0
             $scope.solicitudes = solicitudes
+          else
+            $scope.solicitudes = null
 
     $scope.reload('', '', '', '')
 
@@ -107,6 +94,8 @@ angular.module('movistarApp')
                        """
           else
             $rootScope.$emit 'reloadSolicitude', solicitude
+            $rootScope.$emit 'reloadStateFilter'
+            $rootScope.$emit 'reloadPriorityFilter'
             $rootScope.alert =
               type: 'success'
               content: """
@@ -132,7 +121,7 @@ angular.module('movistarApp')
             $rootScope.$emit 'reloadSolicitude', solicitude
             $scope.$emit 'close', true
             $scope.solicitude = {}
-            $rootScope.$emit 'reloadStateFilter', solicitude
+            $rootScope.$emit 'reloadStateFilter'
             $rootScope.alert =
               type: 'success'
               content: """

@@ -104,3 +104,5 @@ angular.module('movistarApp', [
       if toState.authenticate and not Auth.isLoggedIn()
         $state.transitionTo "login"
         event.preventDefault()
+      $rootScope.filters = null
+

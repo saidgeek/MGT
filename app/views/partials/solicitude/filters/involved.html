@@ -2,7 +2,7 @@
   <h3>Involucrados</h3>
   <ul class="bold">
     <li ng-repeat="u in users">
-      <a href="javascript:{}" ng-click="filter('', '', '', u._id)">
+      <a href="javascript:{}" ng-click="filter(u._id)">
         <div class="ico avatar"><div>
           <img ng-src="{{ u.profile.avatar || 'images/avatar-user.png' }}"></div>
       </div>{{ u.profile.firstName }} {{ u.profile.lastName }}
