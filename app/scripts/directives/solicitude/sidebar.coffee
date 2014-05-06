@@ -4,13 +4,12 @@ angular.module('movistarApp')
   .directive 'sgkSolicitudeSidebar', ($window, $rootScope, $timeout) ->
     restrict: 'A'
     link: ($scope, $element, $attrs) ->
+
       $_resize = () =>
         altperfil = angular.element('.therowAlt').height()
         altmenu = angular.element('#side .therow .thecell').height()
         altrelativo = altmenu - altperfil
         angular.element('#side .therow .thecell .relativo').css 'height', altrelativo
-
-        
       
       angular.element('#side .relativo .overflow').bind 'DOMNodeInserted DOMNodeRemoved', (e) =>
         $overflow = angular.element('#side .relativo .overflow')
