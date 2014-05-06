@@ -21,7 +21,7 @@ angular.module('movistarApp')
             $state.transitionTo "change.password"
           else
             # Logged in, redirect to home
-            $state.transitionTo 'solicitude'
+            $state.transitionTo 'solicitude.index'
         .catch (err) ->
           err = err.data;
           $scope.errors.other = err;
