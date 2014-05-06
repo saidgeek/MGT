@@ -9,8 +9,6 @@ angular.module('movistarApp')
         element.find('p').html moment(ngModel.$viewValue).fromNow()
       , 500
 
-
-
   .directive 'sgkMedidaDetail', ($window, $rootScope, $timeout) ->
     restrict: 'A'
     link: (scope, el, attrs) ->
@@ -166,7 +164,6 @@ angular.module('movistarApp')
                 element.parent().find(query).attr 'src', res.data.thumbnails._32x32_
               else
                 element.parent().find(query).attr 'src', ''
-
 
   .directive 'sgkPermission', ($rootScope) ->
     restrict: 'A'

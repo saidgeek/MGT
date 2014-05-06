@@ -24,7 +24,7 @@ angular.module('filepicker', ['ngResource'])
           element.append script
           $window.filepicker.setKey(data.key)
 
-  .factory 'filepickerApi', ($timeout) ->
+  .factory 'filepickerApi', ($timeout, $rootScope) ->
 
     _store = (input, cb) ->
       if input
@@ -67,13 +67,17 @@ angular.module('filepicker', ['ngResource'])
       thumbs = {}
       _convert inkBlob, { width: 200, height: 200, fit: 'scale', align: 'face' }, (err, res1) ->
         return false if err
-        _convert inkBlob, { width: 32, height: 32, fit: 'scale', align: 'face' }, (err, res2) ->
+        _convert inkBlob, { width: 50, height: 50, fit: 'scale', align: 'face' }, (err, res2) ->
           return false if err
-          _getDimension res1, (d1) ->
-            thumbs["_#{d1.width}x#{d1.height}_"] = res1.url
-            _getDimension res2, (d2) ->
-              thumbs["_#{d2.width}x#{d2.height}_"] = res2.url
-              cb thumbs
+          _convert inkBlob, { width: 32, height: 32, fit: 'scale', align: 'face' }, (err, res3) ->
+            return false if err
+            _getDimension res1, (d1) ->
+              thumbs["_#{d1.width}x#{d1.height}_"] = res1.url
+              _getDimension res2, (d2) ->
+                thumbs["_#{d2.width}x#{d2.height}_"] = res2.url
+                _getDimension res3, (d3) ->
+                  thumbs["_#{d3.width}x#{d3.height}_"] = res3.url
+                  cb thumbs
 
     _storeAndThumbnail = (opts, cb) ->
       _store opts.data, (err, inkBlob) ->
@@ -83,6 +87,8 @@ angular.module('filepicker', ['ngResource'])
           url: inkBlob.url
           name: inkBlob.filename
           ext: _filenameArray[(_filenameArray.length - 1)]
+          size: Math.round(inkBlob.size / 1024)
+          createdBy: $rootScope.currentUser.id
           thumbnails: {}
 
         if /\.(jpg|jpeg|tiff|png)$/i.test inkBlob.filename

@@ -98,3 +98,7 @@ angular.module("movistarApp")
           newArr.push a
 
       newArr
+
+  .filter 'toMB', ->
+    (number) ->
+      Math.round((number / 1024), 2)
