@@ -132,6 +132,7 @@ angular.module('movistarApp')
             $rootScope.$emit 'reloadSolicitude', solicitude
             $scope.$emit 'close', true
             $scope.solicitude = {}
+            $rootScope.$emit 'reloadStateFilter', solicitude
             $rootScope.alert =
               type: 'success'
               content: """

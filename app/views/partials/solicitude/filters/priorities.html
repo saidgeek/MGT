@@ -1,0 +1,12 @@
+<div id="prioridad" class="sidebox">
+  <h3>Prioridad</h3>
+  <ul class="bold">
+    <li ng-repeat="p in priorities">
+      <a href="javascript:{}">
+        <div class="ico" ng-class="priorityIcons[p.id]"></div>
+        {{ p.name }}
+        <span class="round light">{{ groups[p.id] || 0 }}</span>
+      </a>
+    </li>
+  </ul>
+</div>

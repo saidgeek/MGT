@@ -1,0 +1,19 @@
+<div id="estado" class="sidebox">
+  <h3>Estado de Solicitudes</h3>
+  <ul class="bold">
+    <li>
+      <a href="javascript:{}">
+        <div class="ico tod"></div>
+        Todas
+        <span class="round light">{{ groups.total }}</span>
+      </a>
+    </li>
+    <li ng-repeat="state in states">
+      <a href="javascript:{}">
+        <div class="ico" ng-class="state | StateIcons"></div>
+        {{ state | StateSolicitude }}
+        <span class="round light">{{ groups[state] || 0 }}</span>
+      </a>
+    </li>
+  </ul>
+</div>

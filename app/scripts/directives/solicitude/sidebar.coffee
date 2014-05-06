@@ -1,42 +1,28 @@
 'use strict'
 
 angular.module('movistarApp')
-  .directive 'sgkSolicitudeSidebar', ($window, $rootScope, $timeout, AllStateData, StateData, PriorityData, PriorityIconData, CategoryFactory, UserFactory) ->
+  .directive 'sgkSolicitudeSidebar', ($window, $rootScope, $timeout) ->
     restrict: 'A'
-    templateUrl: 'partials/solicitude/solicitudeSidebar'
-    controller: ($scope, $element) ->
-      $scope.allStates = AllStateData.getAll()
-      console.log 'allStates:', $scope.allStates
-      $scope.states = StateData.getArray()
-      $scope.priorityIcons = PriorityIconData.getAll()
-      $scope.categories = null
-      $scope.users = null
+    link: ($scope, $element, $attrs) ->
+      $_resize = () =>
+        altperfil = angular.element('.therowAlt').height()
+        altmenu = angular.element('#side .therow .thecell').height()
+        altrelativo = altmenu - altperfil
+        angular.element('#side .therow .thecell .relativo').css 'height', altrelativo
 
-      $scope.priorities = PriorityData.getArray()
-
-      CategoryFactory.index (err, categories) ->
-        if err
-          $scope.errors = err
-        else
-          $scope.categories = categories
-
-      UserFactory.index '', (err, users) ->
-        if err
-          $scope.errors = err
-        else
-          $scope.users = users
-
-      $scope.$watch 'groups', (value) ->
-        $rootScope.resize = true
+        
+      
+      angular.element('#side .relativo .overflow').bind 'DOMNodeInserted DOMNodeRemoved', (e) =>
+        $overflow = angular.element('#side .relativo .overflow')
+        if $overflow.find('.mCustomScrollBox').length is 0
+          $overflow.mCustomScrollbar
+            scrollButtons:
+                enable:false
+        $overflow.mCustomScrollbar "update"
+        $overflow.mCustomScrollbar "scrollTo", "top"
+      
+      $timeout () =>
         $timeout () =>
-          $timeout () =>
-            $timeout () =>
-              if $element.find('.overflow .mCustomScrollBox').length is 0
-                $element.find('.overflow').mCustomScrollbar
-                  scrollButtons:
-                      enable:false
-              $element.find('.overflow').mCustomScrollbar "update"
-              $element.find('.overflow').mCustomScrollbar "scrollTo", "top"
-            , 1000
-          , 0
+          $_resize()
         , 0
+      , 0

@@ -1,0 +1,11 @@
+<div id="categoria" class="sidebox">
+  <h3>Categorías</h3>
+  <ul class="bold">
+    <li ng-repeat="c in categories">
+      <a href="javascript:{}" ng-click="filter('', c._id, '', '')">
+        <div class="ico"></div>
+        {{ c.name }}
+      </a>
+    </li>
+  </ul>
+</div>

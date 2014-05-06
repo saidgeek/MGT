@@ -70,6 +70,8 @@ angular.module('movistarApp', [
         views:
           'sidebox': 
             templateUrl: 'partials/solicitude/sidebox'
+          'sidebar':
+            templateUrl: 'partials/solicitude/sidebar'
           'left':
             templateUrl: 'partials/solicitude/left'
           'right':
