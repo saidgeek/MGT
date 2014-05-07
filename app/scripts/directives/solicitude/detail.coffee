@@ -89,7 +89,7 @@ angular.module('movistarApp')
         if $_permissionsAction(state)
           $el.html tpls.action[state] || ''
           if $el.find('[data-role]').length > 0
-            $el.find('[data-role]').not("[data-role='#{$rootScope.currentUser.role}']").remove()
+            $el.find('[data-role]').not("[data-role='#{$rootScope.currentUser.role}']").parent().remove()
           $compile($el.contents())($scope)
           $_triggersActions()
 
