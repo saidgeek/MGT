@@ -59,4 +59,5 @@ angular.module("movistarApp")
           id: "@id"
         data:
           comment: '@comment'
+          attachments: '@attachments'
         url: '/api/v1/solicitude/:id/add/comments'

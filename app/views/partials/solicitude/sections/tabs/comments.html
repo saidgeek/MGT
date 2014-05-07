@@ -18,11 +18,17 @@
         </div>
         <div class="note input shadowup">
             <form name="form" ng-submit="addComment(form)">
-                <textarea class="round" name="message" ng-model="solicitude.message"></textarea>
+                <textarea class="round" name="message" ng-model="solicitude.comment"></textarea>
+                <ul class="upload-list"></ul>
+                <fieldset>
                 <input class="submit boton1 round" type="submit" value="Enviar">
-                <div class="upload">
-                    <input class="att" type="file" name="attachment">
-                </div>
+                </fieldset>
+                <fieldset>
+                  <div class="upload" data-sgk-upload-multi ng-model="solicitude.attachments">
+                    <input class="att" type="file" name="attachment" multiple>
+                  </div>
+                </fieldset>
+                <div style="clear: both;"></div>
             </form>
         </div>
     </div>

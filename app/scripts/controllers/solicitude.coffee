@@ -74,7 +74,7 @@ angular.module('movistarApp')
 
     $scope.addComment = (form) ->
       if form.$valid
-        SolicitudeFactory.addComments $scope.solicitude._id, $scope.solicitude.message, (err) ->
+        SolicitudeFactory.addComments $scope.solicitude._id, $scope.solicitude.comment, $scope.solicitude.attachments, (err) ->
           if err
             $scope.errors = err
           else

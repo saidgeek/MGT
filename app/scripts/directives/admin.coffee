@@ -152,7 +152,7 @@ angular.module('movistarApp')
           name = opts.data.name
           if name.length > 100
             name = "#{ name.substr(0,10) }...#{ name.substr((name.length - 10), name.length) }"
-          element.parent().find('ul.upload-list').append "<li id='#{ opts.id }'><img src='images/loader_30.GIF' /><span>#{ name }</span></li>"
+          element.parents('form').find('ul.upload-list').append "<li id='#{ opts.id }'><img src='images/loader_30.GIF' /><span>#{ name }</span></li>"
 
           filepickerApi.storeAndThumbnail opts, (err, res) ->
             attachments.push res.data
@@ -160,9 +160,9 @@ angular.module('movistarApp')
             scope.$apply () ->
               query = "ul.upload-list li##{ res.hash } img"
               if typeof res.data.thumbnails._32x32_ isnt 'undefined'
-                element.parent().find(query).attr 'src', res.data.thumbnails._32x32_
+                element.parents('form').find(query).attr 'src', res.data.thumbnails._32x32_
               else
-                element.parent().find(query).attr 'src', ''
+                element.parents('form').find(query).attr 'src', ''
 
   .directive 'sgkPermission', ($rootScope) ->
     restrict: 'A'

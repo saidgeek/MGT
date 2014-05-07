@@ -83,7 +83,6 @@ angular.module('movistarApp')
 
       $_loadActions = (state) =>
         $el = $element.find('.relativo .contenedor-filtros .half[data-action]')
-        console.log '$_loadActions:', state
         if $_permissionsAction(state)
           $el.html tpls.action[state] || ''
           $compile($el.contents())($scope)
