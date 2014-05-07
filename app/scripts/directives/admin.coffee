@@ -6,7 +6,7 @@ angular.module('movistarApp')
     require: 'ngModel'
     link: (scope, element, attrs, ngModel) ->
       $interval () =>
-        element.find('p').html moment(ngModel.$viewValue).fromNow()
+        element.html moment(ngModel.$viewValue).fromNow()
       , 500
 
   .directive 'sgkMedidaDetail', ($window, $rootScope, $timeout) ->
@@ -16,7 +16,6 @@ angular.module('movistarApp')
         $timeout () ->
           altR = el.height()
           altFirst = el.find('.altFirst').height()
-          console.log altFirst
           medida = altR - altFirst
           angular.element('#right .medida').height(medida)
           angular.element('#right .medida .ng-scope').height(medida)

@@ -2,9 +2,9 @@
   <div class="note round" data-id="{{ solicitude._id }}"  ng-repeat="solicitude in solicitudes">
       <div class="t-c verde round">
           <ul>
-              <li ng-if="solicitude.duration" data-sgk-duration ng-model="solicitude.endedAt">
+              <li ng-if="solicitude.duration">
                 <div class="ico tim"></div>
-                <p></p>
+                <p data-sgk-duration ng-model="solicitude.endedAt"></p>
               </li>
               <li><div class="ico" ng-class="solicitude.state[role] | StateIcons"></div><p>{{ solicitude.state[role] | StateSolicitude }}</p></li>
               <li class="last" ng-if="solicitude.priority"><div class="ico" ng-class="solicitude.priority | PriorityIcons"></div><p>{{ solicitude.priority | Priority }}</p></li>

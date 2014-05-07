@@ -4,10 +4,11 @@
             <div class="docu" ng-repeat="c in solicitude.comments">
                 <div class="table comentario"><!-- contenedor para comentarios -->
                     <div class="t-c avatar">
-                        <img src="{{ c.createdBy.profile.avatar }}">
+                        <img src="{{ c.createdBy.profile.avatar || 'images/avatar-user.png' }}">
                     </div>
                     <div class="t-c">
-                        <p class="avatar bold">{{ c.createdBy.profile.firstName }} {{ c.createdBy.profile.lastName }}<span class="regular">• hace 2 días</span></p>
+                        <p class="avatar bold">{{ c.createdBy.profile.firstName }} {{ c.createdBy.profile.lastName }}
+                        <span class="regular" data-sgk-duration ng-model="c.createdAt"></span></p>
                         <p>
                           {{ c.content }}
                         </p>
