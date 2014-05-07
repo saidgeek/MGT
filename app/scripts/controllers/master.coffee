@@ -53,17 +53,20 @@ angular.module('movistarApp')
         $scope.errors = err
       else
         $scope.user = user
+        $scope.title = "#{$scope.user.profile.firstName} #{$scope.user.profile.lastName}"
 
     $scope.update = (form) ->
       if form.$valid
         UserFactory.update $scope.user._id, $scope.user, (err, user) ->
           if err
             $scope.errors = err
+            $rootScope.alert =
+              type: 'error'
+              content: """
+                          Ha ocurrido un error al actualizar su perfil.
+                       """
           else
             if $rootScope.currentUser.id is user._id
               $rootScope.currentUser.avatar = user.profile.avatar
               $rootScope.currentUser.name = user.profile.firstName+' '+user.profile.lastName
-            $rootScope.$emit 'hideModals'
-
-    $scope.closeModal = () ->
-      $rootScope.$emit 'hideModals'
+            $scope.$emit 'close', true

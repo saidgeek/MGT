@@ -1,0 +1,41 @@
+<fieldset class="odd">
+  <div class="t-c img-user">
+    <div class="relativo">
+      <div class="img-user" data-sgk-file-upload-user data-ng-model="user.profile.avatar">
+        <span class="edit-avatar-user">Editar</span>
+        <img ng-src="{{ user.profile.avatar }}" alt="Nombre Usuario">
+        <input class="att" type="file" name="attachment">
+      </div>
+    </div>
+  </div>
+  <ul class="t-c">
+    <li><input type="text" id="nombre" name="nombre" placeholder="Nombre" data-ng-model="user.profile.firstName"/></li>
+    <li><input type="text" id="nombre" name="nombre" placeholder="Apellido" data-ng-model="user.profile.lastName"/></li>
+  </ul>
+</fieldset>
+
+<fieldset class="even">
+  <ul>
+    <li>
+      <input type="text" id="nombre" name="movil" placeholder="Teléfono Móvil" data-ng-model="user.profile.celNumber"/>
+    </li>
+    <li>
+      <input type="text" id="nombre" name="oficina" placeholder="Teléfono Oficina" data-ng-model="user.profile.phoneNumber"/>
+    </li>
+  </ul>
+</fieldset>
+
+<fieldset class="odd">
+  <ul>
+    <li>
+      <textarea id="descripcion" name="descripcion" placeholder="Comentario" data-ng-model="user.profile.description"></textarea>
+    </li>
+  </ul>
+</fieldset>
+<fieldset class="blue">
+  <ul>
+    <li><button type="reset">Limpiar todos los Datos</button></li>
+    <li><a href="javascript:{}" data-cancel>Cancelar</a></li>
+  </ul>
+  <button type="submit" class="boton1 round"><span></span>Editar Usuario</button>
+</fieldset>
