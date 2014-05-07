@@ -41,7 +41,6 @@ angular.module('movistarApp')
               return false
 
             $http.get("/#{attrs.sgkTpl}").success (data) =>
-              console.log 'attrs.sgkAction:', attrs.sgkAction
               $el.find('.overflow div form').attr 'data-ng-submit', "#{attrs.sgkAction}(form)"
               $el.find('.overflow div form').html data
               $compile($el.contents())($scope)

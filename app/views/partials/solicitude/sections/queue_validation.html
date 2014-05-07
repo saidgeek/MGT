@@ -36,7 +36,7 @@
             <li class="lab" ng-repeat="s in segments">
               <label>{{ s.name }}
                 <span class="opt-check right" data-sgk-check></span>
-                <input class="hide" type="checkbox" id="check_todos" name="segments" ng-true-value="{{s.id}}" ng-model="solicitude.ticket.segments[$index]">
+                <input class="hide" type="checkbox" id="check_todos" name="segments" ng-false-value="{{s.id}}" ng-model="solicitude.ticket.segments[$index]">
               </label>
             </li>
         </ul>
@@ -47,7 +47,7 @@
             <li class="lab" ng-repeat="s in sections">
               <label>{{ s.name }}
                 <span class="opt-check right" data-sgk-check></span>
-                <input class="hide" type="checkbox" id="check_todos" name="sections" ng-true-value="{{s.id}}" ng-model="solicitude.ticket.sections[$index]">
+                <input class="hide" type="checkbox" id="check_todos" name="sections" ng-false-value="{{s.id}}" ng-model="solicitude.ticket.sections[$index]">
               </label>
             </li>
         </ul>

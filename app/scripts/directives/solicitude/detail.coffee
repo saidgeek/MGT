@@ -79,6 +79,7 @@ angular.module('movistarApp')
       $_permissionsAction = (state) =>
         role = $rootScope.currentUser.role
         return true if ['queue_validation'].indexOf(state) > -1 and ['EDITOR', 'ADMIN', 'ROOT'].indexOf(role) > -1
+        return true if ['assigned_to_manager'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return false
 
       $_loadActions = (state) =>
@@ -116,7 +117,6 @@ angular.module('movistarApp')
       $_triggersTag = () =>
         $element
           .find('.odd .Tag input.Tag').on 'keypress', (e) =>
-            console.log '$_triggersTag:', e.keyCode
             if e.keyCode is 13
               e.preventDefault()
               $scope.tags.push $scope.solicitude.tag
@@ -125,7 +125,6 @@ angular.module('movistarApp')
               return false
         $element
           .on 'click', '.odd .Tag .tags .tag.round a.cerrar', (e) =>
-            console.log 'entro'
             e.preventDefault()
             $el = angular.element(e.target).parent()
             _index = $scope.tags.indexOf $el.data('value')
@@ -165,7 +164,7 @@ angular.module('movistarApp')
       $scope.$watch 'solicitude', (value) ->
         if value
           $rootScope.resize = true
-          $_loadActions(value.state[$scope.role].toLowerCase())
+          $_loadActions(value.state.type.toLowerCase())
           $timeout () =>
             $timeout () =>
               $_loadSection('solicitude')
