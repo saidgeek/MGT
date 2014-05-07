@@ -76,11 +76,18 @@ angular.module('movistarApp')
         $element.find('.overflow').mCustomScrollbar "update"
         $element.find('.overflow').mCustomScrollbar "scrollTo", ".note.round.active"
 
+      $_permissionsAction = (state) =>
+        role = $rootScope.currentUser.role
+        return true if ~['queue_validation'].indexOf state and ~['EDITOR', 'ADMIN', 'ROOT'].indexOf role
+        return false
+
       $_loadActions = (state) =>
         $el = $element.find('.relativo .contenedor-filtros .half[data-action]')
-        $el.html tpls.action[state] || ''
-        $compile($el.contents())($scope)
-        $_triggersActions()
+        console.log '$_loadActions:', state
+        if $_permissionsAction(state)
+          $el.html tpls.action[state] || ''
+          $compile($el.contents())($scope)
+          $_triggersActions()
 
       $_loadSection = (section) =>
         $el = $element.find('.relativo .contenedor-filtros')

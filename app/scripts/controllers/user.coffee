@@ -58,6 +58,7 @@ angular.module('movistarApp')
               $rootScope.currentUser.name = user.profile.firstName+' '+user.profile.lastName
               $rootScope.currentUser.role = user.role
             $rootScope.$emit 'reloadUser', user
+            $rootScope.$emit 'reloadUserSidebar'
             $scope.$emit 'close', true
 
             $rootScope.alert =
@@ -78,6 +79,7 @@ angular.module('movistarApp')
                        """
           else
             $rootScope.$emit 'reloadUser', user
+            $rootScope.$emit 'reloadUserSidebar'
             $scope.$emit 'close', true
             $scope.user = {}
             $rootScope.alert =

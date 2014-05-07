@@ -476,8 +476,8 @@ h4{ font-size:  1.154em;}
 #estado ul li .ico.fin{ background-position: -140px 0;}
 
 #estado ul li .ico.valg{ background-position: -300px 0;}
-#estado ul li .ico.aceg{ background-position: -340px 0;}
-#estado ul li .ico.recg{ background-position: -320px 0;}
+#estado ul li .ico.recg{ background-position: -340px 0;}
+#estado ul li .ico.aceg{ background-position: -320px 0;}
 #estado ul li .ico.valc{ background-position: -400px 0;}
 #estado ul li .ico.acec{ background-position: -380px 0;}
 #estado ul li .ico.recc{ background-position: -360px 0;}
@@ -495,8 +495,8 @@ h4{ font-size:  1.154em;}
 #estado ul li:hover .ico.fin, #estado ul li.active .ico.fin{ background-position: -140px -20px;}
 
 #estado ul li:hover .ico.valg, #estado ul li.active .ico.valg{ background-position: -300px -20px;}
-#estado ul li:hover .ico.aceg, #estado ul li.active .ico.aceg{ background-position: -340px -20px;}
-#estado ul li:hover .ico.recg, #estado ul li.active .ico.recg{ background-position: -320px -20px;}
+#estado ul li:hover .ico.recg, #estado ul li.active .ico.recg{ background-position: -340px -20px;}
+#estado ul li:hover .ico.aceg, #estado ul li.active .ico.aceg{ background-position: -320px -20px;}
 #estado ul li:hover .ico.valc, #estado ul li.active .ico.valc{ background-position: -400px -20px;}
 #estado ul li:hover .ico.acec, #estado ul li.active .ico.acec{ background-position: -380px -20px;}
 #estado ul li:hover .ico.recc, #estado ul li.active .ico.recc{ background-position: -360px -20px;}

@@ -143,10 +143,10 @@ angular.module("movistarApp")
         icon: 'valg'
       ACCEPTED_BY_MANAGER:
         name: 'Aceptada por gestor'
-        icon: 'recg'
+        icon: 'aceg'
       REJECTED_BY_MANAGER:
         name: 'Rechazada por gestor'
-        icon: 'aceg'
+        icon: 'recg'
       QUEUE_VALIDATION_CLIENT:
         name: 'Espera validacion cliente'
         icon: 'valc'
