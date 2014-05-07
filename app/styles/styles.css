@@ -2079,6 +2079,16 @@ ul.menu-usuarios li a:hover{
     line-height: 26px;
     color: #9da9b9;
 }
+#nueva-solicitud form .blue li button[type='reset']{
+    background: none;
+    border: none;
+    color: #9da9b9;
+    line-height: 26px;
+}
+
+#nueva-solicitud form .blue li button[type='reset']:hover{
+    color: #fff;
+}
 
 #nueva-solicitud.delete form .blue li a{
     color: #9b0000;
