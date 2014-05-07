@@ -101,6 +101,7 @@
 }
 
 fieldset div.upload {
+    position: relative;
     width: 69px;
     height: 16px;
     margin: 16px 0 0 16px;
