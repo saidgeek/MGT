@@ -18,7 +18,7 @@ angular.module('movistarApp')
         )
         .then ->
           if !$rootScope.currentUser.confirmAt
-            $state.transitionTo "change.password"
+            $state.transitionTo "change"
           else
             # Logged in, redirect to home
             $state.transitionTo 'solicitude.index'

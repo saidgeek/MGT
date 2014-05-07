@@ -2,7 +2,6 @@
 
 angular.module('movistarApp')
   .controller 'RecoveryCtrl', ($rootScope, $scope, Auth, $location) ->
-    $rootScope.cssInclude = ['styles/auth.css']
     $scope.user = {}
     $scope.errors = {}
     $scope.success = {}

@@ -41,7 +41,7 @@ table, tr, td{ border: none!important;}
    font-style: normal;
 }
 
-/* Style */
+/* Style */ 
 
 *{
     margin: 0;
@@ -58,6 +58,14 @@ body{ margin: 0;
     background: #2f364a;
     font: 14px proxima_novasemibold;
     color: #f2f6fa;
+}
+
+body.login{
+    overflow:auto;
+}
+
+#login input.ng-pristine{
+width: 430px;
 }
 
 #login{
@@ -151,8 +159,11 @@ input.box {
     -moz-border-radius: 4px;
     border-radius: 4px;
 }
-#Contrasena{
-    background-image: url(../images/pass.png);
+#Contrasena {
+background: url(../images/pass.png) no-repeat 0 50% #fff;
+font-family: 'proxima_nova_rgbold';
+font-size: 15px;
+padding-left: 48px; 
 }
 #Nombre{
     background-image: url(../images/user.png);

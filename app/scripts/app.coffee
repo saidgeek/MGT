@@ -26,7 +26,7 @@ angular.module('movistarApp', [
         controller: 'RecoveryCtrl'
         templateUrl: 'partials/recovery'
         authenticate: false
-      .state 'change.password',
+      .state 'change',
         url: '/change/password'
         controller: 'ChangeCtrl'
         templateUrl: 'partials/change'
