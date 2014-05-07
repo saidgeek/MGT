@@ -78,7 +78,7 @@ angular.module('movistarApp')
 
       $_permissionsAction = (state) =>
         role = $rootScope.currentUser.role
-        return true if ~['queue_validation'].indexOf state and ~['EDITOR', 'ADMIN', 'ROOT'].indexOf role
+        return true if ['queue_validation'].indexOf(state) > -1 and ['EDITOR', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return false
 
       $_loadActions = (state) =>
