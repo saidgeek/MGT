@@ -28,6 +28,5 @@ angular.module('movistarApp')
 
       $rootScope.$on 'reloadPriorityFilter', (e) =>
         $scope.reload()
-        $scope.$digest()
       
       $scope.reload()

@@ -39,7 +39,7 @@ angular.module('movistarApp')
           angular.element('#right').css 'width', total_width - width
           angular.element('.ui-resizable-handle').css 'left', width
 
-          if (width < 460 and _type is 'solicitude') or (width < 450 and _type is 'users')
+          if width < 460
             angular.element('#left div.ico, #left span.ico').parent().find('p, span.text').css 'display', 'none'
             angular.element('.t-c.verde ul li, .t-c.rojo ul li, .t-c.amarillo ul li').css 'width', 'auto'
             # if _type is 'users'

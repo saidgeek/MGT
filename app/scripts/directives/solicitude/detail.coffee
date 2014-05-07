@@ -145,9 +145,8 @@ angular.module('movistarApp')
             if $el.data('rejected-state')
               $scope.rejectedState = $el.data('rejected-state')
 
-            $_loadSection(_section)
-
             $el.parents('ul').css 'display', 'none'
+            $_loadSection(_section)
 
             return false
 
