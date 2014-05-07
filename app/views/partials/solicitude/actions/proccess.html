@@ -1,8 +1,8 @@
 <form name="form" ng-submit="update(form)">
   <ul class="acciones">
     <li class="aceptar">
-      <input type="submit" value="Enviar a revisión" ng-click="nextState('queue_validation_manager')" />
-      <input type="submit" value="Pausar" ng-click="nextState('paused')" />
+      <input type="submit" value="Enviar a revisión" ng-click="nextState('queue_validation_manager')" data-role="PROVIDER"/>
+      <input type="submit" value="Pausar" ng-click="nextState('paused')" data-role="CONTENT_MANAGER"/>
     </li>
   </ul>
 </form>

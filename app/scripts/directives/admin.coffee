@@ -171,8 +171,8 @@ angular.module('movistarApp')
       _value = attrs.permissionValue || null
       if _value?
         _value = _value.toUpperCase()
-      return element.remove() if typeof $rootScope.currentUser.permissions[_permission] is 'undefined' and !_value?
-      return element.remove() if _value? and !~$rootScope.currentUser.permissions[_permission].indexOf _value
+      return element.parent().remove() if typeof $rootScope.currentUser.permissions[_permission] is 'undefined' and !_value?
+      return element.parent().remove() if _value? and !~$rootScope.currentUser.permissions[_permission].indexOf _value
       return false
 
   .directive 'sgkToggleAccordion', ->

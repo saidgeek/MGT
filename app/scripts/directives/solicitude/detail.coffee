@@ -81,12 +81,15 @@ angular.module('movistarApp')
         return true if ['queue_validation'].indexOf(state) > -1 and ['EDITOR', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['assigned_to_manager'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['assigned_to_provider'].indexOf(state) > -1 and ['PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
+        return true if ['proccess'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return false
 
       $_loadActions = (state) =>
         $el = $element.find('.relativo .contenedor-filtros .half[data-action]')
         if $_permissionsAction(state)
           $el.html tpls.action[state] || ''
+          if $el.find('[data-role]').length > 0
+            $el.find('[data-role]').not("[data-role='#{$rootScope.currentUser.role}']").remove()
           $compile($el.contents())($scope)
           $_triggersActions()
 
