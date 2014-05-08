@@ -23,7 +23,7 @@ angular.module('movistarApp')
       path is $location.$$path
 
   .controller 'NotificationsCtrl', ($rootScope, $scope, NotificationFactory, IO) ->
-    $scope.notification = {}
+    $scope.notification = null
 
     IO.emit 'register.notifications', id: $rootScope.currentUser.id
     IO.on 'reload.notifications', () => _load()

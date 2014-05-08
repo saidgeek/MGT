@@ -235,6 +235,7 @@ h4{ font-size:  1.154em;}
     display: inline-block;
 }
 #perfil .t-c p span{
+    display: block;
     color: #72819a;
     font-size: 0.8em;
 }
@@ -275,7 +276,8 @@ h4{ font-size:  1.154em;}
     color: #fff;
     font-size: 10px;
     display: block;
-    width: 10px;
+    min-width: 12px;
+    width: auto;
     text-align: center;
 }
 #perfil .adm li a .bell{ background-position: -200px 0;}
@@ -2700,7 +2702,9 @@ input.ng-pristine, input.ng-valid-number{
     text-transform: uppercase;
     color: #fff;
 }
-
+.half ul.acciones li.pause a{
+    background: #00b8cf;
+}
 .half ul.acciones li.pause input{
     background: #00b8cf;
 }

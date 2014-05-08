@@ -1,7 +1,7 @@
 <form name="form" ng-submit="update(form)">
   <ul class="acciones">
     <li class="rechazar">
-      <a href="javascript:{}" ng-click="changeSection('MESSAGE', 'rejected_by_manager')">Rechazar</a>
+      <a href="javascript:{}" data-section="rejected" data-rejected-state="rejected_by_manager">Rechazar</a>
     </li>
     <li class="aceptar">
       <input type="submit" value="ACEPTAR" ng-click="nextState('queue_validation_client')" />

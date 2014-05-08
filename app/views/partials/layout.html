@@ -10,11 +10,11 @@
             </div>
           </div>
           <div class="t-c">
-              <p>{{ currentUser.name }}<br /><span>{{ currentUser.role | RoleName }}</span></p>
+              <p>{{ currentUser.name }}<span>{{ currentUser.role | RoleName }}</span></p>
               <ul class="adm">
                   <li ng-controller="NotificationsCtrl">
                     <a href="javascript:{}" class="sub-not" data-sgk-submenu-notifications ><img src="images/bell.png"/>
-                        <div class="cant">{{ notifications.length || 0}}</div>
+                        <div class="cant" ng-show="notifications">{{ notifications.length || 0}}</div>
                     </a>
                     <div id="submenu" class="notifications">
                         <div id="notificacion" class="wrap round hide">

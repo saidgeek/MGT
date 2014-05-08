@@ -82,6 +82,11 @@ angular.module('movistarApp')
         return true if ['assigned_to_manager'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['assigned_to_provider'].indexOf(state) > -1 and ['PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['proccess'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
+        return true if ['queue_validation_manager'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
+        return true if ['queue_validation_client'].indexOf(state) > -1 and ['CLIENT', 'ADMIN', 'ROOT'].indexOf(role) > -1
+        return true if ['accepted_by_client'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
+        return true if ['queue_publish'].indexOf(state) > -1 and ['PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
+        return true if ['publish'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return false
 
       $_loadActions = (state) =>
@@ -89,7 +94,8 @@ angular.module('movistarApp')
         if $_permissionsAction(state)
           $el.html tpls.action[state] || ''
           if $el.find('[data-role]').length > 0
-            $el.find('[data-role]').not("[data-role='#{$rootScope.currentUser.role}']").parent().remove()
+            if ['ROOT', 'ADMIN'].indexOf($rootScope.currentUser.role) < 0
+              $el.find('[data-role]').not("[data-role='#{$rootScope.currentUser.role}']").parent().remove()
           $compile($el.contents())($scope)
           $_triggersActions()
 
@@ -141,10 +147,11 @@ angular.module('movistarApp')
 
       $_triggersActions = () =>
         $element
-          .find('ul.acciones li.aceptar a, ul.acciones li.rechazar a').on 'click', (e) =>
+          .find('ul.acciones li.aceptar a, ul.acciones li.rechazar a, ul.acciones li.pause a').on 'click', (e) =>
             e.preventDefault()
             $el = angular.element(e.target)
             _section = $el.data('section').toLowerCase()
+            console.log $el.data('rejected-state')
             if $el.data('rejected-state')
               $scope.rejectedState = $el.data('rejected-state')
 
@@ -152,6 +159,10 @@ angular.module('movistarApp')
             $_loadSection(_section)
 
             return false
+        $element
+          .find('ul.acciones li.aceptar input, ul.acciones li.rechazar input').on 'click', (e) =>
+            $el = angular.element(e.target)
+            $el.parents('ul').css 'display', 'none'
 
       $_triggersSection = () =>
         $element
