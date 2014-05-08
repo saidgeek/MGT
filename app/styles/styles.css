@@ -270,11 +270,13 @@ h4{ font-size:  1.154em;}
     top: 0;
     right: 0;
     padding: 2px;
-    border-radius: 50px;
+    border-radius: 50%;
     background: #ff6b6b;
     color: #fff;
     font-size: 10px;
     display: block;
+    width: 10px;
+    text-align: center;
 }
 #perfil .adm li a .bell{ background-position: -200px 0;}
 #perfil .adm li a .gear{ background-position: -220px 0;}

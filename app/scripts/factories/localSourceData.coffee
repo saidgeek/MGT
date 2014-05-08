@@ -189,10 +189,10 @@ angular.module("movistarApp")
       REJECTED:
         name: 'Rechazada'
         icon: 'recg'
-      QUEUE_PUBLICH:
+      QUEUE_PUBLISH:
         name: 'Espera publicación'
         icon: 'valg'
-      PUBLICH:
+      PUBLISH:
         name: 'Publicada'
         icon: 'aceg'
       COMPLETED:

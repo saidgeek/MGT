@@ -31,10 +31,10 @@ angular.module('movistarApp')
           tpls.action['queue_validation_client'] = data
         $http.get("/partials/solicitude/actions/accepted_by_client").success (data) =>
           tpls.action['accepted_by_client'] = data
-        $http.get("/partials/solicitude/actions/queue_publich").success (data) =>
-          tpls.action['queue_publich'] = data
-        $http.get("/partials/solicitude/actions/publich").success (data) =>
-          tpls.action['publich'] = data
+        $http.get("/partials/solicitude/actions/queue_publish").success (data) =>
+          tpls.action['queue_publish'] = data
+        $http.get("/partials/solicitude/actions/publish").success (data) =>
+          tpls.action['publish'] = data
         # SECTIONS
         $http.get("/partials/solicitude/sections/solicitude").success (data) =>
           tpls.section['solicitude'] = data
