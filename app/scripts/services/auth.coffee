@@ -62,7 +62,6 @@ angular.module('movistarApp')
     @return {Promise}
     ###
     changePassword: (user, callback) ->
-      console.log user
       _clientToken = $rootScope.currentUser.access.clientToken
       _accessToken = $rootScope.currentUser.access.accessToken
       cb = callback or angular.noop

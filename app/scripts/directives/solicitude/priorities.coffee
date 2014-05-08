@@ -11,7 +11,6 @@ angular.module('movistarApp')
       $scope.groups = null
 
       $scope.filter = (value) =>
-        console.log value
         value = null unless value?
         if $rootScope.filters?.solicitude?.priority?
           $rootScope.filters.solicitude.priority = value
@@ -24,7 +23,6 @@ angular.module('movistarApp')
         SolicitudeFactory.groups (err, groups) ->
           if !err
             $scope.groups = groups.priorities
-            console.log $scope.groups
 
       $rootScope.$on 'reloadPriorityFilter', (e) =>
         $scope.reload()

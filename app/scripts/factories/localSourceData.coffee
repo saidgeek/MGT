@@ -198,6 +198,9 @@ angular.module("movistarApp")
       COMPLETED:
         name: 'Completada'
         icon: 'fin'
+      REACTIVATED:
+        name: 'Reactivado'
+        icon: 'val'
 
     _makeArray = () ->
       _states = []

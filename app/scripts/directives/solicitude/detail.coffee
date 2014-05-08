@@ -35,6 +35,12 @@ angular.module('movistarApp')
           tpls.action['queue_publish'] = data
         $http.get("/partials/solicitude/actions/publish").success (data) =>
           tpls.action['publish'] = data
+        $http.get("/partials/solicitude/actions/rejected_by_client").success (data) =>
+          tpls.action['rejected_by_client'] = data
+        $http.get("/partials/solicitude/actions/rejected_by_manager").success (data) =>
+          tpls.action['rejected_by_manager'] = data
+        $http.get("/partials/solicitude/actions/reactivated").success (data) =>
+          tpls.action['reactivated'] = data
         # SECTIONS
         $http.get("/partials/solicitude/sections/solicitude").success (data) =>
           tpls.section['solicitude'] = data
@@ -46,6 +52,8 @@ angular.module('movistarApp')
           tpls.section['assigned_to_manager'] = data
         $http.get("/partials/solicitude/sections/assigned_to_provider").success (data) =>
           tpls.section['assigned_to_provider'] = data
+        $http.get("/partials/solicitude/sections/rejected_by_manager").success (data) =>
+          tpls.section['rejected_by_manager'] = data
         # TABS
         $http.get("/partials/solicitude/sections/tabs/todo").success (data) =>
           tpls.tab['todo'] = data
@@ -81,12 +89,16 @@ angular.module('movistarApp')
         return true if ['queue_validation'].indexOf(state) > -1 and ['EDITOR', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['assigned_to_manager'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['assigned_to_provider'].indexOf(state) > -1 and ['PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
-        return true if ['proccess'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
+        return true if ['proccess'].indexOf(state) > -1 and ['EDITOR', 'PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['queue_validation_manager'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['queue_validation_client'].indexOf(state) > -1 and ['CLIENT', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['accepted_by_client'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['queue_publish'].indexOf(state) > -1 and ['PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['publish'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
+        return true if ['rejected_by_client'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
+        return true if ['rejected_by_manager'].indexOf(state) > -1 and ['PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
+        return true if ['paused'].indexOf(state) > -1 and ['PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
+        return true if ['reactivated'].indexOf(state) > -1 and ['PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return false
 
       $_loadActions = (state) =>
@@ -151,7 +163,6 @@ angular.module('movistarApp')
             e.preventDefault()
             $el = angular.element(e.target)
             _section = $el.data('section').toLowerCase()
-            console.log $el.data('rejected-state')
             if $el.data('rejected-state')
               $scope.rejectedState = $el.data('rejected-state')
 

@@ -136,7 +136,6 @@ angular.module('movistarApp')
     restrict: 'A'
     require: 'ngModel'
     link: (scope, element, attrs, ngModel) ->
-      console.log 'ngmodel:', ngModel.$viewValue
       attachments = []
       if ngModel.$viewValue instanceof Array and ngModel.$viewValue?
         attachments = ngModel.$viewValue

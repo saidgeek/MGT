@@ -11,7 +11,6 @@ angular.module('movistarApp')
       $_resize = () =>
         altR = $element.parents('#right').height()
         altFirst = $element.find('.altFirst').height()
-        console.log altFirst
         medida = altR - altFirst
         $element.find('.medida').height(medida)
         $element.find('.medida .ng-scope').height(medida)

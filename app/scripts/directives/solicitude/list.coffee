@@ -41,7 +41,6 @@ angular.module('movistarApp')
             return false
 
       $rootScope.$on 'reloadSolicitude', (e, solicitude) =>
-        console.log solicitude
         selectedId = solicitude._id
         $scope.reload('','','','')
 
