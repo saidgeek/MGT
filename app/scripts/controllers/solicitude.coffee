@@ -14,7 +14,7 @@ angular.module('movistarApp')
 
     # state, category, priority, involved
     $scope.reload = (state, category, priority, involved) ->
-      SolicitudeFactory.index state, category, priority, involved, (err, solicitudes) ->
+      SolicitudeFactory.index null, state, category, priority, involved, (err, solicitudes) ->
         if err
           $scope.errors = err
         else

@@ -1,0 +1,37 @@
+<div  class="overflow admin">
+  <div class="note round" ng-repeat="solicitude in solicitudes">
+    <div class="t-c round" ng-class="solicitude.sla">
+      <ul>
+        <li ng-if="solicitude.duration && !solicitude.pausedAt">
+          <div class="ico tim"></div>
+          <p data-sgk-duration ng-model="solicitude.endedAt"></p>
+        </li>
+        <li>
+          <div class="ico" ng-class="solicitude.state[role] | StateIcons"></div>
+          <p>{{ solicitude.state[role] | StateSolicitude }}</p>
+        </li>
+        <li class="last" ng-if="solicitude.priority">
+          <p>{{ solicitude.priority | Priority }}</p>
+        </li>
+      </ul>
+
+      <h4>{{ solicitude.ticket.title }}</h4>
+      <ul class="full">
+        <li class="light">
+          Sol. <span>{{ solicitude.createdAt | DateFormat }}</span>
+        </li>
+        <li class="light" ng-if="solicitude.startedAt">
+          Ini. <span>{{ solicitude.startedAt | DateFormat }}</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="t-c stats">
+      <ul>
+        <li class="light first">
+          <span class="round">Code: {{ solicitude.code }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

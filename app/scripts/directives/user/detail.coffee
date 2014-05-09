@@ -13,7 +13,7 @@ angular.module('movistarApp')
         altFirst = $element.find('.altFirst').height()
         medida = altR - altFirst
         $element.find('.medida').height(medida)
-        $element.find('.medida .ng-scope').height(medida)
+        $element.find('.medida .ng-scope').not('.note.round').height(medida)
       
 
       $scope.$watch 'user', (value) ->

@@ -6,8 +6,14 @@
                 <div class="ico tim"></div>
                 <p data-sgk-duration ng-model="solicitude.endedAt"></p>
               </li>
-              <li><div class="ico" ng-class="solicitude.state[role] | StateIcons"></div><p>{{ solicitude.state[role] | StateSolicitude }}</p></li>
-              <li class="last" ng-if="solicitude.priority"><div class="ico" ng-class="solicitude.priority | PriorityIcons"></div><p>{{ solicitude.priority | Priority }}</p></li>
+              <li>
+                <div class="ico" ng-class="solicitude.state[role] | StateIcons"></div>
+                <p>{{ solicitude.state[role] | StateSolicitude }}</p>
+              </li>
+              <li class="last" ng-if="solicitude.priority">
+                <div class="ico" ng-class="solicitude.priority | PriorityIcons"></div>
+                <p>{{ solicitude.priority | Priority }}</p>
+              </li>
           </ul>
           <h4>{{ solicitude.ticket.title }}</h4>
           <ul class="full">

@@ -610,9 +610,9 @@ h4{ font-size:  1.154em;}
     padding: 13px 10px 8px 10px;
     border-left: 3px solid grey;
 }
-.note .verde{       border-left-color: #01cc82;}
-.note .rojo{        border-left-color: #ff6b6b;}
-.note .amarillo{    border-left-color: #fedb18;}
+.note .GREEN{       border-left-color: #01cc82;}
+.note .RED{        border-left-color: #ff6b6b;}
+.note .YELLOW{    border-left-color: #fedb18;}
 
 .note ul{
     display: block;

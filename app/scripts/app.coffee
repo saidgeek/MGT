@@ -89,7 +89,7 @@ angular.module('movistarApp', [
         else
           $q.reject response
     ]
-  .factory 'noCacheInterceptor', () ->
+  .factory 'noCacheInterceptor', () =>
     request: (config) ->
       if config.method is 'GET' and config.url.indexOf('partials/') is -1 and config.url.indexOf('directives/') is -1
         separator = '&'

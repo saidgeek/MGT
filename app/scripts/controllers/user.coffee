@@ -87,3 +87,23 @@ angular.module('movistarApp')
               content: """
                           El usuario #{ user.profile.firstName } #{ user.profile.lastName } se a agregado correctamente.
                        """
+
+  .controller 'UserSolicitudesCtrl', ($scope, $rootScope, SolicitudeFactory) ->
+    $scope.solicitudes = null
+    $scope.role = $rootScope.currentUser.role
+
+    state = ''
+    category = ''
+    priority = ''
+    involved = ''
+
+    $scope.$watch 'id', (_id) =>
+      SolicitudeFactory.index null, state, category, priority, involved, (err, solicitudes) ->
+        if err
+          $scope.errors = err
+        else
+          if solicitudes.length > 0
+            $scope.solicitudes = solicitudes
+          else
+            $scope.solicitudes = null
+        console.log '$scope.solicitudes:', $scope.solicitudes

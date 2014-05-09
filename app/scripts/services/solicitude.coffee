@@ -8,6 +8,7 @@ angular.module("movistarApp")
         params:
           clientToken: '@clientToken'
           accessToken: '@accessToken'
+          id: '@id'
         data:
           state: '@state'
           category: '@category'
