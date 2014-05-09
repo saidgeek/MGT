@@ -1,0 +1,16 @@
+<ul class="lista-estados">
+  <li class="bold">
+    <a href="javascript:{}" ng-click="filter()">
+      <span class="ico tod"></span>
+      <span class="text">Todas</span>
+      <span class="right">{{ groups.total }}</span>
+    </a>
+  </li>
+  <li ng-repeat="state in states">
+    <a href="javascript:{}" class="bold" ng-click="filter(state)">
+      <span class="ico" ng-class="state | StateIcons"></span>
+      <span class="text">{{ state | StateSolicitude }}</span>
+      <span class="right">{{ groups[state] || 0 }}</span>
+    </a>
+  </li>
+</ul>
