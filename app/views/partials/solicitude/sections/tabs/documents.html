@@ -9,6 +9,7 @@
                   <p class="bold">{{ d.size | toMB }}MB</p>
                   <p class="sendby" ng-show="d.referer.id">Desde {{ d.referer.name | AttReferer }}</p>
                   <p class="sendby">Enviado por {{ d.createdBy.profile.firstName }} {{ d.createdBy.profile.lastName }}</p>
+                  <a href="{{ d.url }}" download>Descargar</a>
                 </div>
             </div>
         </div>
