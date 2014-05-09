@@ -12,6 +12,13 @@
                         <p>
                           {{ c.content }}
                         </p>
+                        <p>
+                            <ul>
+                                <li ng-repeat="att in c.attachments">
+                                    <a href="{{ att.link }}" download>{{ att.name }}</a>
+                                </li>
+                            </ul>
+                        </p>
                     </div>
                 </div>
             </div>
