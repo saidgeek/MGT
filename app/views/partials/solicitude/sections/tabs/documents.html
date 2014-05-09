@@ -1,12 +1,13 @@
 <div class="overflow">
 <div class="padding"><!-- documentos -->
     <div class="archivos"><!-- contenedor para archivos -->
-        <div class="docu" ng-repeat="d in solicitude.ticket.attachments">
+        <div class="docu" ng-repeat="d in solicitude.attachments">
             <div class="table">
                 <div class="t-c"><img ng-src="{{ d.thumbnails._50x50_ }}"/></div>
                 <div class="t-c">
                   <p class="bold">{{ d.name }}</p>
                   <p class="bold">{{ d.size | toMB }}MB</p>
+                  <p class="sendby" ng-show="d.referer.id">Desde {{ d.referer.name | AttReferer }}</p>
                   <p class="sendby">Enviado por {{ d.createdBy.profile.firstName }} {{ d.createdBy.profile.lastName }}</p>
                 </div>
             </div>

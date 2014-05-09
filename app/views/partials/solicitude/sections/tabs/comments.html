@@ -19,14 +19,11 @@
         <div class="note input shadowup">
             <form name="form" ng-submit="addComment(form)">
                 <textarea class="round" name="message" ng-model="solicitude.comment"></textarea>
-                <ul class="upload-list"></ul>
                 <fieldset>
                 <input class="submit boton1 round" type="submit" value="Enviar">
                 </fieldset>
                 <fieldset>
-                  <div class="upload" data-sgk-upload-multi ng-model="solicitude.attachments">
-                    <input class="att" type="file" name="attachment" multiple>
-                  </div>
+                  <div data-sgk-uploader-multi="{{ solicitude._id }}" data-sgk-type="comments" sgk-position="buttom" ng-model="solicitude.attachments"></div>
                 </fieldset>
                 <div style="clear: both;"></div>
             </form>

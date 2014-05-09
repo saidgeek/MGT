@@ -4,11 +4,7 @@
   </textarea>
 </fieldset>
 <fieldset>
-  <ul class="upload-list">
-  </ul>
-  <div class="upload" data-sgk-upload-multi ng-model="solicitude.attachments">
-    <input class="att" type="file" name="attachment" multiple>
-  </div>
+  <div data-sgk-uploader-multi data-sgk-type="ticket" ng-model="solicitude.attachments"></div>
 </fieldset>
 <fieldset class="blue">
   <ul>

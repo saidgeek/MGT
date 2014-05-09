@@ -90,6 +90,9 @@ angular.module('filepicker', ['ngResource'])
           size: Math.round(inkBlob.size / 1024)
           createdBy: $rootScope.currentUser.id
           thumbnails: {}
+          referer:
+            id: opts.referer.id
+            name: opts.referer.name
 
         if /\.(jpg|jpeg|tiff|png)$/i.test inkBlob.filename
           _thumbnails inkBlob, (res) ->

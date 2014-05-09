@@ -1,6 +1,11 @@
 'use strict'
 
 angular.module("movistarApp")
+  .filter "AttReferer", (RolesData) ->
+    return (key) ->
+      return 'Comentarios' if key is 'comments'
+      return 'Tareas' if key is 'tasks'
+
   .filter "RoleName", (RolesData) ->
     return (key) ->
       RolesData.get(key)
