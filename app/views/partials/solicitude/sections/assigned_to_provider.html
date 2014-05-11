@@ -1,9 +1,9 @@
 <div id="nueva-solicitud" class="validar">
     <form name="form" ng-submit="update(form)">
         <fieldset class="even">
-            <p>Ingreso de información de solicitud</p>
+            <p>Ingreso tiempo de entrega (min)</p>
             <ul>
-                <li><input type="number" name="duration" ng-model="solicitude._duration"></li>
+                <li><input type="number" name="duration" ng-model="solicitude._duration" min="15" max="240"></li>
             </ul>
         </fieldset>
 
