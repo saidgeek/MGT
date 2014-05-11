@@ -31,8 +31,7 @@ angular.module('movistarApp')
       $scope.refererId = if $attrs.sgkUploaderMulti is '' then null else $attrs.sgkUploaderMulti
       _posicion = $attrs.sgkPosition || 'top'
     
-      # if ngModel.$viewValue instanceof Array and ngModel.$viewValue?
-      #   $scope.attachments = ngModel.$viewValue
+      # ngModel.$setViewValue []
 
       html = null
       if _posicion is 'buttom'

@@ -102,6 +102,31 @@ angular.module("movistarApp")
         cb err.data
       ).$promise
 
+    _addTasks = (id, desc, attachments, cb) ->
+      SolicitudeService.addTasks(
+        clientToken: _clientToken
+        accessToken: _accessToken
+        id: id
+        desc: desc
+        attachments: attachments
+      , (solicitude) ->
+        cb()
+      , (err) ->
+        cb err.data
+      ).$promise
+
+    _toggleCheckTasks = (id, task, cb) ->
+      SolicitudeService.toggleCheckTasks(
+        clientToken: _clientToken
+        accessToken: _accessToken
+        id: id
+        task: task
+      , (solicitude) ->
+        cb()
+      , (err) ->
+        cb err.data
+      ).$promise
+
     return {
       index: (id, state, category, priority, involved, cb) ->
         _index(id, state, category, priority, involved, cb)
@@ -115,4 +140,8 @@ angular.module("movistarApp")
         _update(id, data, cb)
       addComments: (id, comment, attachments, cb) ->
         _addComments(id, comment, attachments, cb)
+      addTasks: (id, desc, attachments, cb) ->
+        _addTasks(id, desc, attachments, cb)
+      toggleCheckTasks: (id, task, cb) ->
+        _toggleCheckTasks(id, task, cb)
     }

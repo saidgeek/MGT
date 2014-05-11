@@ -27,6 +27,7 @@ angular.module('movistarApp')
 
   .controller 'SolicitudeShowCtrl', ($scope, SolicitudeFactory, $rootScope, SolicitudeParams, PriorityData, CategoryFactory, UserFactory, SegmentsData, SectionsData) ->
     $scope.solicitude = null
+    $scope.atts = []
     $scope.role = $rootScope.currentUser.role
     $scope.rejectedState = ''
 
@@ -74,11 +75,28 @@ angular.module('movistarApp')
 
     $scope.addComment = (form) ->
       if form.$valid
-        SolicitudeFactory.addComments $scope.solicitude._id, $scope.solicitude.comment, $scope.solicitude.attachments, (err) ->
+        SolicitudeFactory.addComments $scope.solicitude._id, $scope.solicitude.comment, $scope.atts, (err) ->
           if err
             $scope.errors = err
           else
+            $scope.atts = []
             $rootScope.$emit 'loadSolicitudeShow', $scope.solicitude._id
+
+    $scope.addTask = (form) ->
+      if form.$valid
+        SolicitudeFactory.addTasks $scope.solicitude._id, $scope.solicitude.desc, $scope.atts, (err) ->
+          if err
+            $scope.errors = err
+          else
+            $scope.atts = []
+            $rootScope.$emit 'loadSolicitudeShow', $scope.solicitude._id
+
+    $scope.toggleCheck = (task) =>
+      SolicitudeFactory.toggleCheckTasks $scope.solicitude._id, task, (err) ->
+        if err
+          $scope.errors = err
+        else
+          $rootScope.$emit 'loadSolicitudeShow', $scope.solicitude._id
 
     $scope.nextState = (state) =>
       $scope.solicitude.nextState = state

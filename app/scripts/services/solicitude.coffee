@@ -62,3 +62,23 @@ angular.module("movistarApp")
           comment: '@comment'
           attachments: '@attachments'
         url: '/api/v1/solicitude/:id/add/comments'
+
+      addTasks:
+        method: 'PUT'
+        params:
+          clientToken: '@clientToken'
+          accessToken: '@accessToken'
+          id: "@id"
+        data:
+          desc: '@desc'
+          attachments: '@attachments'
+        url: '/api/v1/solicitude/:id/add/tasks'
+
+      toggleCheckTasks:
+        method: 'PUT'
+        params:
+          clientToken: '@clientToken'
+          accessToken: '@accessToken'
+          id: "@id"
+          task: "@task"
+        url: '/api/v1/solicitude/:id/check/:task'

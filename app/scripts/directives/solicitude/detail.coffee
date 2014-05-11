@@ -129,9 +129,15 @@ angular.module('movistarApp')
         $_resize()
 
       $_loadTabs = (tab) =>
+        role = $rootScope.currentUser.role
         $el = $element.find('.full-heigth .half-a')
 
         $el.html tpls.tab[tab]
+
+        if tab is 'tasks' and ['PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) < 0
+          $el.find('.note.input.shadowup').remove()
+          $el.find('.t-c.che').remove()
+
         $compile($el.contents())($scope)
         $scope.$digest()
         $_resize()
