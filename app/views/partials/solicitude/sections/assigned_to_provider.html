@@ -1,17 +1,21 @@
-<div id="nueva-solicitud" class="validar">
-    <form name="form" ng-submit="update(form)">
-        <fieldset class="even">
-            <p>Ingreso tiempo de entrega (min)</p>
-            <ul>
-                <li><input type="number" name="duration" ng-model="solicitude._duration" min="15" max="240"></li>
-            </ul>
-        </fieldset>
+<div class="overflow">
+    
+    <div id="nueva-solicitud" class="validar">
+        <form name="form" ng-submit="update(form)">
+            <fieldset class="even">
+                <p>Ingreso tiempo de entrega (min)</p>
+                <ul>
+                    <li><input type="number" name="duration" ng-model="solicitude._duration" min="15" max="240"></li>
+                </ul>
+            </fieldset>
 
-        <fieldset class="blue">
-            <ul>
-                <li><button type="reset">Limpiar todos los Datos</button></li>
-            </ul>
-            <button type="submit" class="boton1 round" ng-click="nextState('proccess')"><span></span>Validar Solicitud</button>
-        </fieldset>
-    </form>
+            <fieldset class="blue">
+                <ul>
+                    <li><button type="reset">Limpiar todos los Datos</button></li>
+                </ul>
+                <button type="submit" class="boton1 round" ng-click="nextState('proccess')"><span></span>Validar Solicitud</button>
+            </fieldset>
+        </form>
+    </div>
+
 </div>

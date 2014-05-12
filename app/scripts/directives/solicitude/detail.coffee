@@ -102,7 +102,7 @@ angular.module('movistarApp')
         return false
 
       $_loadActions = (state) =>
-        $el = $element.find('.relativo .contenedor-filtros .half[data-action]')
+        $el = $element.find('.contenedor-filtros .half[data-action]')
         if $_permissionsAction(state)
           $el.html tpls.action[state] || ''
           
@@ -119,7 +119,7 @@ angular.module('movistarApp')
           $_triggersActions()
 
       $_loadSection = (section) =>
-        $el = $element.find('.relativo .contenedor-filtros')
+        $el = $element.find('.contenedor-filtros')
 
         $el.next().remove() 
         $el.after tpls.section[section]

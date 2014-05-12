@@ -1,17 +1,22 @@
-<div id="nueva-solicitud" class="validar">
-    <form name="form" ng-submit="update(form)">
-        <fieldset class="even">
-            <p>¿Por qué?</p>
-            <ul>
-                <textarea name="message" rows="8" ng-model="solicitude.message"></textarea>
-            </ul>
-        </fieldset>
+<div class="overflow">
+    
+    <div id="nueva-solicitud" class="validar">
+        <form name="form" ng-submit="update(form)">
+            <fieldset class="even">
+                <p>¿Por qué?</p>
+                <ul>
+                    <textarea name="message" rows="8" ng-model="solicitude.message"></textarea>
+                </ul>
+            </fieldset>
 
-        <fieldset class="blue">
-            <ul>
-                <li><button type="reset">Limpiar todos los Datos</button></li>
-            </ul>
-            <button type="submit" class="boton1 round" ng-click="nextState(rejectedState)"><span></span>Confirmar</button>
-        </fieldset>
-    </form>
+            <fieldset class="blue">
+                <ul>
+                    <li><button type="reset">Limpiar todos los Datos</button></li>
+                </ul>
+                <button type="submit" class="boton1 round" ng-click="nextState(rejectedState)"><span></span>Confirmar</button>
+            </fieldset>
+        </form>
+    </div>
+
+
 </div>

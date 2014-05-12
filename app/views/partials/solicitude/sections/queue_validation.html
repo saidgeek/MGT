@@ -1,64 +1,68 @@
-<div id="nueva-solicitud" class="validar">
-  <form name="form" ng-submit="update(form)">
-    <fieldset class="even">
-          <p>Ingreso de información de solicitud</p>
+<div class="overflow">
+
+  <div id="nueva-solicitud" class="validar">
+    <form name="form" ng-submit="update(form)">
+      <fieldset class="even">
+            <p>Ingreso de información de solicitud</p>
+            <ul>
+                <li class="dropdown"><span></span>
+                    <select ng-model="solicitude.priority" ng-options="p.id as p.name for p in priorities">
+                      <option value="">Prioridad</option>
+                    </select>
+                </li>
+                <li class="dropdown"><span></span>
+                    <select ng-model="solicitude.ticket.category" ng-options="c._id as c.name for c in categories | RemoveThis: id:c._id">
+                      <option value="">Categoría</option>
+                    </select>
+                </li>
+                <li class="dropdown"><span></span>
+                    <select ng-model="solicitude.responsible" ng-options="u._id as (u.profile.firstName+' '+u.profile.lastName) for u in contentManagers">
+                      <option value="">Responsable</option>
+                    </select>
+                </li>
+            </ul>
+        </fieldset>
+      <fieldset class="odd">
           <ul>
-              <li class="dropdown"><span></span>
-                  <select ng-model="solicitude.priority" ng-options="p.id as p.name for p in priorities">
-                    <option value="">Prioridad</option>
-                  </select>
-              </li>
-              <li class="dropdown"><span></span>
-                  <select ng-model="solicitude.ticket.category" ng-options="c._id as c.name for c in categories | RemoveThis: id:c._id">
-                    <option value="">Categoría</option>
-                  </select>
-              </li>
-              <li class="dropdown"><span></span>
-                  <select ng-model="solicitude.responsible" ng-options="u._id as (u.profile.firstName+' '+u.profile.lastName) for u in contentManagers">
-                    <option value="">Responsable</option>
-                  </select>
+              <li class="Tag">
+                  <input class="Tag" id="nombre" name="tags" type="text" placeholder="Tags de Clasificación" ng-keypress="addTag($event)" ng-model="solicitude.tag"/>
+                  <div class="tags">
+                      <span class="tag round" ng-repeat="t in solicitude.ticket.tags track by $index" data-value="{{ t }}">{{ t }}<a class="cerrar" href="javascript:{}"></a></span>
+                  </div>
               </li>
           </ul>
       </fieldset>
-    <fieldset class="odd">
-        <ul>
-            <li class="Tag">
-                <input class="Tag" id="nombre" name="tags" type="text" placeholder="Tags de Clasificación" ng-keypress="addTag($event)" ng-model="solicitude.tag"/>
-                <div class="tags">
-                    <span class="tag round" ng-repeat="t in solicitude.ticket.tags track by $index" data-value="{{ t }}">{{ t }}<a class="cerrar" href="javascript:{}"></a></span>
-                </div>
-            </li>
-        </ul>
-    </fieldset>
-    <fieldset class="even segments">
-        <p>Seleccionar segmentos a los que aplica la solicitud</p>
-        <ul>
-            <li class="lab" ng-repeat="s in segments">
-              <label>{{ s.name }}
-                <span class="opt-check right" data-sgk-check></span>
-                <input class="hide" type="checkbox" id="check_todos" name="segments" ng-false-value="{{s.id}}" ng-model="solicitude.ticket.segments[$index]">
-              </label>
-            </li>
-        </ul>
-    </fieldset>
-    <fieldset class="odd sections">
-        <p>Seleccionar secciones a los que aplica la solicitud</p>
-        <ul>
-            <li class="lab" ng-repeat="s in sections">
-              <label>{{ s.name }}
-                <span class="opt-check right" data-sgk-check></span>
-                <input class="hide" type="checkbox" id="check_todos" name="sections" ng-false-value="{{s.id}}" ng-model="solicitude.ticket.sections[$index]">
-              </label>
-            </li>
-        </ul>
-    </fieldset>
-    <div class="fixed">
-      <fieldset class="blue">
+      <fieldset class="even segments">
+          <p>Seleccionar segmentos a los que aplica la solicitud</p>
           <ul>
-              <li><button type="reset">Limpiar todos los Datos</button></li>
+              <li class="lab" ng-repeat="s in segments">
+                <label>{{ s.name }}
+                  <span class="opt-check right" data-sgk-check></span>
+                  <input class="hide" type="checkbox" id="check_todos" name="segments" ng-false-value="{{s.id}}" ng-model="solicitude.ticket.segments[$index]">
+                </label>
+              </li>
           </ul>
-          <button type="submit" class="boton1 round" ng-click="nextState('assigned_to_manager')"><span></span>Validar Solicitud</button>
       </fieldset>
-    </div>
-  </form>
+      <fieldset class="odd sections">
+          <p>Seleccionar secciones a los que aplica la solicitud</p>
+          <ul>
+              <li class="lab" ng-repeat="s in sections">
+                <label>{{ s.name }}
+                  <span class="opt-check right" data-sgk-check></span>
+                  <input class="hide" type="checkbox" id="check_todos" name="sections" ng-false-value="{{s.id}}" ng-model="solicitude.ticket.sections[$index]">
+                </label>
+              </li>
+          </ul>
+      </fieldset>
+      <div class="fixed">
+        <fieldset class="blue">
+            <ul>
+                <li><button type="reset">Limpiar todos los Datos</button></li>
+            </ul>
+            <button type="submit" class="boton1 round" ng-click="nextState('assigned_to_manager')"><span></span>Validar Solicitud</button>
+        </fieldset>
+      </div>
+    </form>
+  </div>
+  
 </div>

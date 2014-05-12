@@ -1,21 +1,25 @@
-<div id="nueva-solicitud" class="validar">
-    <form name="form" ng-submit="update(form)">
-        <fieldset class="even">
-            <p>Ingreso de información de solicitud</p>
-            <ul>
-                <li class="dropdown"><span></span>
-                    <select ng-model="solicitude.provider" ng-options="u._id as (u.profile.company+' ('+u.profile.firstName+' '+u.profile.lastName+')') for u in provider">
-                      <option value="">Proveedor</option>
-                    </select>
-                </li>
-            </ul>
-        </fieldset>
+<div class="overflow">
+    
+    <div id="nueva-solicitud" class="validar">
+        <form name="form" ng-submit="update(form)">
+            <fieldset class="even">
+                <p>Ingreso de información de solicitud</p>
+                <ul>
+                    <li class="dropdown"><span></span>
+                        <select ng-model="solicitude.provider" ng-options="u._id as (u.profile.company+' ('+u.profile.firstName+' '+u.profile.lastName+')') for u in provider">
+                          <option value="">Proveedor</option>
+                        </select>
+                    </li>
+                </ul>
+            </fieldset>
 
-        <fieldset class="blue">
-            <ul>
-                <li><button type="reset">Limpiar todos los Datos</button></li>
-            </ul>
-            <button type="submit" class="boton1 round" ng-click="nextState('assigned_to_provider')"><span></span>Validar Solicitud</button>
-        </fieldset>
-    </form>
+            <fieldset class="blue">
+                <ul>
+                    <li><button type="reset">Limpiar todos los Datos</button></li>
+                </ul>
+                <button type="submit" class="boton1 round" ng-click="nextState('assigned_to_provider')"><span></span>Validar Solicitud</button>
+            </fieldset>
+        </form>
+    </div>
+
 </div>
