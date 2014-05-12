@@ -105,9 +105,16 @@ angular.module('movistarApp')
         $el = $element.find('.relativo .contenedor-filtros .half[data-action]')
         if $_permissionsAction(state)
           $el.html tpls.action[state] || ''
+          
           if $el.find('[data-role]').length > 0
             if ['ROOT', 'ADMIN'].indexOf($rootScope.currentUser.role) < 0
               $el.find('[data-role]').not("[data-role='#{$rootScope.currentUser.role}']").parent().remove()
+
+          if state is 'proccess' and ['PROVIDER', 'ROOT', 'ADMIN'].indexOf($rootScope.currentUser.role) > -1
+            if moment($scope.solicitude.endedAt) < moment(Date.now())
+              $el
+                .find('ul.acciones li.pause').remove()
+
           $compile($el.contents())($scope)
           $_triggersActions()
 

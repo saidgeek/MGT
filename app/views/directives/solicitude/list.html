@@ -1,6 +1,6 @@
 <div class="overflow">
   <div class="note round" data-id="{{ solicitude._id }}"  ng-repeat="solicitude in solicitudes">
-      <div class="t-c verde round">
+      <div class="t-c round" ng-class="solicitude.sla">
           <ul>
               <li ng-if="solicitude.duration && !solicitude.pausedAt">
                 <div class="ico tim"></div>

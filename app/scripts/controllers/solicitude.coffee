@@ -1,9 +1,12 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'SolicitudeCtrl', ($scope, $rootScope, SolicitudeFactory) ->
+  .controller 'SolicitudeCtrl', ($scope, $rootScope, SolicitudeFactory, IO) ->
     $scope.solicitudes = []
     $scope.role = $rootScope.currentUser.role
+
+    IO.emit 'register.solicitude.change.sla', {}
+    IO.emit 'register.solicitude.remove.sla', {}
 
     $rootScope.$watchCollection '[filters.solicitude.state, filters.solicitude.category, filters.solicitude.priority, filters.solicitude.involved]', () =>
       state = if $rootScope.filters?.solicitude?.state? then $rootScope.filters.solicitude.state else ''

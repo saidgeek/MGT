@@ -50,10 +50,19 @@ var jobs = require('./lib/config/kue')(app);
 
 // Socket.io
 global.io.sockets.on('connection', function (sckt) {
+
   sckt.on('register.notifications', function (data) {
     if (typeof(data) !== 'undefined' && typeof(data.id) !== 'undefined') {
       sckt.join('notifications/'+data.id);
     }
+  });
+
+  sckt.on('register.solicitude.change.sla', function(data) {
+    sckt.join('solicitude/change/sla');
+  });
+
+  sckt.on('register.solicitude.remove.sla', function(data) {
+    sckt.join('solicitude/remove/sla');
   });
 });
 
