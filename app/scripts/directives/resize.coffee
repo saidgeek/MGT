@@ -19,13 +19,14 @@ angular.module('movistarApp')
         }
 
       init = (wWidth, wHeight) =>
+
         alto = wHeight
         total_width = angular.element('#wrap').width()
         sidebar = angular.element('#side').width()
         medida = total_width - sidebar
 
-        maxAncho = medida / 100 * 55
-        minAncho = medida / 100 * 36
+        maxAncho = medida / 100 * 60
+        minAncho = medida / 100 * 34
 
         angular.element('#main').width(medida)
         angular.element('#main .wrap, #side').height(alto)
@@ -39,30 +40,9 @@ angular.module('movistarApp')
           angular.element('#right').css 'width', total_width - width
           angular.element('.ui-resizable-handle').css 'left', width
 
-          if width < 460
-            angular.element('#left div.ico, #left span.ico').parent().find('p, span.text').css 'display', 'none'
-            angular.element('.t-c.verde ul li, .t-c.rojo ul li, .t-c.amarillo ul li').css 'width', 'auto'
-            # if _type is 'users'
-            angular.element('#left div.ico, #left span.ico').parent().find('span.right').css 'float', 'none'
-          else
-            angular.element('#left div.ico, #left span.ico').parent().find('p, span.text').css 'display', 'inline'
-            angular.element('.t-c.verde ul li, .t-c.rojo ul li, .t-c.amarillo ul li').css 'width', '30%'
-            # if _type is 'users'
-            angular.element('#left div.ico, #left span.ico').parent().find('span.right').css 'float', 'right'
-
-          if width < 525
-            angular.element('#left .relativo div.botones ul li a div.ico').parent().find('span.text').css 'display', 'none'
-          else
-            angular.element('#left .relativo div.botones ul li a div.ico').parent().find('span.text').css 'display', 'inline'
-
         resize_right = (event, ui) ->
           right = angular.element('#right').width()
-          if right < 600
-            angular.element('#right .menu-middle p, #right .tools ul li p').css 'display', 'none'
-            angular.element('#right .edit-user ul li a').css {'textIndent':'-9999px', 'overflow':'hidden'}
-          else
-            angular.element('#right .menu-middle p, #right .tools ul li p').css 'display', 'inline'
-            angular.element('#right .edit-user ul li a').css {'textIndent':0, 'overflow':'auto'}
+          
         
         angular.element('#left .relativo').resizable(
           maxWidth: maxAncho
@@ -85,3 +65,95 @@ angular.module('movistarApp')
         $scope.$apply()
 
       init(w.height(), w.width())
+
+  .directive 'sgkResizeLeft', ($window, $timeout, $rootScope) ->
+    restrict: 'A'
+    link: ($scope, $element, $attrs) ->
+      w = angular.element($window)
+      medida = $attrs.sgkResizeLeft
+
+      $scope.get_LW_Dimensions = () =>
+        return { 
+          h: w.height()
+          w: w.width() 
+        }
+
+      $scope.getWLeft = () =>
+        return { 
+          w: $element.width()
+        }
+
+      $scope.$watch $scope.get_LW_Dimensions, (newValue, oldValue) =>
+
+        side = angular.element('#side').width()
+        # top = angular.element('#top').height()
+        # manu_admin = angular.element('#menu-admin').height()
+
+        wleft = ((oldValue.w-side)/100)*medida
+        # hLeft = oldValue.h-(top+manu_admin+44)
+
+        $element
+          .css 
+            'width': "#{if wleft < '250' then '250' : wleft}px"
+            'height': "100%"
+      , true
+
+      $scope.$watch $scope.getWLeft, (newValue, oldValue) =>
+        if oldValue.w < 555
+          $element.find('div.ico, span.ico').parent().find('p, span.text').css 'display', 'none'
+          $element.find('.t-c.verde ul li, .t-c.rojo ul li, .t-c.amarillo ul li').css 'width', 'auto'
+          # if _type is 'users'
+          $element.find('div.ico, span.ico').parent().find('span.right').css 'float', 'none'
+          $element.find('.relativo div.botones ul li a div.ico').parent().find('span.text').css 'display', 'none'
+        else
+          $element.find('div.ico, span.ico').parent().find('p, span.text').css 'display', 'inline'
+          $element.find('.t-c.verde ul li, .t-c.rojo ul li, .t-c.amarillo ul li').css 'width', '30%'
+          # if _type is 'users'
+          $element.find('div.ico, span.ico').parent().find('span.right').css 'float', 'right'
+          $element.find('#left .relativo div.botones ul li a div.ico').parent().find('span.text').css 'display', 'inline'
+      , true
+
+  .directive 'sgkResizeRight', ($window, $timeout, $rootScope) ->
+    restrict: 'A'
+    link: ($scope, $element, $attrs) ->
+      w = angular.element($window)
+      medida = $attrs.sgkResizeRight
+
+      $scope.get_RW_Dimensions = () =>
+        return { 
+          h: w.height()
+          w: w.width() 
+        }
+
+      $scope.getWRight = () =>
+        return { 
+          w: $element.width()
+        }
+
+      $scope.$watch $scope.get_RW_Dimensions, (newValue, oldValue) =>
+
+        side = angular.element('#side').width()
+        # top = angular.element('#top').height()
+        # manu_admin = angular.element('#menu-admin').height()
+
+        wright = ((oldValue.w-side)/100)*medida
+        # hLeft = oldValue.h-(top+manu_admin+44)
+
+        
+
+        $element
+          .css 
+            'width': "#{wright}px"
+            'height': "100%"
+      , true
+
+      $scope.$watch $scope.getWRight, (newValue, oldValue) =>
+        if oldValue.w < 567
+          angular.element('#right .menu-middle p, #right .tools ul li p').css 'display', 'none'
+          angular.element('#right .edit-user ul li a').css {'textIndent':'-9999px', 'overflow':'hidden'}
+        else
+          angular.element('#right .menu-middle p, #right .tools ul li p').css 'display', 'inline'
+          angular.element('#right .edit-user ul li a').css {'textIndent':0, 'overflow':'auto'}
+      , true
+
+

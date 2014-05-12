@@ -1,5 +1,7 @@
 <div class="overflow">
-  <div class="note round" data-id="{{ solicitude._id }}"  ng-repeat="solicitude in solicitudes">
+  <div class="margin" ng-repeat="solicitude in solicitudes">
+    
+    <div class="note round" data-id="{{ solicitude._id }}"  >
       <div class="t-c round" ng-class="solicitude.sla">
           <ul>
               <li ng-if="solicitude.duration && !solicitude.pausedAt">
@@ -33,5 +35,7 @@
               <li class="light first"><span class="round">Code: {{ solicitude.code }}</span><a ng-if="false" href="javascript:{}" class="ico sta"></a></li>
           </ul>
       </div>
+  </div>
+
   </div>
 </div>

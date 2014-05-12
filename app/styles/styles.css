@@ -599,12 +599,17 @@ h4{ font-size:  1.154em;}
 
 .note:after, .note:before, .note ul:after, .note ul:before{ display: table; content: ""; clear: both; }
 
+.margin{
+    margin: 10px 20px 10px 10px;
+}
+
 .note{
-    margin: 10px;
+    /*margin: 10px;*/
     background: #fff;
     /*border: 1px solid #d7e3f0;*/
     display: table;
     cursor: pointer;
+    width: 100%;
 }
 .note .t-c{
     padding: 13px 10px 8px 10px;
@@ -615,15 +620,18 @@ h4{ font-size:  1.154em;}
 .note .YELLOW{    border-left-color: #fedb18;}
 
 .note ul{
-    display: block;
+    display: table;
     list-style: none;
+    width: 88%;
 }
 .note ul li{
-    float: left;
-    display: block;
+    /*float: left;*/
+    display: table-cell;
     /*border-right: 1px solid #9da9b9;*/
     margin-right: 4px;
     padding-right: 4px;
+    /*white-space: nowrap;*/
+    /*width: 33.3%;*/
 }
 .note ul li.last{
     border: none;
@@ -643,7 +651,7 @@ h4{ font-size:  1.154em;}
 /* PARA DETALLE ICONOS LINEA 1225  */
 
 .note .t-c.stats{
-    width: 90px;
+    width: 100px;
     border: none;
 }
 .note .t-c.stats ul{
@@ -1698,10 +1706,10 @@ ul.menu-usuarios li a:hover{
     width: 100%;
 }
 
-.top-admin .margin{
+/*.top-admin .margin{
     display: block;
     margin: 0 25px 0 0;
-}
+}*/
 .note-left ul.lista-opt li{
     width: auto;
     float: none;

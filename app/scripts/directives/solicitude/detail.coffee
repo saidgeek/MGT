@@ -201,7 +201,8 @@ angular.module('movistarApp')
       $_loadTpls()
 
       $scope.$watch 'solicitude', (value) ->
-        if value
+        console.log 'value:', value
+        if value?
           $rootScope.resize = true
           $_loadActions(value.state.type.toLowerCase())
           $timeout () =>

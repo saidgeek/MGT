@@ -1,7 +1,7 @@
 
 
     <!-- FILTERS -->
-    <div class="contenedor-filtros">
+    <div class="contenedor-filtros" ng-if="solicitude">
       <div class="half">
           <ul class="menu-tarea-top">
               <li ng-if="solicitude.duration" data-sgk-duration ng-model="solicitude.endedAt">
@@ -19,7 +19,7 @@
           </ul>
       </div>
       <!--// ACEPTAR - RECHAZAR //-->
-      <div class="half" data-action data-id="{{ solicitude._id }}">
+      <div class="half" data-action data-id="{{ solicitude._id }}" ng-if="solicitude">
         <ul class="acciones"></ul>
       </div>
       <!--// ACEPTAR - RECHAZAR //-->
