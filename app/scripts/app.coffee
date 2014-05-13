@@ -97,7 +97,7 @@ angular.module('movistarApp', [
           separator = '?'
         config.url = config.url+separator+'noCache=' + new Date().getTime()
       return config;
-  .run ($rootScope, $state, Auth) ->
+  .run ($rootScope, $state, Auth, $timeout) ->
 
     # Redirect to login if route requires auth and you're not logged in
     $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromParams) ->
@@ -105,4 +105,24 @@ angular.module('movistarApp', [
         $state.transitionTo "login"
         event.preventDefault()
       $rootScope.filters = null
+      # console.log 'stateChangeStart'
+      # loading = angular.element('<div id="loading"><img src="images/loader.gif"/></div>')
+      #   .css 
+      #     width: '100%'
+      #     height: '100%'
+      #     position: 'absolute'
+      #     top: '0'
+      #     left: '0'
+      #     background: '#2f364a'
+      #     'z-index': '1000'
+
+      # angular.element('body').prepend(loading)
+
+    # stateChangeSuccess
+    # $rootScope.$on '$viewContentLoaded', (event, toState, toParams, fromParams) ->
+    #   console.log 'viewContentLoaded'
+    #   $timeout () =>
+    #     angular.element('body').find('#loading').remove()
+    #   , 1500
+      
 
