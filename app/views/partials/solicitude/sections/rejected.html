@@ -1,11 +1,12 @@
 <div class="overflow">
     
     <div id="nueva-solicitud" class="validar">
-        <form name="form" ng-submit="update(form)">
+        <form name="form" ng-submit="update(form)" ng-class="{ submitted: submitted }" novalidate>
             <fieldset class="even">
                 <p>¿Por qué?</p>
                 <ul>
-                    <textarea name="message" rows="8" ng-model="solicitude.message"></textarea>
+                    <textarea name="message" rows="8" name="because" ng-model="solicitude.message" required></textarea>
+                    <div class="message-error" ng-show="submitted && form.because.$error.required">La explicacion es necesaria.</div>
                 </ul>
             </fieldset>
 
@@ -13,7 +14,7 @@
                 <ul>
                     <li><button type="reset">Limpiar todos los Datos</button></li>
                 </ul>
-                <button type="submit" class="boton1 round" ng-click="nextState(rejectedState)"><span></span>Confirmar</button>
+                <button type="submit" class="boton1 round" ng-click="submitted = true; nextState(rejectedState)"><span></span>Confirmar</button>
             </fieldset>
         </form>
     </div>
