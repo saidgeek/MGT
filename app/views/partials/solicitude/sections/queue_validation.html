@@ -1,55 +1,63 @@
 <div class="overflow">
 
   <div id="nueva-solicitud" class="validar">
-    <form name="form" ng-submit="update(form)">
+    <form name="form" ng-submit="update(form)" ng-class="{ submitted: submitted }" novalidate>
       <fieldset class="even">
             <p>Ingreso de información de solicitud</p>
             <ul>
                 <li class="dropdown"><span></span>
-                    <select ng-model="solicitude.priority" ng-options="p.id as p.name for p in priorities">
+                    <select ng-model="solicitude.priority" name="priority" ng-options="p.id as p.name for p in priorities" required>
                       <option value="">Prioridad</option>
                     </select>
+                    <div class="message-error" ng-show="submitted && form.priority.$error.required">El campo prioridad es requerido.</div>
                 </li>
                 <li class="dropdown"><span></span>
-                    <select ng-model="solicitude.ticket.category" ng-options="c._id as c.name for c in categories | RemoveThis: id:c._id">
+                    <select ng-model="solicitude.ticket.category" name="category" ng-options="c._id as c.name for c in categories | RemoveThis: id:c._id" required>
                       <option value="">Categoría</option>
                     </select>
+                    <div class="message-error" ng-show="submitted && form.category.$error.required">El campo clasificacion es requerido.</div>
                 </li>
                 <li class="dropdown"><span></span>
-                    <select ng-model="solicitude.responsible" ng-options="u._id as (u.profile.firstName+' '+u.profile.lastName) for u in contentManagers">
+                    <select ng-model="solicitude.responsible" name="responsible" ng-options="u._id as (u.profile.firstName+' '+u.profile.lastName) for u in contentManagers" required>
                       <option value="">Responsable</option>
                     </select>
+                    <div class="message-error" ng-show="submitted && form.responsible.$error.required">El campo responsable es requerido.</div>
                 </li>
             </ul>
         </fieldset>
       <fieldset class="odd">
           <ul>
-              <li class="Tag">
+              <li class="Tag" ng-class="{ error: !validateTags() }">
                   <input class="Tag" id="nombre" name="tags" type="text" placeholder="Tags de Clasificación" ng-keypress="addTag($event)" ng-model="solicitude.tag"/>
                   <div class="tags">
                       <span class="tag round" ng-repeat="t in solicitude.ticket.tags track by $index" data-value="{{ t }}">{{ t }}<a class="cerrar" href="javascript:{}"></a></span>
                   </div>
+                  <div class="message-error" ng-show="submitted && !validateTags()">Se debe ingresar al menos un tag.</div>
               </li>
           </ul>
       </fieldset>
       <fieldset class="even segments">
           <p>Seleccionar segmentos a los que aplica la solicitud</p>
+          <div class="message-error" ng-show="submitted && error.segments">Se debe seleccionar al menos 1 segmento.</div>
           <ul>
-              <li class="lab" ng-repeat="s in segments">
+              <li class="lab" ng-repeat="s in segments" data-type="segments" data-value="{{ s.id }}">
                 <label>{{ s.name }}
-                  <span class="opt-check right" data-sgk-check></span>
-                  <input class="hide" type="checkbox" id="check_todos" name="segments" ng-false-value="{{s.id}}" ng-model="solicitude.ticket.segments[$index]">
+                  <span class="opt-check right"></span>
+                  <input class="hide" type="checkbox" id="check_todos" name="segments" 
+                    ng-true-value="{{ s.id }}" 
+                    ng-change="changeSegments(form, s.id)" ng-model="solicitude.segment" >
                 </label>
               </li>
           </ul>
       </fieldset>
       <fieldset class="odd sections">
           <p>Seleccionar secciones a los que aplica la solicitud</p>
+          <div class="message-error" ng-show="submitted && error.sections">Se debe seleccionar al menos 1 seccion.</div>
           <ul>
-              <li class="lab" ng-repeat="s in sections">
+              <li class="lab" ng-repeat="s in sections"  data-type="sections" data-value="{{ s.id }}">
                 <label>{{ s.name }}
-                  <span class="opt-check right" data-sgk-check></span>
-                  <input class="hide" type="checkbox" id="check_todos" name="sections" ng-false-value="{{s.id}}" ng-model="solicitude.ticket.sections[$index]">
+                  <span class="opt-check right" data-sgk-check ng-click="validateForm(form)"></span>
+                  <input class="hide" type="checkbox" id="check_todos" name="sections" ng-true-value="{{s.id}}" ng-false-value="" ng-model="solicitude.ticket.sections[$index]">
                 </label>
               </li>
           </ul>
@@ -59,7 +67,7 @@
             <ul>
                 <li><button type="reset">Limpiar todos los Datos</button></li>
             </ul>
-            <button type="submit" class="boton1 round" ng-click="nextState('assigned_to_manager')"><span></span>Validar Solicitud</button>
+            <button type="submit" ng-click="validateForm(form); nextState(form, 'assigned_to_manager')" class="boton1 round"><span></span>Validar Solicitud</button>
         </fieldset>
       </div>
     </form>

@@ -30,9 +30,12 @@ angular.module('movistarApp')
 
   .controller 'SolicitudeShowCtrl', ($scope, SolicitudeFactory, $rootScope, SolicitudeParams, PriorityData, CategoryFactory, UserFactory, SegmentsData, SectionsData) ->
     $scope.solicitude = null
+    $scope.error = {}
     $scope.atts = []
     $scope.role = $rootScope.currentUser.role
     $scope.rejectedState = ''
+
+    $scope.segment = null
 
     $scope.tabs = ''
     $scope.options = ''
@@ -76,6 +79,31 @@ angular.module('movistarApp')
           if !err
             $scope.solicitude = solicitude
 
+    $scope.$watch '[solicitude.ticket.segments, solicitude.ticket.sections]', (v) =>
+      if v?
+        if $scope.submitted
+          $scope.validateForm($scope.form)
+    , true
+
+    $scope.validateTags = () ->
+      $scope.tags.length > 0
+
+    $scope.validateSections = (form) ->
+      $scope.solicitude.ticket.segments.length < 1
+
+    $scope.validateSegments = (form) ->
+      $scope.solicitude.ticket.sections.length < 1
+
+    $scope.validateForm = (form) =>
+      if $scope.form?
+        $scope.error['segments'] = $scope.validateSections(form)
+        $scope.error['sections'] = $scope.validateSegments(form)
+        if $scope.error['sections'] || $scope.error['sections']
+          form.$valid = false
+        else
+          form.$valid = true
+        $scope.submitted = true
+
     $scope.addComment = (form) ->
       if form.$valid
         SolicitudeFactory.addComments $scope.solicitude._id, $scope.solicitude.comment, $scope.atts, (err) ->
@@ -101,8 +129,9 @@ angular.module('movistarApp')
         else
           $rootScope.$emit 'loadSolicitudeShow', $scope.solicitude._id
 
-    $scope.nextState = (state) =>
-      $scope.solicitude.nextState = state
+    $scope.nextState = (form, state) =>
+      if form.$valid
+        $scope.solicitude.nextState = state
 
     $scope.update = (form) =>
       if form.$valid

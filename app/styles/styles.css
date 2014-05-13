@@ -2738,13 +2738,13 @@ input.ng-pristine, input.ng-valid-number{
     height: 100%;
 }
 
-#nueva-solicitud .row .relativo.error{
+/*#nueva-solicitud .row .relativo.error{
     background: #ff6b6b !important;
-}
+}*/
 
-#nueva-solicitud .row .relativo.error ul li a {
+/*#nueva-solicitud .row .relativo.error ul li a {
     border-left: 1px solid #fa5858 !important;
-}
+}*/
 
 #nueva-solicitud.user form.submitted .dropdown select.ng-invalid-required, 
 #nueva-solicitud.user form.submitted input.ng-invalid-required,
@@ -2758,14 +2758,24 @@ input.ng-pristine, input.ng-valid-number{
     border: 1px solid #ff6b6b !important;
 }
 
+#nueva-solicitud.validar form.submitted .dropdown select.ng-invalid-required, 
+#nueva-solicitud.validar form.submitted input.ng-invalid-required,
+#nueva-solicitud.validar form.submitted textarea.ng-invalid-required {
+    border: 1px solid #ff6b6b !important;
+}
+
+#nueva-solicitud.validar form.submitted li.Tag.error {
+    border: 1px solid #ff6b6b !important;
+}
+
 div.message-error {
     /*color: #ff6b6b !important;*/
-    background: #ff6b6b !important;
-    color: #fff !important;
+    /*background: #ff6b6b !important;*/
+    color: #ff6b6b !important;
     font-size: 0.9em !important;
-    border-radius: 4px;
+    /*border-radius: 4px;
     padding: 5px;
     position: relative;
-    top: -9px;
-    margin: -2px 5px -10px 5px;
+    top: -5px;
+    margin: -2px 5px -10px 5px;*/
 }

@@ -130,6 +130,7 @@ angular.module('movistarApp')
 
         if section is 'queue_validation'
           $_triggersTag()
+          $_triggersCheck()
         
         $compile($el.next().contents())($scope)
         $scope.$digest()
@@ -167,6 +168,22 @@ angular.module('movistarApp')
               $scope.tags.splice _index, 1
               $scope.solicitude.ticket.tags = $scope.tags
               $el.remove()
+
+          return false
+
+      $_triggersCheck = () =>
+        $element.on 'click', 'ul li.lab', (e) =>
+          e.preventDefault()
+
+          $el = angular.element(e.target).parents('li.lab')
+          $el.toggleClass 'active'
+          $el.find('label span.opt-check').toggleClass 'active'
+
+          if $el.find('label span.opt-check').hasClass 'active'
+            $scope.solicitude.ticket[$el.data('type')].push $el.data 'value'
+          else
+            _index = $scope.solicitude.ticket[$el.data('type')].indexOf $el.data('value')
+            $scope.solicitude.ticket[$el.data('type')].splice _index, 1
 
           return false
 
