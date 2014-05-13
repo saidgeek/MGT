@@ -129,9 +129,8 @@ angular.module('movistarApp')
         else
           $rootScope.$emit 'loadSolicitudeShow', $scope.solicitude._id
 
-    $scope.nextState = (form, state) =>
-      if form.$valid
-        $scope.solicitude.nextState = state
+    $scope.nextState = (state) =>
+      $scope.solicitude.nextState = state
 
     $scope.update = (form) =>
       if form.$valid
@@ -146,6 +145,8 @@ angular.module('movistarApp')
             $rootScope.$emit 'reloadSolicitude', solicitude
             $rootScope.$emit 'reloadStateFilter'
             $rootScope.$emit 'reloadPriorityFilter'
+            $scope.submitted = false
+            $scope.form = null
             $rootScope.alert =
               type: 'success'
               content: """
@@ -172,6 +173,8 @@ angular.module('movistarApp')
             $scope.$emit 'close', true
             $scope.solicitude = {}
             $rootScope.$emit 'reloadStateFilter'
+            $scope.submitted = false
+            $scope.form = null
             $rootScope.alert =
               type: 'success'
               content: """

@@ -2779,3 +2779,7 @@ div.message-error {
     top: -5px;
     margin: -2px 5px -10px 5px;*/
 }
+
+#nueva-solicitud.validar input[type='number'] {
+    width: 200px;
+}
