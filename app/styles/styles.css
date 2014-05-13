@@ -1828,6 +1828,7 @@ ul.menu-usuarios li a:hover{
     box-sizing: border-box;
     overflow: hidden;
 }
+
 #nueva-solicitud.delete .row .relativo{
     background: #ff6b6b;
 }
@@ -2195,10 +2196,6 @@ ul.menu-usuarios li a:hover{
     border-radius: 0px;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
-}
-
-#nueva-solicitud.user form .dropdown select.ng-invalid-required{
-    border: 1px solid red !important;
 }
 
 .dropdown select::-ms-expand{
@@ -2739,4 +2736,36 @@ input.ng-pristine, input.ng-valid-number{
     display: block;
     vertical-align: top;
     height: 100%;
+}
+
+#nueva-solicitud .row .relativo.error{
+    background: #ff6b6b !important;
+}
+
+#nueva-solicitud .row .relativo.error ul li a {
+    border-left: 1px solid #fa5858 !important;
+}
+
+#nueva-solicitud.user form.submitted .dropdown select.ng-invalid-required, 
+#nueva-solicitud.user form.submitted input.ng-invalid-required,
+#nueva-solicitud.user form.submitted textarea.ng-invalid-required {
+    border: 1px solid #ff6b6b !important;
+}
+
+#nueva-solicitud.delete form.submitted .dropdown select.ng-invalid-required, 
+#nueva-solicitud.delete form.submitted input.ng-invalid-required,
+#nueva-solicitud.delete form.submitted textarea.ng-invalid-required {
+    border: 1px solid #ff6b6b !important;
+}
+
+div.message-error {
+    /*color: #ff6b6b !important;*/
+    background: #ff6b6b !important;
+    color: #fff !important;
+    font-size: 0.9em !important;
+    border-radius: 4px;
+    padding: 5px;
+    position: relative;
+    top: -9px;
+    margin: -2px 5px -10px 5px;
 }

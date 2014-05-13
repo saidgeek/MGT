@@ -5,10 +5,17 @@
     </div>
   </div>
   <ul class="t-c">
-    <li><input type="text" id="nombre" name="nombre" placeholder="Nombre" data-ng-model="user.profile.firstName"/></li>
-    <li><input type="text" id="nombre" name="nombre" placeholder="Apellido" data-ng-model="user.profile.lastName"/></li>
+    <li>
+      <input type="text" id="nombre" name="nombre" placeholder="Nombre" data-ng-model="user.profile.firstName" required/>
+      <div class="message-error" ng-show="submitted && form.nombre.$error.required">El campo nombre es requerido.</div>
+    </li>
+    <li>
+      <input type="text" id="nombre" name="apellido" placeholder="Apellido" data-ng-model="user.profile.lastName" required/>
+      <div class="message-error" ng-show="submitted && form.apellido.$error.required">El campo apellido es requerido.</div>
+    </li>
     <li class="dropdown"><span></span>
       <select data-ng-model="user.role" data-ng-options="r.id as r.name for r in roles" required></select>
+      <div class="message-error" ng-show="submitted && form.rol.$error.required">El campo rol es requerido.</div>
     </li>
   </ul>
 </fieldset>
@@ -39,5 +46,5 @@
     <li><button type="reset">Limpiar todos los Datos</button></li>
     <li><a href="javascript:{}" data-cancel>Cancelar</a></li>
   </ul>
-  <button type="submit" class="boton1 round"><span></span>Editar Usuario</button>
+  <button type="submit" ng-click="submitted = true" class="boton1 round"><span></span>Editar Usuario</button>
 </fieldset>

@@ -2,7 +2,8 @@
   <fieldset class="odd">
     <ul class="even">
       <li>
-        <input type="text" id="nombre" name="category" placeholder="Category" data-ng-model="category.name"/>
+        <input type="text" id="nombre" name="category" placeholder="Category" data-ng-model="category.name" required/>
+        <div class="message-error" ng-show="submitted && form.category.$error.required">El campo nombre es requerido.</div>
       </li>
     </ul>
   </fieldset>
@@ -10,7 +11,8 @@
   <fieldset class="odd">
     <ul>
       <li>
-        <textarea id="descripcion" name="descripcion" placeholder="Comentario" data-ng-model="category.description"></textarea>
+        <textarea id="descripcion" name="descripcion" placeholder="Comentario" data-ng-model="category.description" required></textarea>
+        <div class="message-error" ng-show="submitted && form.descripcion.$error.required">El campo descripcion es requerido.</div>
       </li>
     </ul>
   </fieldset>
@@ -19,6 +21,6 @@
       <li><button type="reset">Limpiar todos los Datos</button></li>
       <li><a href="javascript:{}" data-cancel>Cancelar</a></li>
     </ul>
-    <button type="submit" class="boton1 round"><span></span>Crear clasificación</button>
+    <button type="submit" ng-click="submitted = true" class="boton1 round"><span></span>Crear clasificación</button>
   </fieldset>
 </form>

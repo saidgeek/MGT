@@ -14,7 +14,8 @@
     </select>
   </div>
   <textarea id="descripcion" name="descripcion" rows="10" placeholder="¿Por qué?" ng-model="category.deleteMessage" required></textarea>
+  <div class="message-error" ng-show="submitted && form.descripcion.$error.required">El campo descripcion es requerido.</div>
 </fieldset>
 <fieldset class="blue">
-  <input type="submit" class="boton1 round" value="Confirmar eliminación"/>
+  <input type="submit" ng-click="submitted = true" class="boton1 round" value="Confirmar eliminación"/>
 </fieldset>
