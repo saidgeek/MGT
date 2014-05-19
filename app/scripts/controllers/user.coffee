@@ -1,12 +1,15 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'UserCtrl', ($scope, $rootScope, UserFactory) ->
+  .controller 'UserCtrl', ($scope, $rootScope, $window, UserFactory) ->
       $scope.users = []
 
       $rootScope.$watch 'filters.user.role', () =>
         if $rootScope.filters?
           $scope.reload ($rootScope.filters.user.role)
+
+      $scope.reportCSV = (id) =>
+        $window.location = "/api/v1/log/#{id}/csv";
       
 
       $scope.reload = (role) =>

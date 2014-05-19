@@ -39,8 +39,8 @@ require(modelsPath + '/user');
 require(modelsPath + '/attachment');
 require(modelsPath + '/category');
 require(modelsPath + '/notification');
-require(modelsPath + '/log');
 require(modelsPath + '/solicitude');
+require(modelsPath + '/log');
 
 // Passport Configuration
 var passport = require('./lib/config/passport');
