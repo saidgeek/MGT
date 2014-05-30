@@ -1,6 +1,7 @@
 <div class="overflow top-admin">
 
-  <div class="margin" data-ng-repeat="user in users">
+  <div class="margin" data-ng-repeat="user in users" data-sgk-role="search" 
+    data-sgk-search="{{ user.email }} {{ user.profile.firstName }} {{ user.profile.lastName }}">
     <div class="note round" id="works_01" data-id="{{ user._id }}">
       <div class="note-left">
 

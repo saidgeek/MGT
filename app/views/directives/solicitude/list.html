@@ -1,5 +1,7 @@
 <div class="overflow">
-  <div class="margin" ng-repeat="solicitude in solicitudes">
+  <div class="margin" ng-repeat="solicitude in solicitudes" 
+    data-sgk-role="search" 
+    data-sgk-search="{{ solicitude.code }} {{ solicitude.createdBy.profile.firstName }} {{ solicitude.createdBy.profile.lastName }} {{ solicitude.ticket.tags }}">
     
     <div class="note round" data-id="{{ solicitude._id }}"  >
       <div class="t-c round" ng-class="solicitude.sla">
