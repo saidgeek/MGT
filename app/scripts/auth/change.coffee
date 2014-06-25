@@ -1,7 +1,7 @@
 'use strict'
 
-angular.module('movistarApp')
-  .controller 'ChangeCtrl', ($rootScope, $scope, Auth, $location) ->
+angular.module('auth_app')
+  .controller 'ChangeCtrl', ($rootScope, $scope, Auth, $window) ->
     $scope.user = {}
     $scope.errors = {}
 
@@ -16,7 +16,7 @@ angular.module('movistarApp')
         )
         .then ->
           # Logged in, redirect to home
-          $location.path '/'
+          $window.location = '/'
         .catch (err) ->
           err = err.data;
           $scope.errors.other = err;

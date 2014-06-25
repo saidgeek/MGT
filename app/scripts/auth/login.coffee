@@ -1,9 +1,7 @@
 'use strict'
 
-angular.module('movistarApp')
-  .controller 'LoginCtrl', ($rootScope, $scope, Auth, $state) ->
-    $rootScope.cssInclude = ['styles/auth.css']
-    $rootScope.title = "Ingreso a Herramienta Tareas Movistar"
+angular.module('auth_app')
+  .controller 'LoginCtrl', ($rootScope, $scope, Auth, $state, $window) ->
     $scope.user = {}
     $scope.errors = {}
 
@@ -17,11 +15,12 @@ angular.module('movistarApp')
           remember: $scope.user.remember
         )
         .then ->
+          console.log $rootScope.currentUser.confirmAt
           if !$rootScope.currentUser.confirmAt
             $state.transitionTo "change"
           else
             # Logged in, redirect to home
-            $state.transitionTo 'solicitude.index'
+            $window.location = '/'
         .catch (err) ->
           err = err.data;
           $scope.errors.other = err;

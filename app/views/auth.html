@@ -1,0 +1,73 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title>Gestor de tareas</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="styles/auth.css" />
+    <!--[if IE]>
+      <link rel="stylesheet" href="styles/ie.css" />
+    <![endif]-->
+  </head>
+  <body ng-app="auth_app" ng-class="{'body-login': !currentUser}">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div ui-view class="wrap" id="wrap"></div>
+
+    <!--[if lt IE 9]>
+    <script src="lib/es5-shim/es5-shim.js"></script>
+    <script src="lib/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+      <script src='lib/jquery-legacy/jquery.min.js' type='text/javascript'/>
+    <![endif]-->
+
+    <!--[if (gte IE 9) | (!IE)]><!-->
+        <script src='lib/jquery/jquery.min.js' type='text/javascript'/>
+    <!--<![endif]-->
+
+    <script src="/lib/es5-shim/es5-shim.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/lib/angular/angular.js"></script>
+    <script src="/lib/json3/lib/json3.min.js"></script>
+    <script src="/lib/angular-resource/angular-resource.js"></script>
+    <script src="/lib/angular-cookies/angular-cookies.js"></script>
+    <script src="/lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/lib/angular-confirm-click/dist/confirmClick.js"></script>
+    <script src="/lib/angular-socket-io/socket.js"></script>
+    <script src="/lib/jquery-placeholder/jquery.placeholder.js"></script>
+    <script src="/lib/jquery-mousewheel/jquery.mousewheel.js"></script>
+    <script src="/lib/jqueryui/ui/jquery-ui.js"></script>
+    <script src="/lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js"></script>
+    <script src="/lib/moment/moment.js"></script>
+    <script src="/lib/moment/lang/es.js"></script>
+    <script src="/lib/jshashes/hashes.min.js"></script>
+
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <!-- MODULES -->
+        <script src="/scripts/auth/app.js"></script>
+        <!-- CONTROLLERS -->
+        <script src="/scripts/auth/login.js"></script><!-- DELETE (colocar en un solo controller auth) -->
+        <script src="/scripts/auth/change.js"></script><!-- DELETE (colocar en un solo controller auth) -->
+        <script src="/scripts/auth/recovery.js"></script><!-- DELETE (colocar en un solo controller auth) -->
+        
+        <!-- SERVICES -->
+        <script src="/scripts/auth/auth.js"></script>
+        <script src="/scripts/auth/session.js"></script>
+        <script src="/scripts/auth/user.js"></script>
+
+</body>
+</html>
