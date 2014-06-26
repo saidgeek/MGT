@@ -74,7 +74,18 @@ angular.module('movistarApp', [
             templateUrl: 'partials/solicitude/sidebar'
           'content': 
             templateUrl: 'partials/solicitude/index'
-            controller: 'SolicitudeList'
+            controller: 'SolicitudesCtrl'
+        authenticate: true
+      .state 'solicitude.detail',
+        url: '/solicitud/:id'
+        views:
+          'sidebox': 
+            templateUrl: 'partials/solicitude/sidebox'
+          'sidebar':
+            templateUrl: 'partials/solicitude/sidebar'
+          'content': 
+            templateUrl: 'partials/solicitude/Detail'
+            controller: 'SolicitudeDetailCtrl'
         authenticate: true
 
     $locationProvider.html5Mode true

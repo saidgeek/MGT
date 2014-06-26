@@ -4,6 +4,9 @@ angular.module('movistarApp')
   .controller 'SolicitudesCtrl', ($scope, $rootScope, SolicitudeFactory, IO) ->
     $scope.solicitudes = []
 
+  .controller 'SolicitudeDetailCtrl', ($scope, $rootScope, SolicitudeFactory, IO) ->
+    $scope.solicitude = null
+
   .controller 'SolicitudeCtrl', ($scope, $rootScope, SolicitudeFactory, IO) ->
     $scope.solicitudes = []
     $scope.role = $rootScope.currentUser.role
