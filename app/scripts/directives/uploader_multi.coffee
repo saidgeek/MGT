@@ -13,7 +13,8 @@ angular.module('movistarApp')
       addToList = (id, name) =>
         if name.length > 100
           name = "#{ name.substr(0,10) }...#{ name.substr((name.length - 10), name.length) }"
-        $scope.list.push { id: id, name: name }
+        $scope.$apply () -> 
+          $scope.list.push { id: id, name: name }
 
       $scope.upload = (id, file) =>
         options =
@@ -24,6 +25,7 @@ angular.module('movistarApp')
             name: $scope.referer
         addToList(id, file.name)
         filepickerApi.storeAndThumbnail options, (err, res) ->
+          $scope.$apply () -> 
             $scope.attachments.push res
   
     link: ($scope, $element, $attrs, ngModel) ->
