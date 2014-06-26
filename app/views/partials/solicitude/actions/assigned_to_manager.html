@@ -1,3 +1,4 @@
 <ul class="acciones">
-  <li class="aceptar"><a href="javascript:{}" data-section="{{ solicitude.state.type }}">Aceptar</a></li>
+  <li class="rechazar"><a href="javascript:{}" data-section="rejected" data-rejected-state="canceled">Cancelar</a></li>
+  <li class="aceptar" ng-if="(role != 'EDITOR')"><a href="javascript:{}" data-section="{{ solicitude.state.type }}">Aceptar</a></li>
 </ul>
