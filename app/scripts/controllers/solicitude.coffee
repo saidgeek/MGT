@@ -1,6 +1,9 @@
 'use strict'
 
 angular.module('movistarApp')
+  .controller 'SolicitudesCtrl', ($scope, $rootScope, SolicitudeFactory, IO) ->
+    $scope.solicitudes = []
+
   .controller 'SolicitudeCtrl', ($scope, $rootScope, SolicitudeFactory, IO) ->
     $scope.solicitudes = []
     $scope.role = $rootScope.currentUser.role

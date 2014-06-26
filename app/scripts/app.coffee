@@ -72,10 +72,9 @@ angular.module('movistarApp', [
             templateUrl: 'partials/solicitude/sidebox'
           'sidebar':
             templateUrl: 'partials/solicitude/sidebar'
-          'left':
-            templateUrl: 'partials/solicitude/left'
-          'right':
-            templateUrl: 'partials/solicitude/right'
+          'content': 
+            templateUrl: 'partials/solicitude/index'
+            controller: 'SolicitudeList'
         authenticate: true
 
     $locationProvider.html5Mode true
