@@ -10,6 +10,12 @@ angular.module('movistarApp')
       $scope.attachments = []
       $scope.list = []
 
+      $scope.remove = (attachment) ->
+        index = $scope.attachments.indexOf(attachment)
+        $scope.attachments.splice index, 1
+        $scope.list.splice index, 1
+        $scope.$emit 'remove', attachment.id
+
       addToList = (id, name) =>
         if name.length > 100
           name = "#{ name.substr(0,10) }...#{ name.substr((name.length - 10), name.length) }"
@@ -50,6 +56,11 @@ angular.module('movistarApp')
               $scope.upload(_id, file)
             return false
 
+      $scope.$on 'remove', (e, id) ->
+        query = "ul li##{ id }"
+        $element
+          .find(query).remove()
+
       $scope.$watch 'attachments', (attachments) =>
         if attachments.length > 0
           _att = []
@@ -58,6 +69,10 @@ angular.module('movistarApp')
             $element
               .find(query).attr 'src', (att?.data?.thumbnails?._32x32_ || '')
             _att.push att.data
+
+            query = "ul li##{ att.hash } a"
+            $element
+              .find(query).css 'display', 'block'
 
           ngModel.$setViewValue _att
       , true

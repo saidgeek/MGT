@@ -2,6 +2,7 @@
   <li id='{{ l.id }}' ng-repeat="l in list">
     <img src='images/loader_30.GIF' />
     <span>{{ l.name }}</span>
+    <a href="javascript:{}" ng-click="remove(l)" style="display: none;">Remover</a>
   </li>
 </ul>
 <div class="upload">
