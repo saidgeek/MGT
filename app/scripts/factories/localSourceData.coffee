@@ -229,6 +229,7 @@ angular.module("movistarApp")
       HIGH: 'Alta'
       AVERAGE: 'Media'
       DECLINE: 'Baja'
+      # INCIDENCE: 'Incidencia'
 
     _makeArray = () ->
       _priority = []
@@ -257,6 +258,7 @@ angular.module("movistarApp")
       HIGH: 'alt'
       AVERAGE: 'med'
       DECLINE: 'baj'
+      # INCIDENCE: ''
 
     _get = (key) ->
       icons[key]
