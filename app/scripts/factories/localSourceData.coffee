@@ -309,6 +309,9 @@ angular.module("movistarApp")
       CEN_HELP: 'Cen. de Ayuda'
       SUC_VIRTUAL: 'Suc. Virtual'
       TV: 'Televisión'
+      HOME: 'Home'
+      DEALS_LIKES: 'Ofertas que le gustan'
+      FOOTER: 'Footer'
 
     _makeArray = () ->
       _sections = []
