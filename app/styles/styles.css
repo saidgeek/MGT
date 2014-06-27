@@ -2830,9 +2830,7 @@ div.message-error {
   padding: 6px;
   background: #fff;
   border-bottom: 1px solid #d5e1ee;
-
 }
-
 .content .overflow .lista ul li.listar a .row .second{
   padding: 6px;
   background: #fff;
@@ -2858,7 +2856,7 @@ div.message-error {
   content: "";
   clear: both;
 }
-.col-7, .col-5{
+.col-7, .col-5, .col-8, .col-4{
   display: table-cell;
   vertical-align: middle;
 }
@@ -2872,11 +2870,17 @@ div.message-error {
 .col-5 .inv ul li{
   float: left;
 }
+.col-8{
+  width: 66.66%;
+}
 .col-7{
   width: 58.33%;
 }
 .col-5{
   width: 41.66%;
+}
+.col-4{
+  width: 33.33%;
 }
 .col-7 .code {
   font-family: 'proxima_nova_rgbold';
@@ -3004,7 +3008,7 @@ div.message-error {
   box-sizing: border-box;
   display: block;
   width: auto;
-  padding: 1px 8px;
+  padding: 4px 12px 12px 12px;
 }
 .detalle.bkg .first{
   display: table;
@@ -3012,6 +3016,10 @@ div.message-error {
   padding: 8px 0;
   border-bottom: 1px solid #d9e5f3;
   vertical-align: middle;
+}
+.detalle.bkg .first.last{
+  padding: 16px 0;
+  border:none;
 }
 .content .overflow .col-5 ul.btnes li a{
   padding: 8px 16px;
@@ -3072,10 +3080,15 @@ div.message-error {
 }
 
 .content .overflow .row .first ul.files li a div:after,
-.content .overflow .row .first ul.files li a div:before{
+.content .overflow .row .first ul.files li a div:before,
+.content .overflow .row .first ul.files:after,
+.content .overflow .row .first ul.files:before{
   display: table;
   content: "";
   clear: both;
+}
+.content .overflow .row .first ul.files{
+  padding: 0 0 8px 0;
 }
 .content .overflow .row .first ul.files li a div span.file{
   border:1px solid #c9d0da;
@@ -3113,6 +3126,72 @@ div.message-error {
   -o-transition: all 300ms ease;
   transition: all 300ms ease;
 }
+
+.content .overflow .row .comments{
+  padding: 16px 0;
+  display: table-row;
+}
+.content .overflow .row .comments p{
+  margin:0 0 8px 0;
+}
+.content .overflow .row .comments p strong{
+  font-family: 'proxima_nova_rgbold';
+}
+.content .overflow .row .comments .user{
+  padding: 0;
+  width: 100%;
+  display:table;
+}
+.content .overflow .row .comments .user .avatar,
+.content .overflow .row .comments .user .username{
+  display: table-cell;
+  vertical-align: middle;
+}
+.content .overflow .row .comments .user .avatar{
+  width: 60px;
+  padding: 0 12px 0 0;
+}
+.content .overflow .row .comments .user .avatar span img{
+  width: 100%;
+  height: auto;
+}
+.content .overflow .row .comments .user .avatar span{
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 50%;
+  display: block;
+}
+.content .overflow .row .comments .user .username span{
+  display: block;
+  font-family: 'proxima_nova_rgbold';
+}
+.content .overflow .row .comments textarea{
+  box-sizing:border-box;
+  width: 100%;
+  padding: 12px;
+  color: #a9b4c4;
+  border-radius:3px;
+  -webkit-border-radius:3px;
+}
+.content .overflow .row .comments .col-8,
+.content .overflow .row .comments .col-4{
+  vertical-align: top;
+}
+.content .overflow .row .comments fieldset{
+  float: right;
+  margin: 6px 12px 0 0;
+}
+.content .overflow .row .comments .boton1{
+  height: auto;
+  border: none;
+}
+.content .overflow .row .comments fieldset div.upload{
+  margin-top: 9px;
+}
+
+
+
 
 
 
