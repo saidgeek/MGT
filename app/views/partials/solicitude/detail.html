@@ -83,22 +83,28 @@
 			</div><!--/ .row /-->
 			
 			<div class="row">
-				<div class="first">
+				<div class="first last">
 					<div class="comments">
-						<p><strong>2 comentarios</strong></p>
-						<div class="col-5">
-
+						<div class="col-4">
 							<div class="user">
 								<div class="avatar">
-									<img src="images/avatar-user.png">
+									<span><img src="images/avatar-user.png"></span>
 								</div>
-								<div>
-									Nombre
-								</div>
+								<div class="username"><span>Nombre</span> hace 22 minutos</div>
 							</div>
-
 						</div>
-						<div class="col-7"></div>
+						<div class="col-8">	
+							<p>ivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+	            <form name="form" ng-submit="addComment(form)">
+	                <textarea class="round" name="message" rows="9" ng-model="solicitude.comment"></textarea>
+	                <fieldset>
+	                	<input class="submit boton1 round" type="submit" value="Enviar">
+	                </fieldset>
+	                <fieldset>
+	                  <div data-sgk-uploader-multi="{{ solicitude._id }}" data-sgk-type="comments" sgk-position="buttom" ng-model="atts"></div>
+	                </fieldset>
+	            </form>
+						</div>
 					</div>
 				</div>
 			</div>
