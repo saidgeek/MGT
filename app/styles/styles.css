@@ -2779,7 +2779,180 @@ div.message-error {
     top: -5px;
     margin: -2px 5px -10px 5px;*/
 }
-
 #nueva-solicitud.validar input[type='number'] {
-    width: 200px;
+  width: 200px;
 }
+.content{
+  height: 100%;
+  display: table-row;
+}
+.content .overflow {
+  height: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+.content .overflow .lista{
+  margin: 15px;
+}
+.content .overflow .lista ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.content .overflow .lista ul li.listar{
+  margin-bottom: 15px;
+  -webkit-box-shadow: 0 0 3px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 0 3px 0 rgba(0,0,0,0.1);
+}
+.content .overflow .lista ul li.listar.verde{
+  border-left: 3px solid #01cc82;
+}
+.content .overflow .lista ul li.listar.amarillo{
+  border-left: 3px solid #fedb18;
+}
+.content .overflow .lista ul li.listar.rojo{
+  border-left: 3px solid #ff6b6b;
+}
+.content .overflow .lista ul li.listar:last-child{
+  margin: 0;
+}
+.content .overflow .lista ul li.listar a, .content .overflow .lista ul li.listar a .row{
+  display: table;
+  width: 100%;
+}
+.content .overflow .lista ul li.listar a:active{
+  color: #9da9b9;
+}
+.content .overflow .lista ul li.listar a .row .first{
+  padding: 10px;
+  background: #fff;
+}
+.content .overflow .lista ul li.listar.active a{
+  color: #9da9b9;
+}
+.content .overflow .lista ul li.listar.active a .row .first{
+  background: #2f364a;
+}
+.content .overflow .lista ul li.listar a .row .first:after,
+.content .overflow .lista ul li.listar a .row .first:before{
+  display: table;
+  content: "";
+  clear: both;
+}
+.col-7, .col-5,
+.col-7 .code,
+.col-7 ul.estados,
+.col-7 ul.estados li,
+.col-5 ul.detalles,
+.col-5 ul.detalles li{
+  float: left;
+}
+.col-7{
+  width: 58.33%;
+}
+.col-5{
+  width: 41.66%;
+}
+.col-7 .code {
+  font-family: 'proxima_nova_rgbold';
+  color: #444c63;
+  margin: 0 15px 0 0;
+}
+.active .col-7 .code {
+  color: #fff;
+}
+.col-7 .code span{
+  background: #f2f6fa;
+  display: inline-block;
+  padding: 4px;
+  border-radius: 3px;
+  font-size: 12px;
+  color: #9da9b9;
+  font-family: 'proxima_novalight';
+  margin: 0 5px 0 0;
+}
+.active .col-7 .code span{
+  background: #444c63;
+}
+.content .overflow .lista .col-7 ul.estados,
+.content .overflow .lista .col-5 ul.detalles{
+  margin: 3px 0;
+}
+.col-7 ul.estados li,
+.col-5 ul.detalles li{
+  margin:0 8px 0 0;
+}
+.estados li.icon span,
+.detalles li.icon span{
+  width: 16px;
+  height: 16px;
+  float: left;
+  display: block;
+  background-image: url('../images/sprite_main.png');
+  background-repeat: no-repeat;
+  margin:0 3px 0 0;
+}
+
+.lista li.icon.pro span{
+  background-position: -48px 0;
+}
+.lista .active li.icon.pro span{
+  background-position: -48px 100%;
+}
+.lista li.icon.com span{
+  background-position: -160px 0;
+}
+.lista .active li.icon.com span{
+  background-position: -160px 100%;
+}
+.lista li.icon.doc span{
+  background-position: -176px 0;
+}
+.lista .active li.icon.doc span{
+  background-position: -176px 100%;
+}
+.lista li.icon.inv span{
+  background-position: -192px 0;
+}
+.lista .active li.icon.inv span{
+  background-position: -192px 100%;
+}
+.lista li.icon.sub span{
+  background-position: -208px 0;
+}
+.lista .active li.icon.sub span{
+  background-position: -208px 100%;
+}
+.lista li.icon.baj span{
+  background-position: -496px 0;
+}
+.lista .active li.icon.baj span{
+  background-position: -496px 100%;
+}
+.lista li.icon.sol span{
+  background-position: 100% 0;
+}
+.lista .active li.icon.sol span{
+  background-position: 100% 100%;
+}
+.lista li.icon.ter span{
+  background-position: 0 0;
+}
+.lista .active li.icon.ter span{
+  background-position: 0 100%;
+}
+.content .overflow .lista ul li.listar a .row .txtdetalle{
+  padding: 12px;
+  background:#f5f7fa; 
+}
+.content .overflow .lista ul li.listar.active a .row .txtdetalle{
+  background:#444c63; 
+}
+
+
+
+
+
