@@ -21,21 +21,21 @@
 								<div class="second">
 									<div class="col-7">
 										<ul class="estados">
-											<li class="icon" ng-class="s.state[role] | StateIcons">
+											<li class="ico" ng-class="s.state[role] | StateIcons">
 												<span></span> {{ s.state[role] | StateSolicitude }}
 											</li>
-											<li class="icon sol">
+											<li class="ico">
 												<span></span> 
 												Sol. {{ s.createdAt | DateFormat }}
 											</li>
-											<li ng-if="s.startedAt" class="icon sol">
+											<li class="ico" ng-if="s.startedAt">
 												<span></span> 
 												Ini. {{ s.startedAt | DateFormat }}
 											</li>
-											<li ng-if="s.priority" class="icon" ng-class="s.priority | PriorityIcons">
+											<li class="ico" ng-if="s.priority" ng-class="s.priority | PriorityIcons">
 												<span></span> {{ s.priority | Priority }}
 											</li>
-											<li ng-if="s.duration && !s.pausedAt" class="icon ter">
+											<li class="ico" ng-if="s.duration && !s.pausedAt">
 												<span></span> 
 												<p data-sgk-duration ng-model="solicitude.endedAt"></p>
 											</li>
@@ -43,16 +43,16 @@
 									</div>
 									<div class="col-5">
 										<ul class="detalles">
-											<li ng-if="s.documents.length > 0" class="icon com">
+											<li class="ico" ng-if="s.documents.length > 0">
 												<span></span>Comentarios
 											</li>
-											<li ng-if="s.attachments.length > 0" class="icon doc">
+											<li class="ico" ng-if="s.attachments.length > 0">
 												<span></span>Documentos
 											</li>
-											<li ng-if="s.involved.length > 0" class="icon inv">
+											<li class="ico" ng-if="s.involved.length > 0">
 												<span></span>Involucrados
 											</li>
-											<li ng-if="s.tasks.length > 0" class="icon sub">
+											<li class="ico" ng-if="s.tasks.length > 0">
 												<span></span>Sub Tareas
 											</li>
 										</ul>

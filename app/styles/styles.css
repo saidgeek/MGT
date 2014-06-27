@@ -639,14 +639,14 @@ h4{ font-size:  1.154em;}
     margin-right: 0;
 }
 
-.ico{
-    width: 16px;
-    height: 16px;
-    float: left;
-    margin: 0 5px 0 0;
-    display: block;
-    background: url(../images/sprite_main.png) no-repeat 0px 0px;
-}
+/*.ico{
+  width: 16px;
+  height: 16px;
+  float: left;
+  margin: 0 5px 0 0;
+  display: block;
+  background: url(../images/sprite_main.png) no-repeat 0px 0px;
+}*/
 
 /* PARA DETALLE ICONOS LINEA 1225  */
 
@@ -1303,7 +1303,7 @@ ul.otros-datos li.last{
 /* INOCOS USADOS EN MAIN */
 
 /* estado */
-.ico.tim{ background-position: 0px 0;}
+/*.ico.tim{ background-position: 0px 0;}
 .ico.val{ background-position: -16px 0;}
 .ico.epr{ background-position: -32px 0;}
 .ico.pro{ background-position: -48px 0;}
@@ -1311,7 +1311,6 @@ ul.otros-datos li.last{
 .ico.atr{ background-position: -80px 0;}
 .ico.pau{ background-position: -96px 0;}
 .ico.fin{ background-position: -112px 0;}
-
 .ico.valg{ background-position: -368px 0;}
 .ico.aceg{ background-position: -384px 0;}
 .ico.recg{ background-position: -400px 0;}
@@ -1319,74 +1318,111 @@ ul.otros-datos li.last{
 .ico.acec{ background-position: -432px 0;}
 .ico.recc{ background-position: -416px 0;}
 .ico.can{ background-position: -528px 0;}
-.ico.asi{ background-position: -544px 0;}
+.ico.asi{ background-position: -544px 0;}*/
 
-.active .ico.tim, a:hover .ico.tim{    background-position: 0px -16px;}
-.active .ico.val, a:hover .ico.val{    background-position: -16px -16px;}
-.active .ico.epr, a:hover .ico.epr{    background-position: -32px -16px;}
-.active .ico.pro, a:hover .ico.pro{    background-position: -48px -16px;}
-.active .ico.esp, a:hover .ico.esp{    background-position: -64px -16px;}
-.active .ico.atr, a:hover .ico.atr{    background-position: -80px -16px;}
-.active .ico.pau, a:hover .ico.pau{    background-position: -96px -16px;}
-.active .ico.fin, a:hover .ico.fin{    background-position: -112px -16px;}
+.active .ico span{ background-position: 0 100%;}
 
-.active .ico.valg, a:hover .ico.valg{ background-position: -368px -16px;}
-.active .ico.aceg, a:hover .ico.aceg{ background-position: -384px -16px;}
-.active .ico.recg, a:hover .ico.recg{ background-position: -400px -16px;}
-.active .ico.valc, a:hover .ico.valc{ background-position: -448px -16px;}
-.active .ico.acec, a:hover .ico.acec{ background-position: -432px -16px;}
-.active .ico.recc, a:hover .ico.recc{ background-position: -416px -16px;}
-.active .ico.can, a:hover .ico.can{ background-position: -528px -16px;}
-.active .ico.asi, a:hover .ico.asi{ background-position: -544px -16px;}
+.ico.tim span{ background-position: 0px 0;}
+.ico.val span{ background-position: -16px 0;}
+.ico.epr span{ background-position: -32px 0;}
+.ico.pro span{ background-position: -48px 0;}
+.ico.esp span{ background-position: -64px 0;}
+.ico.atr span{ background-position: -80px 0;}
+.ico.pau span{ background-position: -96px 0;}
+.ico.fin span{ background-position: -112px 0;}
+.ico.valg span{ background-position: -368px 0;}
+.ico.aceg span{ background-position: -384px 0;}
+.ico.recg span{ background-position: -400px 0;}
+.ico.valc span{ background-position: -448px 0;}
+.ico.acec span{ background-position: -432px 0;}
+.ico.recc span{ background-position: -416px 0;}
+.ico.can span{ background-position: -528px 0;}
+.ico.asi span{  background-position: -544px 0;}
+
+.active .ico.tim span, a:hover .ico.tim{    background-position: 0px -16px;}
+.active .ico.val span, a:hover .ico.val{    background-position: -16px -16px;}
+.active .ico.epr span, a:hover .ico.epr{    background-position: -32px -16px;}
+.active .ico.pro span, a:hover .ico.pro{    background-position: -48px -16px;}
+.active .ico.esp span, a:hover .ico.esp{    background-position: -64px -16px;}
+.active .ico.atr span, a:hover .ico.atr{    background-position: -80px -16px;}
+.active .ico.pau span, a:hover .ico.pau{    background-position: -96px -16px;}
+.active .ico.fin span, a:hover .ico.fin{    background-position: -112px -16px;}
+.active .ico.valg span, a:hover .ico.valg{ background-position: -368px -16px;}
+.active .ico.aceg span, a:hover .ico.aceg{ background-position: -384px -16px;}
+.active .ico.recg span, a:hover .ico.recg{ background-position: -400px -16px;}
+.active .ico.valc span, a:hover .ico.valc{ background-position: -448px -16px;}
+.active .ico.acec span, a:hover .ico.acec{ background-position: -432px -16px;}
+.active .ico.recc span, a:hover .ico.recc{ background-position: -416px -16px;}
+.active .ico.can span, a:hover .ico.can{ background-position: -528px -16px;}
+.active .ico.asi span, a:hover .ico.asi{ background-position: -544px -16px;}
 
 /*prioridad*/
-.ico.cri{ background-position: -512px 0;}
+/*.ico.cri{ background-position: -512px 0;}
 .ico.alt{ background-position: -464px 0;}
 .ico.med{ background-position: -480px 0;}
-.ico.baj{ background-position: -496px 0;}
+.ico.baj{ background-position: -496px 0;}*/
 
-.active .ico.cri, a:hover .ico.cri{ background-position: -512px -16px;}
-.active .ico.alt, a:hover .ico.alt{ background-position: -464px -16px;}
-.active .ico.med, a:hover .ico.med{ background-position: -480px -16px;}
-.active .ico.baj, a:hover .ico.baj{ background-position: -496px -16px;}
+.ico.cri span{ background-position: -512px 0;}
+.ico.alt span{ background-position: -464px 0;}
+.ico.med span{ background-position: -480px 0;}
+.ico.baj span{ background-position: -496px 0;}
+
+.active .ico.cri span, a:hover .ico.cri{ background-position: -512px -16px;}
+.active .ico.alt span, a:hover .ico.alt{ background-position: -464px -16px;}
+.active .ico.med span, a:hover .ico.med{ background-position: -480px -16px;}
+.active .ico.baj span, a:hover .ico.baj{ background-position: -496px -16px;}
 
 /* menu middle - botones */
-.ico.com { background-position: -160px 0;}
+/*.ico.com { background-position: -160px 0;}
 .ico.doc { background-position: -176px 0;}
 .ico.inv { background-position: -192px 0;}
 .ico.sub { background-position: -208px 0;}
-.ico.tod { background-position: -224px 0;}
+.ico.tod { background-position: -224px 0;}*/
 
-.active .ico.com, a:hover .ico.com {    background-position: -160px -16px;}
-.active .ico.doc, a:hover .ico.doc {    background-position: -176px -16px;}
-.active .ico.inv, a:hover .ico.inv {    background-position: -192px -16px;}
-.active .ico.sub, a:hover .ico.sub {    background-position: -208px -16px;}
-.active .ico.tod, a:hover .ico.tod {    background-position: -224px -16px;}
+.ico.com span{ background-position: -160px 0;}
+.ico.doc span{ background-position: -176px 0;}
+.ico.inv span{ background-position: -192px 0;}
+.ico.sub span{ background-position: -208px 0;}
+.ico.tod span{ background-position: -224px 0;}
+
+.active .ico.com span, a:hover .ico.com {    background-position: -160px -16px;}
+.active .ico.doc span, a:hover .ico.doc {    background-position: -176px -16px;}
+.active .ico.inv span, a:hover .ico.inv {    background-position: -192px -16px;}
+.active .ico.sub span, a:hover .ico.sub {    background-position: -208px -16px;}
+.active .ico.tod span, a:hover .ico.tod {    background-position: -224px -16px;}
 
 
 /* admin- info user*/
-.ico.ema{ background-position: -240px 0;}
+/*.ico.ema{ background-position: -240px 0;}
 .ico.cel{ background-position: -256px 0;}
-.ico.tel{ background-position: -272px 0;}
+.ico.tel{ background-position: -272px 0;}*/
 
-.active .ico.ema, a:hover .ico.ema{    background-position: -240px -16px;}
-.active .ico.cel, a:hover .ico.cel{    background-position: -256px -16px;}
-.active .ico.tel, a:hover .ico.tel{    background-position: -272px -16px;}
+.ico.ema span{ background-position: -240px 0;}
+.ico.cel span{ background-position: -256px 0;}
+.ico.tel span{ background-position: -272px 0;}
+
+.active .ico.ema span, a:hover .ico.ema{    background-position: -240px -16px;}
+.active .ico.cel span, a:hover .ico.cel{    background-position: -256px -16px;}
+.active .ico.tel span, a:hover .ico.tel{    background-position: -272px -16px;}
 
 /* edicion de usuario */
-.ico.eli { background-position: -288px 0;}
+/*.ico.eli { background-position: -288px 0;}
 .ico.edi { background-position: -304px 0;}
 .ico.usu { background-position: -320px 0;}
-.ico.cla { background-position: -336px 0;}
+.ico.cla { background-position: -336px 0;}*/
 
-.active .ico.eli, a:hover .ico.eli {    background-position: -288px -16px;}
-.active .ico.edi, a:hover .ico.edi {    background-position: -304px -16px;}
-.active .ico.usu, a:hover .ico.usu {    background-position: -320px -16px;}
-.active .ico.cla, a:hover .ico.cla {    background-position: -336px -16px;}
+.ico.eli span{ background-position: -288px 0;}
+.ico.edi span{ background-position: -304px 0;}
+.ico.usu span{ background-position: -320px 0;}
+.ico.cla span{ background-position: -336px 0;}
+
+.active .ico.eli span, a:hover .ico.eli {    background-position: -288px -16px;}
+.active .ico.edi span, a:hover .ico.edi {    background-position: -304px -16px;}
+.active .ico.usu span, a:hover .ico.usu {    background-position: -320px -16px;}
+.active .ico.cla span, a:hover .ico.cla {    background-position: -336px -16px;}
 
 .menu-middle ul li a p{ display: inline; margin: 0; padding: 0; line-height: normal;}
 .menu-middle ul li a:hover, .menu-middle ul li a.active{ background: #f8fafc; color: #444c63;}
-
 
 #menu-admin{
     display: table-row;
@@ -2865,7 +2901,7 @@ div.message-error {
 .col-7 ul.estados li,
 .col-5 ul.detalles,
 .col-5 ul.detalles li,
-.content .overflow .col-5 ul.btnes li,
+.content .overflow .col-5 ul.acciones li,
 .content .overflow .col-7 ul.info-detalle li,
 .col-5 .inv ul li{
   float: left;
@@ -2910,13 +2946,13 @@ div.message-error {
   width: 100%;
 }
 .content .overflow .lista .col-5 ul.detalles,
-.content .overflow .col-5 ul.btnes{
+.content .overflow .col-5 ul.acciones{
   float: right;
   width: auto;
 }
 .col-7 ul.estados li,
 .col-5 ul.detalles li,
-.col-5 ul.btnes li,
+.col-5 ul.acciones li,
 .content .overflow .col-7 ul.info-detalle li,
 .col-5 .inv ul li{
   margin:0 8px 0 0;
@@ -2924,7 +2960,7 @@ div.message-error {
 }
 .col-7 ul.estados li:last-child,
 .col-5 ul.detalles li:last-child,
-.col-5 ul.btnes li:last-child,
+.col-5 ul.acciones li:last-child,
 .content .overflow .col-7 ul.info-detalle li:last-child,
 .col-5 .inv ul li:last-child{
   margin:0;
@@ -2932,8 +2968,8 @@ div.message-error {
 .content .overflow .col-7 ul.info-detalle li span{
   font-family: 'proxima_nova_rgbold';
 }
-.estados li.icon span,
-.detalles li.icon span{
+.estados li.ico span,
+.detalles li.ico span{
   width: 16px;
   height: 16px;
   float: left;
@@ -3021,7 +3057,8 @@ div.message-error {
   padding: 16px 0;
   border:none;
 }
-.content .overflow .col-5 ul.btnes li a{
+.content .overflow .col-5 ul.acciones li a,
+.content .overflow .col-5 ul.acciones li input{
   padding: 8px 16px;
   text-transform: uppercase;
   font-size: 1em;
@@ -3030,11 +3067,20 @@ div.message-error {
   display: block;
   -webkit-border-radius: 3px;
   border-radius: 3px;
+  border: none;
+  cursor: pointer; 
 }
-.content .overflow .col-5 ul.btnes li.pau a{
+.content .overflow .col-5 ul.acciones li.rechazar a{
+  background: #ff6b6b;
+}
+.content .overflow .col-5 ul.acciones li.aceptar a,
+.content .overflow .col-5 ul.acciones li.aceptar input{
+  background: #01cc82;
+}
+.content .overflow .col-5 ul.acciones li.pause a{
   background: #00b8cf;
 }
-.content .overflow .col-5 ul.btnes li.rev a{
+.content .overflow .col-5 ul.acciones li.rev a{
   background: #89ba14;
 }
 .col-5 .inv {
@@ -3189,10 +3235,17 @@ div.message-error {
 .content .overflow .row .comments fieldset div.upload{
   margin-top: 9px;
 }
-
-
-
-
+.content .overflow .row .overflow{
+  margin: 8px 0; 
+  position: inherit;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+  -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+}
+.content .overflow .row .overflow #nueva-solicitud form fieldset{
+  border: none;
+}
 
 
 

@@ -9,16 +9,16 @@
 							<span>Code: {{ solicitude.code }}</span>
 						</div>
 						<ul class="estados">
-							<li class="icon pro" ng-class="solicitude.state[role] | StateIcons">
+							<li class="ico" ng-class="solicitude.state[role] | StateIcons">
 								<span></span> {{ solicitude.state[role] | StateSolicitude }}
 							</li>
-							<li class="icon sol">
+							<li class="ico">
 								<span></span> Sol. {{ solicitude.createdAt | DateFormat }}
 							</li>
-							<li class="icon baj" ng-if="solicitude.priority" ng-class="solicitude.priority | PriorityIcons">
+							<li class="ico" ng-if="solicitude.priority" ng-class="solicitude.priority | PriorityIcons">
 								<span></span> {{ solicitude.priority | Priority }}
 							</li>
-							<li class="icon ter" ng-if="solicitude.duration" >
+							<li class="ico" ng-if="solicitude.duration" >
 								<span></span> <div data-sgk-duration ng-model="solicitude.endedAt"></div>
 							</li>
 						</ul>
