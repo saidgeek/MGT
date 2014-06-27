@@ -19,6 +19,9 @@ angular.module('movistarApp')
             console.log '$scope.solicitudes:', $scope.solicitudes
           else
             $scope.solicitudes = null
+    $rootScope.$on 'reloadSolicitude', (e, solicitude) =>
+      selectedId = solicitude._id
+      reload('','','','')
 
     reload('', '', '', '')
 

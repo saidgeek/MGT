@@ -1,10 +1,10 @@
 <div class="relativo">
-	<div class="overflow">
+	<div class="overflow" data-sgk-scroll>
 
 		<div class="lista">
 			<ul ng-if="solicitudes">
 				<!--/ FOREACH /-->
-				<li class="listar rojo" ng-repeat="s in solicitudes">
+				<li class="listar" ng-class="s.sla" ng-repeat="s in solicitudes" data-sgk-role="search" data-sgk-search="{{ s.code }} {{ s.createdBy.profile.firstName }} {{ s.createdBy.profile.lastName }} {{ s.ticket.tags }} {{ s.ticket.title }}"  data-id="{{ s._id }}">
 					<a ui-sref="solicitude.detail({ id: s._id })">
 						<div class="row">
 							<div class="first">
@@ -41,16 +41,16 @@
 								</div>
 								<div class="col-5">
 									<ul class="detalles">
-										<li class="icon com">
+										<li ng-if="s.comments.length > 0" class="icon com">
 											<span></span>Comentarios
 										</li>
-										<li class="icon doc">
+										<li ng-if="s.attachments.length > 0" class="icon doc">
 											<span></span>Documentos
 										</li>
-										<li class="icon inv">
+										<li ng-if="s.involved.length > 0" class="icon inv">
 											<span></span>Involucrados
 										</li>
-										<li class="icon sub">
+										<li ng-if="s.tasks.length > 0" class="icon sub">
 											<span></span>Sub Tareas
 										</li>
 									</ul>
