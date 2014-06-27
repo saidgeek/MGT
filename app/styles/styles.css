@@ -2851,19 +2851,25 @@ div.message-error {
 .content .overflow .lista ul li.listar a .row .first:after,
 .content .overflow .lista ul li.listar a .row .first:before,
 .content .overflow .lista ul li.listar a .row .second:after,
-.content .overflow .lista ul li.listar a .row .second:before{
+.content .overflow .lista ul li.listar a .row .second:before,
+.content .overflow .col-7 ul.info-detalle:after,
+.content .overflow .col-7 ul.info-detalle:before{
   display: table;
   content: "";
   clear: both;
 }
 .col-7, .col-5{
   display: table-cell;
+  vertical-align: middle;
 }
 .col-7 .code,
 .col-7 ul.estados,
 .col-7 ul.estados li,
 .col-5 ul.detalles,
-.col-5 ul.detalles li{
+.col-5 ul.detalles li,
+.content .overflow .col-5 ul.btnes li,
+.content .overflow .col-7 ul.info-detalle li,
+.col-5 .inv ul li{
   float: left;
 }
 .col-7{
@@ -2894,22 +2900,33 @@ div.message-error {
   background: #444c63;
 }
 .content .overflow .lista .col-7 ul.estados,
-.content .overflow .lista .col-5 ul.detalles{
+.content .overflow .lista .col-5 ul.detalles,
+.content .overflow .col-7 ul.info-detalle{
   margin: 3px 0;
   width: 100%;
 }
-.content .overflow .lista .col-5 ul.detalles{
+.content .overflow .lista .col-5 ul.detalles,
+.content .overflow .col-5 ul.btnes{
   float: right;
   width: auto;
 }
 .col-7 ul.estados li,
-.col-5 ul.detalles li{
+.col-5 ul.detalles li,
+.col-5 ul.btnes li,
+.content .overflow .col-7 ul.info-detalle li,
+.col-5 .inv ul li{
   margin:0 8px 0 0;
   white-space: nowrap;
 }
 .col-7 ul.estados li:last-child,
-.col-5 ul.detalles li:last-child{
+.col-5 ul.detalles li:last-child,
+.col-5 ul.btnes li:last-child,
+.content .overflow .col-7 ul.info-detalle li:last-child,
+.col-5 .inv ul li:last-child{
   margin:0;
+}
+.content .overflow .col-7 ul.info-detalle li span{
+  font-family: 'proxima_nova_rgbold';
 }
 .estados li.icon span,
 .detalles li.icon span{
@@ -2977,6 +2994,126 @@ div.message-error {
 .content .overflow .lista ul li.listar.active a .row .txtdetalle{
   background:#444c63; 
 }
+.detalle.bkg{
+  margin: 8px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 3px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 0 3px 0 rgba(0,0,0,0.1);
+  background: #fff;
+  box-sizing: border-box;
+  display: block;
+  width: auto;
+  padding: 1px 8px;
+}
+.detalle.bkg .first{
+  display: table;
+  width: 100%;
+  padding: 8px 0;
+  border-bottom: 1px solid #d9e5f3;
+  vertical-align: middle;
+}
+.content .overflow .col-5 ul.btnes li a{
+  padding: 8px 16px;
+  text-transform: uppercase;
+  font-size: 1em;
+  font-family: 'proxima_nova_rgbold';
+  color: #fff;
+  display: block;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+.content .overflow .col-5 ul.btnes li.pau a{
+  background: #00b8cf;
+}
+.content .overflow .col-5 ul.btnes li.rev a{
+  background: #89ba14;
+}
+.col-5 .inv {
+  display: table;
+  text-align: right;
+}
+.col-5 .inv p{
+  font-family: 'proxima_nova_rgbold';
+  display: table-cell;
+  padding: 0 8px 0 0;
+  vertical-align: top;
+}
+.col-5 .inv ul {
+  display: table-cell;
+  vertical-align: top;
+}
+.col-5 .inv ul li{
+  display: inline-block;
+  padding: 4px;
+  margin:0 4px 4px 0;
+  background: #e6ecf3;
+  font-size: 11px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+}
+.content .overflow .row .info-detalle{
+  padding:16px 0;
+}
+.content .overflow .row .info-detalle h1{
+  font: normal 30px 'proxima_nova_rgbold';
+}
+.content .overflow .row .first ul.files li{
+  margin: 0 12px 0 0;
+  float: left;
+}
+.content .overflow .row .first ul.files li:last-child{
+  margin: 0;
+}
+.content .overflow .row .first ul.files li a{
+  color: #9da9b9;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.content .overflow .row .first ul.files li a div:after,
+.content .overflow .row .first ul.files li a div:before{
+  display: table;
+  content: "";
+  clear: both;
+}
+.content .overflow .row .first ul.files li a div span.file{
+  border:1px solid #c9d0da;
+  margin: 0 2px 0 0;
+  font-size: 13px;
+  height: 46px;
+  padding: 0 16px 0 46px;
+  display: block;
+  float: left;
+  line-height: 3.6em;
+  background: url('../images/bkg-file.png') no-repeat 0 0;
+}
+.content .overflow .row .first ul.files li a div span.download{
+  float: left;
+  display: block;
+  overflow: hidden;
+  height: 48px;
+  width: 46px;
+  background: url('../images/bkg-download.gif') no-repeat 0 0;
+}
+.content .overflow .row .first ul.files li a:hover div span.file{
+  color: #283349;
+  background: url('../images/bkg-file.png') no-repeat 0 -48px;
+}
+.content .overflow .row .first ul.files li a:hover div span.download{
+  background: url('../images/bkg-download.gif') no-repeat 0 100%;
+}
+.content .overflow .row .first ul.files li a div span.download,
+.content .overflow .row .first ul.files li a:hover div span.download,
+.content .overflow .row .first ul.files li a div span.file,
+.content .overflow .row .first ul.files li a:hover div span.file{
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
 
 
 
