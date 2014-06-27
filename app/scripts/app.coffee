@@ -72,7 +72,7 @@ angular.module('movistarApp', [
             templateUrl: 'partials/solicitude/sidebox'
           'sidebar':
             templateUrl: 'partials/solicitude/sidebar'
-          'content': 
+          'content':
             templateUrl: 'partials/solicitude/index'
             controller: 'SolicitudesCtrl'
         authenticate: true

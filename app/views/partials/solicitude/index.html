@@ -2,36 +2,64 @@
 	<div class="overflow">
 
 		<div class="lista">
-			<ul>
+			<ul ng-if="solicitudes">
 				<!--/ FOREACH /-->
-				<li class="listar rojo">
-					<a href="#;">
+				<li class="listar rojo" ng-repeat="s in solicitudes">
+					<a ui-sref="solicitude.detail({ id: s._id })">
 						<div class="row">
 							<div class="first">
 								<div class="col-7">
 									<div class="code">
-										<span>Code: 2fg533</span> Nombre
+										<span>Code: {{ s.code }}</span> {{ s.ticket.title }}
 									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="second">
+								<div class="col-7">
 									<ul class="estados">
-										<li class="icon pro"><span></span> Proceso</li>
-										<li class="icon sol"><span></span> Sol. Fecha Ini. Fecha</li>
-										<li class="icon baj"><span></span> Baja</li>
-										<li class="icon ter"><span></span> en 14 minutos</li>
+										<li class="icon" ng-class="s.state[role] | StateIcons">
+											<span></span> {{ s.state[role] | StateSolicitude }}
+										</li>
+										<li class="icon sol">
+											<span></span> 
+											Sol. {{ s.createdAt | DateFormat }}
+										</li>
+										<li ng-if="s.startedAt" class="icon sol">
+											<span></span> 
+											Ini. {{ s.startedAt | DateFormat }}
+										</li>
+										<li ng-if="s.priority" class="icon" ng-class="s.priority | PriorityIcons">
+											<span></span> {{ s.priority | Priority }}
+										</li>
+										<li ng-if="s.duration && !s.pausedAt" class="icon ter">
+											<span></span> 
+											<p data-sgk-duration ng-model="solicitude.endedAt"></p>
+										</li>
 									</ul>
 								</div>
 								<div class="col-5">
 									<ul class="detalles">
-										<li class="icon com"><span></span>Comentarios</li>
-										<li class="icon doc"><span></span>Documentos</li>
-										<li class="icon inv"><span></span>Involucrados</li>
-										<li class="icon sub"><span></span>Sub Tareas</li>
+										<li class="icon com">
+											<span></span>Comentarios
+										</li>
+										<li class="icon doc">
+											<span></span>Documentos
+										</li>
+										<li class="icon inv">
+											<span></span>Involucrados
+										</li>
+										<li class="icon sub">
+											<span></span>Sub Tareas
+										</li>
 									</ul>
 								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="txtdetalle">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+								{{ s.ticket.description }}
 							</div>
 						</div>
 					</a>
