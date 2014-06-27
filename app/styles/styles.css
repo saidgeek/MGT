@@ -2795,7 +2795,7 @@ div.message-error {
   top: 0;
 }
 .content .overflow .lista{
-  margin: 15px;
+  margin: 8px;
 }
 .content .overflow .lista ul{
   margin: 0;
@@ -2803,17 +2803,17 @@ div.message-error {
   list-style: none;
 }
 .content .overflow .lista ul li.listar{
-  margin-bottom: 15px;
+  margin-bottom: 8px;
   -webkit-box-shadow: 0 0 3px 0 rgba(0,0,0,0.1);
   box-shadow: 0 0 3px 0 rgba(0,0,0,0.1);
 }
-.content .overflow .lista ul li.listar.verde{
+.content .overflow .lista ul li.listar.GREEN{
   border-left: 3px solid #01cc82;
 }
-.content .overflow .lista ul li.listar.amarillo{
+.content .overflow .lista ul li.listar.YELLOW{
   border-left: 3px solid #fedb18;
 }
-.content .overflow .lista ul li.listar.rojo{
+.content .overflow .lista ul li.listar.RED{
   border-left: 3px solid #ff6b6b;
 }
 .content .overflow .lista ul li.listar:last-child{
@@ -2832,23 +2832,33 @@ div.message-error {
   border-bottom: 1px solid #d5e1ee;
 
 }
+
 .content .overflow .lista ul li.listar a .row .second{
   padding: 6px;
   background: #fff;
+  display: table-row;
+}
+.content .overflow .lista ul li.listar.active a .row .second{
+  background: none;
 }
 .content .overflow .lista ul li.listar.active a{
   color: #9da9b9;
 }
 .content .overflow .lista ul li.listar.active a .row .first{
   background: #2f364a;
+  border-color:#3d455b;
 }
 .content .overflow .lista ul li.listar a .row .first:after,
-.content .overflow .lista ul li.listar a .row .first:before{
+.content .overflow .lista ul li.listar a .row .first:before,
+.content .overflow .lista ul li.listar a .row .second:after,
+.content .overflow .lista ul li.listar a .row .second:before{
   display: table;
   content: "";
   clear: both;
 }
-.col-7, .col-5,
+.col-7, .col-5{
+  display: table-cell;
+}
 .col-7 .code,
 .col-7 ul.estados,
 .col-7 ul.estados li,
@@ -2886,10 +2896,20 @@ div.message-error {
 .content .overflow .lista .col-7 ul.estados,
 .content .overflow .lista .col-5 ul.detalles{
   margin: 3px 0;
+  width: 100%;
+}
+.content .overflow .lista .col-5 ul.detalles{
+  float: right;
+  width: auto;
 }
 .col-7 ul.estados li,
 .col-5 ul.detalles li{
   margin:0 8px 0 0;
+  white-space: nowrap;
+}
+.col-7 ul.estados li:last-child,
+.col-5 ul.detalles li:last-child{
+  margin:0;
 }
 .estados li.icon span,
 .detalles li.icon span{

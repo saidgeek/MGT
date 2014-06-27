@@ -16,44 +16,46 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="second">
-								<div class="col-7">
-									<ul class="estados">
-										<li class="icon" ng-class="s.state[role] | StateIcons">
-											<span></span> {{ s.state[role] | StateSolicitude }}
-										</li>
-										<li class="icon sol">
-											<span></span> 
-											Sol. {{ s.createdAt | DateFormat }}
-										</li>
-										<li ng-if="s.startedAt" class="icon sol">
-											<span></span> 
-											Ini. {{ s.startedAt | DateFormat }}
-										</li>
-										<li ng-if="s.priority" class="icon" ng-class="s.priority | PriorityIcons">
-											<span></span> {{ s.priority | Priority }}
-										</li>
-										<li ng-if="s.duration && !s.pausedAt" class="icon ter">
-											<span></span> 
-											<p data-sgk-duration ng-model="solicitude.endedAt"></p>
-										</li>
-									</ul>
-								</div>
-								<div class="col-5">
-									<ul class="detalles">
-										<li class="icon com">
-											<span></span>Comentarios
-										</li>
-										<li class="icon doc">
-											<span></span>Documentos
-										</li>
-										<li class="icon inv">
-											<span></span>Involucrados
-										</li>
-										<li class="icon sub">
-											<span></span>Sub Tareas
-										</li>
-									</ul>
+							<div class="first">
+								<div class="second">
+									<div class="col-7">
+										<ul class="estados">
+											<li class="icon" ng-class="s.state[role] | StateIcons">
+												<span></span> {{ s.state[role] | StateSolicitude }}
+											</li>
+											<li class="icon sol">
+												<span></span> 
+												Sol. {{ s.createdAt | DateFormat }}
+											</li>
+											<li ng-if="s.startedAt" class="icon sol">
+												<span></span> 
+												Ini. {{ s.startedAt | DateFormat }}
+											</li>
+											<li ng-if="s.priority" class="icon" ng-class="s.priority | PriorityIcons">
+												<span></span> {{ s.priority | Priority }}
+											</li>
+											<li ng-if="s.duration && !s.pausedAt" class="icon ter">
+												<span></span> 
+												<p data-sgk-duration ng-model="solicitude.endedAt"></p>
+											</li>
+										</ul>
+									</div>
+									<div class="col-5">
+										<ul class="detalles">
+											<li class="icon com">
+												<span></span>Comentarios
+											</li>
+											<li class="icon doc">
+												<span></span>Documentos
+											</li>
+											<li class="icon inv">
+												<span></span>Involucrados
+											</li>
+											<li class="icon sub">
+												<span></span>Sub Tareas
+											</li>
+										</ul>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -65,7 +67,72 @@
 					</a>
 				</li>
 				<!--/ FIN FOREACH /-->
-
+				
+				<!--/ EJEMPLO /-->
+				<li class="listar rojo active" ng-repeat="s in solicitudes">
+					<a ui-sref="solicitude.detail({ id: s._id })">
+						<div class="row">
+							<div class="first">
+								<div class="col-7">
+									<div class="code">
+										<span>Code: {{ s.code }}</span> {{ s.ticket.title }}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="first">
+								<div class="second">
+									<div class="col-7">
+										<ul class="estados">
+											<li class="icon" ng-class="s.state[role] | StateIcons">
+												<span></span> {{ s.state[role] | StateSolicitude }}
+											</li>
+											<li class="icon sol">
+												<span></span> 
+												Sol. {{ s.createdAt | DateFormat }}
+											</li>
+											<li ng-if="s.startedAt" class="icon sol">
+												<span></span> 
+												Ini. {{ s.startedAt | DateFormat }}
+											</li>
+											<li ng-if="s.priority" class="icon" ng-class="s.priority | PriorityIcons">
+												<span></span> {{ s.priority | Priority }}
+											</li>
+											<li ng-if="s.duration && !s.pausedAt" class="icon ter">
+												<span></span> 
+												<p data-sgk-duration ng-model="solicitude.endedAt"></p>
+											</li>
+										</ul>
+									</div>
+									<div class="col-5">
+										<ul class="detalles">
+											<li class="icon com">
+												<span></span>Comentarios
+											</li>
+											<li class="icon doc">
+												<span></span>Documentos
+											</li>
+											<li class="icon inv">
+												<span></span>Involucrados
+											</li>
+											<li class="icon sub">
+												<span></span>Sub Tareas
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="txtdetalle">
+								{{ s.ticket.description }}
+							</div>
+						</div>
+					</a>
+				</li>
+				<!--/ FIN EJEMPLO /-->
+				
 				<!--/ ACTIVO /-->
 				<li class="listar verde active">
 					<a href="#;">
