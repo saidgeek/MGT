@@ -18,12 +18,12 @@
 							<li class="ico" ng-if="solicitude.priority" ng-class="solicitude.priority | PriorityIcons">
 								<span></span> {{ solicitude.priority | Priority }}
 							</li>
-							<li class="ico" ng-if="solicitude.duration" >
+							<li class="ico" ng-if="solicitude.duration && !solicitude.pausedAt" >
 								<span></span> <div data-sgk-duration ng-model="solicitude.endedAt"></div>
 							</li>
 						</ul>
 					</div>
-					<div class="col-5" data-sgk-actions>
+					<div class="col-5" data-sgk-actions="{{ solicitude.state.type }}">
 						<!-- <ul class="btnes">
 							<li class="btn pau"><a href="">Pausar</a></li>
 							<li class="btn rev"><a href="">Enviar a Revisión</a></li>
@@ -90,19 +90,31 @@
 				</div>
 			</div><!--/ .row /-->
 			
-			<div class="row">
+			<div class="row" ng-repeat="c in solicitude.comments">
 				<div class="first last">
 					<div class="comments">
 						<div class="col-4">
 							<div class="user">
 								<div class="avatar">
-									<span><img src="images/avatar-user.png"></span>
+									<span><img src="images/avatar-user.png" ng-src="{{ c.createdBy.profile.avatar || 'images/avatar-user.png' }}"></span>
 								</div>
-								<div class="username"><span>Nombre</span> hace 22 minutos</div>
+								<div class="username">
+									<span>{{ c.createdBy.profile.firstName }} {{ c.createdBy.profile.lastName }}</span> 
+									<p data-sgk-duration ng-model="c.createdAt"></p>
+								</div>
 							</div>
 						</div>
 						<div class="col-8">	
-							<p>ivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec id elit non mi porta gravida at eget metus. Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+							<p>{{ c.content }}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="first last">
+					<div class="comments">
+						<div class="col-8">	
 	            <form name="form" ng-submit="addComment(form)">
 	                <textarea class="round" name="message" rows="9" ng-model="solicitude.comment"></textarea>
 	                <fieldset>

@@ -83,7 +83,9 @@ angular.module('movistarApp')
                 .find('ul.acciones li.pause').remove()
           $scope['role'] = $rootScope.currentUser.role
           $compile($el.contents())($scope)
-          $_triggersActions()
+          $timeout () =>
+            $_triggersActions()
+          , 0
 
       $_loadSection = (section) =>
         $el = $element.parents('.row')
@@ -91,42 +93,71 @@ angular.module('movistarApp')
         # $el.next().remove() 
         $el.after "<div class='row form'>#{tpls.section[section]}</div>"
 
-        if section is 'solicitude'
-          $_loadTabs('todo')
-          $_triggersSection()
-
         if section is 'queue_validation'
+          $_triggersTag()
           $_triggersCheck()
         
-        $compile($el.next().contents())($scope)
+        $compile($el.parent().find('.row.form').contents())($scope)
         $scope.$digest()
+        return false
 
-      $_triggersCheck = () =>
-        $element.on 'click', 'ul li.lab', (e) =>
-          e.preventDefault()
-
-          $el = angular.element(e.target).parents('li.lab')
-          $el.toggleClass 'active'
-          $el.find('label span.opt-check').toggleClass 'active'
-
-          if $el.find('label span.opt-check').hasClass 'active'
-            $scope.solicitude.ticket[$el.data('type')].push $el.data 'value'
-          else
-            _index = $scope.solicitude.ticket[$el.data('type')].indexOf $el.data('value')
-            $scope.solicitude.ticket[$el.data('type')].splice _index, 1
+      $_triggersTag = () =>
+        $element
+          .parents('.detalle')
+          .find('.row.form .odd .Tag input.Tag').on 'keypress', (e) =>
+            if e.keyCode is 13
+              e.preventDefault()
+              $scope.tags.push $scope.solicitude.tag
+              $scope.solicitude.ticket.tags = $scope.tags
+              $scope.solicitude.tag = ''
+              return false
+        $element
+          .parents('.detalle')
+          .on 'click', '.odd .Tag .tags .tag.round a.cerrar', (e) =>
+            e.preventDefault()
+            $el = angular.element(e.target).parent()
+            _index = $scope.tags.indexOf $el.data('value')
+            if _index > -1
+              $scope.tags.splice _index, 1
+              $scope.solicitude.ticket.tags = $scope.tags
+              $el.remove()
 
           return false
 
+      $_triggersCheck = () =>
+        $element
+          .parents('.detalle')
+          .on 'click', 'ul li.lab', (e) =>
+            e.preventDefault()
+
+            console.log 'angular.element(e.target):', angular.element(e.target)
+
+            $el = angular.element(e.target)
+            $el = angular.element($el[0])
+
+            $el.toggleClass 'active'
+            $el.find('label span.opt-check').toggleClass 'active'
+
+            if $el.find('label span.opt-check').hasClass 'active'
+              $scope.solicitude.ticket[$el.data('type')].push $el.data 'value'
+            else
+              console.log '$scope.solicitude.ticket:', $scope.solicitude.ticket, $el.data('type'), $el
+              _index = $scope.solicitude.ticket[$el.data('type')].indexOf $el.data('value')
+              $scope.solicitude.ticket[$el.data('type')].splice _index, 1
+
+            return false
+
       $_triggersActions = () =>
         $element
-          .find('ul.acciones li.aceptar a, ul.acciones li.rechazar a, ul.acciones li.pause a').on 'click', (e) =>
+          .find('ul.acciones li.aceptar a, ul.acciones li.rechazar a, ul.acciones li.pause a').on 'click', (e) ->
+            console.log 'entro'
             e.preventDefault()
             $el = angular.element(e.target)
             _section = $el.data('section').toLowerCase()
             if $el.data('rejected-state')
               $scope.rejectedState = $el.data('rejected-state')
 
-            # $el.parents('ul').css 'display', 'none'
+            $el.parents('ul').css 'display', 'none'
             $_loadSection(_section)
 
             return false
@@ -139,8 +170,7 @@ angular.module('movistarApp')
         if value?
           $_loadTpls()
           $timeout () =>
-            $_loadActions(value.state.type.toLowerCase())
             $timeout () =>
-              $_triggersActions()
-            , 100
-          , 200
+              $_loadActions(value.state.type.toLowerCase())
+            , 0
+          , 0

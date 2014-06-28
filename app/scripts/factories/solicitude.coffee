@@ -97,7 +97,7 @@ angular.module("movistarApp")
         comment: comment
         attachments: attachments
       , (solicitude) ->
-        cb()
+        cb null, solicitude
       , (err) ->
         cb err.data
       ).$promise

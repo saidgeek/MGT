@@ -110,12 +110,14 @@ angular.module('movistarApp')
 
     $scope.addComment = (form) ->
       if form.$valid
-        SolicitudeFactory.addComments $scope.solicitude._id, $scope.solicitude.comment, $scope.atts, (err) ->
+        SolicitudeFactory.addComments $scope.solicitude._id, $scope.solicitude.comment, $scope.atts, (err, solicitude) ->
           if err
             $scope.errors = err
           else
             $scope.atts = []
-            $rootScope.$emit 'loadSolicitudeShow', $scope.solicitude._id
+            # $rootScope.$emit 'loadSolicitudeShow', $scope.solicitude._id
+            $scope.solicitude.comments = solicitude.comments
+            $scope.solicitude.comment = ''
 
     $scope.addTask = (form) ->
       if form.$valid
