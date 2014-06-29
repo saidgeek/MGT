@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('auth_app', [
+angular.module('movistarApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',

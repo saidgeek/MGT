@@ -22,14 +22,14 @@ angular.module('movistarApp')
     $scope.isActive = (path) ->
       path is $location.$$path
 
-  .controller 'NotificationsCtrl', ($rootScope, $scope, NotificationFactory, IO) ->
+  .controller 'NotificationsCtrl', ($rootScope, $scope, Notification, IO) ->
     $scope.notification = null
 
     IO.emit 'register.notifications', id: $rootScope.currentUser.id
     IO.on 'reload.notifications', () => _load()
 
     _load = () ->
-      NotificationFactory.index (err, notifications) ->
+      Notification.index (err, notifications) ->
         if !err
           $scope.notifications = notifications
 
@@ -44,11 +44,11 @@ angular.module('movistarApp')
       Auth.logout().then ->
         $window.location = '/'
 
-  .controller 'ProfileEditCtrl', ($scope, UserFactory, $rootScope, UserParams) ->
+  .controller 'ProfileEditCtrl', ($scope, User, $rootScope, UserParams) ->
     $scope.user = {}
     $scope.errors = {}
 
-    UserFactory.show $rootScope.currentUser.id, (err, user) ->
+    User.show $rootScope.currentUser.id, (err, user) ->
       if err
         $scope.errors = err
       else
@@ -57,7 +57,7 @@ angular.module('movistarApp')
 
     $scope.update = (form) ->
       if form.$valid
-        UserFactory.update $scope.user._id, $scope.user, (err, user) ->
+        User.update $scope.user._id, $scope.user, (err, user) ->
           if err
             $scope.errors = err
             $rootScope.alert =

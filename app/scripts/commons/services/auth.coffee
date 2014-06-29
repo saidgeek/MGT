@@ -1,7 +1,7 @@
 'use strict'
 
-angular.module('auth_app')
-  .factory 'Auth', ($location, $rootScope, Session, UserService, $cookieStore) ->
+angular.module('movistarApp')
+  .factory 'Auth', ($location, $rootScope, Session, User, $cookieStore) ->
 
     # Get currentUser from cookie
     $rootScope.currentUser = $cookieStore.get('user') or null
@@ -45,7 +45,7 @@ angular.module('auth_app')
 
     recovery: (user, callback) ->
       cb = callback or angular.noop
-      UserService.recovery(
+      User.recovery(
         email: user.email
       , (user) ->
         cb(user)
@@ -65,7 +65,7 @@ angular.module('auth_app')
       _clientToken = $rootScope.currentUser.access.clientToken
       _accessToken = $rootScope.currentUser.access.accessToken
       cb = callback or angular.noop
-      UserService.change(
+      User.change(
         clientToken: _clientToken
         accessToken: _accessToken
         oldPassword: user.oldPassword
@@ -85,7 +85,7 @@ angular.module('auth_app')
     @return {Object} user
     ###
     currentUser: ->
-      UserService.get()
+      User.get()
 
 
     ###

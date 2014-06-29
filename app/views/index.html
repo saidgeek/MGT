@@ -239,22 +239,20 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <!-- MODULES -->
         <script src="scripts/solicitude/app.js"></script>
+        <script src="scripts/commons/services/auth.js"></script>
         <script src="scripts/filepicker.js"></script>
-        <script src="scripts/factories/socketIO.js"></script>
         <!-- FACTORIES -->
         <script src="scripts/factories/params.js"></script><!-- DELETE -->
-        <script src="scripts/factories/admin.js"></script><!-- DELETE (Dejar como servicios) -->
-        <script src="scripts/factories/notification.js"></script>
         <script src="scripts/factories/localSourceData.js"></script>
         <!-- SERVICES -->
-        <script src="scripts/services/auth.js"></script>
-        <script src="scripts/services/session.js"></script>
-        <script src="scripts/services/user.js"></script>
-        <script src="scripts/solicitude/services/solicitude.js"></script>
-        <script src="scripts/services/category.js"></script>
-        <script src="scripts/services/notification.js"></script>
+        <script src="scripts/commons/services/session.js"></script>
+        <script src="scripts/commons/services/user.js"></script>
+        <script src="scripts/commons/services/solicitude.js"></script>
+        <script src="scripts/commons/services/category.js"></script>
+        <script src="scripts/commons/services/user.js"></script>
+        <script src="scripts/commons/services/notification.js"></script>
         <!-- CONTROLLERS -->
-        <script src="scripts/controllers/master.js"></script><!-- DELETE -->
+        <script src="scripts/commons/controllers/master.js"></script><!-- DELETE -->
         
         <script src="scripts/solicitude/controllers/solicitudes.js"></script>
         <script src="scripts/solicitude/controllers/solicitude.js"></script>
@@ -262,24 +260,21 @@
         <script src="scripts/solicitude/controllers/filter.js"></script>
         
         <!-- DIRECTIVAS DE GENERALES -->
-        <script src="scripts/directives/modal.js"></script>
-        <script src="scripts/directives/mongooseError.js"></script>
+        <script src="scripts/commons/directives/sgkModal.js"></script>
         <script src="scripts/directives/resize.js"></script>
         <script src="scripts/directives/admin.js"></script>
-        <script src="scripts/directives/uploader_multi.js"></script>
         <script src="scripts/directives/search.js"></script>
         
-        <script src="scripts/directives/sgkScroll.js"></script>
-        
+        <script src="scripts/commons/directives/sgkScroll.js"></script>
+        <script src="scripts/solicitude/directives/sgkUploaderMulti.js"></script>
         <script src="scripts/solicitude/directives/sgkActiveHover.js"></script>
         <script src="scripts/solicitude/directives/sgkResumeParagraphs.js"></script>
         <script src="scripts/solicitude/directives/sgkActions.js"></script>
         <script src="scripts/solicitude/directives/sgkSla.js"></script>
-        <!-- DIRECTIVAS DE SOLICITUDE -->
         <script src="scripts/solicitude/directives/sgkSidebar.js"></script>
 
         <!-- FILTERS -->
-        <script src="scripts/filters/master.js"></script>
+        <script src="scripts/commons/services/filters.js"></script>
         <!-- endbuild -->
 
 

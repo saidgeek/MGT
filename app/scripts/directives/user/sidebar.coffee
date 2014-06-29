@@ -5,7 +5,7 @@ angular.module('movistarApp')
 		restrict: 'A'
 		scope: {}
 		templateUrl: 'directives/user/sidebar'
-		controller: ($scope, $rootScope, UserFactory, RolesData) =>
+		controller: ($scope, $rootScope, User, RolesData) =>
 			$scope.groups = null
 			$scope.roles = RolesData.getArray()
 
@@ -16,7 +16,7 @@ angular.module('movistarApp')
 			
 
 			_load = () =>
-				UserFactory.groups (err, groups) =>
+				User.groups (err, groups) =>
 					if !err
 						$scope.groups = groups
 

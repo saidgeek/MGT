@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'SolicitudeCtrl', ($scope, Solicitude, $rootScope, SolicitudeParams, PriorityData, CategoryFactory, UserFactory, SegmentsData, SectionsData, $state) ->
+  .controller 'SolicitudeCtrl', ($scope, Solicitude, $rootScope, SolicitudeParams, PriorityData, Category, User, SegmentsData, SectionsData, $state) ->
     $scope.solicitude = null
     $scope.error = {}
     $scope.atts = []
@@ -23,19 +23,19 @@ angular.module('movistarApp')
     $scope.segments = SegmentsData.getArray()
     $scope.sections = SectionsData.getArray()
 
-    CategoryFactory.index (err, categories) ->
+    Category.index (err, categories) ->
       if err
         $scope.errors = err
       else
         $scope.categories = categories
 
-    UserFactory.index 'CONTENT_MANAGER', (err, users) ->
+    User.index 'CONTENT_MANAGER', (err, users) ->
       if err
         $scope.errors = err
       else
         $scope.contentManagers = users
 
-    UserFactory.index 'PROVIDER', (err, users) ->
+    User.index 'PROVIDER', (err, users) ->
       if err
         $scope.errors = err
       else

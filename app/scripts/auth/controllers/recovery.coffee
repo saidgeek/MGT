@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('auth_app')
+angular.module('movistarApp')
   .controller 'RecoveryCtrl', ($rootScope, $scope, Auth, $location) ->
     $scope.user = {}
     $scope.errors = {}

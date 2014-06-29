@@ -1,11 +1,11 @@
 'use strict'
 
 angular.module('movistarApp')
-	.controller 'CategoryCtrl', ($scope, $rootScope, CategoryFactory) =>
+	.controller 'CategoryCtrl', ($scope, $rootScope, Category) =>
     $scope.categories = []
 
     $scope.reload = () =>
-      CategoryFactory.index (err, categories) ->
+      Category.index (err, categories) ->
         if !err
           if categories.length > 0
             $scope.categories = categories
@@ -14,29 +14,29 @@ angular.module('movistarApp')
 
     $scope.reload()
 
-  .controller 'CategoryShowCtrl', ($scope, $rootScope, CategoryFactory) ->
+  .controller 'CategoryShowCtrl', ($scope, $rootScope, Category) ->
     $scope.category = {}
 
     $rootScope.$on 'loadCategoryShow', (e, id) =>
       if typeof id isnt 'undefined'
-        CategoryFactory.show id, (err, category) ->
+        Category.show id, (err, category) ->
           if !err
             $scope.category = category
 
-  .controller 'CategorySaveCtrl', ($scope, $rootScope, CategoryFactory) ->
+  .controller 'CategorySaveCtrl', ($scope, $rootScope, Category) ->
     $scope.title = 'Crear nueva clacificación'
     $scope.category = {}
     $scope.errors = {}
     $scope.categories = []
 
-    CategoryFactory.index (err, categories) ->
+    Category.index (err, categories) ->
       if err
         $scope.errors = err
       else
         $scope.categories = categories
 
     $scope.$watch 'id', (id) =>
-      CategoryFactory.show id, (err, category) ->
+      Category.show id, (err, category) ->
         if err
           $scope.errors = err
         else
@@ -45,7 +45,7 @@ angular.module('movistarApp')
 
     $scope.update = (form) ->
       if form.$valid
-        CategoryFactory.update $scope.category._id, $scope.category, (err, category) ->
+        Category.update $scope.category._id, $scope.category, (err, category) ->
           if err
             $scope.errors = err
             $rootScope.alert =
@@ -64,7 +64,7 @@ angular.module('movistarApp')
 
     $scope.create = (form) ->
       if form.$valid
-        CategoryFactory.save $scope.category, (err, category) ->
+        Category.save $scope.category, (err, category) ->
           if err
             $scope.errors = err
             $rootScope.alert =
@@ -84,7 +84,7 @@ angular.module('movistarApp')
 
     $scope.remove = (form) ->
       if form.$valid
-        CategoryFactory.remove $scope.category._id, $scope.category, (err, category) ->
+        Category.remove $scope.category._id, $scope.category, (err, category) ->
           if err
             $rootScope.alert =
               type: 'error'

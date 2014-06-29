@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('auth_app')
+angular.module('movistarApp')
   .controller 'LoginCtrl', ($rootScope, $scope, Auth, $state, $window) ->
     $scope.user = {}
     $scope.errors = {}

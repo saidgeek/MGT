@@ -202,48 +202,28 @@
         <!-- MODULES -->
         <script src="scripts/admin/app.js"></script>
         <script src="scripts/filepicker.js"></script>
-        <script src="scripts/factories/socketIO.js"></script>
         <!-- FACTORIES --> 
         <script src="scripts/factories/params.js"></script><!-- DELETE -->
-        <script src="scripts/factories/admin.js"></script><!-- DELETE (Dejar como servicios) -->
-        <script src="scripts/factories/solicitude.js"></script><!-- DELETE (Dejar como servicios) -->
-        <script src="scripts/factories/notification.js"></script>
         <script src="scripts/factories/localSourceData.js"></script>
         <!-- CONTROLLERS -->
-        <script src="scripts/controllers/master.js"></script><!-- DELETE -->
-        <script src="scripts/controllers/user.js"></script>
-        <script src="scripts/controllers/category.js"></script>
-        <script src="scripts/controllers/login.js"></script><!-- DELETE (colocar en un solo controller auth) -->
-        <script src="scripts/controllers/change.js"></script><!-- DELETE (colocar en un solo controller auth) -->
-        <script src="scripts/controllers/recovery.js"></script><!-- DELETE (colocar en un solo controller auth) -->
-        <script src="scripts/controllers/solicitude.js"></script><!-- DELETE -->
+        <script src="scripts/commons/controllers/master.js"></script><!-- DELETE -->
+        <script src="scripts/admin/controllers/user.js"></script>
+        <script src="scripts/admin/controllers/category.js"></script>
         <!-- SERVICES -->
-        <script src="scripts/services/auth.js"></script>
-        <script src="scripts/services/session.js"></script>
-        <script src="scripts/services/user.js"></script>
-        <script src="scripts/services/solicitude.js"></script>
+        <script src="scripts/commons/services/auth.js"></script>
+        <script src="scripts/commons/services/session.js"></script>
+        <script src="scripts/commons/services/user.js"></script>
+        <script src="scripts/commons/services/category.js"></script>
+        <script src="scripts/commons/services/user.js"></script>
+
         <script src="scripts/services/category.js"></script>
-        <script src="scripts/services/notification.js"></script>
+        <script src="scripts/commons/services/notification.js"></script>
         <!-- DIRECTIVAS DE GENERALES -->
-        <script src="scripts/directives/modal.js"></script>
-        <script src="scripts/directives/mongooseError.js"></script>
-        <script src="scripts/directives/remember.js"></script>
+        <script src="scripts/commons/directives/sgkModal.js"></script>
         <script src="scripts/directives/resize.js"></script>
         <script src="scripts/directives/admin.js"></script>
-        <script src="scripts/directives/uploader_multi.js"></script>
         <script src="scripts/directives/search.js"></script>
-        <script src="scripts/directives/sgkScroll.js"></script>
-        <script src="scripts/directives/sgkActiveHover.js"></script>
-        <script src="scripts/directives/sgkResumeParagraphs.js"></script>
-        <script src="scripts/directives/solicitude/sgkActions.js"></script>
-        <!-- DIRECTIVAS DE SOLICITUDE -->
-        <script src="scripts/directives/solicitude/detail.js"></script>
-        <script src="scripts/directives/solicitude/list.js"></script>
-        <script src="scripts/directives/solicitude/sidebar.js"></script>
-        <script src="scripts/directives/solicitude/states.js"></script>
-        <script src="scripts/directives/solicitude/priorities.js"></script>
-        <script src="scripts/directives/solicitude/involved.js"></script>
-        <script src="scripts/directives/solicitude/categories.js"></script>
+        <script src="scripts/commons/directives/sgkScroll.js"></script>
         <!-- DIRECTIVAS DE USUARIO -->
         <script src="scripts/directives/user/list.js"></script>
         <script src="scripts/directives/user/detail.js"></script>
@@ -254,7 +234,8 @@
         <script src="scripts/directives/category/list.js"></script>
         <script src="scripts/directives/category/detail.js"></script>
         <!-- FILTERS -->
-        <script src="scripts/filters/master.js"></script>
+        <script src="scripts/commons/services/filters.js"></script>
+        <script src="scripts/commons/services/solicitude.js"></script>
         <!-- endbuild -->
 
 

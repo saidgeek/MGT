@@ -2,16 +2,11 @@
 
 angular.module("movistarApp")
   .factory "Solicitude", ($resource, $rootScope) ->
-    _clientToken = $rootScope.currentUser.access.clientToken
-    _accessToken = $rootScope.currentUser.access.accessToken
-    _states = $rootScope.currentUser.permissions.states
 
     resource = $resource "", {},
       index:
         method: 'GET'
         params:
-          clientToken: _clientToken
-          accessToken: _accessToken
           target: '@target'
           filter: '@filter'
         url: '/api/v1/solicitudes/:target/:filter'
@@ -20,24 +15,17 @@ angular.module("movistarApp")
       groups:
         method: "GET"
         params:
-          clientToken: '@clientToken'
-          accessToken: '@accessToken'
           states: '@states'
         url: '/api/v1/solicitudes/groups'
 
       show:
         method: 'GET'
         params:
-          clientToken: '@clientToken'
-          accessToken: '@accessToken'
           id: '@id'
         url: '/api/v1/solicitude/:id'
 
       create:
         method: 'POST'
-        params:
-          clientToken: '@clientToken'
-          accessToken: '@accessToken'
         data:
           solicitude: '@solicitude'
         url: '/api/v1/solicitude'
@@ -45,8 +33,6 @@ angular.module("movistarApp")
       update:
         method: "PUT"
         params:
-          clientToken: '@clientToken'
-          accessToken: '@accessToken'
           id: "@id"
         data:
           solicitude: '@solicitude'
@@ -55,8 +41,6 @@ angular.module("movistarApp")
       addComments:
         method: 'PUT'
         params:
-          clientToken: '@clientToken'
-          accessToken: '@accessToken'
           id: "@id"
         data:
           comment: '@comment'
@@ -66,8 +50,6 @@ angular.module("movistarApp")
       addTasks:
         method: 'PUT'
         params:
-          clientToken: '@clientToken'
-          accessToken: '@accessToken'
           id: "@id"
         data:
           desc: '@desc'
@@ -77,8 +59,6 @@ angular.module("movistarApp")
       toggleCheckTasks:
         method: 'PUT'
         params:
-          clientToken: '@clientToken'
-          accessToken: '@accessToken'
           id: "@id"
           task: "@task"
         url: '/api/v1/solicitude/:id/check/:task'
@@ -117,9 +97,7 @@ angular.module("movistarApp")
 
     _groups = (cb) ->
       resource.groups(
-        clientToken: _clientToken
-        accessToken: _accessToken
-        states: _states
+        states: $rootScope.currentUser?.permissions.states
       , (groups) ->
         groups = _makeGroups(groups)
         cb null, groups
@@ -129,8 +107,7 @@ angular.module("movistarApp")
 
     _show = (id, cb) ->
       resource.show(
-        clientToken: _clientToken
-        accessToken: _accessToken
+        {}
         id: id
       , (solicitude) ->
         cb null, solicitude
@@ -140,8 +117,7 @@ angular.module("movistarApp")
 
     _create = (data, cb) ->
       resource.create(
-        clientToken: _clientToken
-        accessToken: _accessToken
+        {}
         solicitude: data
       , (solicitude) ->
         cb null, solicitude
@@ -151,8 +127,7 @@ angular.module("movistarApp")
 
     _update = (id, data, cb) ->
       resource.update(
-        clientToken: _clientToken
-        accessToken: _accessToken
+        {}
         id: id
         solicitude: data
       , (solicitude) ->
@@ -163,8 +138,7 @@ angular.module("movistarApp")
 
     _addComments = (id, comment, attachments, cb) ->
       resource.addComments(
-        clientToken: _clientToken
-        accessToken: _accessToken
+        {}
         id: id
         comment: comment
         attachments: attachments
@@ -176,8 +150,7 @@ angular.module("movistarApp")
 
     _addTasks = (id, desc, attachments, cb) ->
       resource.addTasks(
-        clientToken: _clientToken
-        accessToken: _accessToken
+        {}
         id: id
         desc: desc
         attachments: attachments
@@ -189,8 +162,7 @@ angular.module("movistarApp")
 
     _toggleCheckTasks = (id, task, cb) ->
       resource.toggleCheckTasks(
-        clientToken: _clientToken
-        accessToken: _accessToken
+        {}
         id: id
         task: task
       , (solicitude) ->

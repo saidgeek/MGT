@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('auth_app')
+angular.module('movistarApp')
   .directive 'sgkRemember', () ->
     conf =
       restrict: 'A'

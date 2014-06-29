@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'FilterCtrl', ($scope, $rootScope, Solicitude, PriorityIconData, PriorityData, CategoryFactory) ->
+  .controller 'FilterCtrl', ($scope, $rootScope, Solicitude, PriorityIconData, PriorityData, Category) ->
     $scope.states = $rootScope.currentUser.permissions.states
     $scope.priorityIcons = PriorityIconData.getAll()
     $scope.priorities = PriorityData.getArray()
@@ -12,7 +12,7 @@ angular.module('movistarApp')
         if !err
           $scope.groups = groups
 
-    CategoryFactory.index (err, categories) ->
+    Category.index (err, categories) ->
       if !err
         $scope.categories = categories
 
