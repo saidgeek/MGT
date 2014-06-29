@@ -3,7 +3,7 @@
 	<div class="overflow" data-sgk-scroll>
 
 		<div class="lista">
-			<ul ng-if="solicitudes">
+			<ul ng-if="solicitudes" data-sgk-sla>
 				<!--/ FOREACH /-->
 				<li class="listar" ng-class="s.sla" ng-repeat="s in solicitudes" data-sgk-role="search" data-sgk-search="{{ s.code }} {{ s.createdBy.profile.firstName }} {{ s.createdBy.profile.lastName }} {{ s.ticket.tags }} {{ s.ticket.title }}"  data-id="{{ s._id }}">
 					<a ui-sref="solicitude({ id: s._id })" data-sgk-active-hover>

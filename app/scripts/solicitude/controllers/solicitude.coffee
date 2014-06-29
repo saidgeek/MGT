@@ -127,4 +127,4 @@ angular.module('movistarApp')
               content: """
                           La solicitude #{ solicitude.code } se actualizo correctamente.
                        """
-            $state.transitionTo 'solicitude.index'
+            $state.transitionTo 'solicitudes'
