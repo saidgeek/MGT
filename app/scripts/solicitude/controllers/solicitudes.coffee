@@ -15,8 +15,6 @@ angular.module('movistarApp')
       _target = $state.params.target
       _filter = $state.params.filter
 
-    # state, category, priority, involved
-    # reload = (state, category, priority, involved) ->
     Solicitude.index _target, _filter, (err, solicitudes) ->
       if err
         $scope.errors = err
@@ -26,15 +24,3 @@ angular.module('movistarApp')
           console.log '$scope.solicitudes:', $scope.solicitudes
         else
           $scope.solicitudes = null
-    $rootScope.$on 'reloadSolicitude', (e, solicitude) =>
-      selectedId = solicitude._id
-      reload('','','','')
-
-    # reload('', '', '', '')
-
-    $rootScope.$watchCollection '[filters.solicitude.state, filters.solicitude.category, filters.solicitude.priority, filters.solicitude.involved]', () =>
-      state = if $rootScope.filters?.solicitude?.state? then $rootScope.filters.solicitude.state else ''
-      category = if $rootScope.filters?.solicitude?.category? then $rootScope.filters.solicitude.category else ''
-      priority = if $rootScope.filters?.solicitude?.priority? then $rootScope.filters.solicitude.priority else ''
-      involved = if $rootScope.filters?.solicitude?.involved? then $rootScope.filters.solicitude.involved else ''
-      reload(state, category, priority, involved) if state isnt '' or category isnt '' or priority isnt '' or involved isnt ''
