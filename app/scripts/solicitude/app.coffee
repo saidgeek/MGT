@@ -19,16 +19,27 @@ angular.module('movistarApp', [
       .state 'solicitudes',
         url: '/'
         templateUrl: 'partials/solicitude/index'
+        resolve:
+          _solicitudes: (Solicitude) =>
+            Solicitude.resource.index({ target: null, filter: null }).$promise
         controller: 'SolicitudesCtrl'
         authenticate: true
       .state 'filter',
         url: '/solicitudes/:target/:filter'
         templateUrl: 'partials/solicitude/index'
+        resolve:
+          _solicitudes: (Solicitude, $stateParams) =>
+            Solicitude.resource.index({ target: $stateParams.target, filter: $stateParams.filter }).$promise
         controller: 'SolicitudesCtrl'
         authenticate: true
       .state 'solicitude',
         url: '/solicitud/:id'
         templateUrl: 'partials/solicitude/Detail'
+        resolve:
+          _solicitude: (Solicitude, $stateParams) =>
+            Solicitude.show $stateParams.id, (err, solicitude) ->
+              if !err
+                return solicitude
         controller: 'SolicitudeCtrl'
         authenticate: true
 
@@ -69,22 +80,8 @@ angular.module('movistarApp', [
         $window.location = "/auth/login"
         event.preventDefault()
       $rootScope.filters = null
-      # console.log 'stateChangeStart'
-      # loading = angular.element('<div id="loading"><img src="images/loader.gif"/></div>')
-      #   .css
-      #     width: '100%'
-      #     height: '100%'
-      #     position: 'absolute'
-      #     top: '0'
-      #     left: '0'
-      #     background: '#2f364a'
-      #     'z-index': '1000'
 
-      # angular.element('body').prepend(loading)
-
-    # stateChangeSuccess
-    # $rootScope.$on '$viewContentLoaded', (event, toState, toParams, fromParams) ->
-    #   console.log 'viewContentLoaded'
-    #   $timeout () =>
-    #     angular.element('body').find('#loading').remove()
-    #   , 1500
+    $rootScope.$on '$stateChangeSuccess', (event, toState, toParams, fromParams) ->
+      angular.element('body')
+        .find('#loading')
+        .fadeOut 500

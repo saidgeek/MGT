@@ -167,7 +167,7 @@ h4{ font-size:  1.154em;}
     vertical-align: top;
 }
 .row{
-    display: table-row;
+    display: block;
 }
 .absoluto{
     position: absolute;
@@ -2831,7 +2831,7 @@ div.message-error {
   top: 0;
 }
 .content .overflow .lista{
-  margin: 8px;
+  margin: 8px 18px 8px 8px;
 }
 .content .overflow .lista ul{
   margin: 0;
@@ -3035,7 +3035,7 @@ div.message-error {
   background:#444c63; 
 }
 .detalle.bkg{
-  margin: 8px;
+  margin: 8px 18px 8px 8px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
   -webkit-box-shadow: 0 0 3px 0 rgba(0,0,0,0.1);

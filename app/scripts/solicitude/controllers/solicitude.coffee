@@ -1,8 +1,8 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'SolicitudeCtrl', ($scope, Solicitude, $rootScope, SolicitudeParams, PriorityData, Category, User, SegmentsData, SectionsData, $state) ->
-    $scope.solicitude = null
+  .controller 'SolicitudeCtrl', ($scope, Solicitude, $rootScope, SolicitudeParams, PriorityData, Category, User, SegmentsData, SectionsData, _solicitude) ->
+    $scope.solicitude = _solicitude
     $scope.error = {}
     $scope.atts = []
     $scope.role = $rootScope.currentUser.role
@@ -45,12 +45,6 @@ angular.module('movistarApp')
     # $scope.showOption = (option) ->
     #   if option is 'PAUSED'
     #     ~['ROOT', 'ADMIN', 'CONTENT_MANAGER'].indexOf($rootScope.currentUser.role)
-
-
-    Solicitude.show $state.params.id, (err, solicitude) ->
-      if !err
-        $scope.solicitude = solicitude
-        console.log '$scope.solicitude:', $scope.solicitude
 
     $scope.$watch '[solicitude.ticket.segments, solicitude.ticket.sections]', (v) =>
       if v?

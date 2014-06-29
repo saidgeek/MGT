@@ -188,4 +188,5 @@ angular.module("movistarApp")
         _addTasks(id, desc, attachments, cb)
       toggleCheckTasks: (id, task, cb) ->
         _toggleCheckTasks(id, task, cb)
+      resource: resource
     }
