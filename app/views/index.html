@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="styles/fonts.css" />
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="stylesheet" href="styles/jquery.mCustomScrollbar.css" />
+    <link rel="stylesheet" href="styles/main.css" />
     <!--[if IE]>
       <link rel="stylesheet" href="styles/ie.css" />
     <![endif]-->
@@ -98,13 +99,72 @@
                 </div>
               </div>
 
-              <div id="crear" class="sidebox" ui-view="sidebox"></div>
+              <div id="crear" class="sidebox">
+                
+                <a class="boton1 round" href="javascript:{}" data-sgk-modal="form"
+                  data-sgk-ctrl="SolicitudeSaveCtrl"
+                  data-sgk-tpl="partials/solicitude/new"
+                  data-sgk-action="create" data-sgk-permission="solicitude" data-permission-value="create">
+                  <span></span>Crear nueva solicitud
+                </a>
+
+              </div>
             </div>
           </div>
 
           <div class="therow">
-            <div class="thecell">
-              <div class="relativo" data-sgk-solicitude-sidebar ui-view="sidebar"></div>
+            <div class="thecell"><!-- necesita el alto -->
+              <div class="relativo" data-sgk-solicitude-sidebar ng-controller="FilterCtrl">
+                  
+                <div class="overflow">
+                  <div id="estado" class="sidebox">
+                    <h3>Estado de Solicitudes</h3>
+                    <ul class="bold">
+                      <li ui-sref-active="active">
+                        <a ui-sref="solicitudes">
+                          <div class="ico tod"></div>
+                          Todas
+                          <span class="round light">{{ groups.states.total }}</span>
+                        </a>
+                      </li>
+                      <li ng-repeat="state in states" ui-sref-active="active">
+                        <a ui-sref="filter({ target: 'state', filter: state.toLowerCase() })">
+                          <div class="ico" ng-class="state | StateIcons"></div>
+                          {{ state | StateSolicitude }}
+                          <span class="round light">{{ groups.states[state] || 0 }}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div id="prioridad" class="sidebox" ng-if="currentUser.role !== 'CLIENT'">
+                    <h3>Prioridad</h3>
+                    <ul class="bold">
+                      <li ng-repeat="p in priorities"  ui-sref-active="active">
+                        <a ui-sref="filter({ target: 'priority', filter: p.id.toLowerCase() })">
+                          <div class="ico" ng-class="priorityIcons[p.id]"></div>
+                          {{ p.name }}
+                          <span class="round light">{{ groups.priorities[p.id] || 0 }}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div id="categoria" class="sidebox" ng-if="currentUser.role !== 'CLIENT' && currentUser.role !== 'PROVIDER'">
+                    <h3>Categorías</h3>
+                    <ul class="bold">
+                      <li ng-repeat="c in categories" ui-sref-active="active">
+                        <a ui-sref="filter({ target: 'category', filter: c._id.toLowerCase() })">
+                          <div class="ico"></div>
+                          {{ c.name }}
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                </div>
+
+              </div>
             </div>
           </div>
 
@@ -198,6 +258,7 @@
         <script src="scripts/solicitude/controllers/solicitudes.js"></script>
         <script src="scripts/solicitude/controllers/solicitude.js"></script>
         <script src="scripts/solicitude/controllers/save.js"></script>
+        <script src="scripts/solicitude/controllers/filter.js"></script>
         <!-- DIRECTIVAS DE GENERALES -->
         <script src="scripts/directives/modal.js"></script>
         <script src="scripts/directives/mongooseError.js"></script>
@@ -210,13 +271,7 @@
         <script src="scripts/directives/sgkResumeParagraphs.js"></script>
         <script src="scripts/directives/solicitude/sgkActions.js"></script>
         <!-- DIRECTIVAS DE SOLICITUDE -->
-        <script src="scripts/directives/solicitude/detail.js"></script>
-        <script src="scripts/directives/solicitude/list.js"></script>
         <script src="scripts/directives/solicitude/sidebar.js"></script>
-        <script src="scripts/directives/solicitude/states.js"></script>
-        <script src="scripts/directives/solicitude/priorities.js"></script>
-        <script src="scripts/directives/solicitude/involved.js"></script>
-        <script src="scripts/directives/solicitude/categories.js"></script>
 
         <!-- FILTERS -->
         <script src="scripts/filters/master.js"></script>

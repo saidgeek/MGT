@@ -12,7 +12,9 @@ angular.module("movistarApp")
         params:
           clientToken: _clientToken
           accessToken: _accessToken
-        url: '/api/v1/solicitudes'
+          target: '@target'
+          filter: '@filter'
+        url: '/api/v1/solicitudes/:target/:filter'
         isArray: true
 
       groups:
@@ -81,9 +83,10 @@ angular.module("movistarApp")
           task: "@task"
         url: '/api/v1/solicitude/:id/check/:task'
 
-    _index = (cb) ->
+    _index = (target, filter, cb) ->
       resource.index(
-        {}
+        target: target
+        filter: filter
       , (solicitudes) ->
         cb null, solicitudes
       , (err) ->
@@ -197,8 +200,8 @@ angular.module("movistarApp")
       ).$promise
 
     return {
-      index: (cb) ->
-        _index(cb)
+      index: (target, filter, cb) ->
+        _index(target, filter, cb)
       groups: (cb) ->
         _groups(cb)
       show: (id, cb) ->

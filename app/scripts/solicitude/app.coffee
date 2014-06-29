@@ -18,25 +18,18 @@ angular.module('movistarApp', [
       # SOLICITUDE ROUTERS
       .state 'solicitudes',
         url: '/'
-        views:
-          'sidebox':
-            templateUrl: 'partials/solicitude/sidebox'
-          'sidebar':
-            templateUrl: 'partials/solicitude/sidebar'
-          '':
-            templateUrl: 'partials/solicitude/index'
-            controller: 'SolicitudesCtrl'
+        templateUrl: 'partials/solicitude/index'
+        controller: 'SolicitudesCtrl'
+        authenticate: true
+      .state 'filter',
+        url: '/solicitudes/:target/:filter'
+        templateUrl: 'partials/solicitude/index'
+        controller: 'SolicitudesCtrl'
         authenticate: true
       .state 'solicitude',
         url: '/solicitud/:id'
-        views:
-          'sidebox':
-            templateUrl: 'partials/solicitude/sidebox'
-          'sidebar':
-            templateUrl: 'partials/solicitude/sidebar'
-          '':
-            templateUrl: 'partials/solicitude/Detail'
-            controller: 'SolicitudeCtrl'
+        templateUrl: 'partials/solicitude/Detail'
+        controller: 'SolicitudeCtrl'
         authenticate: true
 
     $locationProvider.html5Mode true
