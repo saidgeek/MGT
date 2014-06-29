@@ -5,15 +5,7 @@ var express = require('express'),
     fs = require('fs'),
     mongoose = require('mongoose'),
     mandrill = require('mandrill-api/mandrill'),
-    app = express(),
-    http = require('http'),
-    server = http.createServer(app);
-
-global.io = require('socket.io').listen(server, { log: false });
-global.io.configure(function () { 
-  io.set("transports", ["xhr-polling"]); 
-  io.set("polling duration", 10); 
-});
+    io = require('socket.io');
 
 /**
  * Main application file
@@ -45,26 +37,13 @@ require(modelsPath + '/log');
 // Passport Configuration
 var passport = require('./lib/config/passport');
 
+var app = express(),
+    http = require('http'),
+    server = http.createServer(app);
+
+require('./lib/config/socket.io')(io, server);
 
 var jobs = require('./lib/config/kue')(app);
-
-// Socket.io
-global.io.sockets.on('connection', function (sckt) {
-
-  sckt.on('register.notifications', function (data) {
-    if (typeof(data) !== 'undefined' && typeof(data.id) !== 'undefined') {
-      sckt.join('notifications/'+data.id);
-    }
-  });
-
-  sckt.on('register.solicitude.change.sla', function(data) {
-    sckt.join('solicitude/change/sla');
-  });
-
-  sckt.on('register.solicitude.remove.sla', function(data) {
-    sckt.join('solicitude/remove/sla');
-  });
-});
 
 // Populate empty DB with sample data
 if (app.get('env') === 'development') {

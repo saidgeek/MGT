@@ -7,10 +7,11 @@ angular.module('movistarApp')
     _target = null
     _filter = null
     
-    IO.emit 'register.solicitude.change.sla', {}
-    IO.emit 'register.solicitude.remove.sla', {}
+    IO.on 'solicitude.new', (data) ->
+      Solicitude.show data.id, (err, solicitude) ->
+        if !err
+          $scope.solicitudes.unshift solicitude
 
-    console.log '$state.params:', $state.params
     if $state.params?.target? and $state.params?.filter?
       _target = $state.params.target
       _filter = $state.params.filter

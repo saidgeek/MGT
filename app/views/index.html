@@ -120,14 +120,14 @@
                   <div id="estado" class="sidebox">
                     <h3>Estado de Solicitudes</h3>
                     <ul class="bold">
-                      <li ui-sref-active="active">
+                      <li ui-sref-active="active" data-id="all">
                         <a ui-sref="solicitudes">
                           <div class="ico tod"></div>
                           Todas
                           <span class="round light">{{ groups.states.total }}</span>
                         </a>
                       </li>
-                      <li ng-repeat="state in states" ui-sref-active="active">
+                      <li ng-repeat="state in states" ui-sref-active="active"  data-id="{{ state }}">
                         <a ui-sref="filter({ target: 'state', filter: state.toLowerCase() })">
                           <div class="ico" ng-class="state | StateIcons"></div>
                           {{ state | StateSolicitude }}
@@ -140,7 +140,7 @@
                   <div id="prioridad" class="sidebox" ng-if="currentUser.role !== 'CLIENT'">
                     <h3>Prioridad</h3>
                     <ul class="bold">
-                      <li ng-repeat="p in priorities"  ui-sref-active="active">
+                      <li ng-repeat="p in priorities"  ui-sref-active="active" data-id="{{ p.id }}">
                         <a ui-sref="filter({ target: 'priority', filter: p.id.toLowerCase() })">
                           <div class="ico" ng-class="priorityIcons[p.id]"></div>
                           {{ p.name }}

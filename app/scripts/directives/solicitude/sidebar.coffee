@@ -1,9 +1,18 @@
 'use strict'
 
 angular.module('movistarApp')
-  .directive 'sgkSolicitudeSidebar', ($window, $rootScope, $timeout) ->
+  .directive 'sgkSolicitudeSidebar', ($timeout, IO, Solicitude) ->
     restrict: 'A'
     link: ($scope, $element, $attrs) ->
+
+      IO.on 'solicitude.new', (data) ->
+        Solicitude.show data.id, (err, solicitude) ->
+          if !err
+            $all = $element.find('[data-id="all"] span.round.light')
+            $all.html parseInt($all.html()) + 1
+            state_query = "[data-id='#{ solicitude.state.type }'] span.round.light"
+            $state = $element.find(state_query)
+            $state.html parseInt($state.html()) + 1
 
       $_resize = () =>
         altperfil = angular.element('.therowAlt').height()
