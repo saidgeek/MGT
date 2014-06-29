@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('movistarApp')
-  .directive 'sgkSolicitudeSidebar', ($timeout, IO, Solicitude) ->
+  .directive 'sgkSidebar', ($timeout, IO, Solicitude) ->
     restrict: 'A'
     link: ($scope, $element, $attrs) ->
 
