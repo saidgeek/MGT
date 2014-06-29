@@ -1,0 +1,262 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" ng-app="movistarApp" data-ng-controller="CssCtrl"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" ng-app="movistarApp" data-ng-controller="CssCtrl"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" ng-app="movistarApp" data-ng-controller="CssCtrl"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="movistarApp" data-ng-controller="CssCtrl"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title>Gestor de tareas</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link ng-if="!currentUser || !currentUser.confirmAt" rel="stylesheet" href="styles/auth.css" />
+    <link ng-if="currentUser" rel="stylesheet" href="styles/fonts.css" />
+    <link ng-if="currentUser" rel="stylesheet" href="styles/styles.css" />
+    <link ng-if="currentUser" rel="stylesheet" href="styles/jquery.mCustomScrollbar.css" />
+    <link ng-if="currentUser" rel="stylesheet" href="styles/main.css" />
+    <!--[if IE]>
+      <link rel="stylesheet" href="styles/ie.css" />
+    <![endif]-->
+  </head>
+  <body ng-class="{'body-login': !currentUser}">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="wrap" id="wrap">
+        
+      <div id="side" data-ng-switch="module" data-filepicker-run>
+        <div class="thetable">
+
+          <div class="therowAlt">
+            <div class="thecell">
+              <div id="perfil" class="sidebox">
+                <div class="t-c p-avatar">
+                  <div>
+                    <img ng-src="{{ currentUser.avatar || 'images/avatar-user.png' }}"/><div class="avperfil"></div>
+                  </div>
+                </div>
+                <div class="t-c">
+                    <p>{{ currentUser.name }}<span>{{ currentUser.role | RoleName }}</span></p>
+                    <ul class="adm">
+                        <li ng-controller="NotificationsCtrl">
+                          <a href="javascript:{}" class="sub-not" data-sgk-submenu-notifications ><img src="images/bell.png"/>
+                              <div class="cant" ng-show="notifications">{{ notifications.length || 0}}</div>
+                          </a>
+                          <div id="submenu" class="notifications">
+                              <div id="notificacion" class="wrap round hide">
+                                  <div class="tit-not">
+                                      <span class="arrow"></span>
+                                      <h3>Notificaciones</h3>
+                                      <a href="javascript:{}">Marcar como leidas</a>
+                                  </div>
+                                  <div class="wrap" ng-repeat="notify in notifications">
+                                      <div class="t-c avatar">
+                                          <img ng-src="{{ notify.from.profile.avatar || 'images/avatar-user.png' }}"/>
+                                          <div class="avnotif"></div>
+                                      </div>
+                                      <div class="t-c">
+                                          <a href="javascript:{}" class="cerrar">X</a>
+                                          <p class="avatar bold">
+                                              <span>{{ notify.from.profile.firstName }} {{ notify.from.profile.lastName }}</span>
+                                              <span class="regular">{{ notify.from.role | RoleName }}</span>
+                                          </p>
+                                          <br>
+                                          <p>{{ notify.message }}</p>
+                                      </div>
+                                  </div>
+                              </div><!-- notificaciones -->
+                          </div>
+                        </li>
+                        <li ng-controller="OptionsCtrl">
+                          <a href="javascript:{}" data-sgk-submenu-options><img src="images/gear.png"/></a>
+                            <div id="submenu" class="options">
+                                <div id="notificacion" class="wrap round hide">
+                                    <div class="tit-not">
+                                        <span class="arrow"></span>
+                                        <h3>Opciones</h3>
+                                    </div>
+                                    <div class="wrap">
+                                      <a href="javascript:{}" class="t-c" data-sgk-modal="form"
+                                        data-sgk-ctrl="ProfileEditCtrl"
+                                        data-sgk-tpl="partials/user/me"
+                                        data-sgk-action="update">
+                                        Editar perfil
+                                      </a>
+                                    </div>
+                                    <div class="wrap">
+                                      <a href="javascript:{}" ng-click="logout()" class="t-c">
+                                        Salir
+                                      </a>
+                                    </div>
+                                </div><!-- notificaciones -->
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+              </div>
+
+              <div id="crear" class="sidebox" ui-view="sidebox"></div>
+            </div>
+          </div>
+
+          <div class="therow">
+            <div class="thecell">
+              <div class="relativo" data-sgk-solicitude-sidebar ui-view="sidebar"></div>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- side -->
+
+      <div id="main" class="ui-widget-content"  data-ng-switch="module">
+        <div class="wrap">
+
+          <div id="top">
+            <div class="logo">
+              <img src="images/movistar.png"/>
+            </div>
+          </div>
+
+          <div id="menu-admin">
+            <div class="menu-admin" data-sgk-permission="administration">
+              <ul>
+            <!--     <li data-ng-class="{active: isActive('/inicio')}"><a ng-href="/inicio">Inicio</a></li> -->
+                <li ui-sref-active="active"><a href="/" target="_self">Solicitudes</a></li>
+                <li ui-sref-active="active"><a ui-sref="users">Administración</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="left" class="col" ui-view="left" data-sgk-resize-left="40" data-sgk-resize-b></div><!--// #left //-->
+          <div id="right" class="col altR ui-widget ui-widget-content" ui-view="right" data-sgk-resize-right="60"></div><!-- col right -->
+
+        </div><!-- wrap -->
+
+        <div id="search-form">
+          <form>
+            <input type="text" name="search" id="search" class="round" placeholder="Buscar Solicitud o palabra clave" data-sgk-search-input />
+          </form>
+        </div>
+
+        <!-- <div data-ng-switch="modals">
+          <div data-ng-switch-default>
+          </div>
+
+          <div data-ng-switch-when="newCategory" data-ng-controller="CategorySaveCtrl" class="modal">
+            <div data-ng-include="'partials/admin/category/new'"></div>
+          </div>
+          <div data-ng-switch-when="updateCategory" data-ng-controller="CategorySaveCtrl" class="modal">
+            <div data-ng-include="'partials/admin/category/edit'"></div>
+          </div>
+        </div>
+
+        <div ng-switch="masterModals">
+          <div data-ng-switch-when="profileEdit" data-ng-controller="ProfileEditCtrl" class="modal">
+            <div data-ng-include="'partials/_profileEdit'"></div>
+          </div>
+        </div> -->
+
+      </div><!-- main -->
+
+
+    </div>
+
+    <!--[if lt IE 9]>
+    <script src="lib/es5-shim/es5-shim.js"></script>
+    <script src="lib/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+      <script src='lib/jquery-legacy/jquery.min.js' type='text/javascript'/>
+    <![endif]-->
+
+    <!--[if (gte IE 9) | (!IE)]><!-->
+        <script src='lib/jquery/jquery.min.js' type='text/javascript'/>
+    <!--<![endif]-->
+
+    <script src="lib/es5-shim/es5-shim.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/json3/lib/json3.min.js"></script>
+    <script src="lib/angular-resource/angular-resource.js"></script>
+    <script src="lib/angular-cookies/angular-cookies.js"></script>
+    <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="lib/angular-confirm-click/dist/confirmClick.js"></script>
+    <script src="lib/angular-socket-io/socket.js"></script>
+    <script src="lib/jquery-placeholder/jquery.placeholder.js"></script>
+    <script src="lib/jquery-mousewheel/jquery.mousewheel.js"></script>
+    <script src="lib/jqueryui/ui/jquery-ui.js"></script>
+    <script src="lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js"></script>
+    <script src="lib/moment/moment.js"></script>
+    <script src="lib/moment/lang/es.js"></script>
+    <script src="lib/jshashes/hashes.min.js"></script>
+
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <!-- MODULES -->
+        <script src="scripts/admin/app.js"></script>
+        <script src="scripts/filepicker.js"></script>
+        <script src="scripts/factories/socketIO.js"></script>
+        <!-- FACTORIES --> 
+        <script src="scripts/factories/params.js"></script><!-- DELETE -->
+        <script src="scripts/factories/admin.js"></script><!-- DELETE (Dejar como servicios) -->
+        <script src="scripts/factories/solicitude.js"></script><!-- DELETE (Dejar como servicios) -->
+        <script src="scripts/factories/notification.js"></script>
+        <script src="scripts/factories/localSourceData.js"></script>
+        <!-- CONTROLLERS -->
+        <script src="scripts/controllers/master.js"></script><!-- DELETE -->
+        <script src="scripts/controllers/user.js"></script>
+        <script src="scripts/controllers/category.js"></script>
+        <script src="scripts/controllers/login.js"></script><!-- DELETE (colocar en un solo controller auth) -->
+        <script src="scripts/controllers/change.js"></script><!-- DELETE (colocar en un solo controller auth) -->
+        <script src="scripts/controllers/recovery.js"></script><!-- DELETE (colocar en un solo controller auth) -->
+        <script src="scripts/controllers/solicitude.js"></script><!-- DELETE -->
+        <!-- SERVICES -->
+        <script src="scripts/services/auth.js"></script>
+        <script src="scripts/services/session.js"></script>
+        <script src="scripts/services/user.js"></script>
+        <script src="scripts/services/solicitude.js"></script>
+        <script src="scripts/services/category.js"></script>
+        <script src="scripts/services/notification.js"></script>
+        <!-- DIRECTIVAS DE GENERALES -->
+        <script src="scripts/directives/modal.js"></script>
+        <script src="scripts/directives/mongooseError.js"></script>
+        <script src="scripts/directives/remember.js"></script>
+        <script src="scripts/directives/resize.js"></script>
+        <script src="scripts/directives/admin.js"></script>
+        <script src="scripts/directives/uploader_multi.js"></script>
+        <script src="scripts/directives/search.js"></script>
+        <script src="scripts/directives/sgkScroll.js"></script>
+        <script src="scripts/directives/sgkActiveHover.js"></script>
+        <script src="scripts/directives/sgkResumeParagraphs.js"></script>
+        <script src="scripts/directives/solicitude/sgkActions.js"></script>
+        <!-- DIRECTIVAS DE SOLICITUDE -->
+        <script src="scripts/directives/solicitude/detail.js"></script>
+        <script src="scripts/directives/solicitude/list.js"></script>
+        <script src="scripts/directives/solicitude/sidebar.js"></script>
+        <script src="scripts/directives/solicitude/states.js"></script>
+        <script src="scripts/directives/solicitude/priorities.js"></script>
+        <script src="scripts/directives/solicitude/involved.js"></script>
+        <script src="scripts/directives/solicitude/categories.js"></script>
+        <!-- DIRECTIVAS DE USUARIO -->
+        <script src="scripts/directives/user/list.js"></script>
+        <script src="scripts/directives/user/detail.js"></script>
+        <script src="scripts/directives/user/sidebar.js"></script>
+        <script src="scripts/directives/user/solicitudes.js"></script>
+        <script src="scripts/directives/user/states.js"></script>
+        <!-- DIRECTIVAS DE CATEGORIA -->
+        <script src="scripts/directives/category/list.js"></script>
+        <script src="scripts/directives/category/detail.js"></script>
+        <!-- FILTERS -->
+        <script src="scripts/filters/master.js"></script>
+        <!-- endbuild -->
+
+
+</body>
+</html>
