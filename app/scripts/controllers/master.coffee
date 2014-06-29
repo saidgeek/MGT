@@ -35,14 +35,14 @@ angular.module('movistarApp')
 
     _load()
 
-  .controller 'OptionsCtrl', ($rootScope, $scope, Auth, $location) ->
+  .controller 'OptionsCtrl', ($rootScope, $scope, Auth, $window) ->
 
     $scope.showModals = (modal) ->
       $rootScope.$emit 'showModals', modal
 
     $scope.logout = ->
       Auth.logout().then ->
-        $location.path "/login"
+        $window.location = '/'
 
   .controller 'ProfileEditCtrl', ($scope, UserFactory, $rootScope, UserParams) ->
     $scope.user = {}

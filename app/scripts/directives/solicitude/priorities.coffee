@@ -5,7 +5,7 @@ angular.module('movistarApp')
     restrict: 'A'
     scope: {}
     templateUrl: 'partials/solicitude/filters/priorities'
-    controller: ($scope, $rootScope, SolicitudeFactory, PriorityIconData, PriorityData) ->
+    controller: ($scope, $rootScope, Solicitude, PriorityIconData, PriorityData) ->
       $scope.priorityIcons = PriorityIconData.getAll()
       $scope.priorities = PriorityData.getArray()
       $scope.groups = null
@@ -20,7 +20,7 @@ angular.module('movistarApp')
               priority: value
 
       $scope.reload = () =>
-        SolicitudeFactory.groups (err, groups) ->
+        Solicitude.groups (err, groups) ->
           if !err
             $scope.groups = groups.priorities
 

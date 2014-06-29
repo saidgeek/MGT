@@ -1,8 +1,8 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" ng-app="movistarApp" data-ng-controller="CssCtrl"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" ng-app="movistarApp" data-ng-controller="CssCtrl"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" ng-app="movistarApp" data-ng-controller="CssCtrl"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" ng-app="movistarApp" data-ng-controller="CssCtrl"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,22 +11,138 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link ng-if="!currentUser || !currentUser.confirmAt" rel="stylesheet" href="styles/auth.css" />
-    <link ng-if="currentUser" rel="stylesheet" href="styles/fonts.css" />
-    <link ng-if="currentUser" rel="stylesheet" href="styles/styles.css" />
-    <link ng-if="currentUser" rel="stylesheet" href="styles/jquery.mCustomScrollbar.css" />
-    <link ng-if="currentUser" rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/fonts.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/jquery.mCustomScrollbar.css" />
     <!--[if IE]>
       <link rel="stylesheet" href="styles/ie.css" />
     <![endif]-->
   </head>
-  <body ng-class="{'body-login': !currentUser}">
+  <body ng-app="movistarApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ui-view class="wrap" id="wrap"></div>
+    <div class="wrap" id="wrap">
+
+      <div id="side" data-ng-switch="module" data-filepicker-run>
+        <div class="thetable">
+
+          <div class="therowAlt">
+            <div class="thecell">
+              <div id="perfil" class="sidebox">
+                <div class="t-c p-avatar">
+                  <div>
+                    <img ng-src="{{ currentUser.avatar || 'images/avatar-user.png' }}"/><div class="avperfil"></div>
+                  </div>
+                </div>
+                <div class="t-c">
+                    <p>{{ currentUser.name }}<span>{{ currentUser.role | RoleName }}</span></p>
+                    <ul class="adm">
+                        <li ng-controller="NotificationsCtrl">
+                          <a href="javascript:{}" class="sub-not" data-sgk-submenu-notifications ><img src="images/bell.png"/>
+                              <div class="cant" ng-show="notifications">{{ notifications.length || 0}}</div>
+                          </a>
+                          <div id="submenu" class="notifications">
+                              <div id="notificacion" class="wrap round hide">
+                                  <div class="tit-not">
+                                      <span class="arrow"></span>
+                                      <h3>Notificaciones</h3>
+                                      <a href="javascript:{}">Marcar como leidas</a>
+                                  </div>
+                                  <div class="wrap" ng-repeat="notify in notifications">
+                                      <div class="t-c avatar">
+                                          <img ng-src="{{ notify.from.profile.avatar || 'images/avatar-user.png' }}"/>
+                                          <div class="avnotif"></div>
+                                      </div>
+                                      <div class="t-c">
+                                          <a href="javascript:{}" class="cerrar">X</a>
+                                          <p class="avatar bold">
+                                              <span>{{ notify.from.profile.firstName }} {{ notify.from.profile.lastName }}</span>
+                                              <span class="regular">{{ notify.from.role | RoleName }}</span>
+                                          </p>
+                                          <br>
+                                          <p>{{ notify.message }}</p>
+                                      </div>
+                                  </div>
+                              </div><!-- notificaciones -->
+                          </div>
+                        </li>
+                        <li ng-controller="OptionsCtrl">
+                          <a href="javascript:{}" data-sgk-submenu-options><img src="images/gear.png"/></a>
+                            <div id="submenu" class="options">
+                                <div id="notificacion" class="wrap round hide">
+                                    <div class="tit-not">
+                                        <span class="arrow"></span>
+                                        <h3>Opciones</h3>
+                                    </div>
+                                    <div class="wrap">
+                                      <a href="javascript:{}" class="t-c" data-sgk-modal="form"
+                                        data-sgk-ctrl="ProfileEditCtrl"
+                                        data-sgk-tpl="partials/user/me"
+                                        data-sgk-action="update">
+                                        Editar perfil
+                                      </a>
+                                    </div>
+                                    <div class="wrap">
+                                      <a href="javascript:{}" ng-click="logout()" class="t-c">
+                                        Salir
+                                      </a>
+                                    </div>
+                                </div><!-- notificaciones -->
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+              </div>
+
+              <div id="crear" class="sidebox" ui-view="sidebox"></div>
+            </div>
+          </div>
+
+          <div class="therow">
+            <div class="thecell">
+              <div class="relativo" data-sgk-solicitude-sidebar ui-view="sidebar"></div>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- side -->
+
+      <div id="main" class="ui-widget-content"  data-ng-switch="module">
+        <div class="wrap">
+
+          <div id="top">
+            <div class="logo">
+              <img src="images/movistar.png"/>
+            </div>
+          </div>
+
+          <div id="menu-admin">
+            <div class="menu-admin" data-sgk-permission="administration">
+              <ul>
+            <!--     <li data-ng-class="{active: isActive('/inicio')}"><a ng-href="/inicio">Inicio</a></li> -->
+                <li ui-sref-active="active"><a ui-sref="solicitudes">Solicitudes</a></li>
+                <li ui-sref-active="active"><a ui-sref="admin.users">Administración</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div ui-view class="content"></div>
+
+        </div><!-- wrap -->
+
+        <div id="search-form">
+          <form>
+            <input type="text" name="search" id="search" class="round" placeholder="Buscar Solicitud o palabra clave" data-sgk-search-input />
+          </form>
+        </div>
+
+      </div><!-- main -->
+
+    </div>
 
     <!--[if lt IE 9]>
     <script src="lib/es5-shim/es5-shim.js"></script>
@@ -38,7 +154,7 @@
     <![endif]-->
 
     <!--[if (gte IE 9) | (!IE)]><!-->
-        <script src='lib/jquery/jquery.min.js' type='text/javascript'/>
+      <script src='lib/jquery/jquery.min.js' type='text/javascript'/>
     <!--<![endif]-->
 
     <script src="lib/es5-shim/es5-shim.js"></script>
@@ -62,34 +178,29 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <!-- MODULES -->
-        <script src="scripts/app.js"></script>
+        <script src="scripts/solicitude/app.js"></script>
         <script src="scripts/filepicker.js"></script>
         <script src="scripts/factories/socketIO.js"></script>
-        <!-- FACTORIES --> 
+        <!-- FACTORIES -->
         <script src="scripts/factories/params.js"></script><!-- DELETE -->
         <script src="scripts/factories/admin.js"></script><!-- DELETE (Dejar como servicios) -->
-        <script src="scripts/factories/solicitude.js"></script><!-- DELETE (Dejar como servicios) -->
         <script src="scripts/factories/notification.js"></script>
         <script src="scripts/factories/localSourceData.js"></script>
-        <!-- CONTROLLERS -->
-        <script src="scripts/controllers/master.js"></script><!-- DELETE -->
-        <script src="scripts/controllers/user.js"></script>
-        <script src="scripts/controllers/category.js"></script>
-        <script src="scripts/controllers/login.js"></script><!-- DELETE (colocar en un solo controller auth) -->
-        <script src="scripts/controllers/change.js"></script><!-- DELETE (colocar en un solo controller auth) -->
-        <script src="scripts/controllers/recovery.js"></script><!-- DELETE (colocar en un solo controller auth) -->
-        <script src="scripts/controllers/solicitude.js"></script><!-- DELETE -->
         <!-- SERVICES -->
         <script src="scripts/services/auth.js"></script>
         <script src="scripts/services/session.js"></script>
         <script src="scripts/services/user.js"></script>
-        <script src="scripts/services/solicitude.js"></script>
+        <script src="scripts/solicitude/services/solicitude.js"></script>
         <script src="scripts/services/category.js"></script>
         <script src="scripts/services/notification.js"></script>
+        <!-- CONTROLLERS -->
+        <script src="scripts/controllers/master.js"></script><!-- DELETE -->
+        <script src="scripts/solicitude/controllers/solicitudes.js"></script>
+        <script src="scripts/solicitude/controllers/solicitude.js"></script>
+        <script src="scripts/solicitude/controllers/save.js"></script>
         <!-- DIRECTIVAS DE GENERALES -->
         <script src="scripts/directives/modal.js"></script>
         <script src="scripts/directives/mongooseError.js"></script>
-        <script src="scripts/directives/remember.js"></script>
         <script src="scripts/directives/resize.js"></script>
         <script src="scripts/directives/admin.js"></script>
         <script src="scripts/directives/uploader_multi.js"></script>
@@ -106,15 +217,7 @@
         <script src="scripts/directives/solicitude/priorities.js"></script>
         <script src="scripts/directives/solicitude/involved.js"></script>
         <script src="scripts/directives/solicitude/categories.js"></script>
-        <!-- DIRECTIVAS DE USUARIO -->
-        <script src="scripts/directives/user/list.js"></script>
-        <script src="scripts/directives/user/detail.js"></script>
-        <script src="scripts/directives/user/sidebar.js"></script>
-        <script src="scripts/directives/user/solicitudes.js"></script>
-        <script src="scripts/directives/user/states.js"></script>
-        <!-- DIRECTIVAS DE CATEGORIA -->
-        <script src="scripts/directives/category/list.js"></script>
-        <script src="scripts/directives/category/detail.js"></script>
+
         <!-- FILTERS -->
         <script src="scripts/filters/master.js"></script>
         <!-- endbuild -->

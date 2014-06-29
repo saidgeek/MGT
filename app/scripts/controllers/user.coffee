@@ -91,12 +91,12 @@ angular.module('movistarApp')
                           El usuario #{ user.profile.firstName } #{ user.profile.lastName } se a agregado correctamente.
                        """
 
-  .controller 'UserSolicitudesCtrl', ($scope, $rootScope, SolicitudeFactory) ->
+  .controller 'UserSolicitudesCtrl', ($scope, $rootScope, Solicitude) ->
     $scope.solicitudes = null
     $scope.role = $rootScope.currentUser.role
 
     $scope.reload = (id, state) =>
-      SolicitudeFactory.index null, state, '', '', '', (err, solicitudes) ->
+      Solicitude.index null, state, '', '', '', (err, solicitudes) ->
         if err
           $scope.errors = err
         else

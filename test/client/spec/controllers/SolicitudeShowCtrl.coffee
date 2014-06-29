@@ -10,7 +10,7 @@ describe 'Controller: SolicitudeShowCtrl', () ->
   $scope = null
   $controller = null
   _form = null
-  SolicitudeFactory = null
+  Solicitude = null
   _id = null
   _solicitude = null
 
@@ -31,7 +31,7 @@ describe 'Controller: SolicitudeShowCtrl', () ->
         solicitude: ['CREATE', 'UPDATE', 'DELETE'],
         administration: ['CREATE', 'UPDATE', 'DELETE']
 
-    SolicitudeFactory = $injector.get 'SolicitudeFactory'
+    Solicitude = $injector.get 'Solicitude'
 
     _form =
       $valid = true
@@ -41,7 +41,7 @@ describe 'Controller: SolicitudeShowCtrl', () ->
         title: 'test'
         description: 'test'
 
-    SolicitudeFactory.create _solicitude, (err, solicitude) ->
+    Solicitude.create _solicitude, (err, solicitude) ->
       if !err
         _solicitude = solicitude
 

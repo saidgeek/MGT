@@ -1,20 +1,89 @@
 "use strict"
 
 angular.module("movistarApp")
-  .factory "Solicitude", (SolicitudeService, $rootScope) ->
+  .factory "Solicitude", ($resource, $rootScope) ->
     _clientToken = $rootScope.currentUser.access.clientToken
     _accessToken = $rootScope.currentUser.access.accessToken
     _states = $rootScope.currentUser.permissions.states
 
-    _index = (id, state, category, priority, involved, cb) ->
-      SolicitudeService.index(
-        clientToken: _clientToken
-        accessToken: _accessToken
-        id: id
-        state: state || _states
-        category: category
-        priority: priority
-        involved: involved
+    resource = $resource "", {},
+      index:
+        method: 'GET'
+        params:
+          clientToken: _clientToken
+          accessToken: _accessToken
+        url: '/api/v1/solicitudes'
+        isArray: true
+
+      groups:
+        method: "GET"
+        params:
+          clientToken: '@clientToken'
+          accessToken: '@accessToken'
+          states: '@states'
+        url: '/api/v1/solicitudes/groups'
+
+      show:
+        method: 'GET'
+        params:
+          clientToken: '@clientToken'
+          accessToken: '@accessToken'
+          id: '@id'
+        url: '/api/v1/solicitude/:id'
+
+      create:
+        method: 'POST'
+        params:
+          clientToken: '@clientToken'
+          accessToken: '@accessToken'
+        data:
+          solicitude: '@solicitude'
+        url: '/api/v1/solicitude'
+
+      update:
+        method: "PUT"
+        params:
+          clientToken: '@clientToken'
+          accessToken: '@accessToken'
+          id: "@id"
+        data:
+          solicitude: '@solicitude'
+        url: '/api/v1/solicitude/:id'
+
+      addComments:
+        method: 'PUT'
+        params:
+          clientToken: '@clientToken'
+          accessToken: '@accessToken'
+          id: "@id"
+        data:
+          comment: '@comment'
+          attachments: '@attachments'
+        url: '/api/v1/solicitude/:id/add/comments'
+
+      addTasks:
+        method: 'PUT'
+        params:
+          clientToken: '@clientToken'
+          accessToken: '@accessToken'
+          id: "@id"
+        data:
+          desc: '@desc'
+          attachments: '@attachments'
+        url: '/api/v1/solicitude/:id/add/tasks'
+
+      toggleCheckTasks:
+        method: 'PUT'
+        params:
+          clientToken: '@clientToken'
+          accessToken: '@accessToken'
+          id: "@id"
+          task: "@task"
+        url: '/api/v1/solicitude/:id/check/:task'
+
+    _index = (cb) ->
+      resource.index(
+        {}
       , (solicitudes) ->
         cb null, solicitudes
       , (err) ->
@@ -44,7 +113,7 @@ angular.module("movistarApp")
       result
 
     _groups = (cb) ->
-      SolicitudeService.groups(
+      resource.groups(
         clientToken: _clientToken
         accessToken: _accessToken
         states: _states
@@ -56,7 +125,7 @@ angular.module("movistarApp")
       ).$premise
 
     _show = (id, cb) ->
-      SolicitudeService.show(
+      resource.show(
         clientToken: _clientToken
         accessToken: _accessToken
         id: id
@@ -67,7 +136,7 @@ angular.module("movistarApp")
       ).$promise
 
     _create = (data, cb) ->
-      SolicitudeService.create(
+      resource.create(
         clientToken: _clientToken
         accessToken: _accessToken
         solicitude: data
@@ -78,7 +147,7 @@ angular.module("movistarApp")
       ).$promise
 
     _update = (id, data, cb) ->
-      SolicitudeService.update(
+      resource.update(
         clientToken: _clientToken
         accessToken: _accessToken
         id: id
@@ -90,7 +159,7 @@ angular.module("movistarApp")
       ).$promise
 
     _addComments = (id, comment, attachments, cb) ->
-      SolicitudeService.addComments(
+      resource.addComments(
         clientToken: _clientToken
         accessToken: _accessToken
         id: id
@@ -103,7 +172,7 @@ angular.module("movistarApp")
       ).$promise
 
     _addTasks = (id, desc, attachments, cb) ->
-      SolicitudeService.addTasks(
+      resource.addTasks(
         clientToken: _clientToken
         accessToken: _accessToken
         id: id
@@ -116,7 +185,7 @@ angular.module("movistarApp")
       ).$promise
 
     _toggleCheckTasks = (id, task, cb) ->
-      SolicitudeService.toggleCheckTasks(
+      resource.toggleCheckTasks(
         clientToken: _clientToken
         accessToken: _accessToken
         id: id
@@ -128,8 +197,8 @@ angular.module("movistarApp")
       ).$promise
 
     return {
-      index: (id, state, category, priority, involved, cb) ->
-        _index(id, state, category, priority, involved, cb)
+      index: (cb) ->
+        _index(cb)
       groups: (cb) ->
         _groups(cb)
       show: (id, cb) ->

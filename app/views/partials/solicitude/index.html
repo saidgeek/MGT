@@ -6,7 +6,7 @@
 			<ul ng-if="solicitudes">
 				<!--/ FOREACH /-->
 				<li class="listar" ng-class="s.sla" ng-repeat="s in solicitudes" data-sgk-role="search" data-sgk-search="{{ s.code }} {{ s.createdBy.profile.firstName }} {{ s.createdBy.profile.lastName }} {{ s.ticket.tags }} {{ s.ticket.title }}"  data-id="{{ s._id }}">
-					<a ui-sref="solicitude.detail({ id: s._id })" data-sgk-active-hover>
+					<a ui-sref="solicitude({ id: s._id })" data-sgk-active-hover>
 						<div class="row">
 							<div class="first">
 								<div class="col-7">
@@ -25,18 +25,18 @@
 												<span></span> {{ s.state[role] | StateSolicitude }}
 											</li>
 											<li class="ico">
-												<span></span> 
+												<span></span>
 												Sol. {{ s.createdAt | DateFormat }}
 											</li>
 											<li class="ico" ng-if="s.startedAt">
-												<span></span> 
+												<span></span>
 												Ini. {{ s.startedAt | DateFormat }}
 											</li>
 											<li class="ico" ng-if="s.priority" ng-class="s.priority | PriorityIcons">
 												<span></span> {{ s.priority | Priority }}
 											</li>
 											<li class="ico" ng-if="s.duration && !s.pausedAt">
-												<span></span> 
+												<span></span>
 												<p data-sgk-duration ng-model="s.endedAt"></p>
 											</li>
 										</ul>

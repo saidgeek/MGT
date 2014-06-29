@@ -1,90 +1,32 @@
 'use strict'
 
-angular.module('movistarApp', [
+angular.module('auth_app', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
   'ui.router',
-  'filepicker',
-  'confirmClick',
-  'btford.socket-io'
 ])
   .config ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) ->
     $httpProvider.interceptors.push 'noCacheInterceptor'
 
-    $urlRouterProvider.otherwise '/'
+    $urlRouterProvider.otherwise '/auth/login'
 
     $stateProvider
       # ACCESS ROUTERS
       .state 'login',
-        url: '/login'
+        url: '/auth/login'
         controller: 'LoginCtrl'
         templateUrl: 'partials/login'
         authenticate: false
       .state 'recovery',
-        url: '/recovery'
+        url: '/auth/recovery'
         controller: 'RecoveryCtrl'
         templateUrl: 'partials/recovery'
         authenticate: false
       .state 'change',
-        url: '/change/password'
+        url: '/auth/change/password'
         controller: 'ChangeCtrl'
         templateUrl: 'partials/change'
-        authenticate: true
-
-      # ADMIN ROUTERS
-      .state 'admin',
-        templateUrl: 'partials/layout'
-        authenticate: true
-      # ADIMIN.USERS ROUTE
-      .state 'admin.users',
-        url: '/admin/users'
-        views:
-          'sidebox': 
-            templateUrl: 'partials/user/sidebox'
-          'sidebar':
-            templateUrl: 'partials/user/sidebar'
-          'left':
-            templateUrl: 'partials/user/left'
-          'right':
-            templateUrl: 'partials/user/right'
-        authenticate: true
-      # ADIMIN.CATEGORY ROUTE
-      .state 'admin.categories',
-        url: '/admin/categories',
-        views:
-          'sidebox': 
-            templateUrl: 'partials/category/sidebox'
-          'left':
-            templateUrl: 'partials/category/left'
-          'right':
-            templateUrl: 'partials/category/right'
-        authenticate: true
-      # SOLICITUDE ROUTERS
-      .state 'solicitude',
-        templateUrl: 'partials/layout'
-        authenticate: true
-      .state 'solicitude.index',
-        url: '/'
-        views:
-          'sidebox': 
-            templateUrl: 'partials/solicitude/sidebox'
-          'sidebar':
-            templateUrl: 'partials/solicitude/sidebar'
-          'content':
-            templateUrl: 'partials/solicitude/index'
-            controller: 'SolicitudesCtrl'
-        authenticate: true
-      .state 'solicitude.detail',
-        url: '/solicitud/:id'
-        views:
-          'sidebox': 
-            templateUrl: 'partials/solicitude/sidebox'
-          'sidebar':
-            templateUrl: 'partials/solicitude/sidebar'
-          'content': 
-            templateUrl: 'partials/solicitude/Detail'
-            controller: 'SolicitudeDetailCtrl'
         authenticate: true
 
     $locationProvider.html5Mode true

@@ -5,7 +5,7 @@ angular.module('movistarApp')
     restrict: 'A'
     scope: {}
     templateUrl: 'partials/solicitude/filters/states'
-    controller: ($scope, $rootScope, SolicitudeFactory) ->
+    controller: ($scope, $rootScope, Solicitude) ->
       $scope.states = $rootScope.currentUser.permissions.states
       $scope.groups = null
 
@@ -19,7 +19,7 @@ angular.module('movistarApp')
               state: value
 
       $scope.reload = () =>
-        SolicitudeFactory.groups (err, groups) ->
+        Solicitude.groups (err, groups) ->
           if !err
             $scope.groups = groups.states
 

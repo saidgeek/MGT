@@ -15,76 +15,28 @@ angular.module('movistarApp', [
     $urlRouterProvider.otherwise '/'
 
     $stateProvider
-      # ACCESS ROUTERS
-      .state 'login',
-        url: '/login'
-        controller: 'LoginCtrl'
-        templateUrl: 'partials/login'
-        authenticate: false
-      .state 'recovery',
-        url: '/recovery'
-        controller: 'RecoveryCtrl'
-        templateUrl: 'partials/recovery'
-        authenticate: false
-      .state 'change',
-        url: '/change/password'
-        controller: 'ChangeCtrl'
-        templateUrl: 'partials/change'
-        authenticate: true
-
-      # ADMIN ROUTERS
-      .state 'admin',
-        templateUrl: 'partials/layout'
-        authenticate: true
-      # ADIMIN.USERS ROUTE
-      .state 'admin.users',
-        url: '/admin/users'
-        views:
-          'sidebox': 
-            templateUrl: 'partials/user/sidebox'
-          'sidebar':
-            templateUrl: 'partials/user/sidebar'
-          'left':
-            templateUrl: 'partials/user/left'
-          'right':
-            templateUrl: 'partials/user/right'
-        authenticate: true
-      # ADIMIN.CATEGORY ROUTE
-      .state 'admin.categories',
-        url: '/admin/categories',
-        views:
-          'sidebox': 
-            templateUrl: 'partials/category/sidebox'
-          'left':
-            templateUrl: 'partials/category/left'
-          'right':
-            templateUrl: 'partials/category/right'
-        authenticate: true
       # SOLICITUDE ROUTERS
-      .state 'solicitude',
-        templateUrl: 'partials/layout'
-        authenticate: true
-      .state 'solicitude.index',
+      .state 'solicitudes',
         url: '/'
         views:
-          'sidebox': 
+          'sidebox':
             templateUrl: 'partials/solicitude/sidebox'
           'sidebar':
             templateUrl: 'partials/solicitude/sidebar'
-          'content':
+          '':
             templateUrl: 'partials/solicitude/index'
             controller: 'SolicitudesCtrl'
         authenticate: true
-      .state 'solicitude.detail',
+      .state 'solicitude',
         url: '/solicitud/:id'
         views:
-          'sidebox': 
+          'sidebox':
             templateUrl: 'partials/solicitude/sidebox'
           'sidebar':
             templateUrl: 'partials/solicitude/sidebar'
-          'content': 
+          '':
             templateUrl: 'partials/solicitude/Detail'
-            controller: 'SolicitudeDetailCtrl'
+            controller: 'SolicitudeCtrl'
         authenticate: true
 
     $locationProvider.html5Mode true
@@ -116,7 +68,7 @@ angular.module('movistarApp', [
       $rootScope.filters = null
       # console.log 'stateChangeStart'
       # loading = angular.element('<div id="loading"><img src="images/loader.gif"/></div>')
-      #   .css 
+      #   .css
       #     width: '100%'
       #     height: '100%'
       #     position: 'absolute'
@@ -133,5 +85,3 @@ angular.module('movistarApp', [
     #   $timeout () =>
     #     angular.element('body').find('#loading').remove()
     #   , 1500
-      
-
