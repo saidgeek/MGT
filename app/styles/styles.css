@@ -3175,6 +3175,7 @@ div.message-error {
     width: 120px;
     display: inline-block;
     overflow: hidden;
+    white-space: nowrap;
 }
 .content .overflow .row .first ul.files li a div span.download{
   float: left;
