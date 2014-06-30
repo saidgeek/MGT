@@ -1,4 +1,4 @@
-<div  class="overflow admin">
+<!-- <div  class="overflow admin">
   <div class="margin" ng-repeat="solicitude in solicitudes">
     <div class="note round">
       <div class="t-c round" ng-class="solicitude.sla">
@@ -16,7 +16,7 @@
           </li>
         </ul>
 
-        <h4>{{ solicitude.ticket.title }}</h4>
+        <h4></h4>
         <ul class="full">
           <li class="light">
             Sol. <span>{{ solicitude.createdAt | DateFormat }}</span>
@@ -30,10 +30,48 @@
       <div class="t-c stats">
         <ul>
           <li class="light first">
-            <span class="round">Code: {{ solicitude.code }}</span>
+            <span class="round">Code: </span>
           </li>
         </ul>
       </div>
     </div>
   </div>
-</div>
+</div> -->
+
+
+
+<li class="listar" ng-class="solicitude.sla" ng-repeat="solicitude in solicitudes">
+  <a href="javascript:{};">
+    <div class="row">
+      <div class="first">
+        <div class="col-7">
+          <div class="code">
+            <span>Code: {{ solicitude.code }}</span> {{ solicitude.ticket.title }}
+          </div>
+          <ul class="estados">
+            <li class="ico" ng-class="solicitude.state[role] | StateIcons">
+              <span></span> {{ solicitude.state[role] | StateSolicitude }}
+            </li>
+            <li class="ico">
+              <span></span>
+              Sol. {{ solicitude.createdAt | DateFormat }}
+            </li>
+            <li class="ico" ng-if="solicitude.startedAt">
+              <span></span>
+              Ini. {{ solicitude.startedAt | DateFormat }}
+            </li>
+            <li class="ico" ng-if="solicitude.priority" ng-class="solicitude.priority | PriorityIcons">
+              <span></span> {{ solicitude.priority | Priority }}
+            </li>
+            <li class="ico" ng-if="solicitude.duration && !solicitude.pausedAt">
+              <span></span>
+              <p data-sgk-duration ng-model="solicitude.endedAt"></p>
+            </li>
+          </ul>
+        </div>
+        <div class="col-5">
+        </div>
+      </div>
+    </div>
+  </a>
+</li>

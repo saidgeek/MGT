@@ -9,16 +9,15 @@ angular.module('movistarApp')
     link: ($scope, $element, $attrs) =>
       $scope.id = $attrs.sgkUserSolicitudes || null
 
-      $scope.$watch 'solicitudes', (value) ->
-        $rootScope.resize = true
-        $timeout () =>
-          $timeout () =>
-            if $element.find('.overflow .mCustomScrollBox').length is 0
-              $element.find('.overflow').mCustomScrollbar
-                scrollButtons:
-                    enable:false
-            $element.find('.overflow').mCustomScrollbar "update"
-            $element.find('.overflow').mCustomScrollbar "scrollTo", ".note.round.active"
+      # $scope.$watch 'solicitudes', (value) ->
+      #   $timeout () =>
+      #     $timeout () =>
+      #       if $element.find('.overflow .mCustomScrollBox').length is 0
+      #         $element.find('.overflow').mCustomScrollbar
+      #           scrollButtons:
+      #               enable:false
+      #       $element.find('.overflow').mCustomScrollbar "update"
+      #       $element.find('.overflow').mCustomScrollbar "scrollTo", ".note.round.active"
 
-          , 0
-        , 0
+      #     , 0
+      #   , 0

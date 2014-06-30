@@ -95,19 +95,16 @@ angular.module('movistarApp')
     $scope.solicitudes = null
     $scope.role = $rootScope.currentUser.role
 
-    $scope.reload = (id, state) =>
-      Solicitude.index null, state, '', '', '', (err, solicitudes) ->
-        if err
-          $scope.errors = err
-        else
-          if solicitudes.length > 0
-            $scope.solicitudes = solicitudes
-          else
-            $scope.solicitudes = null
+    Solicitude.index null, null, (err, solicitudes) ->
+      if !err
+        $scope.solicitudes = solicitudes
 
     $rootScope.$watch 'filters.user.solicitude.state', (state) =>
-      console.log 'state:', state
-      $scope.reload($scope.id, state)
-
-    $scope.$watch 'id', (_id) =>
-      $scope.reload($scope.id, state)
+      _target = null
+      _filter = null
+      if state?
+        _target = 'state'
+        _filter = state.toLowerCase()
+      Solicitude.index _target, _filter, (err, solicitudes) ->
+        if !err
+          $scope.solicitudes = solicitudes
