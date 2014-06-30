@@ -108,6 +108,17 @@
 							<p>{{ c.content }}</p>
 						</div>
 					</div>
+					<div class="comments">
+						<div class="col-4">
+						</div>
+						<div class="col-8">	
+							<ul>
+                <li ng-repeat="att in c.attachments">
+                  <a href="{{ att.link }}" download>{{ att.name }}</a>
+                </li>
+              </ul>
+						</div>
+					</div>
 				</div>
 			</div>
 
@@ -121,7 +132,7 @@
 	                	<input class="submit boton1 round" type="submit" value="Enviar">
 	                </fieldset>
 	                <fieldset>
-	                  <div data-sgk-uploader-multi="{{ solicitude._id }}" data-sgk-type="comments" sgk-position="buttom" ng-model="atts"></div>
+	                  <div data-sgk-uploader-multi="{{ solicitude._id }}" data-sgk-type="comments" sgk-position="buttom" ng-model="solicitude.attachments"></div>
 	                </fieldset>
 	            </form>
 						</div>
