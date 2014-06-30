@@ -344,6 +344,7 @@ h4{ font-size:  1.154em;}
 #submenu #notificacion .wrap{
     border-bottom: 1px solid #e1e7ed;
     background: #f2f6fa;
+    cursor: pointer;
 }
 #submenu #notificacion .wrap.old{
     background: none;

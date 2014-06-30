@@ -22,16 +22,18 @@ angular.module('movistarApp')
     $scope.isActive = (path) ->
       path is $location.$$path
 
-  .controller 'NotificationsCtrl', ($rootScope, $scope, Notification, IO) ->
+  .controller 'NotificationsCtrl', ($rootScope, $scope, Notification, IO, $state) ->
     $scope.notification = null
 
-    IO.emit 'register.notifications', id: $rootScope.currentUser.id
     IO.on 'reload.notifications', () => _load()
 
     _load = () ->
       Notification.index (err, notifications) ->
         if !err
           $scope.notifications = notifications
+
+    $scope.open = (id) ->
+      $state.go 'solicitude', { id: id }
 
     _load()
 

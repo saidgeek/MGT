@@ -49,14 +49,14 @@
                           <a href="javascript:{}" class="sub-not" data-sgk-submenu-notifications ><img src="images/bell.png"/>
                               <div class="cant" ng-show="notifications">{{ notifications.length || 0}}</div>
                           </a>
-                          <div id="submenu" class="notifications">
+                          <div id="submenu" class="notifications" data-sgk-scroll>
                               <div id="notificacion" class="wrap round hide">
                                   <div class="tit-not">
                                       <span class="arrow"></span>
                                       <h3>Notificaciones</h3>
                                       <a href="javascript:{}">Marcar como leidas</a>
                                   </div>
-                                  <div class="wrap" ng-repeat="notify in notifications">
+                                  <div class="wrap" ng-repeat="notify in notifications" ng-click="open(notify._classId)">
                                       <div class="t-c avatar">
                                           <img ng-src="{{ notify.from.profile.avatar || 'images/avatar-user.png' }}"/>
                                           <div class="avnotif"></div>
