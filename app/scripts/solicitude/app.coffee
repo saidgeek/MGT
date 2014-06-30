@@ -34,7 +34,7 @@ angular.module('movistarApp', [
         authenticate: true
       .state 'solicitude',
         url: '/solicitud/:id'
-        templateUrl: 'partials/solicitude/Detail'
+        templateUrl: 'partials/solicitude/detail'
         resolve:
           _solicitude: (Solicitude, $stateParams) =>
             Solicitude.show $stateParams.id, (err, solicitude) ->

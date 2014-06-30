@@ -353,6 +353,11 @@ module.exports = function (grunt) {
           src: ['*']
         }, {
           expand: true,
+          cwd: '.tmp/scripts',
+          dest: '<%= yeoman.dist %>/public/scripts',
+          src: ['**/**/*']
+        }, {
+          expand: true,
           dest: '<%= yeoman.dist %>',
           src: [
             'package.json',
@@ -602,7 +607,7 @@ module.exports = function (grunt) {
       // 'cssmin',
       'uglify',
       // 'rev',
-      'usemin'
+      // 'usemin'
     ]);
   });
 
