@@ -16,7 +16,9 @@
               <h3>{{ user.profile.firstName }} {{ user.profile.lastName }}</h3>
               <span>{{ user.role | RoleName }}</span>
             </li>
-            <li><a href="javascript:{}" ng-click="reportCSV(user._id)" class="ico sta"></a></li>
+            <li><a href="javascript:{}" ng-click="reportCSV(user._id)" class="icon sta">
+              <span></span> link
+            </a></li>
           </ul>
         </div><!-- table-user -->
 
