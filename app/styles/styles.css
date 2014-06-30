@@ -3248,7 +3248,20 @@ div.message-error {
   border: none;
 }
 
+#loading {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background:#2f364a;
+    z-index:1000;
+}
 
-
-
-
+#loading img{
+    position: absolute;
+    left: 50%;
+    top:50%;
+    margin-left: -107px;
+    margin-top: -24px;
+}
