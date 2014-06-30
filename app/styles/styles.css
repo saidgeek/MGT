@@ -345,14 +345,21 @@ h4{ font-size:  1.154em;}
     border-bottom: 1px solid #e1e7ed;
     background: #f2f6fa;
     cursor: pointer;
+    display: table;
+    width: 100%;
+}
+#submenu #notificacion .notscroll{
+    max-height: 230px;
+    overflow: auto;
 }
 #submenu #notificacion .wrap.old{
     background: none;
 }
 #submenu #notificacion .wrap .t-c{
     padding: 10px;
-    width: 220px;
-    float: left;
+    display: table-cell;
+    /*width: 220px;
+    float: left;*/
     position: relative;
 }
 #submenu #notificacion .wrap .t-c.avatar{
@@ -634,10 +641,22 @@ h4{ font-size:  1.154em;}
     /*white-space: nowrap;*/
     /*width: 33.3%;*/
 }
+.note ul.lista-opt li a{
+    height: 16px;
+    width: 16px;
+    overflow: hidden;
+    display: block;
+    background: url('../images/sprite_main.png') no-repeat -144px -16px;
+    text-indent: -999px;
+}
 .note ul li.last{
     border: none;
     padding-right: 0;
     margin-right: 0;
+}
+
+.note .table-user ul{
+    width: 100%;
 }
 
 /*.ico{
@@ -1803,7 +1822,9 @@ ul.menu-usuarios li a:hover{
 .note.active .note-left ul.lista-opt li{
     color: #fff;
 }
-
+.note .note-left ul.lista-opt li:last-child{
+    width: 16px !important;
+}
 .top-admin .note{
     cursor: pointer;
 }
@@ -2831,62 +2852,62 @@ div.message-error {
   bottom: 0;
   top: 0;
 }
-.content .overflow .lista{
+.overflow .lista{
   margin: 8px 18px 8px 8px;
 }
-.content .overflow .lista ul{
+.overflow .lista ul{
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.content .overflow .lista ul li.listar{
+.overflow .lista ul li.listar{
   margin-bottom: 8px;
   -webkit-box-shadow: 0 0 3px 0 rgba(0,0,0,0.1);
   box-shadow: 0 0 3px 0 rgba(0,0,0,0.1);
 }
-.content .overflow .lista ul li.listar.GREEN{
+.overflow .lista ul li.listar.GREEN{
   border-left: 3px solid #01cc82;
 }
-.content .overflow .lista ul li.listar.YELLOW{
+.overflow .lista ul li.listar.YELLOW{
   border-left: 3px solid #fedb18;
 }
-.content .overflow .lista ul li.listar.RED{
+.overflow .lista ul li.listar.RED{
   border-left: 3px solid #ff6b6b;
 }
-.content .overflow .lista ul li.listar:last-child{
+.overflow .lista ul li.listar:last-child{
   margin: 0;
 }
-.content .overflow .lista ul li.listar a, .content .overflow .lista ul li.listar a .row{
+.overflow .lista ul li.listar a, .overflow .lista ul li.listar a .row{
   display: table;
   width: 100%;
 }
-.content .overflow .lista ul li.listar a:active{
+.overflow .lista ul li.listar a:active{
   color: #9da9b9;
 }
-.content .overflow .lista ul li.listar a .row .first{
+.overflow .lista ul li.listar a .row .first{
   padding: 6px;
   background: #fff;
   border-bottom: 1px solid #d5e1ee;
 }
-.content .overflow .lista ul li.listar a .row .second{
+.overflow .lista ul li.listar a .row .second{
   padding: 6px;
   background: #fff;
   display: table-row;
 }
-.content .overflow .lista ul li.listar.active a .row .second{
+.overflow .lista ul li.listar.active a .row .second{
   background: none;
 }
-.content .overflow .lista ul li.listar.active a{
+.overflow .lista ul li.listar.active a{
   color: #9da9b9;
 }
-.content .overflow .lista ul li.listar.active a .row .first{
+.overflow .lista ul li.listar.active a .row .first{
   background: #2f364a;
   border-color:#3d455b;
 }
-.content .overflow .lista ul li.listar a .row .first:after,
-.content .overflow .lista ul li.listar a .row .first:before,
-.content .overflow .lista ul li.listar a .row .second:after,
-.content .overflow .lista ul li.listar a .row .second:before,
+.overflow .lista ul li.listar a .row .first:after,
+.overflow .lista ul li.listar a .row .first:before,
+.overflow .lista ul li.listar a .row .second:after,
+.overflow .lista ul li.listar a .row .second:before,
 .content .overflow .col-7 ul.info-detalle:after,
 .content .overflow .col-7 ul.info-detalle:before{
   display: table;
@@ -2940,14 +2961,16 @@ div.message-error {
 .active .col-7 .code span{
   background: #444c63;
 }
-.content .overflow .lista .col-7 ul.estados,
-.content .overflow .lista .col-5 ul.detalles,
+.overflow .lista .col-7 ul.estados,
+.overflow .lista .col-5 ul.detalles,
 .content .overflow .col-7 ul.info-detalle{
   margin: 3px 0;
   width: 100%;
 }
-.content .overflow .lista .col-5 ul.detalles,
-.content .overflow .col-5 ul.acciones{
+.overflow .lista .col-5 ul.detalles,
+.content .overflow .col-5 ul.acciones,
+.col-5 ul.detalles,
+.col-5 ul.acciones{
   float: right;
   width: auto;
 }
@@ -3028,11 +3051,11 @@ div.message-error {
 .lista .active li.icon.ter span{
   background-position: 0 100%;
 }
-.content .overflow .lista ul li.listar a .row .txtdetalle{
+.overflow .lista ul li.listar a .row .txtdetalle{
   padding: 12px;
   background:#f5f7fa; 
 }
-.content .overflow .lista ul li.listar.active a .row .txtdetalle{
+.overflow .lista ul li.listar.active a .row .txtdetalle{
   background:#444c63; 
 }
 .detalle.bkg{
@@ -3147,6 +3170,11 @@ div.message-error {
   float: left;
   line-height: 3.6em;
   background: url('../images/bkg-file.png') no-repeat 0 0;
+}
+.content .overflow .row .first ul.files li a div span.file span{
+    width: 120px;
+    display: inline-block;
+    overflow: hidden;
 }
 .content .overflow .row .first ul.files li a div span.download{
   float: left;
