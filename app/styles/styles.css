@@ -345,14 +345,21 @@ h4{ font-size:  1.154em;}
     border-bottom: 1px solid #e1e7ed;
     background: #f2f6fa;
     cursor: pointer;
+    display: table;
+    width: 100%;
+}
+#submenu #notificacion .notscroll{
+    max-height: 230px;
+    overflow: auto;
 }
 #submenu #notificacion .wrap.old{
     background: none;
 }
 #submenu #notificacion .wrap .t-c{
     padding: 10px;
-    width: 220px;
-    float: left;
+    display: table-cell;
+    /*width: 220px;
+    float: left;*/
     position: relative;
 }
 #submenu #notificacion .wrap .t-c.avatar{
@@ -3147,6 +3154,11 @@ div.message-error {
   float: left;
   line-height: 3.6em;
   background: url('../images/bkg-file.png') no-repeat 0 0;
+}
+.content .overflow .row .first ul.files li a div span.file span{
+    width: 120px;
+    display: inline-block;
+    overflow: hidden;
 }
 .content .overflow .row .first ul.files li a div span.download{
   float: left;
