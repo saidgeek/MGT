@@ -26,17 +26,18 @@ angular.module('filepicker', ['ngResource'])
 
   .factory 'filepickerApi', ($timeout, $rootScope) ->
 
-    _store = (input, cb) ->
+    _store = (input, opts, cb) ->
       if input
         filepicker.store input, (InkBlob) ->
             cb null, InkBlob
         , (FPError) ->
             cb FPError
         , (proccess) =>
-          angular.element('[data-type="modal"] #loader').html "#{proccess}%"
+          query = "[data-type='modal'] span#porcent_#{ opts.id }"
+          angular.element(query).html "#{proccess}%"
 
     _storeConvert = (input, opts, cb) ->
-      _store input, (err, resStore) ->
+      _store input, opts, (err, resStore) ->
         _convert resStore, opts, (err, resConvert) ->
           _remove resStore, () ->
             cb null, resConvert
@@ -80,7 +81,7 @@ angular.module('filepicker', ['ngResource'])
                   cb thumbs
 
     _storeAndThumbnail = (opts, cb) ->
-      _store opts.data, (err, inkBlob) ->
+      _store opts.data, opts, (err, inkBlob) ->
         return false if err
         _filenameArray = inkBlob.filename.split('.')
         _upload =

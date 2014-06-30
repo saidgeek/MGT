@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'SolicitudeSaveCtrl', ($scope, $rootScope, Solicitude, SolicitudeParams) ->
+  .controller 'SolicitudeSaveCtrl', ($scope, $rootScope, Solicitude, SolicitudeParams, $state) ->
     $scope.title = 'Crear nueva Solicitud'
     $scope.solicitude = {}
     $scope.errors = {}
@@ -17,7 +17,6 @@ angular.module('movistarApp')
                           Ha ocurrido un error al crear la solicitud.
                        """
           else
-            $rootScope.$emit 'reloadSolicitude', solicitude
             $scope.$emit 'close', true
             $scope.solicitude = {}
             $rootScope.$emit 'reloadStateFilter'
@@ -28,3 +27,4 @@ angular.module('movistarApp')
               content: """
                           La solicitude #{ solicitude.code } se creo correctamente.
                        """
+            $state.transitionTo 'solicitudes'
