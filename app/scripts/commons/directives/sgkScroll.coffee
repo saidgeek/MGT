@@ -10,6 +10,8 @@ angular.module('movistarApp')
         if element.find('.mCustomScrollBox').length is 0
           element.mCustomScrollbar
             scrollInertia: 2000
+            advanced:
+              autoScrollOnFocus: false
             scrollButtons:
               enable: false
 

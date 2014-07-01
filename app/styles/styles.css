@@ -2075,7 +2075,17 @@ ul.menu-usuarios li a:hover{
 /* para el check */
 #nueva-solicitud form ul li.lab{
     width: 24%;
+    margin: 3px;
 }
+
+#nueva-solicitud form ul li.lab.active{
+    background: #2f364a;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+
 #nueva-solicitud form ul li.che{
     width: 5%;
 }
