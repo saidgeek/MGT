@@ -32,8 +32,16 @@ angular.module('movistarApp')
         if !err
           $scope.notifications = notifications
 
-    $scope.open = (id) ->
-      $state.go 'solicitude', { id: id }
+    $scope.read_all = () ->
+      Notification.read_all (err) ->
+        if !err
+          _load()
+
+    $scope.open = (id, item_id) ->
+      Notification.read id, (err) ->
+        if !err
+          _load()
+          $state.go 'solicitude', { id: item_id }
 
     _load()
 

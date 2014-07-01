@@ -54,10 +54,10 @@
                                   <div class="tit-not">
                                       <span class="arrow"></span>
                                       <h3>Notificaciones</h3>
-                                      <a href="javascript:{}">Marcar como leidas</a>
+                                      <a href="javascript:{}" ng-click="read_all()">Marcar como leidas</a>
                                   </div>
                                   <div class="notscroll">
-                                    <div class="wrap" ng-repeat="notify in notifications" ng-click="open(notify._classId)">
+                                    <div class="wrap" ng-repeat="notify in notifications" ng-click="open(notify._id, notify._classId)">
                                         <div class="t-c avatar">
                                             <img ng-src="{{ notify.from.profile.avatar || 'images/avatar-user.png' }}"/>
                                         </div>
