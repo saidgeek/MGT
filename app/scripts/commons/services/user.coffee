@@ -131,5 +131,6 @@ angular.module("movistarApp")
         _update(id, data, cb)
       show: (id, cb) ->
         _show(id, cb)
+      resource: resource
     }
 

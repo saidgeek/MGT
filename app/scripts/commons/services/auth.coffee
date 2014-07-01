@@ -45,7 +45,7 @@ angular.module('movistarApp')
 
     recovery: (user, callback) ->
       cb = callback or angular.noop
-      User.recovery(
+      User.resource.recovery(
         email: user.email
       , (user) ->
         cb(user)
@@ -62,12 +62,8 @@ angular.module('movistarApp')
     @return {Promise}
     ###
     changePassword: (user, callback) ->
-      _clientToken = $rootScope.currentUser.access.clientToken
-      _accessToken = $rootScope.currentUser.access.accessToken
       cb = callback or angular.noop
-      User.change(
-        clientToken: _clientToken
-        accessToken: _accessToken
+      User.resource.change(
         oldPassword: user.oldPassword
         newPassword: user.newPassword
         confirmPassword: user.confirmPassword
