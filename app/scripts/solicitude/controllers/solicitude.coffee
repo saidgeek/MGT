@@ -73,14 +73,19 @@ angular.module('movistarApp')
 
     $scope.addComment = (form) ->
       if form.$valid
-        console.log 'atts:', $scope.solicitude.attachments
-        Solicitude.addComments $scope.solicitude._id, $scope.solicitude.comment, $scope.solicitude.attachments, (err, solicitude) ->
+        console.log 'atts:', $scope.solicitude._attachments
+        Solicitude.addComments $scope.solicitude._id, $scope.solicitude.comment, ($scope.solicitude._attachments || {} ), (err, solicitude) ->
           if err
             $scope.errors = err
           else
             $scope.atts = []
             # $rootScope.$emit 'loadSolicitudeShow', $scope.solicitude._id
             $scope.solicitude.comments = solicitude.comments
+            if $scope.solicitude._attachments?
+              for att in $scope.solicitude._attachments 
+                $scope.solicitude.attachments.push att
+            $scope.solicitude._attachments = {}
+            $rootScope.$emit 'clean_list_uploader'
             $scope.solicitude.comment = ''
 
     $scope.addTask = (form) ->

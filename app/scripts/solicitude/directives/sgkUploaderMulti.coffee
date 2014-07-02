@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('movistarApp')
-  .directive 'sgkUploaderMulti', (filepickerApi, $timeout) ->
+  .directive 'sgkUploaderMulti', (filepickerApi, $timeout, $rootScope) ->
     restrict: 'A'
     scope: {}
     require: 'ngModel'
@@ -21,6 +21,9 @@ angular.module('movistarApp')
           name = "#{ name.substr(0,10) }...#{ name.substr((name.length - 10), name.length) }"
         $scope.$apply () -> 
           $scope.list.push { id: id, name: name }
+
+      $rootScope.$on 'clean_list_uploader', (e) ->
+        $scope.list = {}        
 
       $scope.upload = (id, file) =>
         options =
