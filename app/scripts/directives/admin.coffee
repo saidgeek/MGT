@@ -6,7 +6,7 @@ angular.module('movistarApp')
     require: 'ngModel'
     link: (scope, element, attrs, ngModel) ->
       $interval () =>
-        element.html moment(ngModel.$viewValue).fromNow()
+        element.html moment(ngModel.$viewValue).fromNow(true)
       , 500
 
   .directive 'sgkMedidaDetail', ($window, $rootScope, $timeout) ->

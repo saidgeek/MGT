@@ -155,7 +155,7 @@ angular.module("movistarApp")
         desc: desc
         attachments: attachments
       , (solicitude) ->
-        cb()
+        cb null, solicitude
       , (err) ->
         cb err.data
       ).$promise
@@ -166,7 +166,7 @@ angular.module("movistarApp")
         id: id
         task: task
       , (solicitude) ->
-        cb()
+        cb null, solicitude
       , (err) ->
         cb err.data
       ).$promise

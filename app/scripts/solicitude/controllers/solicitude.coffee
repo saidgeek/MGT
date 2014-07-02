@@ -85,19 +85,20 @@ angular.module('movistarApp')
 
     $scope.addTask = (form) ->
       if form.$valid
-        Solicitude.addTasks $scope.solicitude._id, $scope.solicitude.desc, $scope.atts, (err) ->
+        Solicitude.addTasks $scope.solicitude._id, $scope.solicitude._tasks, $scope.solicitude.attachments, (err, solicitude) ->
           if err
             $scope.errors = err
           else
             $scope.atts = []
-            $rootScope.$emit 'loadSolicitudeShow', $scope.solicitude._id
+            $scope.solicitude.tasks = solicitude.tasks
+            $scope.solicitude._tasks = ''
 
     $scope.toggleCheck = (task) =>
-      Solicitude.toggleCheckTasks $scope.solicitude._id, task, (err) ->
+      Solicitude.toggleCheckTasks $scope.solicitude._id, task, (err, solicitude) ->
         if err
           $scope.errors = err
         else
-          $rootScope.$emit 'loadSolicitudeShow', $scope.solicitude._id
+          $scope.solicitude.tasks = solicitude.tasks
 
     $scope.nextState = (state) =>
       $scope.solicitude.nextState = state

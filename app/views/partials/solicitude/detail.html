@@ -123,7 +123,7 @@
 			</div>
 
 			<div class="row">
-				<div class="first last">
+				<div class="first">
 					<div class="comments">
 						<div class="col-8">	
 	            <form name="form" ng-submit="addComment(form)">
@@ -135,6 +135,55 @@
 	                  <div data-sgk-uploader-multi="{{ solicitude._id }}" data-sgk-type="comments" sgk-position="buttom" ng-model="solicitude.attachments"></div>
 	                </fieldset>
 	            </form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="first last">
+					
+					<p class="nivel" ng-show="solicitude.tasks">Nivel de avance 50%</p>
+			    <div class="subtarea" ng-repeat="t in solicitude.tasks"><!-- contenedor para subtarea -->
+			        <div class="dato">
+			            <div class="table">
+			                <div class="t-c che">
+			                  <span class="opt-check left" ng-class="{active: t.check}" data-sgk-check ng-click="toggleCheck(t._id)"></span>
+			                  <input class="hide" type="checkbox" id="check_todos">
+			                </div>
+			                <div class="t-c">
+			                    <p class="bold">
+			                        {{ t.description }}
+			                    </p>
+			                </div>
+			            </div>
+			            <a href="javascript:{}">Activar solicitud</a>
+			            <p>
+			              <ul>
+			                <li ng-repeat="att in t.attachments">
+			                    <a href="{{ att.link }}" download style="display: block;">{{ att.name }}</a>
+			                </li>
+			              </ul>
+			            </p>
+			        </div>
+			    </div>
+
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="first">
+					<div class="comments">
+						<div class="col-8">	
+	            <form name="form" ng-submit="addTask(form)">
+			            <textarea class="round" name="desc" rows="9" ng-model="solicitude._tasks"></textarea>
+			            <fieldset>
+			                <input class="submit boton1 round" type="submit" value="Agregar">
+			            </fieldset>
+			            <fieldset>
+			              <div data-sgk-uploader-multi="{{ solicitude._id }}" data-sgk-type="tasks" sgk-position="buttom" ng-model="solicitude.attachments"></div>
+			            </fieldset>
+			        </form>
 						</div>
 					</div>
 				</div>

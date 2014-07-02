@@ -1236,24 +1236,24 @@ ul.otros-datos li.last{
     color: #2f364a;
     margin: 8px 0;
 }
-.half-a .subtarea .dato{
-    border-bottom: 1px solid #e6ecf3;
+.row .subtarea .dato{
+    /*border-bottom: 1px solid #e6ecf3;*/
     position: relative;
 }
-.half-a .subtarea .dato .che span.opt-check {
+.row .subtarea .dato .che span.opt-check {
     width: 16px;
     height: 16px;
     display: inline-block;
     background: url(../images/bkg-opt-check.png) no-repeat 0 0;
     cursor: pointer;
 }
-.half-a .subtarea .dato .che span.opt-check.active{
+.row .subtarea .dato .che span.opt-check.active{
     background: url(../images/bkg-opt-check-checked.png) no-repeat 0 0;
 }
-.half-a .subtarea .dato .che .hide {
+.row .subtarea .dato .che .hide {
     display: none;
 }
-.half-a .subtarea a{
+.row .subtarea a{
     display: none;
     position: absolute;
     bottom: 15px;
@@ -1262,25 +1262,25 @@ ul.otros-datos li.last{
     font-family: 'proxima_novalight';
 }
 
-.half-a .subtarea .dato.active a{
+.row .subtarea .dato.active a{
     display: inline-block;
 }
 
-.half-a .subtarea .dato.done{
+.row .subtarea .dato.done{
     color: #b9c4d3;
 }
-.half-a .subtarea .dato.done a{
+.row .subtarea .dato.done a{
     display: block;
 }
-.half-a .subtarea .dato.done .che span.opt-check{
+.row .subtarea .dato.done .che span.opt-check{
     background: url(../images/bkg-opt-check-checked.png) no-repeat 0 0;
     cursor: default;
 }
 
-.half-a .subtarea .t-c p{
+.row .subtarea .t-c p{
     margin: 0;
 }
-.half-a .subtarea .t-c{
+.row .subtarea .t-c{
     padding:13px 5px;
 }
 
