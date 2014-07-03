@@ -79,7 +79,7 @@
 					<ul class="files">
 						<li ng-repeat="d in solicitude.attachments">
 							<a href="{{ d.url }}"  download>
-								enviado por
+								enviado por {{ d.createdBy.profile.firstName }} {{ d.createdBy.profile.lastName }}
 								<div>
 									<span class="file"><span>{{ d.name }}</span></span>
 									<span class="download"></span>

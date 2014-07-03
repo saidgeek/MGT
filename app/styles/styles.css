@@ -3331,3 +3331,19 @@ div.message-error {
     margin-left: -107px;
     margin-top: -24px;
 }
+
+.row #loader {
+    width: 120px;
+    left: 50%;
+    position: relative;
+    margin-left: -60px;
+    display: table;
+}
+
+.row #loader span {
+    background: url(../images/loader_30.gif) no-repeat 0 0;
+    width: 16px;
+    height: 16px;
+    display: table-cell;
+    padding: 2px;
+}
