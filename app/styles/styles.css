@@ -2902,12 +2902,19 @@ div.message-error {
 .overflow .lista ul li.listar a .row .first:before,
 .overflow .lista ul li.listar a .row .second:after,
 .overflow .lista ul li.listar a .row .second:before,
-.content .overflow .col-7 ul.info-detalle:after,
-.content .overflow .col-7 ul.info-detalle:before{
+
+.content .overflow .col-7 div.info:after,
+.content .overflow .col-7 div.info:before {
   display: table;
   content: "";
   clear: both;
+  background-color: #F1F0F0;
 }
+/*.content .overflow .col-7 div.info ul.info-detalle:after,
+.content .overflow .col-7 div.info ul.info-detalle:before{
+  content: "";
+  clear: both;
+}*/
 .col-7, .col-5, .col-8, .col-4{
   display: table-cell;
   vertical-align: middle;
@@ -2918,9 +2925,14 @@ div.message-error {
 .col-5 ul.detalles,
 .col-5 ul.detalles li,
 .content .overflow .col-5 ul.acciones li,
-.content .overflow .col-7 ul.info-detalle li,
 .col-5 .inv ul li{
   float: left;
+}
+.content .overflow .col-7 div.info ul.info-detalle {
+  display: table-cell;
+  float: left;
+  width: 30%;
+  padding: 5px;
 }
 .col-8{
   width: 66.66%;

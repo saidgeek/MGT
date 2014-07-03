@@ -38,33 +38,35 @@
 			<div class="row">
 				<div class="first">
 					<div class="col-7">
-						<ul class="info-detalle">
-							<li ng-if="solicitude.ticket.segments">
-								<span>Segmento:</span> 
-								{{ solicitude.ticket.segments | SegmentArray }}
-							</li>
-							<li>
-								<span>Solicitante:</span> 
-								{{ solicitude.createdBy.profile.firstName }} {{ solicitude.createdBy.profile.lastName }}
-							</li>
-							<li ng-if="solicitude.provider">
-								<span>Proveedor:</span> 
-								{{ solicitude.provider.profile.company }} ({{ solicitude.provider.profile.firstName }} {{ solicitude.provider.profile.lastName }})
-							</li>
-							<li ng-if="solicitude.ticket.category">
-								<span>Categoría:</span> 
-								{{ solicitude.ticket.category.name }}
-							</li>
-						</ul>
-					</div>
-					<div class="col-5">
-						<div class="inv">
-							<p>Responsables:</p>
-							<ul>
+						<div class="info">
+							
+							<ul class="info-detalle">
+								<li>
+									<span>Solicitante:</span> 
+									{{ solicitude.createdBy.profile.firstName }} {{ solicitude.createdBy.profile.lastName }}
+								</li>
 								<li  ng-repeat="i in solicitude.involved">
+									<span>Responsable:</span> 
 									{{ i.user.profile.firstName }}  {{ i.user.profile.lastName }} ({{ i.role | InvolvedRole }})
 								</li>
-							</ul>	
+								<li ng-if="solicitude.provider">
+									<span>Proveedor:</span> 
+									{{ solicitude.provider.profile.company }} ({{ solicitude.provider.profile.firstName }} {{ solicitude.provider.profile.lastName }})
+								</li>
+							</ul>
+							<ul class="info-detalle">
+								<li ng-if="solicitude.ticket.category">
+									<span>Categoría:</span> 
+									{{ solicitude.ticket.category.name }}
+								</li>
+							</ul>
+							<ul class="info-detalle">
+								<li ng-if="solicitude.ticket.segments">
+									<span>Segmento:</span> 
+									{{ solicitude.ticket.segments | SegmentArray }}
+								</li>
+							</ul>
+
 						</div>
 					</div>
 				</div>
