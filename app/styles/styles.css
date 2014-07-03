@@ -3127,6 +3127,9 @@ div.message-error {
 .content .overflow .row .info-detalle{
   padding:16px 0;
 }
+.content .overflow .row h1{
+  font: normal 30px 'proxima_nova_rgbold';
+}
 .content .overflow .row .info-detalle h1{
   font: normal 30px 'proxima_nova_rgbold';
 }
