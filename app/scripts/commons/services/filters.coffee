@@ -52,7 +52,7 @@ angular.module("movistarApp")
   .filter 'Priority', ->
     (key) ->
       priority =
-        CRITIQUE: 'Crítica'
+        INCIDENCE: 'Incidencia'
         HIGH: 'Alta'
         AVERAGE: 'Media'
         DECLINE: 'Baja'

@@ -490,11 +490,11 @@ h4{ font-size:  1.154em;}
 #estado ul li .ico.valg{ background-position: -300px 0;}
 #estado ul li .ico.recg{ background-position: -340px 0;}
 #estado ul li .ico.aceg{ background-position: -320px 0;}
-#estado ul li .ico.valc{ background-position: -400px 0;}
-#estado ul li .ico.acec{ background-position: -380px 0;}
+#estado ul li .ico.valc{ background-position: -401px 0;}
+#estado ul li .ico.acec{ background-position: -381px 0;}
 #estado ul li .ico.recc{ background-position: -360px 0;}
-#estado ul li .ico.can{ background-position: -500px 0;}
-#estado ul li .ico.asi{ background-position: -520px 0;}
+#estado ul li .ico.can{ background-position: -501px 0;}
+#estado ul li .ico.asi{ background-position: -521px 0;}
 
 
 #estado ul li:hover .ico.tod, #estado ul li.active .ico.tod{ background-position: 0px -20px;}
@@ -509,20 +509,20 @@ h4{ font-size:  1.154em;}
 #estado ul li:hover .ico.valg, #estado ul li.active .ico.valg{ background-position: -300px -20px;}
 #estado ul li:hover .ico.recg, #estado ul li.active .ico.recg{ background-position: -340px -20px;}
 #estado ul li:hover .ico.aceg, #estado ul li.active .ico.aceg{ background-position: -320px -20px;}
-#estado ul li:hover .ico.valc, #estado ul li.active .ico.valc{ background-position: -400px -20px;}
-#estado ul li:hover .ico.acec, #estado ul li.active .ico.acec{ background-position: -380px -20px;}
+#estado ul li:hover .ico.valc, #estado ul li.active .ico.valc{ background-position: -401px -20px;}
+#estado ul li:hover .ico.acec, #estado ul li.active .ico.acec{ background-position: -381px -20px;}
 #estado ul li:hover .ico.recc, #estado ul li.active .ico.recc{ background-position: -360px -20px;}
-#estado ul li:hover .ico.can, #estado ul li.active .ico.can{ background-position: -500px -20px;}
-#estado ul li:hover .ico.asi, #estado ul li.active .ico.asi{ background-position: -520px -20px;}
+#estado ul li:hover .ico.can, #estado ul li.active .ico.can{ background-position: -501px -20px;}
+#estado ul li:hover .ico.asi, #estado ul li.active .ico.asi{ background-position: -521px -20px;}
 
 /* prioridad*/
 #prioridad ul li .ico.cri{ background-position: -480px 0;}
-#prioridad ul li .ico.alt{ background-position: -420px 0;}
+#prioridad ul li .ico.alt{ background-position: -421px 0;}
 #prioridad ul li .ico.med{ background-position: -440px 0;}
 #prioridad ul li .ico.baj{ background-position: -460px 0;}
 
 #prioridad ul li:hover .ico.cri, #prioridad ul li.active .ico.cri{ background-position: -480px -20px;}
-#prioridad ul li:hover .ico.alt, #prioridad ul li.active .ico.alt{ background-position: -420px -20px;}
+#prioridad ul li:hover .ico.alt, #prioridad ul li.active .ico.alt{ background-position: -421px -20px;}
 #prioridad ul li:hover .ico.med, #prioridad ul li.active .ico.med{ background-position: -440px -20px;}
 #prioridad ul li:hover .ico.baj, #prioridad ul li.active .ico.baj{ background-position: -460px -20px;}
 
