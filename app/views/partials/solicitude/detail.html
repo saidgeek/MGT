@@ -3,7 +3,7 @@
 		<div class="detalle bkg">
 			
 			<div class="row">
-				<div class="first">
+				<div class="first last">
 					<div class="col-7">
 						<div class="code">
 							<span>Code: {{ solicitude.code }}</span>
@@ -75,7 +75,7 @@
 			</div><!--/ .row /-->
 
 			<div class="row">
-				<div class="first">
+				<div class="first last">
 					<ul class="files">
 						<li ng-repeat="d in solicitude.attachments">
 							<a href="{{ d.url }}"  download>
@@ -91,7 +91,8 @@
 			</div><!--/ .row /-->
 			
 			<div class="row" ng-repeat="c in solicitude.comments">
-				<div class="first last">
+				<h2>Comentarios</h2>
+				<div class="first">
 					<div class="comments">
 						<div class="col-4">
 							<div class="user">
@@ -123,7 +124,7 @@
 			</div>
 
 			<div class="row">
-				<div class="first">
+				<div class="first last">
 					<div class="comments">
 						<div class="col-8">	
 	            <form name="form" ng-submit="addComment(form)">
@@ -140,12 +141,32 @@
 				</div>
 			</div>
 
+			<div class="row"  data-sgk-tasks="form-task">
+				<div class="header">
+					<h2>Sub-tareas <a href="javascript:{}" class="add round">+</a></h2>
+				</div>
+				<div class="first">
+					<div class="comments" id="form-task" style="display:none;">
+						<div class="col-8">	
+	            <form name="form" ng-submit="addTask(form)">
+			            <textarea class="round" name="desc" rows="2" ng-model="solicitude._tasks"></textarea>
+			            <fieldset>
+			                <input class="submit boton1 round" type="submit" value="Agregar">
+			            </fieldset>
+			            <fieldset>
+			              <div data-sgk-uploader-multi="{{ solicitude._id }}" data-sgk-type="tasks" sgk-position="buttom" ng-model="solicitude._attachments_tasks"></div>
+			            </fieldset>
+			        </form>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<div class="row">
 				<div class="first last">
-					
-					<p class="nivel" ng-show="solicitude.tasks">Nivel de avance 50%</p>
-			    <div class="subtarea" ng-repeat="t in solicitude.tasks"><!-- contenedor para subtarea -->
-			        <div class="dato">
+					<!-- <p class="nivel" ng-show="solicitude.tasks">Nivel de avance 50%</p> -->
+			    <div class="tasks"><!-- contenedor para subtarea -->
+			        <div class="dato" ng-repeat="t in solicitude.tasks">
 			            <div class="table">
 			                <div class="t-c che">
 			                  <span class="opt-check left" ng-class="{active: t.check}" data-sgk-check ng-click="toggleCheck(t._id)"></span>
@@ -155,37 +176,17 @@
 			                    <p class="bold">
 			                        {{ t.description }}
 			                    </p>
+			                    <ul>
+						                <li ng-repeat="_att in t.attachments">
+						                    <a href="{{ _att.link }}" download>{{ _att.name }}</a>
+						                </li>
+						              </ul>
 			                </div>
 			            </div>
-			            <a href="javascript:{}">Activar solicitud</a>
-			            <p>
-			              <ul>
-			                <li ng-repeat="att in t.attachments">
-			                    <a href="{{ att.link }}" download style="display: block;">{{ att.name }}</a>
-			                </li>
-			              </ul>
-			            </p>
+			            <!-- <a href="javascript:{}">Activar solicitud</a> -->
 			        </div>
 			    </div>
 
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="first">
-					<div class="comments">
-						<div class="col-8">	
-	            <form name="form" ng-submit="addTask(form)">
-			            <textarea class="round" name="desc" rows="9" ng-model="solicitude._tasks"></textarea>
-			            <fieldset>
-			                <input class="submit boton1 round" type="submit" value="Agregar">
-			            </fieldset>
-			            <fieldset>
-			              <div data-sgk-uploader-multi="{{ solicitude._id }}" data-sgk-type="tasks" sgk-position="buttom" ng-model="solicitude.attachments"></div>
-			            </fieldset>
-			        </form>
-						</div>
-					</div>
 				</div>
 			</div>
 

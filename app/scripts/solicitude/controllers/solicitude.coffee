@@ -90,12 +90,17 @@ angular.module('movistarApp')
 
     $scope.addTask = (form) ->
       if form.$valid
-        Solicitude.addTasks $scope.solicitude._id, $scope.solicitude._tasks, $scope.solicitude.attachments, (err, solicitude) ->
+        Solicitude.addTasks $scope.solicitude._id, $scope.solicitude._tasks, ($scope.solicitude._attachments_tasks || {} ), (err, solicitude) ->
           if err
             $scope.errors = err
           else
             $scope.atts = []
             $scope.solicitude.tasks = solicitude.tasks
+            if $scope.solicitude._attachments?
+              for att in $scope.solicitude._attachments_tasks 
+                $scope.solicitude.attachments.push att
+            $scope.solicitude._attachments_tasks = {}
+            $rootScope.$emit 'clean_list_uploader'
             $scope.solicitude._tasks = ''
 
     $scope.toggleCheck = (task) =>

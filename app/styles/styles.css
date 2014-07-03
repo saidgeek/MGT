@@ -1236,53 +1236,6 @@ ul.otros-datos li.last{
     color: #2f364a;
     margin: 8px 0;
 }
-.row .subtarea .dato{
-    /*border-bottom: 1px solid #e6ecf3;*/
-    position: relative;
-}
-.row .subtarea .dato .che span.opt-check {
-    width: 16px;
-    height: 16px;
-    display: inline-block;
-    background: url(../images/bkg-opt-check.png) no-repeat 0 0;
-    cursor: pointer;
-}
-.row .subtarea .dato .che span.opt-check.active{
-    background: url(../images/bkg-opt-check-checked.png) no-repeat 0 0;
-}
-.row .subtarea .dato .che .hide {
-    display: none;
-}
-.row .subtarea a{
-    display: none;
-    position: absolute;
-    bottom: 15px;
-    right: 0;
-    font-size: 0.923em;
-    font-family: 'proxima_novalight';
-}
-
-.row .subtarea .dato.active a{
-    display: inline-block;
-}
-
-.row .subtarea .dato.done{
-    color: #b9c4d3;
-}
-.row .subtarea .dato.done a{
-    display: block;
-}
-.row .subtarea .dato.done .che span.opt-check{
-    background: url(../images/bkg-opt-check-checked.png) no-repeat 0 0;
-    cursor: default;
-}
-
-.row .subtarea .t-c p{
-    margin: 0;
-}
-.row .subtarea .t-c{
-    padding:13px 5px;
-}
 
 .half-a .padding p.nivel{
     font-family: 'proxima_novasemibold';
@@ -2517,6 +2470,32 @@ input.ng-pristine, input.ng-valid-number{
     font-family: 'proxima_novasemibold';
     margin: 10px 0;
 }
+.row h2{
+    margin: 0 0 0px 0;
+    color: #00b8cf;
+    font-size: 1.385em;
+    font-family: 'proxima_novasemibold';
+}
+.row .header h2{
+    margin: 0 0 0px 0;
+    color: #00b8cf;
+    font-size: 1.385em;
+    font-family: 'proxima_novasemibold';
+    line-height: 31px;
+}
+.row .header a {
+  display: inline-block;
+  background: #00b8cf;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: 'proxima_nova_rgbold';
+  font-size: 0.923em;
+  line-height: 18px;
+  padding: 3px 8px;
+  height: 16px;
+  cursor: pointer;
+  margin: 2px 0;
+}
 .detalle p{
     line-height: 1.5em;
     margin: 20px 0;
@@ -3084,7 +3063,7 @@ div.message-error {
   display: table;
   width: 100%;
   padding: 8px 0;
-  border-bottom: 1px solid #d9e5f3;
+  border-top: 1px solid #d9e5f3;
   vertical-align: middle;
 }
 .detalle.bkg .first.last{
@@ -3275,6 +3254,54 @@ div.message-error {
 .content .overflow .row .comments fieldset div.upload{
   margin-top: 9px;
 }
+
+.content .overflow .row .tasks {
+  padding: 16px 0;
+  display: table-row;
+}
+.content .overflow .row .tasks .dato .che span.opt-check {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background: url(../images/bkg-opt-check.png) no-repeat 0 0;
+    cursor: pointer;
+}
+.content .overflow .row .tasks .dato .che span.opt-check.active{
+    background: url(../images/bkg-opt-check-checked.png) no-repeat 0 0;
+}
+.content .overflow .row .tasks .dato .che .hide {
+    display: none;
+}
+.content .overflow .row .tasks .dato ul li.a{
+    position: absolute;
+    bottom: 15px;
+    right: 0;
+    font-size: 0.923em;
+    font-family: 'proxima_novalight';
+}
+
+.content .overflow .row .tasks .dato.active a{
+    display: inline-block;
+}
+
+.content .overflow .row .tasks .dato.done{
+    color: #b9c4d3;
+}
+.content .overflow .row .tasks .dato.done a{
+    display: block;
+}
+.content .overflow .row .tasks .dato.done .che span.opt-check{
+    background: url(../images/bkg-opt-check-checked.png) no-repeat 0 0;
+    cursor: default;
+}
+
+.content .overflow .row .tasks .t-c p{
+    margin: 0;
+}
+.content .overflow .row .tasks .t-c{
+    padding:10px 5px;
+}
+
 .content .overflow .row .overflow{
   margin: 8px 0; 
   position: inherit;
