@@ -25,7 +25,7 @@
                 </li>
             </ul>
         </fieldset>
-      <fieldset class="odd">
+      <!-- <fieldset class="odd">
           <ul>
               <li class="Tag" ng-class="{ error: !validateTags() }">
                   <input class="Tag" id="nombre" name="tags" type="text" placeholder="Tags de Clasificación" ng-keypress="addTag($event)" ng-model="solicitude.tag"/>
@@ -35,8 +35,8 @@
                   <div class="message-error" ng-show="submitted && !validateTags()">Se debe ingresar al menos un tag.</div>
               </li>
           </ul>
-      </fieldset>
-      <fieldset class="even segments" data-sgk-checks="segments">
+      </fieldset> -->
+      <fieldset class="odd segments" data-sgk-checks="segments">
           <p>Seleccionar segmentos a los que aplica la solicitud</p>
           <div class="message-error" ng-show="submitted && error.segments">Se debe seleccionar al menos 1 segmento.</div>
           <ul>
@@ -50,7 +50,7 @@
               </li>
           </ul>
       </fieldset>
-      <fieldset class="odd sections" data-sgk-checks="sections">
+      <fieldset class="even sections" data-sgk-checks="sections">
           <p>Seleccionar secciones a los que aplica la solicitud</p>
           <div class="message-error" ng-show="submitted && error.sections">Se debe seleccionar al menos 1 seccion.</div>
           <ul>
