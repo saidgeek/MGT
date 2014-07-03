@@ -36,11 +36,11 @@
               </li>
           </ul>
       </fieldset>
-      <fieldset class="even segments">
+      <fieldset class="even segments" data-sgk-checks="segments">
           <p>Seleccionar segmentos a los que aplica la solicitud</p>
           <div class="message-error" ng-show="submitted && error.segments">Se debe seleccionar al menos 1 segmento.</div>
           <ul>
-              <li class="lab" ng-repeat="s in segments" data-type="segments" data-value="{{ s.id }}">
+              <li class="lab" ng-repeat="s in segments" data-value="{{ s.id }}">
                 <label>{{ s.name }}
                   <span class="opt-check right"></span>
                   <input class="hide" type="checkbox" id="check_todos" name="segments" 
@@ -50,13 +50,13 @@
               </li>
           </ul>
       </fieldset>
-      <fieldset class="odd sections">
+      <fieldset class="odd sections" data-sgk-checks="sections">
           <p>Seleccionar secciones a los que aplica la solicitud</p>
           <div class="message-error" ng-show="submitted && error.sections">Se debe seleccionar al menos 1 seccion.</div>
           <ul>
-              <li class="lab" ng-repeat="s in sections"  data-type="sections" data-value="{{ s.id }}">
+              <li class="lab" ng-repeat="s in sections" data-value="{{ s.id }}">
                 <label>{{ s.name }}
-                  <span class="opt-check right" data-sgk-check ng-click="validateForm(form)"></span>
+                  <span class="opt-check right"></span>
                   <input class="hide" type="checkbox" id="check_todos" name="sections" ng-true-value="{{s.id}}" ng-false-value="" ng-model="solicitude.ticket.sections[$index]">
                 </label>
               </li>

@@ -2029,6 +2029,7 @@ ul.menu-usuarios li a:hover{
 #nueva-solicitud form ul li.lab{
     width: 24%;
     margin: 3px;
+    padding: 5px;
 }
 
 #nueva-solicitud form ul li.lab.active{
@@ -2038,11 +2039,7 @@ ul.menu-usuarios li a:hover{
     -moz-border-radius: 5px;
 }
 
-
-#nueva-solicitud form ul li.che{
-    width: 5%;
-}
-#nueva-solicitud li span.opt-check{
+#nueva-solicitud form ul li.lab span.opt-check{
     width: 16px;
     height: 16px;
     display: inline-block;
@@ -2054,12 +2051,20 @@ ul.menu-usuarios li a:hover{
     border-radius: 2px;
     overflow: hidden;
 }
+
+#nueva-solicitud form ul li.lab.active span.opt-check{
+    background: url(../images/bkg-opt-check-checked.png) no-repeat 0 0;
+}
+
+
+#nueva-solicitud form ul li.che{
+    width: 5%;
+}
+
 #nueva-solicitud li span.opt-check.left{
     margin: 0 8px -3px 0;
 }
-#nueva-solicitud li span.opt-check.active{
-    background: url(../images/bkg-opt-check-checked.png) no-repeat 0 0;
-}
+
 #nueva-solicitud li .hide{
     display: none;
 }

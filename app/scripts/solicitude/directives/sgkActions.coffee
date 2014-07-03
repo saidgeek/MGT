@@ -65,7 +65,7 @@ angular.module('movistarApp')
 
           if section is 'queue_validation'
             $_triggersTag()
-            $_triggersCheck()
+            # $_triggersCheck()
 
           $el.parents('.overflow').mCustomScrollbar 'update'
         
