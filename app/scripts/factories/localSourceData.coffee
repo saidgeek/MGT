@@ -225,7 +225,7 @@ angular.module("movistarApp")
 
   .factory 'PriorityData', ->
     priority =
-      CRITIQUE: 'Crítica'
+      INCIDENCE: 'Incidencia'
       HIGH: 'Alta'
       AVERAGE: 'Media'
       DECLINE: 'Baja'
@@ -254,7 +254,7 @@ angular.module("movistarApp")
 
   .factory 'PriorityIconData', ->
     icons =
-      CRITIQUE: 'cri'
+      INCIDENCE: 'cri'
       HIGH: 'alt'
       AVERAGE: 'med'
       DECLINE: 'baj'
