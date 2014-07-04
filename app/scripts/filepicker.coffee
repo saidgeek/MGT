@@ -30,10 +30,12 @@ angular.module('filepicker', ['ngResource'])
       if input
         filepicker.store input, (InkBlob) ->
             cb null, InkBlob
+            query = "span#porcent_#{ opts.id }"
+            angular.element(query).html ""
         , (FPError) ->
             cb FPError
         , (proccess) =>
-          query = "[data-type='modal'] span#porcent_#{ opts.id }"
+          query = "span#porcent_#{ opts.id }"
           angular.element(query).html "#{proccess}%"
 
     _storeConvert = (input, opts, cb) ->

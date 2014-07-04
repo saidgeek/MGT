@@ -113,7 +113,7 @@ h4{ font-size:  1.154em;}
     cursor: pointer;
 }
 .boton1 span {
-    background: url(../images/sprite_side.png) no-repeat -240px 0px;
+    background: url(../images/sprite_side.png) no-repeat -241px 0px;
     width: 20px;
     height: 20px;
     display: block;
