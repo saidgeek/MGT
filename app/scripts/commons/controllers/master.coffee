@@ -1,36 +1,21 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'CssCtrl', ($rootScope, $scope, $location, IO) ->
-    $rootScope.title = "Gestor de tareas"
-    $scope.masterModals = null
-    $rootScope.alert = {}
-    $scope.notifications = null
-
-    if $rootScope.currentUser && !$rootScope.currentUser.confirmAt
-      $location.path '/change/password'
-
-    _showModals = (modal) ->
-      $scope.masterModals = modal
-
-    $rootScope.$on 'showModals', (e, modal) ->
-      _showModals(modal)
-
-    $rootScope.$on 'hideModals', (e) ->
-      $scope.masterModals = ''
-
-    $scope.isActive = (path) ->
-      path is $location.$$path
-
   .controller 'NotificationsCtrl', ($rootScope, $scope, Notification, IO, $state) ->
     $scope.notification = null
 
-    IO.on 'reload.notifications', () => _load()
+    IO.on 'reload.notifications', () => 
+      _load()
+      plapElement.play()
+
+    plapElement = document.createElement 'audio'
+    plapElement.setAttribute 'src', 'images/plap.mp3'
 
     _load = () ->
       Notification.index (err, notifications) ->
         if !err
           $scope.notifications = notifications
+
 
     $scope.read_all = () ->
       Notification.read_all (err) ->
