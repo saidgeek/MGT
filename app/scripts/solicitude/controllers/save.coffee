@@ -27,4 +27,4 @@ angular.module('movistarApp')
               content: """
                           La solicitude #{ solicitude.code } se creo correctamente.
                        """
-            $state.transitionTo 'solicitudes'
+            $state.href 'solicitudes'

@@ -1,10 +1,10 @@
-<div class="detalle bkg">
+<div class="detalle bkg" id="comment-form">
   <div class="row">
     <div class="first last">
       <div class="comments">
         <div class="col-8"> 
           <form name="form" ng-submit="addComment(form, type, to, _solicitude)">
-              <textarea class="round" name="message" rows="9" ng-model="comment.message"></textarea>
+              <textarea class="round" name="message" rows="5" ng-model="comment.message"></textarea>
               <fieldset>
                 <input class="submit boton1 round" type="submit" value="Enviar">
               </fieldset>

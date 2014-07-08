@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'SolicitudeCtrl', ($scope, Solicitude, $rootScope, SolicitudeParams, PriorityData, Category, User, Comment, SegmentsData, SectionsData, _solicitude, _comments, _attachments, $state) ->
+  .controller 'SolicitudeCtrl', ($scope, Solicitude, $rootScope, PriorityData, Category, User, Comment, SegmentsData, SectionsData, _solicitude, _comments, _attachments, $state, IO) ->
     $scope.solicitude = _solicitude
     $scope.comments = _comments
     $scope.attachments = _attachments
@@ -44,6 +44,8 @@ angular.module('movistarApp')
       else
         $scope.provider = users
 
+    IO.on 'solicitude.new.comment', (data) ->
+      $scope.comments.push data.comment
 
     # $scope.showOption = (option) ->
     #   if option is 'PAUSED'

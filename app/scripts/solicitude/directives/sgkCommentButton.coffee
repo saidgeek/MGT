@@ -11,13 +11,9 @@ angular.module('movistarApp')
           Comment.create type, solicitude, to, $scope.comment, (err, comment) ->
             if !err
               $scope.atts = []
-              # $rootScope.$emit 'loadSolicitudeShow', $scope.solicitude._id
-              # $scope.solicitude.comments.push comment
-              # if $scope.solicitude._attachments?
-              #   for att in $scope.solicitude._attachments 
-              #     $scope.solicitude.attachments.push att
               $rootScope.$emit 'clean_list_uploader'
               $scope.comment = {}
+              $scope.$emit 'close'
 
     link: (scope, element, attrs) ->
       scope.comment = {}
@@ -64,6 +60,9 @@ angular.module('movistarApp')
           $compile($el.contents())(scope)
 
         return false
+
+      scope.$on 'close', (e) ->
+        angular.element('#comment-form').remove()
 
 
 
