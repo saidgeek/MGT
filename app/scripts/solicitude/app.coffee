@@ -40,6 +40,10 @@ angular.module('movistarApp', [
             Solicitude.show $stateParams.id, (err, solicitude) ->
               if !err
                 return solicitude
+          _attachments: (Attachment, $stateParams) =>
+            Attachment.index $stateParams.id, (err, attachments) ->
+              if !err
+                return attachments
           _comments: (Comment, $stateParams) =>
             Comment.index $stateParams.id, (err, comments) ->
               if !err

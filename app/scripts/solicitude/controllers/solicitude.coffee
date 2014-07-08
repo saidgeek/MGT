@@ -1,9 +1,10 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'SolicitudeCtrl', ($scope, Solicitude, $rootScope, SolicitudeParams, PriorityData, Category, User, Comment, SegmentsData, SectionsData, _solicitude, _comments, $state) ->
+  .controller 'SolicitudeCtrl', ($scope, Solicitude, $rootScope, SolicitudeParams, PriorityData, Category, User, Comment, SegmentsData, SectionsData, _solicitude, _comments, _attachments, $state) ->
     $scope.solicitude = _solicitude
     $scope.comments = _comments
+    $scope.attachments = _attachments
     $scope.comment = {}
     $scope.error = {}
     $scope.atts = []
