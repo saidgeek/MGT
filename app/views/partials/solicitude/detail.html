@@ -40,7 +40,7 @@
 							<ul class="info-detalle">
 								<li>
 									<span>Solicitante:</span> 
-									{{ solicitude.createdBy.profile.firstName }} {{ solicitude.createdBy.profile.lastName }}
+									{{ solicitude.applicant.profile.firstName }} {{ solicitude.applicant.profile.lastName }}
 								</li>
 								<li  ng-repeat="i in solicitude.involved">
 									<span>Responsable:</span> 
@@ -91,9 +91,30 @@
 					</ul>
 				</div>
 			</div><!--/ .row /-->
+
+			<div class="row">
+				<a href="javascript:{}" class="boton1 round" 
+					data-sgk-comment-button="pm" 
+					data-sgk-comment-solicitude="{{ solicitude }}">
+						Comentario a PM
+				</a>
+				<a href="javascript:{}" class="boton1 round" 
+					data-sgk-comment-button="internal" 
+					data-sgk-comment-solicitude="{{ solicitude }}">
+						Comentario a intenor
+				</a>
+				<a href="javascript:{}" class="boton1 round" 
+					data-sgk-comment-button="provider" 
+					data-sgk-comment-solicitude="{{ solicitude }}">
+						Comentario a proveedor
+				</a>
+			</div>
+
+		</div>
+
+		<div class="detalle bkg" ng-repeat="c in comments">
 			
-			<div class="row" ng-repeat="c in solicitude.comments">
-				<h2>Comentarios</h2>
+			<div class="row">
 				<div class="first">
 					<div class="comments">
 						<div class="col-4">
@@ -108,7 +129,7 @@
 							</div>
 						</div>
 						<div class="col-8">	
-							<p>{{ c.content }}</p>
+							<p>{{ c.message }}</p>
 						</div>
 					</div>
 					<div class="comments">
@@ -125,23 +146,8 @@
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="first last">
-					<div class="comments">
-						<div class="col-8">	
-	            <form name="form" ng-submit="addComment(form)">
-	                <textarea class="round" name="message" rows="9" ng-model="solicitude.comment"></textarea>
-	                <fieldset>
-	                	<input class="submit boton1 round" type="submit" value="Enviar">
-	                </fieldset>
-	                <fieldset>
-	                  <div data-sgk-uploader-multi="{{ solicitude._id }}" data-sgk-type="comments" sgk-position="buttom" ng-model="solicitude._attachments"></div>
-	                </fieldset>
-	            </form>
-						</div>
-					</div>
-				</div>
-			</div>
+		</div>
+		<div class="detalle bkg">
 
 			<div class="row"  data-sgk-tasks="form-task">
 				<div class="header">

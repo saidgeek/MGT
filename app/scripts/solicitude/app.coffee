@@ -40,6 +40,10 @@ angular.module('movistarApp', [
             Solicitude.show $stateParams.id, (err, solicitude) ->
               if !err
                 return solicitude
+          _comments: (Comment, $stateParams) =>
+            Comment.index $stateParams.id, (err, comments) ->
+              if !err
+                return comments
         controller: 'SolicitudeCtrl'
         authenticate: true
 

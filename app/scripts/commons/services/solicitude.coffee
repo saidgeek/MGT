@@ -26,9 +26,11 @@ angular.module("movistarApp")
 
       create:
         method: 'POST'
+        params:
+          client_id: $rootScope.currentUser.id
         data:
           solicitude: '@solicitude'
-        url: '/api/v1/solicitude'
+        url: '/api/v1/solicitude/:client_id'
 
       update:
         method: "PUT"

@@ -1,8 +1,10 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'SolicitudeCtrl', ($scope, Solicitude, $rootScope, SolicitudeParams, PriorityData, Category, User, SegmentsData, SectionsData, _solicitude, $state) ->
+  .controller 'SolicitudeCtrl', ($scope, Solicitude, $rootScope, SolicitudeParams, PriorityData, Category, User, Comment, SegmentsData, SectionsData, _solicitude, _comments, $state) ->
     $scope.solicitude = _solicitude
+    $scope.comments = _comments
+    $scope.comment = {}
     $scope.error = {}
     $scope.atts = []
     $scope.role = $rootScope.currentUser.role
@@ -71,22 +73,34 @@ angular.module('movistarApp')
           form.$valid = true
         $scope.submitted = true
 
-    $scope.addComment = (form) ->
+    $scope.addComment = (form, type, to, solicitude) ->
       if form.$valid
-        console.log 'atts:', $scope.solicitude._attachments
-        Solicitude.addComments $scope.solicitude._id, $scope.solicitude.comment, ($scope.solicitude._attachments || {} ), (err, solicitude) ->
-          if err
-            $scope.errors = err
-          else
+        console.log '$scope.comment:', $scope.comment
+        Comment.create type, solicitude, to, $scope.comment, (err, comment) ->
+          if !err
             $scope.atts = []
             # $rootScope.$emit 'loadSolicitudeShow', $scope.solicitude._id
-            $scope.solicitude.comments = solicitude.comments
-            if $scope.solicitude._attachments?
-              for att in $scope.solicitude._attachments 
-                $scope.solicitude.attachments.push att
-            $scope.solicitude._attachments = {}
+            $scope.solicitude.comments.push comment
+            # if $scope.solicitude._attachments?
+            #   for att in $scope.solicitude._attachments 
+            #     $scope.solicitude.attachments.push att
             $rootScope.$emit 'clean_list_uploader'
-            $scope.solicitude.comment = ''
+            $scope.comment = {}
+
+
+        # Solicitude.addComments $scope.solicitude._id, $scope.solicitude.comment, ($scope.solicitude._attachments || {} ), (err, solicitude) ->
+        #   if err
+        #     $scope.errors = err
+        #   else
+        #     $scope.atts = []
+        #     # $rootScope.$emit 'loadSolicitudeShow', $scope.solicitude._id
+        #     $scope.solicitude.comments = solicitude.comments
+        #     if $scope.solicitude._attachments?
+        #       for att in $scope.solicitude._attachments 
+        #         $scope.solicitude.attachments.push att
+        #     $scope.solicitude._attachments = {}
+        #     $rootScope.$emit 'clean_list_uploader'
+        #     $scope.solicitude.comment = ''
 
     $scope.addTask = (form) ->
       if form.$valid
