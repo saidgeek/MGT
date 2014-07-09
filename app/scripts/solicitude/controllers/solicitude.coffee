@@ -6,8 +6,6 @@ angular.module('movistarApp')
     $scope.comments = _comments
     $scope.attachments = _attachments
     $scope.comment = {}
-
-    console.log '_tasks:', _tasks
     $scope.tasks = _tasks
     $scope.task = {}
 
@@ -89,7 +87,6 @@ angular.module('movistarApp')
             $scope.atts = []
             $scope.tasks.push task
             $rootScope.$emit 'clean_list_uploader'
-
 
         # Solicitude.addTasks $scope.solicitude._id, $scope.solicitude._tasks, ($scope.solicitude._attachments_tasks || {} ), (err, solicitude) ->
         #   if err

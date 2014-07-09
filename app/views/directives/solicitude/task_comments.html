@@ -1,0 +1,30 @@
+<div class="table comment" ng-repeat="c in task_comments">
+  <div class="t-c">
+    <div class="user">
+      <div class="avatar">
+        <span><img src="images/avatar-user.png" ng-src="{{ c.createdBy.profile.avatar || 'images/avatar-user.png' }}"></span>
+      </div>
+      <div class="username">
+        <span>{{ c.createdBy.profile.firstName }} {{ c.createdBy.profile.lastName }}</span> 
+        <p data-sgk-duration ng-model="c.createdAt"></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-9">
+    {{ c.message }}
+  </div>
+</div>  
+<div class="table">
+  <div class="t-c">
+    <form name="form" ng-submit="addTaskComment(form, solicitude._id, t._id)">
+      <ul class="btns">
+        <li class="text">
+          <input type="text" ng-model="task_comment.message">
+        </li>
+        <li>
+          <input type="submit"class="boton1 round" value="Comentar">
+        </li>
+      </ul>
+    </form>
+  </div>
+</div>

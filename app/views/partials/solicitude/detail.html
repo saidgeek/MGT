@@ -195,8 +195,8 @@
 						</div>
 					
 					</div>
-					<div class="detalle bkg" ng-repeat="t in tasks">
-
+					<!-- task -->
+					<div id="task_{{ t._id }}" class="detalle bkg" ng-repeat="t in tasks">
 						<div class="row">
 							<div class="first last">
 								<!-- <p class="nivel" ng-show="solicitude.tasks">Nivel de avance 50%</p> -->
@@ -221,10 +221,12 @@
 						            <!-- <a href="javascript:{}">Activar solicitud</a> -->
 						        </div>
 						    </div>
+						    
+						    <div data-sgk-comment-task="{{ t._id }}" data-sgk-comment-task-solicitude="{{ solicitude._id }}"></div>
 							</div>
 						</div>
-
-					</div> <!-- sub-tareas -->
+					</div>
+					<!-- task -->
 
 				</div>
 				<!-- tasks column -->

@@ -162,9 +162,75 @@ h4{ font-size:  1.154em;}
 .table{
     display: table;
 }
+.table.comment{
+  display: table;
+}
 .t-c{
     display: table-cell;
     vertical-align: top;
+}
+
+border-top: 1px solid #d9e5f3;
+
+.t-c .user {
+  display: table;
+  padding: 0;
+  width: 100%;
+}
+
+.t-c .user .avatar {
+  display: table-cell;
+  width: 40px
+}
+
+.t-c .user .username {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 5px;
+}
+
+.t-c .user .avatar span {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 50%;
+  display: block;
+}
+
+.t-c .user .avatar span img {
+  width: 100%;
+  height: auto;
+}
+
+.t-c ul.btns {
+  margin: 20px 0 -20px 0;
+  float: right;
+  width: 100%;
+}
+.t-c ul.btns li {
+  float: left;
+  margin: 0 0px 0 7px;
+}
+.t-c ul.btns li input[type='submit']{
+  border: none;
+  padding: 17px;
+  line-height: 4px;
+  display: block;
+  position: relative;
+}
+.t-c ul.btns li.text {
+  width: 75%;
+}
+
+.t-c ul.btns li.text input[type="text"] {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px;
+  color: #a9b4c4;
+  border-style: none;
+  border: 1px solid;
+  border-radius: 3px;
+  margin: 0;
 }
 .row{
     display: block;
@@ -3428,6 +3494,13 @@ ul.btns-comentario li:last-child{
     padding: 0;
     background: none;
     border: none;
+}
+.row .table.comment{
+    display: table;
+    width: 97.5%;
+    padding: 0;
+    background: none;
+    border-top: 1px solid #d9e5f3;
 }
 .col-6{
     box-sizing: border-box;
