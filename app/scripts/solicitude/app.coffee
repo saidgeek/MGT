@@ -32,6 +32,14 @@ angular.module('movistarApp', [
             Solicitude.resource.index({ target: $stateParams.target, filter: $stateParams.filter }).$promise
         controller: 'SolicitudesCtrl'
         authenticate: true
+      .state 'search',
+        url: '/solicitudes/search/:q'
+        templateUrl: 'partials/solicitude/index'
+        resolve:
+          _solicitudes: (Solicitude, $stateParams) =>
+            Solicitude.resource.index({ target: $stateParams.target, filter: $stateParams.filter }).$promise
+        controller: 'SolicitudesCtrl'
+        authenticate: true
       .state 'solicitude',
         url: '/solicitud/:id'
         templateUrl: 'partials/solicitude/detail'

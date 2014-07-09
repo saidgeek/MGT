@@ -199,9 +199,16 @@
 
         </div><!-- wrap -->
 
-        <div id="search-form">
-          <form>
-            <input type="text" name="search" id="search" class="round" placeholder="Buscar Solicitud o palabra clave" data-sgk-search-input />
+        <div id="search-form" ng-controller="SearchCtrl">
+          <form name="form" ng-submit="search(form, 'solicitude')">
+            <ul>
+              <li>
+                <input type="text" name="search" id="search" class="round" placeholder="Buscar Solicitud o palabra clave" ng-model="q" />
+              </li>
+              <li>
+                <input type="submit" class="boton1 round" value="Buscar" />
+              </li>
+            </ul>
           </form>
         </div>
 
@@ -262,6 +269,7 @@
         <!-- CONTROLLERS -->
         <script src="scripts/commons/controllers/master.js"></script><!-- DELETE -->
         
+        <script src="scripts/commons/controllers/search.js"></script>
         <script src="scripts/solicitude/controllers/solicitudes.js"></script>
         <script src="scripts/solicitude/controllers/solicitude.js"></script>
         <script src="scripts/solicitude/controllers/save.js"></script>

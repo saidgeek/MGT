@@ -1862,12 +1862,31 @@ ul.menu-usuarios li a:hover{
     margin: 0;
     padding: 0;
 }
+#search-form form ul:before,
+#search-form form ul:after {
+  display: table;
+  content: "";
+  clear: both;
+}
+#search-form form ul li {
+  display: table-cell;
+}
 #search-form form #search{
-    padding: 8px 8px 8px 26px;
-    border:1px solid #d7e3f0;
-    background: url(../images/icon-search.png) no-repeat 5px 50% #fff;
-    width: 240px;
-    color: #9da9b9;
+  padding: 8px 8px 8px 25px;
+  border: 1px solid #d7e3f0;
+  width: 220px;
+  color: #9da9b9;
+  border-radius: 3px 0px 0px 3px;
+  background: url(../images/icon-search.png) no-repeat 8px 50% #fff;
+}
+
+#search-form form ul li input[type="submit"] {
+  padding: 17px;
+  position: relative;
+  border: none;
+  line-height: 2px;
+  border-radius: 0px 3px 3px 0px;
+  margin: -13px 0;
 }
 #nueva-solicitud{
     height: 80%;
