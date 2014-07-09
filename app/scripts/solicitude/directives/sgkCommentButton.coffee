@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('movistarApp')
-  .directive 'sgkCommentButton', ($rootScope, $timeout, $compile, $http) ->
+  .directive 'sgkCommentButton', ($rootScope, $timeout, $compile, $http, Solicitude) ->
     restrict: 'A'
     scope: {}
     controller: ($scope, $rootScope, Comment) ->
@@ -21,48 +21,50 @@ angular.module('movistarApp')
       scope._solicitude = attrs.sgkCommentSolicitude
       scope.to = null
 
-      _solicitude = JSON.parse(scope._solicitude)
-      scope._solicitude = _solicitude._id
+      Solicitude.show scope._solicitude, (err, solicitude) -> 
+        if !err
+          _solicitude = solicitude
 
-      if scope.type is 'pm' and _solicitude.editor?._id?
-        scope.to = _solicitude.editor._id
+          if scope.type is 'pm' and _solicitude.editor?._id?
+            scope.to = _solicitude.editor._id
 
-      if scope.type is 'internal' and _solicitude.responsible?._id? and _solicitude.editor?._id?
-        scope.to = _solicitude.responsible._id if $rootScope.currentUser.role is 'EDITOR'
-        scope.to = _solicitude.editor._id if ['ADMIN', 'ROOT', 'CONTENT_MANAGER'].indexOf($rootScope.currentUser.role) > -1
+          if scope.type is 'internal' and _solicitude.responsible?._id? and _solicitude.editor?._id?
+            scope.to = _solicitude.responsible._id if $rootScope.currentUser.role is 'EDITOR'
+            scope.to = _solicitude.editor._id if ['ADMIN', 'ROOT', 'CONTENT_MANAGER'].indexOf($rootScope.currentUser.role) > -1
 
-      if scope.type is 'provider' and _solicitude.provider?._id? and _solicitude.responsible?._id?
-        scope.to = _solicitude.provider._id if $rootScope.currentUser.role is 'CONTENT_MANAGER'
-        scope.to = _solicitude.responsible._id if ['ADMIN', 'ROOT', 'PROVIDER'].indexOf($rootScope.currentUser.role) > -1
-      
-      if scope.type is 'pm' and ['ROOT', 'ADMIN', 'EDITOR'].indexOf($rootScope.currentUser.role) < 0 or scope.to is null
-        element.remove()
+          if scope.type is 'provider' and _solicitude.provider?._id? and _solicitude.responsible?._id?
+            scope.to = _solicitude.provider._id if $rootScope.currentUser.role is 'CONTENT_MANAGER'
+            scope.to = _solicitude.responsible._id if ['ADMIN', 'ROOT', 'PROVIDER'].indexOf($rootScope.currentUser.role) > -1
+          
+          if scope.type is 'pm' and ['ROOT', 'ADMIN', 'EDITOR'].indexOf($rootScope.currentUser.role) < 0 or scope.to is null
+            element.remove()
 
-      if scope.type is 'internal' and ['ROOT', 'ADMIN', 'EDITOR', 'CONTENT_MANAGER'].indexOf($rootScope.currentUser.role) < 0 or scope.to is null
-        element.remove()
+          if scope.type is 'internal' and ['ROOT', 'ADMIN', 'EDITOR', 'CONTENT_MANAGER'].indexOf($rootScope.currentUser.role) < 0 or scope.to is null
+            element.remove()
 
-      if scope.type is 'provider' and ['ROOT', 'ADMIN', 'PROVIDER', 'CONTENT_MANAGER'].indexOf($rootScope.currentUser.role) < 0 or scope.to is null
-        element.remove()
+          if scope.type is 'provider' and ['ROOT', 'ADMIN', 'PROVIDER', 'CONTENT_MANAGER'].indexOf($rootScope.currentUser.role) < 0 or scope.to is null
+            element.remove()
 
-      element.on 'click', (e) ->
-        e.preventDefault()
-        
-        $http.get("/directives/solicitude/comment_form").success (data) =>
-          $el = angular.element data
-          element.parents('.detalle.bkg').after($el)
+          element.on 'click', (e) ->
+            e.preventDefault()
+            
+            $http.get("/directives/solicitude/comment_form").success (data) =>
+              $el = angular.element data
+              element.parents('.comments').after($el)
 
-          $el.on 'click', '.close', (e) ->
-            $el.remove()
+              $el.on 'click', '.close', (e) ->
+                $el.remove()
+                angular.element('.overflow').mCustomScrollbar 'update'
 
+              angular.element('.overflow').mCustomScrollbar 'update'
 
-          angular.element('.overflow').mCustomScrollbar 'update'
+              $compile($el.contents())(scope)
 
-          $compile($el.contents())(scope)
+            return false
 
-        return false
-
-      scope.$on 'close', (e) ->
-        angular.element('#comment-form').remove()
+          scope.$on 'close', (e) ->
+            angular.element('#comment-form').remove()
+            angular.element('.overflow').mCustomScrollbar 'update'
 
 
 

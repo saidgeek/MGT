@@ -22,6 +22,16 @@ angular.module("movistarApp")
           createdBy: '@createdBy'
         url: '/api/v1/comments/:type/:solicitude_id/:to'
 
+      task:
+        method: 'POST'
+        params:
+          solicitude_id: '@solicitude_id'
+          task_id: '@task_id'
+        data:
+          comment: '@comment'
+          createdBy: '@createdBy'
+        url: '/api/v1/comments/:solicitude_id/:task_id'
+
     _index = (solicitude_id, cb) ->
       resource.index(
         solicitude_id: solicitude_id
@@ -44,9 +54,23 @@ angular.module("movistarApp")
         cb err
       ).$promise
 
+    _task = (solicitude_id, task_id, comment, cb) ->
+      resource.task(
+        solicitude_id: solicitude_id
+        task_id: task_id
+        comment: comment
+        createdBy: $rootScope.currentUser.id
+      , (comment) ->
+        cb null, comment
+      , (err) ->
+        cb err
+      ).$promise
+
     return {
       index: (solicitude_id, cb) ->
         _index(solicitude_id, cb)
       create: (type, solicitude_id, to, comment, cb) ->
         _create(type, solicitude_id, to, comment, cb)
+      task: (solicitude_id, task_id, comment, cb) ->
+        _task(solicitude_id, task_id, comment, cb)
     }

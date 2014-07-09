@@ -92,19 +92,42 @@
 				</div>
 			</div><!--/ .row /-->
 
-			<div class="row">
+			<!-- <div class="row">
 				<ul class="btns-comentario">
 					<li><a href="javascript:{}" class="boton1 round" data-sgk-comment-button="pm" data-sgk-comment-solicitude="{{ solicitude }}">Comentario a PM</a></li>
 					<li><a href="javascript:{}" class="boton1 round" data-sgk-comment-button="internal" data-sgk-comment-solicitude="{{ solicitude }}">Comentario a intenor</a></li>
 					<li><a href="javascript:{}" class="boton1 round" data-sgk-comment-button="provider" data-sgk-comment-solicitude="{{ solicitude }}">Comentario a proveedor</a></li>
 				</ul>	
-			</div>
+			</div> -->
 
 		</div>
 
 		<div class="row">
 			<div class="table detalle bkg">
+				
+				<!-- Comments column -->
 				<div class="col-6 border">
+
+					<div class="detalle bkg">
+						<div class="row">
+							<div class="header">
+								<h2>Comentarios</h2>
+							</div>
+							<div class="first">
+								<div class="comments" id="form-task">
+									<div class="col-8">	
+				            <ul class="btns-comentario">
+											<li><a href="javascript:{}" class="boton1 round" data-sgk-comment-button="pm" data-sgk-comment-solicitude="{{ solicitude._id }}">Comentario a PM</a></li>
+											<li><a href="javascript:{}" class="boton1 round" data-sgk-comment-button="internal" data-sgk-comment-solicitude="{{ solicitude._id }}">Comentario a intenor</a></li>
+											<li><a href="javascript:{}" class="boton1 round" data-sgk-comment-button="provider" data-sgk-comment-solicitude="{{ solicitude._id }}">Comentario a proveedor</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+					</div>
+
 					<div class="detalle bkg" ng-repeat="c in comments" id="comments-detail">	
 						<div class="row">
 							<div class="first">
@@ -145,18 +168,20 @@
 						</div>
 					</div>
 				</div>
+				<!-- Comments column -->
 
+				<!-- tasks column -->
 				<div class="col-6">					
 					<div class="detalle bkg">
-						<div class="row"  data-sgk-tasks="form-task">
+						<div class="row">
 							<div class="header">
-								<h2>Sub-tareas <a href="javascript:{}" class="add round">+</a></h2>
+								<h2>Sub-tareas</h2>
 							</div>
 							<div class="first">
-								<div class="comments" id="form-task" style="display:none;">
+								<div class="comments" id="form-task">
 									<div class="col-8">	
 				            <form name="form" ng-submit="addTask(form)">
-						            <textarea class="round" name="desc" rows="2" ng-model="solicitude._tasks"></textarea>
+						            <textarea class="round" name="desc" rows="2" ng-model="task.content"></textarea>
 						            <fieldset>
 						                <input class="submit boton1 round" type="submit" value="Agregar">
 						            </fieldset>
@@ -168,11 +193,15 @@
 								</div>
 							</div>
 						</div>
+					
+					</div>
+					<div class="detalle bkg" ng-repeat="t in tasks">
+
 						<div class="row">
 							<div class="first last">
 								<!-- <p class="nivel" ng-show="solicitude.tasks">Nivel de avance 50%</p> -->
 						    <div class="tasks"><!-- contenedor para subtarea -->
-						        <div class="dato" ng-repeat="t in solicitude.tasks">
+						        <div class="dato">
 						            <div class="table">
 						                <div class="t-c che">
 						                  <span class="opt-check left" ng-class="{active: t.check}" data-sgk-check ng-click="toggleCheck(t._id)"></span>
@@ -180,7 +209,7 @@
 						                </div>
 						                <div class="t-c">
 						                    <p class="bold">
-						                        {{ t.description }}
+						                        {{ t.content }}
 						                    </p>
 						                    <ul>
 									                <li ng-repeat="_att in t.attachments">
@@ -194,8 +223,11 @@
 						    </div>
 							</div>
 						</div>
-					</div>	
-				</div>				
+
+					</div> <!-- sub-tareas -->
+
+				</div>
+				<!-- tasks column -->
 			</div>
 		</div><!-- table detalle bkg -->
 

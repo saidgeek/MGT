@@ -3285,6 +3285,11 @@ div.message-error {
   float: right;
   margin: 6px 12px 0 0;
 }
+.content .overflow .row .comments fieldset a.close{
+  float: right;
+  margin: 9px 0px 0 0;
+  color: #00b8cf;
+}
 .content .overflow .row .comments .boton1{
   height: auto;
   border: none;
@@ -3386,8 +3391,8 @@ div.message-error {
     padding: 2px;
 }
 ul.btns-comentario{
-    margin: 20px 0 0 0;
-    float: right;
+    margin: 20px 0 20px 0;
+    /*float: right;*/
 }
 ul.btns-comentario:after,
 ul.btns-comentario:before,
@@ -3400,6 +3405,9 @@ ul.btns-comentario:before,
 ul.btns-comentario li{
     float: left;
     margin: 0 7px 0 0;
+}
+ul.btns-comentario li a{
+    font-size: 0.85em;
 }
 ul.btns-comentario li:last-child{
     margin: 0;

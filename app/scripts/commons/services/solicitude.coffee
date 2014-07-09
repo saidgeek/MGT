@@ -109,7 +109,6 @@ angular.module("movistarApp")
 
     _show = (id, cb) ->
       resource.show(
-        {}
         id: id
       , (solicitude) ->
         cb null, solicitude

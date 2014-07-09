@@ -31,8 +31,8 @@ require(modelsPath + '/user');
 require(modelsPath + '/attachment');
 require(modelsPath + '/category');
 require(modelsPath + '/notification');
-require(modelsPath + '/comment');
 require(modelsPath + '/task');
+require(modelsPath + '/comment');
 require(modelsPath + '/solicitude');
 require(modelsPath + '/log');
 
