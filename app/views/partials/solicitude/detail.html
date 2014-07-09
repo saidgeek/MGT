@@ -157,12 +157,12 @@
 					<div class="comments" id="form-task" style="display:none;">
 						<div class="col-8">	
 	            <form name="form" ng-submit="addTask(form)">
-			            <textarea class="round" name="desc" rows="2" ng-model="solicitude._tasks"></textarea>
+			            <textarea class="round" name="desc" rows="2" ng-model="task.content"></textarea>
 			            <fieldset>
 			                <input class="submit boton1 round" type="submit" value="Agregar">
 			            </fieldset>
 			            <fieldset>
-			              <div data-sgk-uploader-multi="{{ solicitude._id }}" data-sgk-type="tasks" sgk-position="buttom" ng-model="solicitude._attachments_tasks"></div>
+			              <div data-sgk-uploader-multi="{{ solicitude._id }}" data-sgk-type="tasks" sgk-position="buttom" ng-model="task.attachments"></div>
 			            </fieldset>
 			        </form>
 						</div>
@@ -174,7 +174,7 @@
 				<div class="first last">
 					<!-- <p class="nivel" ng-show="solicitude.tasks">Nivel de avance 50%</p> -->
 			    <div class="tasks"><!-- contenedor para subtarea -->
-			        <div class="dato" ng-repeat="t in solicitude.tasks">
+			        <div class="dato" ng-repeat="t in tasks">
 			            <div class="table">
 			                <div class="t-c che">
 			                  <span class="opt-check left" ng-class="{active: t.check}" data-sgk-check ng-click="toggleCheck(t._id)"></span>
@@ -182,7 +182,7 @@
 			                </div>
 			                <div class="t-c">
 			                    <p class="bold">
-			                        {{ t.description }}
+			                        {{ t.content }}
 			                    </p>
 			                    <ul>
 						                <li ng-repeat="_att in t.attachments">

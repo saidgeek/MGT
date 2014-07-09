@@ -48,6 +48,10 @@ angular.module('movistarApp', [
             Comment.index $stateParams.id, (err, comments) ->
               if !err
                 return comments
+          _tasks: (Task, $stateParams) =>
+            Task.index $stateParams.id, (err, tasks) ->
+              if !err
+                return tasks
         controller: 'SolicitudeCtrl'
         authenticate: true
 
