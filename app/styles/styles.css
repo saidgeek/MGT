@@ -2915,9 +2915,15 @@ div.message-error {
   content: "";
   clear: both;
 }*/
-.col-7, .col-5, .col-8, .col-4{
+.col-7, .col-5, .col-8, .col-4, .col-3, .col-9, .col-6{
   display: table-cell;
   vertical-align: middle;
+}
+.col-6{
+    vertical-align: top;
+}
+.col-6.border{
+    border-right: 1px solid #a9b4c4;
 }
 .col-7 .code,
 .col-7 ul.estados,
@@ -2934,17 +2940,26 @@ div.message-error {
   width: 30%;
   padding: 5px;
 }
+.col-9{
+  width: 74.99%;
+}
 .col-8{
   width: 66.66%;
 }
 .col-7{
   width: 58.33%;
 }
+.col-6{
+  width: 49.99%;
+}
 .col-5{
   width: 41.66%;
 }
 .col-4{
   width: 33.33%;
+}
+.col-3{
+  width: 24.99%;
 }
 .col-7 .code {
   font-family: 'proxima_nova_rgbold';
@@ -3259,8 +3274,11 @@ div.message-error {
   border-radius:3px;
   -webkit-border-radius:3px;
 }
+.content .overflow .row .comments .col-9,
 .content .overflow .row .comments .col-8,
-.content .overflow .row .comments .col-4{
+.content .overflow .row .comments .col-6,
+.content .overflow .row .comments .col-4,
+.content .overflow .row .comments .col-3{
   vertical-align: top;
 }
 .content .overflow .row .comments fieldset{
@@ -3366,4 +3384,65 @@ div.message-error {
     height: 16px;
     display: table-cell;
     padding: 2px;
+}
+ul.btns-comentario{
+    margin: 20px 0 0 0;
+    float: right;
+}
+ul.btns-comentario:after,
+ul.btns-comentario:before,
+.row:after,
+.row:before{
+    display: table;
+    content: "";
+    clear: both;
+}
+ul.btns-comentario li{
+    float: left;
+    margin: 0 7px 0 0;
+}
+ul.btns-comentario li:last-child{
+    margin: 0;
+}
+#comments-detail.detalle.bkg .first{
+    border:none;
+}
+.content .overflow #comments-detail .row .comments .user .avatar{
+    width: 40px;
+}
+.content .overflow #comments-detail .row .comments .user .avatar span{
+    width: 40px;
+    height: 40px;
+}
+.row .table{
+    display: table;
+    width: 97.5%;
+    padding: 0;
+    background: none;
+    border: none;
+}
+.col-6{
+    box-sizing: border-box;
+    padding: 0 0 12px 4px;
+}
+.col-6.border{
+    padding:0 4px 12px 0;
+    border:none;
+}
+.detalle.bkg .detalle.bkg{
+    margin: 8px 0;
+}
+.table.detalle.bkg{
+    /*margin: 8px 0;*/
+    box-shadow:none;
+}
+.content .overflow .row .col-6 .tasks .t-c{
+    padding: 5px 0;
+}
+.content .overflow .row .col-6 .tasks .t-c.che{
+    width: 16px !important;
+    padding: 5px 10px 5px 0;
+}
+.col-6 .detalle.bkg .first.last{
+    padding: 0 0 16px 0;
 }
