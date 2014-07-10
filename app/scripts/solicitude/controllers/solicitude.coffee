@@ -3,7 +3,12 @@
 angular.module('movistarApp')
   .controller 'SolicitudeCtrl', ($scope, Solicitude, $rootScope, PriorityData, Category, User, Comment, Task, SegmentsData, SectionsData, _solicitude, _comments, _attachments, _tasks, $state, IO) ->
     $scope.solicitude = _solicitude
-    $scope.comments = _comments
+    $scope.comments = []
+
+    angular.element.each _comments, (index, comment) ->
+      if ['ADMIN', 'ROOT'].indexOf($rootScope.currentUser.role) > -1 || $rootScope.currentUser.role is comment.to.role
+        $scope.comments.push comment
+
     $scope.attachments = _attachments
     $scope.comment = {}
     $scope.tasks = _tasks
@@ -48,7 +53,12 @@ angular.module('movistarApp')
         $scope.provider = users
 
     IO.on 'solicitude.new.comment', (data) ->
-      $scope.comments.push data.comment
+      if data.solicitude is $scope.solicitude._id
+        Comment.show data.comment, (err, comment) ->
+          if !err
+            if ['ADMIN', 'ROOT'].indexOf($rootScope.currentUser.role) > -1 || $rootScope.currentUser.role is comment.to.role
+              $scope.comments.push comment
+            return false
 
     # $scope.showOption = (option) ->
     #   if option is 'PAUSED'
