@@ -3117,6 +3117,41 @@ div.message-error {
   margin:0 3px 0 0;
 }
 
+.estados .dropdown {
+  overflow: hidden;
+  background: #fff;
+  position: relative;
+}
+
+ul.estados .dropdown span {
+  width: 8px;
+  height: 5px;
+  display: block;
+  background: url(../images/down.png) no-repeat 0 -5px;
+  position: absolute;
+  top: 50%;
+  right: 1%;
+  margin: -3px 6px 0 0;
+}
+
+.estados .dropdown select {
+  width: 100%;
+  padding: 2px;
+  cursor: pointer;
+  text-indent: 0.01px;
+  text-overflow: “”;
+  text-overflow: '';
+  font-size: 0.98em;
+  color: #9da9b9;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #f2f6fa;
+  border: 1px solid #d2e2e8!important;
+  border-radius: 0px;
+  height: 19px;
+}
+
 .lista li.icon.pro span{
   background-position: -48px 0;
 }

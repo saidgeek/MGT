@@ -16,7 +16,12 @@
 								<span></span> Sol. {{ solicitude.createdAt | DateFormat }}
 							</li>
 							<li class="ico" ng-if="solicitude.priority" ng-class="solicitude.priority | PriorityIcons">
-								<span></span> {{ solicitude.priority | Priority }}
+								<span></span> 
+								<div class="dropdown" ng-if="currentUser.role == 'EDITOR'">
+									<span></span>
+									<select ng-model="solicitude.priority" name="priority" ng-options="p.id as p.name for p in priorities" ng-change="update_priority()"></select>
+								</div>
+								<p ng-if="!currentUser.role == 'EDITOR'">{{ solicitude.priority | Priority }}</p>
 							</li>
 							<li class="ico" ng-if="solicitude.duration && !solicitude.pausedAt" >
 								<span></span> <div data-sgk-duration ng-model="solicitude.endedAt"></div>
