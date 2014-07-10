@@ -25,8 +25,8 @@ angular.module('movistarApp')
         if !err
           _solicitude = solicitude
 
-          if scope.type is 'pm' and _solicitude.editor?._id?
-            scope.to = _solicitude.editor._id
+          if scope.type is 'pm' and _solicitude.applicant?._id?
+            scope.to = _solicitude.applicant._id
 
           if scope.type is 'internal' and _solicitude.responsible?._id? and _solicitude.editor?._id?
             scope.to = _solicitude.responsible._id if $rootScope.currentUser.role is 'EDITOR'
