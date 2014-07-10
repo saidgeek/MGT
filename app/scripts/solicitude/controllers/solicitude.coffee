@@ -114,6 +114,9 @@ angular.module('movistarApp')
     $scope.nextState = (state) =>
       $scope.solicitude.nextState = state
 
+    $scope.edit_priority = () ->
+      ['ROOT', 'ADMIN', 'EDITOR'].indexOf($rootScope.currentUser.role) > -1
+
     $scope.update_priority = () ->
       console.log '$scope.solicitude.priority:', $scope.solicitude.priority
       Solicitude.update $scope.solicitude._id, $scope.solicitude, (err, solicitude) ->
