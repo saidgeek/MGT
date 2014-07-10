@@ -113,7 +113,7 @@ h4{ font-size:  1.154em;}
     cursor: pointer;
 }
 .boton1 span {
-    background: url(../images/sprite_side.png) no-repeat -241px 0px;
+    background: url(../images/sprite_side.png) no-repeat -141px 0px;
     width: 20px;
     height: 20px;
     display: block;
@@ -2163,7 +2163,7 @@ ul.menu-usuarios li a:hover{
     background: #9b0000;
 }
 #nueva-solicitud form .boton1 span {
-    background-position: -240px -20px;
+    background-position: -141px 0;
 }
 #nueva-solicitud form a.show{
     position: absolute;
@@ -3025,6 +3025,13 @@ div.message-error {
   width: 30%;
   padding: 5px;
 }
+
+.content .overflow .col-7 div.info ul.info-detalle ul.segments {
+  padding: 0 0 0 10px;
+}
+.content .overflow .col-7 div.info ul.info-detalle ul.segments li {
+  white-space: normal;
+}
 .col-9{
   width: 74.99%;
 }
@@ -3050,6 +3057,7 @@ div.message-error {
   font-family: 'proxima_nova_rgbold';
   color: #444c63;
   margin: 0 15px 0 0;
+  white-space: nowrap;
 }
 .active .col-7 .code {
   color: #fff;
@@ -3440,7 +3448,94 @@ div.message-error {
 }
 .content .overflow .row .overflow #nueva-solicitud form fieldset{
   border: none;
+  padding: 10px;
 }
+
+#nueva-solicitud form ul.segments:before,
+#nueva-solicitud form ul.segments:after,
+#nueva-solicitud form ul.segments ul.sections:before,
+#nueva-solicitud form ul.segments ul.sections:after {
+  display: table;
+  content: "";
+  float: left;
+}
+
+#nueva-solicitud form ul.segments ul.sections {
+  margin: 5px;
+}
+
+#nueva-solicitud form ul.segments li {
+  display: table-cell;
+  margin: 0 5px;
+  width: 30%;
+  padding: 5px;
+}
+
+#nueva-solicitud form ul.segments li ul.sections.hide {
+  display: none;
+}
+
+#nueva-solicitud form ul.segments li ul.sections li {
+  display: table-row;
+  margin: -2px 0px -4px -2px;
+  width: 100%;
+}
+
+#nueva-solicitud form ul.segments li label.segment, 
+#nueva-solicitud form ul.segments li ul.sections li label.section {
+  width: 276px;
+  position: relative;
+  display: block;
+  float: left;
+  padding: 6px;
+}
+
+#nueva-solicitud form ul.segments li ul.sections li label.section {
+  width: 267px;
+}
+
+#nueva-solicitud form ul.segments li label.segment span.opt-check,
+#nueva-solicitud form ul.segments li ul.sections li label.section span.opt-check {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  margin: 0 10px -3px 0;
+  background: url(../images/bkg-opt-check.png) no-repeat 0 0;
+  cursor: pointer;
+  float: left;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+#nueva-solicitud form ul.segments li.active {
+  border: 1px solid #d5e1ee;
+  border-radius: 5px;
+}
+
+#nueva-solicitud form ul.segments li ul.sections li.active {
+  border: none;
+}
+
+#nueva-solicitud form ul.segments li.active label.segment {
+  background: #00b8cf;
+  border-radius: 5px;
+  color: #fff;
+  padding: 6px;
+}
+
+#nueva-solicitud form ul.sections li.active label.section{
+  background: #C4C8C9;
+  border-radius: 5px;
+  color: #fff;
+  padding: 6px;
+}
+
+#nueva-solicitud form ul.segments li.active label span.opt-check,
+#nueva-solicitud form ul.segments li ul.sections li.active label span.opt-check {
+  background: url(../images/bkg-opt-check-checked.png) no-repeat 0 0;
+}
+
+
 
 #loading {
     width: 100%;

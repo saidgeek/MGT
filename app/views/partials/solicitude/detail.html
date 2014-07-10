@@ -42,9 +42,9 @@
 									<span>Solicitante:</span> 
 									{{ solicitude.applicant.profile.firstName }} {{ solicitude.applicant.profile.lastName }}
 								</li>
-								<li  ng-repeat="i in solicitude.involved">
+								<li ng-if="solicitude.responsible">
 									<span>Responsable:</span> 
-									{{ i.user.profile.firstName }}  {{ i.user.profile.lastName }} ({{ i.role | InvolvedRole }})
+									{{ solicitude.responsible.profile.firstName }}  {{ solicitude.responsible.profile.lastName }} ({{ solicitude.responsible.role | InvolvedRole }})
 								</li>
 								<li ng-if="solicitude.provider">
 									<span>Proveedor:</span> 
@@ -52,15 +52,20 @@
 								</li>
 							</ul>
 							<ul class="info-detalle">
-								<li ng-if="solicitude.ticket.category">
-									<span>Categoría:</span> 
-									{{ solicitude.ticket.category.name }}
+								<li ng-if="solicitude.ticket.segments">
+									<span>Segmento(s):</span> 
+									<ul class="segments">
+										<li ng-repeat="s in solicitude.ticket.segments">
+											<span>{{ s.type }}:</span>
+											{{ s.sections.join(', ') }}
+										</li>
+									</ul>
 								</li>
 							</ul>
 							<ul class="info-detalle">
-								<li ng-if="solicitude.ticket.segments">
-									<span>Segmento:</span> 
-									{{ solicitude.ticket.segments | SegmentArray }}
+								<li ng-if="solicitude.ticket.category">
+									<span>Categoría:</span> 
+									{{ solicitude.ticket.category.name }}
 								</li>
 							</ul>
 

@@ -36,7 +36,7 @@
               </li>
           </ul>
       </fieldset> -->
-      <fieldset class="odd segments" data-sgk-checks="segments">
+      <!-- <fieldset class="odd segments" data-sgk-checks="segments">
           <p>Seleccionar segmentos a los que aplica la solicitud</p>
           <div class="message-error" ng-show="submitted && error.segments">Se debe seleccionar al menos 1 segmento.</div>
           <ul>
@@ -49,8 +49,239 @@
                 </label>
               </li>
           </ul>
+      </fieldset> -->
+
+      <fieldset class="odd segments" data-sgk-checks="segments">
+          <p>Seleccionar segmentos a los que aplica la solicitud</p>
+          <div class="message-error" ng-show="submitted && error.segments">Se debe seleccionar al menos 1 segmento.</div>
+          
+          <ul class="segments">
+            <li data-segment="Personas">
+              <label class="segment">
+                Personas
+                <span class="opt-check right"></span>
+                <input class="hide" type="checkbox" id="check_todos" name="segments">
+              </label>
+
+              <ul class="sections hide">
+                <li data-section="Home">
+                  <label class="section">
+                    Home
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Telefonia Movil">
+                  <label class="section">
+                    Telefonia Movil
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Dúos y Trios">
+                  <label class="section">
+                    Dúos y Trios
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Telefonia Hogar">
+                  <label class="section">
+                    Telefonia Hogar
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Internet">
+                  <label class="section">
+                    Internet
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Televisión">
+                  <label class="section">
+                    Televisión
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Equipos">
+                  <label class="section">
+                    Equipos
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Club Movistar">
+                  <label class="section">
+                    Club Movistar
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Ayuda">
+                  <label class="section">
+                    Ayuda
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Ofertas que te gustan">
+                  <label class="section">
+                    Ofertas que te gustan
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+              </ul>
+            </li>
+            <li data-segment="Negocios">
+              <label class="segment">
+                Negocios
+                <span class="opt-check right"></span>
+                <input class="hide" type="checkbox" id="check_todos" name="segments">
+              </label>
+
+              <ul class="sections hide">
+                <li data-section="Home">
+                  <label class="section">
+                    Home
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Soluciones de Voz">
+                  <label class="section">
+                    Soluciones de Voz
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Soluciones de Datos">
+                  <label class="section">
+                    Soluciones de Datos
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Internet Movil">
+                  <label class="section">
+                    Internet Movil
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Televisión">
+                  <label class="section">
+                    Televisión
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Equipos">
+                  <label class="section">
+                    Equipos
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Club Movistar">
+                  <label class="section">
+                    Club Movistar
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Pregustas Frecuentes">
+                  <label class="section">
+                    Pregustas Frecuentes
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+              </ul>
+
+            </li>
+            <li data-segment="Empresas">
+              <label class="segment">
+                Empresas
+                <span class="opt-check right"></span>
+                <input class="hide" type="checkbox" id="check_todos" name="segments">
+              </label>
+
+              <ul class="sections hide">
+                <li data-section="Home">
+                  <label class="section">
+                    Home
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Nuestros Productos">
+                  <label class="section">
+                    Nuestros Productos
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Soluciones para su In">
+                  <label class="section">
+                    Soluciones para su In
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">dustria
+                  </label>
+                </li>
+                <li data-section="Modelo de Atención">
+                  <label class="section">
+                    Modelo de Atención
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Por qué Telefónica">
+                  <label class="section">
+                    Por qué Telefónica
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Sucursal Virtual">
+                  <label class="section">
+                    Sucursal Virtual
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+                <li data-section="Equipos">
+                  <label class="section">
+                    Equipos
+                    <span class="opt-check right"></span>
+                    <input class="hide" type="checkbox" id="check_todos" name="segments">
+                  </label>
+                </li>
+              </ul>
+
+            </li>
+          </ul>
+
+
+
+          <!-- <ul>
+              <li class="lab" ng-repeat="s in segments" data-value="{{ s.id }}">
+                <label>{{ s.name }}
+                  <span class="opt-check right"></span>
+                  <input class="hide" type="checkbox" id="check_todos" name="segments" 
+                    ng-true-value="{{ s.id }}" 
+                    ng-change="changeSegments(form, s.id)" ng-model="solicitude.segment" >
+                </label>
+              </li>
+          </ul> -->
       </fieldset>
-      <fieldset class="even sections" data-sgk-checks="sections">
+
+
+
+      <!-- <fieldset class="even sections" data-sgk-checks="sections">
           <p>Seleccionar secciones a los que aplica la solicitud</p>
           <div class="message-error" ng-show="submitted && error.sections">Se debe seleccionar al menos 1 seccion.</div>
           <ul>
@@ -61,11 +292,11 @@
                 </label>
               </li>
           </ul>
-      </fieldset>
+      </fieldset> -->
       <fieldset class="even">
         <p>Dejar un comentario</p>
         <ul>
-          <textarea name="message" rows="8" name="because" ng-model="solicitude.message"></textarea>
+          <textarea name="message" rows="3" name="because" ng-model="solicitude.message"></textarea>
         </ul>
       </fieldset>
       <div class="fixed">

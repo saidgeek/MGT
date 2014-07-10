@@ -6,59 +6,87 @@ angular.module('movistarApp')
     link: (scope, element, attrs) ->
       type = attrs.sgkChecks
 
-      element.on 'click', 'li.lab', (e) ->
-        $el = angular.element e.target
-        if !$el.hasClass 'active'
-          $el.addClass 'active'
-          scope.solicitude.ticket[type].push $el.data 'value'
-        else
-          $el.removeClass 'active'
-          _index = scope.solicitude.ticket[type].indexOf $el.data('value')
-          scope.solicitude.ticket[type].splice _index, 1
+      findAndAddSection = (type, value) ->
+        angular.element.each scope.solicitude.ticket.segments, (index, result) ->
+          if typeof(result) isnt 'undefined' and result['type'] is type
+            scope.solicitude.ticket.segments[index].sections.push value
 
-      element.on 'click', 'li.lab label span', (e) ->
+      findAndRemoveSection = (type, value) ->
+        angular.element.each scope.solicitude.ticket.segments, (index, result) ->
+          if typeof(result) isnt 'undefined' and result['type'] is type
+            _index = scope.solicitude.ticket.segments[index].sections.indexOf value
+            scope.solicitude.ticket.segments[index].sections.splice _index, 1
+
+      findAndRemove = (value) ->
+        angular.element.each scope.solicitude.ticket.segments, (index, result) ->
+          console.log 'result:', result
+          if typeof(result) isnt 'undefined' and result['type'] is value
+            scope.solicitude.ticket.segments.splice index, 1
+
+      element.on 'click', 'ul.segments li label.segment', (e) ->
+        e.preventDefault()
+
+        $el = angular.element e.target
+        if !$el.parent().hasClass 'active'
+          $el.parent().addClass 'active'
+          $el.parent().find('ul.sections').removeClass 'hide'
+          scope.solicitude.ticket.segments.push { type: $el.parent().data('segment'), sections: [] }
+        else
+          $el.parent().removeClass 'active'
+          $el.parent().find('ul.sections').addClass 'hide'
+          findAndRemove $el.parent().data('segment')
+
+        return false
+
+      element.on 'click', 'ul.segments li label.segment span', (e) ->
+        e.preventDefault()
         $el = angular.element(e.target).parents('li')
 
         if !$el.hasClass 'active'
           $el.addClass 'active'
-          scope.solicitude.ticket[type].push $el.data 'value'
+          $el.find('ul.sections').removeClass 'hide'
+          scope.solicitude.ticket.segments.push { type: $el.data('segment'), sections: [] }
         else
           $el.removeClass 'active'
-          _index = scope.solicitude.ticket[type].indexOf $el.data('value')
-          scope.solicitude.ticket[type].splice _index, 1
+          $el.find('ul.sections').addClass 'hide'
+          findAndRemove $el.data('segment')
+
+        return false
+
+      element.on 'click', 'ul.sections li label.section', (e) ->
+        e.preventDefault()
+
+        $el = angular.element e.target
+        if !$el.parent().hasClass 'active'
+          $el.parent().addClass 'active'
+          $el.parent().find('ul.sections').removeClass 'hide'
+          
+          findAndAddSection $el.parents('ul.sections').parent().data('segment'), $el.parent().data('section')
+
+        else
+          $el.parent().removeClass 'active'
+          $el.parent().find('ul.sections').addClass 'hide'
+          
+          findAndRemoveSection $el.parents('ul.sections').parent().data('segment'), $el.parent().data('section')
+
+        return false
+
+      element.on 'click', 'ul.sections li label.section span', (e) ->
+        e.preventDefault()
+
+        $el = angular.element(e.target).parent().parent()
+
+        if !$el.hasClass 'active'
+          $el.addClass 'active'
+          $el.find('ul.sections').removeClass 'hide'
+          
+          findAndAddSection $el.parents('ul.sections').parent().data('segment'), $el.data('section')
+
+        else
+          $el.removeClass 'active'
+          $el.find('ul.sections').addClass 'hide'
+          
+          findAndRemoveSection $el.parents('ul.sections').parent().data('segment'), $el.data('section')
+
+        return false
       
-      # element.on 'click', 'li.lab label span', (e) ->
-      #   $el = angular.element(e.target).parent().parent()
-      #   if !$el.find('label span.opt-check').hasClass 'active'
-      #     $el.addClass 'active'
-      #     $el.find('label span.opt-check').addClass 'active'
-      #     scope.solicitude.ticket[$el.data('type')].push $el.data 'value'
-      #   else
-      #     $el.removeClass 'active'
-      #     $el.find('label span.opt-check').removeClass 'active'
-      #     _index = scope.solicitude.ticket[$el.data('type')].indexOf $el.data('value')
-      #     scope.solicitude.ticket[$el.data('type')].splice _index, 1
-
-      
-      # $_triggersCheck = () =>
-      #   $element
-      #     .parents('.detalle')
-      #     .on 'click', 'ul li.lab', (e) =>
-      #       e.preventDefault()
-
-      #       console.log 'angular.element(e.target):', angular.element(e.target)
-
-      #       $el = angular.element(e.target)
-      #       $el = angular.element($el[0])
-
-      #       $el.toggleClass 'active'
-      #       $el.find('label span.opt-check').toggleClass 'active'
-
-      #       if $el.find('label span.opt-check').hasClass 'active'
-      #         $scope.solicitude.ticket[$el.data('type')].push $el.data 'value'
-      #       else
-      #         console.log '$scope.solicitude.ticket:', $scope.solicitude.ticket, $el.data('type'), $el
-      #         _index = $scope.solicitude.ticket[$el.data('type')].indexOf $el.data('value')
-      #         $scope.solicitude.ticket[$el.data('type')].splice _index, 1
-
-      #       return false
