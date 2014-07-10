@@ -6,6 +6,5 @@ angular.module('movistarApp')
 
     $scope.search = (form, type) ->
       if form.$valid
-        console.log 'q:', $scope.q.replace /\s/g, '+'
         $state.go 'search', { q: $scope.q.replace /\s/g, '+' }
     

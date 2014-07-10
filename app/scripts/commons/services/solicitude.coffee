@@ -12,6 +12,13 @@ angular.module("movistarApp")
         url: '/api/v1/solicitudes/:target/:filter'
         isArray: true
 
+      search:
+        method: 'GET'
+        params:
+          q: '@q'
+        url: '/api/v1/solicitudes/search/:q'
+        isArray: true
+
       groups:
         method: "GET"
         params:
@@ -74,6 +81,15 @@ angular.module("movistarApp")
       , (err) ->
         cb err.data
       ).$premise
+
+    _search = (q, cb) ->
+      resource.search(
+        q: q
+      , (solicitudes) ->
+        cb null, solicitudes
+      , (err) ->
+        cb err
+      ).$promise
 
     _makeGroups = (groups) ->
       result = {
@@ -175,6 +191,8 @@ angular.module("movistarApp")
     return {
       index: (target, filter, cb) ->
         _index(target, filter, cb)
+      search: (q, cb) ->
+        _search(q, cb)
       groups: (cb) ->
         _groups(cb)
       show: (id, cb) ->
