@@ -6,6 +6,7 @@ angular.module('movistarApp')
     $scope.comments = []
 
     angular.element.each _comments, (index, comment) ->
+      console.log 'comment.to.role:', comment.to.role
       if ['ADMIN', 'ROOT'].indexOf($rootScope.currentUser.role) > -1 || $rootScope.currentUser.role is comment.to.role
         $scope.comments.push comment
 
@@ -60,6 +61,13 @@ angular.module('movistarApp')
               $scope.comments.push comment
             return false
 
+    IO.on 'solicitude.new.task', (data) ->
+      if data.solicitude is $scope.solicitude._id
+        Task.show data.task, (err, task) ->
+          if !err
+              $scope.tasks.push task
+            return false
+
     # $scope.showOption = (option) ->
     #   if option is 'PAUSED'
     #     ~['ROOT', 'ADMIN', 'CONTENT_MANAGER'].indexOf($rootScope.currentUser.role)
@@ -95,21 +103,8 @@ angular.module('movistarApp')
         Task.create $scope.solicitude._id, $scope.task, (err, task) ->
           if !err
             $scope.atts = []
-            $scope.tasks.push task
             $rootScope.$emit 'clean_list_uploader'
-
-        # Solicitude.addTasks $scope.solicitude._id, $scope.solicitude._tasks, ($scope.solicitude._attachments_tasks || {} ), (err, solicitude) ->
-        #   if err
-        #     $scope.errors = err
-        #   else
-        #     $scope.atts = []
-        #     $scope.solicitude.tasks = solicitude.tasks
-        #     if $scope.solicitude._attachments?
-        #       for att in $scope.solicitude._attachments_tasks 
-        #         $scope.solicitude.attachments.push att
-        #     $scope.solicitude._attachments_tasks = {}
-        #     $rootScope.$emit 'clean_list_uploader'
-        #     $scope.solicitude._tasks = ''
+            $scope.task = {}
 
     $scope.toggleCheck = (id) =>
       Task.toggle_completed id, (err) ->

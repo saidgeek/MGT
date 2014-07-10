@@ -11,6 +11,12 @@ angular.module("movistarApp")
         url: '/api/v1/tasks/:solicitude_id'
         isArray: true
 
+      show:
+        method: 'GET'
+        params:
+          id: '@id'
+        url: '/api/v1/task/:id'
+
       create:
         method: 'POST'
         params:
@@ -31,6 +37,15 @@ angular.module("movistarApp")
         solicitude_id: solicitude_id
       , (tasks) ->
         cb null, tasks
+      , (err) ->
+        cb err
+      ).$promise
+
+    _show = (id, cb) ->
+      resource.show(
+        id: id
+      , (task) ->
+        cb null, task
       , (err) ->
         cb err
       ).$promise
@@ -58,6 +73,8 @@ angular.module("movistarApp")
     return {
       index: (solicitude_id, cb) ->
         _index(solicitude_id, cb)
+      show: (id, cb) ->
+        _show(id, cb)
       create: (solicitude_id, task, cb) ->
         _create(solicitude_id, task, cb)
       toggle_completed: (id, cb) ->

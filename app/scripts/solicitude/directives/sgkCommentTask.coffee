@@ -15,6 +15,7 @@ angular.module('movistarApp')
               Comment.show comment._id, (err, comment) ->
                 if !err
                   $scope.task_comments.push comment
+                  $scope.task_comment = {}
 
     link: (scope, element, attrs) ->
       scope.task_comments = null
