@@ -1,13 +1,12 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'SolicitudeCtrl', ($scope, Solicitude, $rootScope, PriorityData, Category, User, Comment, Task, SegmentsData, SectionsData, _solicitude, _comments, _attachments, _tasks, $state, IO) ->
+  .controller 'SolicitudeCtrl', ($scope, Solicitude, $rootScope, PriorityData, Category, User, Comment, Task, SegmentsData, SectionsData, _solicitude, _comments, _attachments, _tasks, $state, IO, CommentPermissions) ->
     $scope.solicitude = _solicitude
     $scope.comments = []
 
     angular.element.each _comments, (index, comment) ->
-      console.log 'comment.to.role:', comment.to.role
-      if ['ADMIN', 'ROOT'].indexOf($rootScope.currentUser.role) > -1 || $rootScope.currentUser.role is comment.to.role
+      if CommentPermissions.view(comment.type, $rootScope.currentUser.role)
         $scope.comments.push comment
 
     $scope.attachments = _attachments
@@ -57,7 +56,7 @@ angular.module('movistarApp')
       if data.solicitude is $scope.solicitude._id
         Comment.show data.comment, (err, comment) ->
           if !err
-            if ['ADMIN', 'ROOT'].indexOf($rootScope.currentUser.role) > -1 || $rootScope.currentUser.role is comment.to.role
+            if CommentPermissions.view(comment.type, $rootScope.currentUser.role)
               $scope.comments.push comment
             return false
 

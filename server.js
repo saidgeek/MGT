@@ -32,8 +32,8 @@ require(modelsPath + '/attachment');
 require(modelsPath + '/category');
 require(modelsPath + '/notification');
 require(modelsPath + '/task');
-require(modelsPath + '/comment');
 require(modelsPath + '/solicitude');
+require(modelsPath + '/comment');
 require(modelsPath + '/log');
 
 // Passport Configuration

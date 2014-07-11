@@ -112,136 +112,128 @@
 
 		</div>
 
-		<div class="row">
-			<div class="table detalle bkg">
-				
-				<!-- Comments column -->
-				<div class="col-6 border">
-
-					<div class="detalle bkg">
-						<div class="row">
-							<div class="header">
-								<h2>Comentarios</h2>
-							</div>
-							<div class="first">
-								<div class="comments" id="form-task">
-									<div class="col-8">	
-				            <ul class="btns-comentario">
-											<li><a href="javascript:{}" class="boton1 round" data-sgk-comment-button="pm" data-sgk-comment-solicitude="{{ solicitude._id }}">Comentario a PM</a></li>
-											<li><a href="javascript:{}" class="boton1 round" data-sgk-comment-button="internal" data-sgk-comment-solicitude="{{ solicitude._id }}">Comentario a inteno</a></li>
-											<li><a href="javascript:{}" class="boton1 round" data-sgk-comment-button="provider" data-sgk-comment-solicitude="{{ solicitude._id }}">Comentario a proveedor</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					
+		<div id="form-comment" class="row">
+			<div class="detalle bkg">
+				<div class="row">
+					<div class="header">
+						<h2>Comentarios</h2>
 					</div>
-
-					<div class="detalle bkg" ng-repeat="c in comments" id="comments-detail">
-						<div class="row">
-							<div class="first">
-								<div class="comments">
-									<div class="col-3">
-										<div class="user">
-											<div class="avatar">
-												<span><img src="images/avatar-user.png" ng-src="{{ c.createdBy.profile.avatar || 'images/avatar-user.png' }}"></span>
-											</div>
-											<div class="username">
-												<span>{{ c.createdBy.profile.firstName }} {{ c.createdBy.profile.lastName }}</span> 
-												<p data-sgk-duration ng-model="c.createdAt"></p>
-											</div>
-										</div>
-									</div>
-									<div class="col-9">	
-										<p>{{ c.message }}</p>
-									</div>
-								</div>
-								<div class="comments">
-									<div class="col-3"></div>
-									<div class="col-9">
-										<div class="first last">
-											<ul class="files">
-												<li ng-repeat="att in c.attachments">
-													<a href="{{ att.link }}" download>
-														<div>
-															<span class="file"><span class="ng-binding">{{ att.name }}</span></span>
-															<span class="download"></span>
-														</div>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
+					<div class="first">
+						<div class="comments" id="form-task">
+							<div class="col-8">	
+		            <ul class="btns-comentario">
+									<li><a href="javascript:{}" class="boton1 round" data-sgk-comment-button="Solicitude.pm" data-sgk-comment-solicitude="{{ solicitude._id }}">Comentario a PM</a></li>
+									<li><a href="javascript:{}" class="boton1 round" data-sgk-comment-button="Solicitude.internal" data-sgk-comment-solicitude="{{ solicitude._id }}">Comentario inteno</a></li>
+									<li><a href="javascript:{}" class="boton1 round" data-sgk-comment-button="Solicitude.provider" data-sgk-comment-solicitude="{{ solicitude._id }}">Comentario a proveedor</a></li>
+								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
-				<!-- Comments column -->
-
-				<!-- tasks column -->
-				<div class="col-6">					
-					<div class="detalle bkg">
-						<div class="row">
-							<div class="header">
-								<h2>Sub-tareas</h2>
-							</div>
-							<div class="first">
-								<div class="comments" id="form-task">
-									<div class="col-8">	
-				            <form name="form" ng-submit="addTask(form)">
-						            <textarea class="round" name="desc" rows="2" ng-model="task.content"></textarea>
-						            <fieldset>
-						                <input class="submit boton1 round" type="submit" value="Agregar">
-						            </fieldset>
-						            <fieldset>
-						              <div data-sgk-uploader-multi="{{ solicitude._id }}" data-sgk-type="tasks" sgk-position="buttom" ng-model="solicitude._attachments_tasks"></div>
-						            </fieldset>
-						        </form>
-									</div>
-								</div>
-							</div>
-						</div>
-					
-					</div>
-					<!-- task -->
-					<div id="task_{{ t._id }}" class="detalle bkg" ng-repeat="t in tasks">
-						<div class="row">
-							<div class="first last">
-								<!-- <p class="nivel" ng-show="solicitude.tasks">Nivel de avance 50%</p> -->
-						    <div class="tasks"><!-- contenedor para subtarea -->
-						        <div class="dato">
-						            <div class="table">
-						                <div class="t-c che">
-						                  <span class="opt-check left" ng-class="{active: t.check}" data-sgk-check ng-click="toggleCheck(t._id)"></span>
-						                  <input class="hide" type="checkbox" id="check_todos">
-						                </div>
-						                <div class="t-c">
-						                    <p class="bold">
-						                        {{ t.content }}
-						                    </p>
-						                    <ul>
-									                <li ng-repeat="_att in t.attachments">
-									                    <a href="{{ _att.link }}" download>{{ _att.name }}</a>
-									                </li>
-									              </ul>
-						                </div>
-						            </div>
-						            <!-- <a href="javascript:{}">Activar solicitud</a> -->
-						        </div>
-						    </div>
-						    
-						    <div data-sgk-comment-task="{{ t._id }}" data-sgk-comment-task-solicitude="{{ solicitude._id }}"></div>
-							</div>
-						</div>
-					</div>
-					<!-- task -->
-
-				</div>
-				<!-- tasks column -->
+			
 			</div>
-		</div><!-- table detalle bkg -->
+		</div>
+
+		<div class="row">
+			<div class="detalle bkg" ng-repeat="c in comments" id="comments-detail">
+				<div class="row">
+					<div class="first">
+						<div class="comments">
+							<div class="col-3">
+								<div class="user">
+									<div class="avatar">
+										<span><img src="images/avatar-user.png" ng-src="{{ c.createdBy.profile.avatar || 'images/avatar-user.png' }}"></span>
+									</div>
+									<div class="username">
+										<span>{{ c.createdBy.profile.firstName }} {{ c.createdBy.profile.lastName }}</span> 
+										<p data-sgk-duration ng-model="c.createdAt"></p>
+									</div>
+								</div>
+							</div>
+							<div class="col-9">	
+								<p>{{ c.message }}</p>
+							</div>
+						</div>
+						<div class="comments">
+							<div class="col-3"></div>
+							<div class="col-9">
+								<div class="first last">
+									<ul class="files">
+										<li ng-repeat="att in c.attachments">
+											<a href="{{ att.link }}" download>
+												<div>
+													<span class="file"><span class="ng-binding">{{ att.name }}</span></span>
+													<span class="download"></span>
+												</div>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="detalle bkg">
+				<div class="row">
+					<div class="header">
+						<h2>Sub-tareas</h2>
+					</div>
+					<div class="first">
+						<div class="comments" id="form-task">
+							<div class="col-8">	
+		            <form name="form" ng-submit="addTask(form)">
+				            <textarea class="round" name="desc" rows="2" ng-model="task.content"></textarea>
+				            <fieldset>
+				                <input class="submit boton1 round" type="submit" value="Agregar">
+				            </fieldset>
+				            <fieldset>
+				              <div data-sgk-uploader-multi="{{ solicitude._id }}" data-sgk-type="tasks" sgk-position="buttom" ng-model="solicitude._attachments_tasks"></div>
+				            </fieldset>
+				        </form>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+
+		<div class="row">
+			<div id="task_{{ t._id }}" class="detalle bkg" ng-repeat="t in tasks">
+				<div class="row">
+					<div class="first last">
+						<!-- <p class="nivel" ng-show="solicitude.tasks">Nivel de avance 50%</p> -->
+				    <div class="tasks"><!-- contenedor para subtarea -->
+				        <div class="dato">
+				            <div class="table">
+				                <div class="t-c che">
+				                  <span class="opt-check left" ng-class="{active: t.check}" data-sgk-check ng-click="toggleCheck(t._id)"></span>
+				                  <input class="hide" type="checkbox" id="check_todos">
+				                </div>
+				                <div class="t-c">
+				                    <p class="bold">
+				                        {{ t.content }}
+				                    </p>
+				                    <ul>
+							                <li ng-repeat="_att in t.attachments">
+							                    <a href="{{ _att.link }}" download>{{ _att.name }}</a>
+							                </li>
+							              </ul>
+				                </div>
+				            </div>
+				            <!-- <a href="javascript:{}">Activar solicitud</a> -->
+				        </div>
+				    </div>
+				    
+				    <div data-sgk-comment-task="{{ t._id }}" data-sgk-comment-task-solicitude="{{ solicitude._id }}"></div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 	</div>
 </div>

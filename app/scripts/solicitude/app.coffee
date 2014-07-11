@@ -110,6 +110,18 @@ angular.module('movistarApp', [
         return false
     }
 
+  .factory 'CommentPermissions', ->
+    return {
+      view: (type, role) ->
+        return type is 'Solicitude.pm' and ['ROOT', 'ADMIN', 'EDITOR', 'CONTENT_MANAGER', 'CLIENT'].indexOf(role) > -1
+        return type is 'Solicitude.internal' and ['ROOT', 'ADMIN', 'EDITOR', 'CONTENT_MANAGER'].indexOf(role) > -1
+        return type is 'Solicitude.provider' and ['ROOT', 'ADMIN', 'EDITOR', 'CONTENT_MANAGER', 'PROVIDER'].indexOf(role) > -1
+      send: (type, role) ->
+        return type is 'Solicitude.pm' and ['ROOT', 'ADMIN', 'EDITOR', 'CONTENT_MANAGER'].indexOf(role) > -1
+        return type is 'Solicitude.internal' and ['ROOT', 'ADMIN', 'EDITOR', 'CONTENT_MANAGER'].indexOf(role) > -1
+        return type is 'Solicitude.provider' and ['ROOT', 'ADMIN', 'EDITOR', 'CONTENT_MANAGER'].indexOf(role) > -1
+    }
+
   .run ($rootScope, $state, Auth, $timeout, IO, $window, $http) ->
     $http.defaults.headers.common['token-client'] =  $rootScope.currentUser.access.clientToken
     $http.defaults.headers.common['token-access'] =  $rootScope.currentUser.access.accessToken
