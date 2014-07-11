@@ -66,6 +66,7 @@ require('./lib/config/express')(app);
 // Routing
 require('./lib/routes')(app);
 
+require('./createMapping')();
 require('./synchronizeModels')();
 
 // Start server
