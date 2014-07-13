@@ -113,9 +113,11 @@ angular.module('movistarApp', [
   .factory 'CommentPermissions', ->
     return {
       view: (type, role) ->
-        return type is 'Solicitude.pm' and ['ROOT', 'ADMIN', 'EDITOR', 'CONTENT_MANAGER', 'CLIENT'].indexOf(role) > -1
-        return type is 'Solicitude.internal' and ['ROOT', 'ADMIN', 'EDITOR', 'CONTENT_MANAGER'].indexOf(role) > -1
-        return type is 'Solicitude.provider' and ['ROOT', 'ADMIN', 'EDITOR', 'CONTENT_MANAGER', 'PROVIDER'].indexOf(role) > -1
+        return true if type is 'Solicitude.pm' and ['ROOT', 'ADMIN', 'EDITOR', 'CONTENT_MANAGER', 'CLIENT'].indexOf(role) > -1
+        return true if type is 'Solicitude.internal' and ['ROOT', 'ADMIN', 'EDITOR', 'CONTENT_MANAGER'].indexOf(role) > -1
+        return true if type is 'Solicitude.provider' and ['ROOT', 'ADMIN', 'EDITOR', 'CONTENT_MANAGER', 'PROVIDER'].indexOf(role) > -1
+        return true if ['Solicitude.pm', 'Solicitude.internal', 'Solicitude.provider'].indexOf(type) < 0
+        return false
       send: (type, role) ->
         return type is 'Solicitude.pm' and ['ROOT', 'ADMIN', 'EDITOR', 'CONTENT_MANAGER'].indexOf(role) > -1
         return type is 'Solicitude.internal' and ['ROOT', 'ADMIN', 'EDITOR', 'CONTENT_MANAGER'].indexOf(role) > -1

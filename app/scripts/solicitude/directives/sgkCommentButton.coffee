@@ -36,7 +36,7 @@ angular.module('movistarApp')
             scope.to = _solicitude.provider._id if $rootScope.currentUser.role is 'CONTENT_MANAGER'
             scope.to = _solicitude.responsible._id if ['ADMIN', 'ROOT', 'PROVIDER'].indexOf($rootScope.currentUser.role) > -1
 
-          if !CommentPermissions.send(scope.type, $rootScope.currentUser.role)
+          if !CommentPermissions.view(scope.type, $rootScope.currentUser.role)
             element.remove()
 
           if !CommentPermissions.send(scope.type, $rootScope.currentUser.role) and scope.type is 'Solicitude.pm' and $rootScope.currentUser.role is 'CLIENT'
