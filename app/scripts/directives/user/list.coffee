@@ -14,14 +14,14 @@ angular.module('movistarApp')
           .find('.note.round')
           .first()
           .addClass('active')
-          .find('ul.lista-estados')
-          .first()
-          .css('display', 'block')
-        $element
-          .find('.note.round')
-          .first()
-          .find('.note-right h3')
-          .addClass 'active'
+          # .find('ul.lista-estados')
+          # .first()
+          # .css('display', 'block')
+        # $element
+        #   .find('.note.round')
+        #   .first()
+        #   .find('.note-right h3')
+        #   .addClass 'active'
         $rootScope.$emit 'loadUserShow', $element.find('.note.round').first().data 'id'
 
       $_disableActiveAllElements = () =>
