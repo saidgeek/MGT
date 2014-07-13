@@ -3502,7 +3502,7 @@ ul.estados .dropdown span {
 #nueva-solicitud form ul.segments li {
   display: table-cell;
   margin: 0 5px;
-  width: 30%;
+  width: 20%;
   padding: 5px;
 }
 
@@ -3518,7 +3518,7 @@ ul.estados .dropdown span {
 
 #nueva-solicitud form ul.segments li label.segment, 
 #nueva-solicitud form ul.segments li ul.sections li label.section {
-  width: 276px;
+  width: 181px;
   position: relative;
   display: block;
   float: left;
@@ -3526,7 +3526,7 @@ ul.estados .dropdown span {
 }
 
 #nueva-solicitud form ul.segments li ul.sections li label.section {
-  width: 267px;
+  width: 172px;
 }
 
 #nueva-solicitud form ul.segments li label.segment span.opt-check,
