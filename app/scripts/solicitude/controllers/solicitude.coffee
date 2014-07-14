@@ -3,14 +3,50 @@
 angular.module('movistarApp')
   .controller 'SolicitudeCtrl', ($scope, Solicitude, $rootScope, PriorityData, Category, User, Comment, Task, SegmentsData, SectionsData, _solicitude, _comments, _attachments, _tasks, $state, IO, CommentPermissions) ->
     $scope.solicitude = _solicitude
-    $scope.comments = []
+    $scope.comments = null
+    $scope.comment_type = null
+    $scope._comment = {}
+    $scope.comment =
+      types: []
+      pm: []
+      internal: []
+      provider: []
+      other: []
 
     angular.element.each _comments, (index, comment) ->
       if CommentPermissions.view(comment.type, $rootScope.currentUser.role)
-        $scope.comments.push comment
+        switch comment.type
+          when 'Solicitude.pm'
+            $scope.comment.pm.push comment
+          when 'Solicitude.internal'
+            $scope.comment.internal.push comment
+          when 'Solicitude.provider'
+            $scope.comment.provider.push comment
+          else
+            $scope.comment.other.push comment
+
+    console.log 'comments:', $scope.comment
+
+
+    if CommentPermissions.view('Solicitude.pm', $rootScope.currentUser.role)
+      _name = 'Comentarios PM'
+      if $rootScope.currentUser.role is 'CLIENT'
+        _name = 'Comentarios'
+      $scope.comment.types.push {  id: 'pm', name: _name }
+    if CommentPermissions.view('Solicitude.internal', $rootScope.currentUser.role)
+      $scope.comment.types.push { id: 'internal', name: 'Comentarios Interno'}
+    if CommentPermissions.view('Solicitude.provider', $rootScope.currentUser.role)
+      _name = 'Comentarios Proveedor'
+      if $rootScope.currentUser.role is 'CLIENT'
+        _name = 'Comentarios'
+      $scope.comment.types.push { id: 'provider', name: _name }
+
+    $rootScope.$on 'loadComments', (e, t, c) ->
+      $scope.comment_type = t
+      $scope.comments = c
+      
 
     $scope.attachments = _attachments
-    $scope.comment = {}
     $scope.tasks = _tasks
     $scope.task = {}
 
@@ -34,6 +70,8 @@ angular.module('movistarApp')
     $scope.segments = SegmentsData.getArray()
     $scope.sections = SectionsData.getArray()
 
+    $scope.tabs = ''
+
     Category.index (err, categories) ->
       if err
         $scope.errors = err
@@ -51,6 +89,10 @@ angular.module('movistarApp')
         $scope.errors = err
       else
         $scope.provider = users
+
+
+    $scope.tabs = (tab) ->
+      $scope.tabs = tab
 
     IO.on 'solicitude.new.comment', (data) ->
       if data.solicitude is $scope.solicitude._id
@@ -104,6 +146,25 @@ angular.module('movistarApp')
             $scope.atts = []
             $rootScope.$emit 'clean_list_uploader'
             $scope.task = {}
+
+    $scope.addComment = (form) ->
+      if form.$valid
+        _to = null
+        if $scope.comment_type is 'pm' and $scope.solicitude.applicant?._id?
+          _to = $scope.solicitude.applicant._id
+
+        if $scope.comment_type is 'internal' and $scope.solicitude.responsible?._id? and $scope.solicitude.editor?._id?
+          _to = $scope.solicitude.responsible._id if $rootScope.currentUser.role is 'EDITOR'
+          _to = $scope.solicitude.editor._id if ['ADMIN', 'ROOT', 'CONTENT_MANAGER'].indexOf($rootScope.currentUser.role) > -1
+
+        if $scope.comment_type is 'provider' and $scope.solicitude.provider?._id? and $scope.solicitude.responsible?._id?
+          _to = $scope.solicitude.provider._id if $rootScope.currentUser.role is 'CONTENT_MANAGER'
+          _to = $scope.solicitude.responsible._id if ['ADMIN', 'ROOT', 'PROVIDER'].indexOf($rootScope.currentUser.role) > -1
+
+        Comment.create "Solicitude.#{$scope.comment_type}", $scope.solicitude._id, _to, $scope._comment, (err, comment) ->
+          if !err
+            $rootScope.$emit 'clean_list_uploader'
+            $scope._comment = {}
 
     $scope.toggleCheck = (id) =>
       Task.toggle_completed id, (err) ->

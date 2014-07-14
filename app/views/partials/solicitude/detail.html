@@ -102,39 +102,33 @@
 				</div>
 			</div><!--/ .row /-->
 
-			<!-- <div class="row">
-				<ul class="btns-comentario">
-					<li><a href="javascript:{}" class="boton1 round" data-sgk-comment-button="pm" data-sgk-comment-solicitude="{{ solicitude }}">Comentario a PM</a></li>
-					<li><a href="javascript:{}" class="boton1 round" data-sgk-comment-button="internal" data-sgk-comment-solicitude="{{ solicitude }}">Comentario a intenor</a></li>
-					<li><a href="javascript:{}" class="boton1 round" data-sgk-comment-button="provider" data-sgk-comment-solicitude="{{ solicitude }}">Comentario a proveedor</a></li>
-				</ul>	
-			</div> -->
-
 		</div>
 
-		<div id="form-comment" class="row">
+		<div class="row">
 			<div class="detalle bkg">
-				<div class="row">
-					<div class="header">
-						<h2>Comentarios</h2>
-					</div>
-					<div class="first">
-						<div class="comments" id="form-task">
-							<div class="col-8">	
-		            <ul class="btns-comentario">
-									<li><a href="javascript:{}" class="boton1 round" data-sgk-comment-button="Solicitude.pm" data-sgk-comment-solicitude="{{ solicitude._id }}">Comentario a PM</a></li>
-									<li><a href="javascript:{}" class="boton1 round" data-sgk-comment-button="Solicitude.internal" data-sgk-comment-solicitude="{{ solicitude._id }}">Comentario inteno</a></li>
-									<li><a href="javascript:{}" class="boton1 round" data-sgk-comment-button="Solicitude.provider" data-sgk-comment-solicitude="{{ solicitude._id }}">Comentario a proveedor</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
+				<ul id="comment-tabs">
+					<li ng-repeat="type in comment.types" ng-class="{ active: $index == 0, last: $index == (comment.types.length-1) }" data-sgk-comment-tab="{{ type.id }}">
+						<a href="javascript:{}"><span>{{ comment[type.id].length }}</span>{{ type.name }}</a>
+					</li>
+				</ul>
+				
+				<div class="comments" id="comment-form">
+			    <form name="form" ng-submit="addComment(form)">
+		        <textarea class="round" name="message" rows="5" ng-model="_comment.message" placeholder="comment_form_placeholder"></textarea>
+		        <fieldset>
+		          <input class="submit boton1 round" type="submit" value="Enviar">
+		        </fieldset>
+		        <fieldset>
+		          <div data-sgk-uploader-multi="{{ solicitude._id }}" data-sgk-type="comments" sgk-position="buttom" ng-model="_comment.attachments"></div>
+		        </fieldset>
+			    </form>
 				</div>
-			
+
 			</div>
 		</div>
 
 		<div class="row">
+			
 			<div class="detalle bkg" ng-repeat="c in comments" id="comments-detail">
 				<div class="row">
 					<div class="first">
@@ -174,7 +168,18 @@
 					</div>
 				</div>
 			</div>
+
 		</div>
+
+
+
+
+
+
+
+
+
+
 
 		<div class="row" ng-if="false">
 			<div class="detalle bkg">

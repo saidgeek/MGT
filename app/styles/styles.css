@@ -3676,3 +3676,76 @@ ul.btns-comentario li:last-child{
 .col-6 .detalle.bkg .first.last{
     padding: 0 0 16px 0;
 }
+
+
+.row .detalle.bkg ul#comment-tabs:before,
+.row .detalle.bkg ul#comment-tabs:after {
+  display: table;
+  content: "";
+  float: left;
+}
+
+.row .detalle.bkg ul#comment-tabs {
+  margin: -4px 0 0 0;
+  border-bottom: 1px solid #d5e1ee;
+}
+
+.row .detalle.bkg ul#comment-tabs li {
+  display: table-cell;
+  border-right: 1px solid #d5e1ee;
+  text-transform: uppercase;
+}
+
+.row .detalle.bkg ul#comment-tabs li.last {
+  border-right: none;
+}
+
+.row .detalle.bkg ul#comment-tabs li a {
+  padding: 10px 15px;
+  display: block;
+  text-decoration: none;
+}
+
+.row .detalle.bkg ul#comment-tabs li a span {
+  background: #d5e1ee;
+  border-radius: 50%;
+  padding: 2px;
+  margin: 2px;
+  font-size: 0.9em;
+  color: #fff;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  display: inline-block;
+  line-height: 16px;
+}
+
+.row .detalle.bkg ul#comment-tabs li:hover {
+  background: #9da9b9;
+  color: #fff;
+}
+.row .detalle.bkg ul#comment-tabs li.active {
+  background: #00b8cf;
+  color: #fff;
+}
+
+/*.row .detalle.bkg ul#comment-tabs li:hover a span {
+  background: #00b8cf;
+}*/
+
+.row .detalle.bkg ul#comment-tabs li.active a span {
+  background: #9da9b9;
+}
+
+.row .detalle.bkg #comment-form:before,
+.row .detalle.bkg #comment-form:after {
+  display: block;
+  content: "";
+  float: right;
+}
+
+.row .detalle.bkg #comment-form {
+  display: block;
+  padding: 10px 0 40px 0;
+}
+
