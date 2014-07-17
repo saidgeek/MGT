@@ -35,7 +35,7 @@ angular.module('movistarApp')
       $scope.comment.types.push { id: 'internal', name: 'Comentarios Interno'}
     if CommentPermissions.view('Solicitude.provider', $rootScope.currentUser.role)
       _name = 'Comentarios Proveedor'
-      if $rootScope.currentUser.role is 'CLIENT'
+      if $rootScope.currentUser.role is 'PROVIDER'
         _name = 'Comentarios'
       $scope.comment.types.push { id: 'provider', name: _name }
 
