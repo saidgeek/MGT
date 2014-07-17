@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'SolicitudeCtrl', ($scope, Solicitude, $rootScope, PriorityData, Category, User, Comment, Task, SegmentsData, SectionsData, _solicitude, _comments, _attachments, _tasks, $state, IO, CommentPermissions) ->
+  .controller 'SolicitudeCtrl', ($scope, Solicitude, $rootScope, PriorityData, Category, User, Comment, Task, SegmentsData, SectionsData, _solicitude, _comments, _attachments, _tasks, $state, IO, CommentPermissions, $sce) ->
     $scope.solicitude = _solicitude
     $scope.comments = null
     $scope.comment_type = null
@@ -116,6 +116,9 @@ angular.module('movistarApp')
         if $scope.submitted
           $scope.validateForm($scope.form)
     , true
+
+    $scope.htmlTrusted = () ->
+      return $sce.trustAsHtml($scope.solicitude.ticket.description)
 
     $scope.showCommentForm = () ->
       ['COMPLETED', 'CANCELED'].indexOf($scope.solicitude.state.type) < 0
