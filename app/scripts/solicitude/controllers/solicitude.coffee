@@ -117,6 +117,15 @@ angular.module('movistarApp')
           $scope.validateForm($scope.form)
     , true
 
+    $scope.showCommentForm = () ->
+      ['COMPLETED', 'CANCELED'].indexOf($scope.solicitude.state.type) < 0
+
+    $scope.showCompletedAlert = () ->
+      $scope.solicitude.state.type is 'COMPLETED'
+
+    $scope.showCanceledAlert = () ->
+      $scope.solicitude.state.type is 'CANCELED'
+
     $scope.validateTags = () ->
       $scope.tags.length > 0
 

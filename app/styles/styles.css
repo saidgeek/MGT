@@ -3223,6 +3223,26 @@ ul.estados .dropdown span {
   width: auto;
   padding: 4px 12px 12px 12px;
 }
+
+.detalle.bkg.completed {
+  background: #01cc82;
+  padding: 0;
+}
+
+.detalle.bkg.canceled {
+  background: #ff6b6b;
+  padding: 0;
+}
+
+.detalle.bkg.completed p,
+.detalle.bkg.canceled p {
+  text-align: center;
+  color: #fff;
+  font-size: 1.5em;
+  padding: 10px;
+}
+
+
 .detalle.bkg .first{
   display: table;
   width: 100%;
