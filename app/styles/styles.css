@@ -3714,6 +3714,11 @@ ul.btns-comentario li:last-child{
   border-bottom: 1px solid #d5e1ee;
 }
 
+.row .detalle.bkg ul#comment-tabs.alert {
+  margin: -4px 0 -13px 0;
+}
+
+
 .row .detalle.bkg ul#comment-tabs li {
   display: table-cell;
   border-right: 1px solid #d5e1ee;

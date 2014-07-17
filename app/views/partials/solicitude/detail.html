@@ -118,7 +118,7 @@
 
 		<div class="row">
 			<div class="detalle bkg">
-				<ul id="comment-tabs">
+				<ul id="comment-tabs" ng-class="{alert: !showCommentForm()}">
 					<li ng-repeat="type in comment.types" ng-class="{ active: $index == 0, last: $index == (comment.types.length-1) }" data-sgk-comment-tab="{{ type.id }}">
 						<a href="javascript:{}"><span>{{ comment[type.id].length }}</span>{{ type.name }}</a>
 					</li>
