@@ -124,7 +124,7 @@
 					</li>
 				</ul>
 				
-				<div class="comments" id="comment-form" ng-if="showCommentForm()">
+				<div class="comments" id="comment-form" ng-show="showCommentForm()">
 			    <form name="form" ng-submit="addComment(form)" ng-class="{ submitted: submitted && form.$invalid }" novalidate>
 		        <textarea class="round" name="message" rows="5" ng-model="_comment.message" placeholder="comment_form_placeholder" required></textarea>
 		        <div class="message-error" ng-show="submitted && form.message.$error.required">El campo es requerido.</div>
