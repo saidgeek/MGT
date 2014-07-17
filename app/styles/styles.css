@@ -2883,6 +2883,10 @@ input.ng-pristine, input.ng-valid-number{
     border-left: 1px solid #fa5858 !important;
 }*/
 
+form.submitted textarea.ng-invalid-required {
+    border: 1px solid #ff6b6b !important;
+}
+
 #nueva-solicitud.user form.submitted .dropdown select.ng-invalid-required, 
 #nueva-solicitud.user form.submitted input.ng-invalid-required,
 #nueva-solicitud.user form.submitted textarea.ng-invalid-required {

@@ -25,8 +25,6 @@ angular.module('movistarApp')
           else
             $scope.comment.other.push comment
 
-    console.log 'comments:', $scope.comment
-
 
     if CommentPermissions.view('Solicitude.pm', $rootScope.currentUser.role)
       _name = 'Comentarios PM'
@@ -165,6 +163,9 @@ angular.module('movistarApp')
           if !err
             $rootScope.$emit 'clean_list_uploader'
             $scope._comment = {}
+            $scope.submitted = false
+      else
+        $scope.submitted = true
 
     $scope.toggleCheck = (id) =>
       Task.toggle_completed id, (err) ->

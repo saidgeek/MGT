@@ -113,8 +113,9 @@
 				</ul>
 				
 				<div class="comments" id="comment-form">
-			    <form name="form" ng-submit="addComment(form)">
-		        <textarea class="round" name="message" rows="5" ng-model="_comment.message" placeholder="comment_form_placeholder"></textarea>
+			    <form name="form" ng-submit="addComment(form)" ng-class="{ submitted: submitted && form.$invalid }" novalidate>
+		        <textarea class="round" name="message" rows="5" ng-model="_comment.message" placeholder="comment_form_placeholder" required></textarea>
+		        <div class="message-error" ng-show="submitted && form.message.$error.required">El campo es requerido.</div>
 		        <fieldset>
 		          <input class="submit boton1 round" type="submit" value="Enviar">
 		        </fieldset>
