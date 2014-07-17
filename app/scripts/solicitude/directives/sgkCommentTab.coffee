@@ -16,7 +16,7 @@ angular.module('movistarApp')
       $timeout () ->
         if element.hasClass 'active'
           
-          if $rootScope.currentUser.role is 'CLIENT'
+          if $rootScope.currentUser.role is 'CLIENT' or $rootScope.currentUser.role is 'PROVIDER'
             $areaform.attr 'placeholder', placeholder.client
           else
             $areaform.attr 'placeholder', placeholder[type]
