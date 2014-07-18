@@ -1,6 +1,11 @@
 'use strict'
 
 angular.module("movistarApp")
+
+  .filter 'htmToPlainText', ->
+    return (text) ->
+      return angular.element(text).text()
+
   .filter "AttReferer", (RolesData) ->
     return (key) ->
       return 'Comentarios' if key is 'comments'

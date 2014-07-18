@@ -3306,6 +3306,13 @@ ul.estados .dropdown span {
 .content .overflow .row .info-detalle{
   padding:16px 0;
 }
+
+.content .overflow .row .info-detalle iframe {
+    width: 100%;
+    height: auto;
+    border: 1px solid #E4E4E4;
+}
+
 .content .overflow .row h1{
   font: normal 30px 'proxima_nova_rgbold';
 }

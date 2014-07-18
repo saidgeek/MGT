@@ -120,6 +120,9 @@ angular.module('movistarApp')
     $scope.htmlTrusted = () ->
       return $sce.trustAsHtml($scope.solicitude.ticket.description)
 
+    $scope.commentHtmlTrusted = (text) ->
+      return $sce.trustAsHtml(text)
+
     $scope.showCommentForm = () ->
       ['COMPLETED', 'CANCELED'].indexOf($scope.solicitude.state.type) < 0
 

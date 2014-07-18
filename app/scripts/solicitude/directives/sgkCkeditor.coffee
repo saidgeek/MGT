@@ -5,6 +5,8 @@ angular.module('movistarApp')
     restrict: 'A'
     require: '?ngModel'
     link: (scope, element, attrs, ngModel) ->
+      _height = attrs.sgkCkeditorHeight || null
+      _width = attrs.sgkCkeditorWidth || null
 
       CKEDITOR.config.toolbar = 'Full'
 
@@ -16,6 +18,18 @@ angular.module('movistarApp')
         '-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ] },
         { name: 'links', items : [ 'Link','Unlink' ] },
       ]
+
+      # CKEDITOR.config.skin = 'moono'
+      # CKEDITOR.config.uiColor = '#DFDFDF'
+
+      # CKEDITOR.config.fullPage = true;
+      CKEDITOR.config.language = 'es';
+
+      if _width?
+        CKEDITOR.config.width = "#{ _height }px"
+
+      if _height?
+        CKEDITOR.config.height = "#{ _height }px"
 
       ck = CKEDITOR.replace element[0]
 
