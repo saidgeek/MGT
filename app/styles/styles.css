@@ -319,7 +319,7 @@ border-top: 1px solid #d9e5f3;
 #perfil .adm li a{
     display: block;
     position: relative;
-    float: left;
+    /*float: left;*/
     width: 24px;
     height: 20px;
     padding-top: 4px;
