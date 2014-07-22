@@ -3207,9 +3207,11 @@ ul.estados .dropdown span {
 .overflow .lista ul li.listar a .row .txtdetalle{
   padding: 12px;
   background:#f5f7fa; 
+  color: #444c63;
 }
 .overflow .lista ul li.listar.active a .row .txtdetalle{
   background:#444c63; 
+  color: #fff;
 }
 .detalle.bkg{
   margin: 8px 18px 8px 8px;
@@ -3222,6 +3224,7 @@ ul.estados .dropdown span {
   display: block;
   width: auto;
   padding: 4px 12px 12px 12px;
+  color: #444c63;
 }
 
 .detalle.bkg.completed {
