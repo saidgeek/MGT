@@ -25,17 +25,6 @@ angular.module('movistarApp')
           else
             $scope.comment.other.push comment
 
-    $scope.comment_type = $state.params.type
-    $scope.comments = $scope.comment[$scope.comment_type]
-
-    $scope.active_tab = (index, type, name) ->
-      if $scope.comment_type?
-        if $scope.comment_type is type
-          $scope.comment_form_placeholder = name
-          return true 
-      else
-        return true if index is 0
-
     if CommentPermissions.view('Solicitude.pm', $rootScope.currentUser.role)
       _name = 'Comentarios PM'
       if $rootScope.currentUser.role is 'CLIENT'
@@ -48,7 +37,32 @@ angular.module('movistarApp')
       if $rootScope.currentUser.role is 'PROVIDER'
         _name = 'Comentarios'
       $scope.comment.types.push { id: 'provider', name: _name }
-      
+
+    if $state.params.type?
+      $scope.comment_type = $state.params.type
+      $scope.comments = $scope.comment[$scope.comment_type]
+    else
+      paso = true
+      if CommentPermissions.view('Solicitude.pm', $rootScope.currentUser.role)
+        $scope.comment_type = 'pm'
+        $scope.comments = $scope.comment.pm
+        paso = false
+      if CommentPermissions.view('Solicitude.internal', $rootScope.currentUser.role) and $scope.solicitude.responsible? and paso
+        $scope.comment_type = 'internal'
+        $scope.comments = $scope.comment.internal
+        paso = false
+      if CommentPermissions.view('Solicitude.provider', $rootScope.currentUser.role) and $scope.solicitude.provider? and paso
+        $scope.comment_type = 'provider'
+        $scope.comments = $scope.comment.provider
+        paso = false
+
+    $scope.active_tab = (index, type, name) ->
+      if $scope.comment_type?
+        if $scope.comment_type is type
+          $scope.comment_form_placeholder = name
+          return true 
+      else
+        return true if index is 0
 
     $scope.attachments = _attachments
     $scope.tasks = _tasks
