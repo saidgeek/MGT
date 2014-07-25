@@ -6,7 +6,7 @@
                 <p>Ingreso tiempo de ejecución</p>
                 <ul>
                     <li>
-                        <input type="number" name="duration" name="duration" ng-model="solicitude._duration" placeholder="Minutos" min="15" max="240" required>
+                        <input type="number" name="duration" name="duration" ng-model="solicitude._duration" placeholder="Minutos" min="15" max="15000" required>
                         <div class="message-error" ng-show="submitted && form.duration.$error.required">El campo prioridad es requerido.</div>
                         <div class="message-error" ng-show="submitted && (form.duration.$error.min || form.duration.$error.max)">
                             El rando de minutos es de 15 min a 240 min.
