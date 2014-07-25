@@ -62,6 +62,17 @@ angular.module('movistarApp', [
                 return tasks
         controller: 'SolicitudeCtrl'
         authenticate: true
+      .state 'solicitude.comments',
+        url: '/comments/:type'
+        templateUrl: 'partials/solicitude/detail'
+        resolve:
+          _comments: (Comment, $stateParams) =>
+            Comment.index_type $stateParams.id, $stateParams.type, (err, comments) ->
+              if !err
+                console.log 'comments:', comments
+                return comments
+        controller: 'SolicitudeCtrl'
+        authenticate: true
 
     $locationProvider.html5Mode true
 

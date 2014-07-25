@@ -13,9 +13,6 @@ angular.module('movistarApp')
       provider: []
       other: []
 
-
-    console.log '$scope.comments:', $scope.comments
-
     angular.element.each _comments, (index, comment) ->
       if CommentPermissions.view(comment.type, $rootScope.currentUser.role)
         switch comment.type
@@ -28,7 +25,16 @@ angular.module('movistarApp')
           else
             $scope.comment.other.push comment
 
-    console.log '$scope.comments:', $scope.comments
+    $scope.comment_type = $state.params.type
+    $scope.comments = $scope.comment[$scope.comment_type]
+
+    $scope.active_tab = (index, type, name) ->
+      if $scope.comment_type?
+        if $scope.comment_type is type
+          $scope.comment_form_placeholder = name
+          return true 
+      else
+        return true if index is 0
 
     if CommentPermissions.view('Solicitude.pm', $rootScope.currentUser.role)
       _name = 'Comentarios PM'
@@ -42,12 +48,6 @@ angular.module('movistarApp')
       if $rootScope.currentUser.role is 'PROVIDER'
         _name = 'Comentarios'
       $scope.comment.types.push { id: 'provider', name: _name }
-
-    # $rootScope.$on 'loadComments', (e, t, c) ->
-    #   console.log t, c
-    #   $scope.comment_type = t
-    #   $scope.comments = c
-    #   console.log $scope.comment_type, $scope.comments
       
 
     $scope.attachments = _attachments
@@ -161,7 +161,7 @@ angular.module('movistarApp')
             $scope.task = {}
 
     $scope.addComment = (form) ->
-      console.log '$scope.comment_type:', $scope.comment_type
+      console.log '$scope.comment_type:', $scope.comment_type, $scope._comment
       if form.$valid
         _to = null
         if $scope.comment_type is 'pm' and $scope.solicitude.applicant?._id?
@@ -175,7 +175,7 @@ angular.module('movistarApp')
           _to = $scope.solicitude.provider._id if $rootScope.currentUser.role is 'CONTENT_MANAGER'
           _to = $scope.solicitude.responsible._id if ['ADMIN', 'ROOT', 'PROVIDER'].indexOf($rootScope.currentUser.role) > -1
 
-        Comment.create "#{$scope.comment_type}", $scope.solicitude._id, _to, $scope._comment, (err, comment) ->
+        Comment.create "Solicitude.#{$scope.comment_type}", $scope.solicitude._id, _to, $scope._comment, (err, comment) ->
           if !err
             $rootScope.$emit 'clean_list_uploader'
             $scope._comment = {}

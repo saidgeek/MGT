@@ -21,7 +21,7 @@ angular.module('movistarApp')
           else
             $areaform.attr 'placeholder', placeholder[type]
           
-          $rootScope.$emit 'loadComments', type, scope.comment[type]
+          # $rootScope.$emit 'loadComments', type, scope.comment[type]
       , 0
 
       element.on 'click', 'a', (e) ->
@@ -35,8 +35,8 @@ angular.module('movistarApp')
         # $rootScope.$emit 'loadComments', type, scope.comment[type]
         console.log 'scope.comment[type]:', scope.comment[type]
         scope.comment_type = type
-        scope.comments.push = scope.comment[type]
+        scope.comments = scope.comment[type]
         console.log 'scope.comments:', scope.comments
-        scope.$digest()
+        scope.$apply()
         
         return false

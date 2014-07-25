@@ -119,14 +119,14 @@
 		<div class="row">
 			<div class="detalle bkg">
 				<ul id="comment-tabs" ng-class="{alert: !showCommentForm()}">
-					<li ng-repeat="type in comment.types" ng-class="{ active: $index == 0, last: $index == (comment.types.length-1) }" data-sgk-comment-tab="{{ type.id }}">
-						<a href="javascript:{}"><span>{{ comment[type.id].length }}</span>{{ type.name }}</a>
+					<li ng-repeat="type in comment.types" ng-class="{ active: active_tab($index, type.id, type.name), last: $index == (comment.types.length-1) }">
+						<a ui-sref="solicitude.comments({ type: type.id })" target="_self"><span>{{ comment[type.id].length }}</span>{{ type.name }}</a>
 					</li>
 				</ul>
 				
 				<div class="comments" id="comment-form" ng-show="showCommentForm()">
 			    <form name="form" ng-submit="addComment(form)" ng-class="{ submitted: submitted && form.$invalid }" novalidate>
-		        <textarea class="round" name="message" rows="5" ng-model="_comment.message" placeholder="comment_form_placeholder"></textarea>
+		        <textarea class="round" name="message" rows="5" ng-model="_comment.message" placeholder="{{comment_form_placeholder}}"></textarea>
 		        <div class="message-error" ng-show="submitted && form.message.$error.required">El campo es requerido.</div>
 		        <fieldset>
 		          <input class="submit boton1 round" type="submit" value="Enviar">
