@@ -3,7 +3,7 @@
 angular.module('movistarApp')
   .controller 'SolicitudeCtrl', ($scope, Solicitude, $rootScope, PriorityData, Category, User, Comment, Task, SegmentsData, SectionsData, _solicitude, _comments, _attachments, _tasks, $state, IO, CommentPermissions) ->
     $scope.solicitude = _solicitude
-    $scope.comments = null
+    $scope.comments = []
     $scope.comment_type = null
     $scope._comment = {}
     $scope.comment =
@@ -12,6 +12,9 @@ angular.module('movistarApp')
       internal: []
       provider: []
       other: []
+
+
+    console.log '$scope.comments:', $scope.comments
 
     angular.element.each _comments, (index, comment) ->
       if CommentPermissions.view(comment.type, $rootScope.currentUser.role)
@@ -25,23 +28,26 @@ angular.module('movistarApp')
           else
             $scope.comment.other.push comment
 
+    console.log '$scope.comments:', $scope.comments
 
     if CommentPermissions.view('Solicitude.pm', $rootScope.currentUser.role)
       _name = 'Comentarios PM'
       if $rootScope.currentUser.role is 'CLIENT'
         _name = 'Comentarios'
       $scope.comment.types.push {  id: 'pm', name: _name }
-    if CommentPermissions.view('Solicitude.internal', $rootScope.currentUser.role)
+    if CommentPermissions.view('Solicitude.internal', $rootScope.currentUser.role) and $scope.solicitude.responsible?
       $scope.comment.types.push { id: 'internal', name: 'Comentarios Interno'}
-    if CommentPermissions.view('Solicitude.provider', $rootScope.currentUser.role)
+    if CommentPermissions.view('Solicitude.provider', $rootScope.currentUser.role) and $scope.solicitude.provider?
       _name = 'Comentarios Proveedor'
       if $rootScope.currentUser.role is 'PROVIDER'
         _name = 'Comentarios'
       $scope.comment.types.push { id: 'provider', name: _name }
 
-    $rootScope.$on 'loadComments', (e, t, c) ->
-      $scope.comment_type = t
-      $scope.comments = c
+    # $rootScope.$on 'loadComments', (e, t, c) ->
+    #   console.log t, c
+    #   $scope.comment_type = t
+    #   $scope.comments = c
+    #   console.log $scope.comment_type, $scope.comments
       
 
     $scope.attachments = _attachments
@@ -155,6 +161,7 @@ angular.module('movistarApp')
             $scope.task = {}
 
     $scope.addComment = (form) ->
+      console.log '$scope.comment_type:', $scope.comment_type
       if form.$valid
         _to = null
         if $scope.comment_type is 'pm' and $scope.solicitude.applicant?._id?
@@ -168,7 +175,7 @@ angular.module('movistarApp')
           _to = $scope.solicitude.provider._id if $rootScope.currentUser.role is 'CONTENT_MANAGER'
           _to = $scope.solicitude.responsible._id if ['ADMIN', 'ROOT', 'PROVIDER'].indexOf($rootScope.currentUser.role) > -1
 
-        Comment.create "Solicitude.#{$scope.comment_type}", $scope.solicitude._id, _to, $scope._comment, (err, comment) ->
+        Comment.create "#{$scope.comment_type}", $scope.solicitude._id, _to, $scope._comment, (err, comment) ->
           if !err
             $rootScope.$emit 'clean_list_uploader'
             $scope._comment = {}
