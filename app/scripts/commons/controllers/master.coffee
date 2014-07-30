@@ -26,7 +26,7 @@ angular.module('movistarApp')
       Notification.read id, (err) ->
         if !err
           _load()
-          $state.go 'solicitude', { id: item_id }
+          $state.go 'solicitude', { id: item_id }, { reload: true }
 
     _load()
 

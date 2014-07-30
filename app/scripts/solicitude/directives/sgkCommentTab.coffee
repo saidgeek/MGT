@@ -16,12 +16,12 @@ angular.module('movistarApp')
       $timeout () ->
         if element.hasClass 'active'
           
-          if $rootScope.currentUser.role is 'CLIENT'
+          if $rootScope.currentUser.role is 'CLIENT' or $rootScope.currentUser.role is 'PROVIDER'
             $areaform.attr 'placeholder', placeholder.client
           else
             $areaform.attr 'placeholder', placeholder[type]
           
-          $rootScope.$emit 'loadComments', type, scope.comment[type]
+          # $rootScope.$emit 'loadComments', type, scope.comment[type]
       , 0
 
       element.on 'click', 'a', (e) ->
@@ -32,5 +32,11 @@ angular.module('movistarApp')
         $tabs.find('li').removeClass 'active'
         $el.parent().addClass 'active'
         $areaform.attr 'placeholder', placeholder[type]
-        $rootScope.$emit 'loadComments', type, scope.comment[type]
+        # $rootScope.$emit 'loadComments', type, scope.comment[type]
+        console.log 'scope.comment[type]:', scope.comment[type]
+        scope.comment_type = type
+        scope.comments = scope.comment[type]
+        console.log 'scope.comments:', scope.comments
+        scope.$apply()
+        
         return false

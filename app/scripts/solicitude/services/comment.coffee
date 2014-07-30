@@ -11,6 +11,14 @@ angular.module("movistarApp")
         url: '/api/v1/comments/:solicitude_id'
         isArray: true
 
+      index_type:
+        method: 'GET'
+        params:
+          solicitude_id: '@solicitude_id'
+          type: '@type'
+        url: '/api/v1/comments/:solicitude_id/comments/:type'
+        isArray: true
+
       show:
         method: 'GET'
         params:
@@ -48,6 +56,16 @@ angular.module("movistarApp")
     _index = (solicitude_id, cb) ->
       resource.index(
         solicitude_id: solicitude_id
+      , (comments) ->
+        cb null, comments
+      , (err) ->
+        cb err
+      ).$promise
+
+    _index_type = (solicitude_id, type, cb) ->
+      resource.index_type(
+        solicitude_id: solicitude_id
+        type: type
       , (comments) ->
         cb null, comments
       , (err) ->
@@ -100,6 +118,8 @@ angular.module("movistarApp")
     return {
       index: (solicitude_id, cb) ->
         _index(solicitude_id, cb)
+      index_type: (solicitude_id, type, cb) ->
+        _index_type(solicitude_id, type, cb)
       show: (id, cb) ->
         _show(id, cb)
       create: (type, solicitude_id, to, comment, cb) ->

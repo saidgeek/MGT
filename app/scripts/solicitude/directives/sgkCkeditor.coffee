@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('movistarApp')
-  .directive 'sgkCkeditor', ->
+  .directive 'sgkCkeditor', ($rootScope) ->
     restrict: 'A'
     require: '?ngModel'
     link: (scope, element, attrs, ngModel) ->
@@ -39,4 +39,7 @@ angular.module('movistarApp')
 
       ngModel.$render = (value) ->
         ck.setData ngModel.$modelValue
+
+      $rootScope.$on 'resetCkeditor', (e) ->
+        ck.setData ''
 

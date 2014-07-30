@@ -3,7 +3,7 @@
 angular.module('movistarApp')
   .controller 'SolicitudeCtrl', ($scope, Solicitude, $rootScope, PriorityData, Category, User, Comment, Task, SegmentsData, SectionsData, _solicitude, _comments, _attachments, _tasks, $state, IO, CommentPermissions, $sce) ->
     $scope.solicitude = _solicitude
-    $scope.comments = null
+    $scope.comments = []
     $scope.comment_type = null
     $scope._comment = {}
     $scope.comment =
@@ -25,24 +25,44 @@ angular.module('movistarApp')
           else
             $scope.comment.other.push comment
 
-
     if CommentPermissions.view('Solicitude.pm', $rootScope.currentUser.role)
       _name = 'Comentarios PM'
       if $rootScope.currentUser.role is 'CLIENT'
         _name = 'Comentarios'
       $scope.comment.types.push {  id: 'pm', name: _name }
-    if CommentPermissions.view('Solicitude.internal', $rootScope.currentUser.role)
+    if CommentPermissions.view('Solicitude.internal', $rootScope.currentUser.role) and $scope.solicitude.responsible?
       $scope.comment.types.push { id: 'internal', name: 'Comentarios Interno'}
-    if CommentPermissions.view('Solicitude.provider', $rootScope.currentUser.role)
+    if CommentPermissions.view('Solicitude.provider', $rootScope.currentUser.role) and $scope.solicitude.provider?
       _name = 'Comentarios Proveedor'
       if $rootScope.currentUser.role is 'PROVIDER'
         _name = 'Comentarios'
       $scope.comment.types.push { id: 'provider', name: _name }
 
-    $rootScope.$on 'loadComments', (e, t, c) ->
-      $scope.comment_type = t
-      $scope.comments = c
-      
+    if $state.params.type?
+      $scope.comment_type = $state.params.type
+      $scope.comments = $scope.comment[$scope.comment_type]
+    else
+      paso = true
+      if CommentPermissions.view('Solicitude.pm', $rootScope.currentUser.role)
+        $scope.comment_type = 'pm'
+        $scope.comments = $scope.comment.pm
+        paso = false
+      if CommentPermissions.view('Solicitude.internal', $rootScope.currentUser.role) and $scope.solicitude.responsible? and paso
+        $scope.comment_type = 'internal'
+        $scope.comments = $scope.comment.internal
+        paso = false
+      if CommentPermissions.view('Solicitude.provider', $rootScope.currentUser.role) and $scope.solicitude.provider? and paso
+        $scope.comment_type = 'provider'
+        $scope.comments = $scope.comment.provider
+        paso = false
+
+    $scope.active_tab = (index, type, name) ->
+      if $scope.comment_type?
+        if $scope.comment_type is type
+          $scope.comment_form_placeholder = name
+          return true 
+      else
+        return true if index is 0
 
     $scope.attachments = _attachments
     $scope.tasks = _tasks
@@ -161,7 +181,7 @@ angular.module('movistarApp')
             $scope.task = {}
 
     $scope.addComment = (form) ->
-      if form.$valid
+      if form.$valid and typeof($scope._comment.message) isnt 'undefined' and $scope._comment.message isnt ''
         _to = null
         if $scope.comment_type is 'pm' and $scope.solicitude.applicant?._id?
           _to = $scope.solicitude.applicant._id
@@ -178,6 +198,7 @@ angular.module('movistarApp')
           if !err
             $rootScope.$emit 'clean_list_uploader'
             $scope._comment = {}
+            $rootScope.$emit 'resetCkeditor'
             $scope.submitted = false
       else
         $scope.submitted = true

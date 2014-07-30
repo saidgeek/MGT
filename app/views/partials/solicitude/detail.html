@@ -1,5 +1,5 @@
 <div class="relativo" ng-if="solicitude">
-	<div class="overflow" data-sgk-scroll>
+	<div class="overflow" style="overflow: auto">
 		<div class="detalle bkg">
 			
 			<div class="row">
@@ -121,14 +121,14 @@
 		<div class="row">
 			<div class="detalle bkg">
 				<ul id="comment-tabs" ng-class="{alert: !showCommentForm()}">
-					<li ng-repeat="type in comment.types" ng-class="{ active: $index == 0, last: $index == (comment.types.length-1) }" data-sgk-comment-tab="{{ type.id }}">
-						<a href="javascript:{}"><span>{{ comment[type.id].length }}</span>{{ type.name }}</a>
+					<li ng-repeat="type in comment.types" ng-class="{ active: active_tab($index, type.id, type.name), last: $index == (comment.types.length-1) }">
+						<a ui-sref="solicitude.comments({ type: type.id })" target="_self"><span>{{ comment[type.id].length }}</span>{{ type.name }}</a>
 					</li>
 				</ul>
 				
-				<div class="comments" id="comment-form" ng-if="showCommentForm()">
+				<div class="comments" id="comment-form" ng-show="showCommentForm()">
 			    <form name="form" ng-submit="addComment(form)" ng-class="{ submitted: submitted && form.$invalid }" novalidate>
-		        <textarea class="round" name="message" rows="5" data-sgk-ckeditor-height="80" ng-model="_comment.message" placeholder="comment_form_placeholder" required></textarea>
+		        <textarea class="round" name="message" rows="5" ng-model="_comment.message" data-sgk-ckeditor data-sgk-ckeditor-height="80" placeholder="{{comment_form_placeholder}}"></textarea>
 		        <div class="message-error" ng-show="submitted && form.message.$error.required">El campo es requerido.</div>
 		        <fieldset>
 		          <input class="submit boton1 round" type="submit" value="Enviar">
@@ -160,7 +160,7 @@
 								</div>
 							</div>
 							<div class="col-9">	
-								<p ng-bind-html="commentHtmlTrusted(c.message)"></p>
+								<iframe frameborder="0" data-sgk-iframe-description="{{commentHtmlTrusted(c.message)}}"></iframe>
 							</div>
 						</div>
 						<div class="comments">

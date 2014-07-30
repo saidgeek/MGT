@@ -62,6 +62,17 @@ angular.module('movistarApp', [
                 return tasks
         controller: 'SolicitudeCtrl'
         authenticate: true
+      .state 'solicitude.comments',
+        url: '/comments/:type'
+        templateUrl: 'partials/solicitude/detail'
+        resolve:
+          _comments: (Comment, $stateParams) =>
+            Comment.index_type $stateParams.id, $stateParams.type, (err, comments) ->
+              if !err
+                console.log 'comments:', comments
+                return comments
+        controller: 'SolicitudeCtrl'
+        authenticate: true
 
     $locationProvider.html5Mode true
 
@@ -97,7 +108,7 @@ angular.module('movistarApp', [
         return true if ['queue_validation'].indexOf(state) > -1 and ['EDITOR', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['assigned_to_manager'].indexOf(state) > -1 and ['EDITOR', 'CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['assigned_to_provider'].indexOf(state) > -1 and ['EDITOR', 'PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
-        return true if ['proccess'].indexOf(state) > -1 and ['EDITOR', 'PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
+        return true if ['proccess'].indexOf(state) > -1 and ['EDITOR', 'PROVIDER', 'CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['queue_validation_manager'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['queue_validation_client'].indexOf(state) > -1 and ['CLIENT', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['accepted_by_client'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
@@ -105,7 +116,7 @@ angular.module('movistarApp', [
         return true if ['publish'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['rejected_by_client'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['rejected_by_manager'].indexOf(state) > -1 and ['PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
-        return true if ['paused'].indexOf(state) > -1 and ['PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
+        return true if ['paused'].indexOf(state) > -1 and ['EDITOR', 'CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['reactivated'].indexOf(state) > -1 and ['PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return false
     }

@@ -6,11 +6,8 @@ angular.module('movistarApp')
     link: (scope, element, attrs) ->
       body = attrs.sgkIframeDescription
 
-      console.log 'body:', body
-
       $timeout () ->
         $body = angular.element(element).contents().find('body');
-        console.log '$body:', $body
         $body.html body
-        element.css 'height', "#{$body.height()+100}px"
+        element.css 'height', "#{$body.height()+20}px"
       , 200
