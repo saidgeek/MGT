@@ -122,7 +122,7 @@
 			<div class="detalle bkg">
 				<ul id="comment-tabs" ng-class="{alert: !showCommentForm()}">
 					<li ng-repeat="type in comment.types" ng-class="{ active: active_tab($index, type.id, type.name), last: $index == (comment.types.length-1) }">
-						<a ui-sref="solicitude.comments({ type: type.id })" target="_self"><span>{{ comment[type.id].length }}</span>{{ type.name }}</a>
+						<a ui-sref="solicitude.comments({ type: type.id })" ui-sref-opts="{reload: true}"><span>{{ comment[type.id].length }}</span>{{ type.name }}</a>
 					</li>
 				</ul>
 				
