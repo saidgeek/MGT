@@ -110,7 +110,7 @@ angular.module('movistarApp', [
         return true if ['assigned_to_provider'].indexOf(state) > -1 and ['EDITOR', 'PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['proccess'].indexOf(state) > -1 and ['EDITOR', 'PROVIDER', 'CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['queue_validation_manager'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
-        return true if ['queue_validation_client'].indexOf(state) > -1 and ['CLIENT', 'ADMIN', 'ROOT'].indexOf(role) > -1
+        return true if ['queue_validation_client'].indexOf(state) > -1 and ['CLIENT', 'EDITOR', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['accepted_by_client'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['queue_publish'].indexOf(state) > -1 and ['PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['publish'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
