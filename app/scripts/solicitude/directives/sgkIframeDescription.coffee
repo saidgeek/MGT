@@ -9,5 +9,5 @@ angular.module('movistarApp')
       $timeout () ->
         $body = angular.element(element).contents().find('body');
         $body.html body
-        element.css 'height', "#{$body.height()+20}px"
+        element.css 'height', "#{$body.height()+50}px"
       , 200

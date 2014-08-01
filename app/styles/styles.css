@@ -3787,3 +3787,6 @@ ul.btns-comentario li:last-child{
   padding: 10px 0 40px 0;
 }
 
+.detalle.bkg iframe {
+    width: 100%;
+}
