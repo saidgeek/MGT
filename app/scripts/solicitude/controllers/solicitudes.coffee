@@ -14,6 +14,10 @@ angular.module('movistarApp')
       #   return true if comments.length > 0
       #   return false
     
+    IO.on 'solicitude.change.state', (data) ->
+      if $state.params.target is 'state' and $state.params.filter is data.state
+        $state.transitionTo $state.current, $state.params, { reload: true, inherit: false, notify: true }
+
     IO.on 'solicitude.new', (data) ->
       Solicitude.show data.id, (err, solicitude) ->
         if !err

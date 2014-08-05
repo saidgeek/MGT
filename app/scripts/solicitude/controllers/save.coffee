@@ -19,7 +19,7 @@ angular.module('movistarApp')
           else
             $scope.$emit 'close', true
             $scope.solicitude = {}
-            $rootScope.$emit 'reloadStateFilter'
+            # $rootScope.$emit 'reloadStateFilter'
             $scope.submitted = false
             $scope.form = null
             $rootScope.alert =

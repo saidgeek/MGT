@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'FilterCtrl', ($scope, $rootScope, Solicitude, PriorityIconData, PriorityData, Category) ->
+  .controller 'FilterCtrl', ($scope, $rootScope, Solicitude, PriorityIconData, PriorityData, Category, IO) ->
     $scope.states = $rootScope.currentUser.permissions.states
     $scope.priorityIcons = PriorityIconData.getAll()
     $scope.priorities = PriorityData.getArray()
@@ -9,6 +9,11 @@ angular.module('movistarApp')
     $scope.groups = null
 
     Solicitude.groups (err, groups) ->
+        if !err
+          $scope.groups = groups
+
+    IO.on 'solicitude.new', (data) ->    
+      Solicitude.groups (err, groups) ->
         if !err
           $scope.groups = groups
 
