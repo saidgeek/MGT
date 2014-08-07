@@ -8,6 +8,18 @@ angular.module('movistarApp')
       IO.on 'solicitude.filter.change', (data) ->
         query = "li[data-id='#{ data.id[$rootScope.currentUser.role] }'] span.round.light"
         $el = element.find(query)
-        $el.html(parseInt($el.html()) + 1) if data.operation is '+'
-        $el.html(parseInt($el.html()) - 1) if data.operation is '-'
+
+        number = parseInt($el.html())
+        counter = 0
+
+        switch data.operation
+          when '+'
+            counter = number + 1
+            if counter < 0
+              counter = 0
+          when '-'
+            counter = number - 1
+            if counter < 0
+              counter = 0
+        $el.html(counter)
       
