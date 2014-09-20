@@ -9,8 +9,10 @@ angular.module("movistarApp")
         params:
           target: '@target'
           filter: '@filter'
+          perPage: '@perPage'
+          page: '@page'
         url: '/api/v1/solicitudes/:target/:filter'
-        isArray: true
+				#isArray: true
 
       search:
         method: 'GET'
@@ -72,10 +74,12 @@ angular.module("movistarApp")
           task: "@task"
         url: '/api/v1/solicitude/:id/check/:task'
 
-    _index = (target, filter, cb) ->
+    _index = (target, filter, perPage, page, cb) ->
       resource.index(
         target: target
         filter: filter
+        perPage: perPage
+        page: page
       , (solicitudes) ->
         cb null, solicitudes
       , (err) ->
@@ -189,8 +193,8 @@ angular.module("movistarApp")
       ).$promise
 
     return {
-      index: (target, filter, cb) ->
-        _index(target, filter, cb)
+      index: (target, filter, perPage, page, cb) ->
+        _index(target, filter, perPage, page, cb)
       search: (q, cb) ->
         _search(q, cb)
       groups: (cb) ->

@@ -2887,19 +2887,19 @@ form.submitted textarea.ng-invalid-required {
     border: 1px solid #ff6b6b !important;
 }
 
-#nueva-solicitud.user form.submitted .dropdown select.ng-invalid-required, 
+#nueva-solicitud.user form.submitted .dropdown select.ng-invalid-required,
 #nueva-solicitud.user form.submitted input.ng-invalid-required,
 #nueva-solicitud.user form.submitted textarea.ng-invalid-required {
     border: 1px solid #ff6b6b !important;
 }
 
-#nueva-solicitud.delete form.submitted .dropdown select.ng-invalid-required, 
+#nueva-solicitud.delete form.submitted .dropdown select.ng-invalid-required,
 #nueva-solicitud.delete form.submitted input.ng-invalid-required,
 #nueva-solicitud.delete form.submitted textarea.ng-invalid-required {
     border: 1px solid #ff6b6b !important;
 }
 
-#nueva-solicitud.validar form.submitted .dropdown select.ng-invalid-required, 
+#nueva-solicitud.validar form.submitted .dropdown select.ng-invalid-required,
 #nueva-solicitud.validar form.submitted input.ng-invalid-required,
 #nueva-solicitud.validar form.submitted textarea.ng-invalid-required {
     border: 1px solid #ff6b6b !important;
@@ -3206,11 +3206,11 @@ ul.estados .dropdown span {
 }
 .overflow .lista ul li.listar a .row .txtdetalle{
   padding: 12px;
-  background:#f5f7fa; 
+  background:#f5f7fa;
   color: #444c63;
 }
 .overflow .lista ul li.listar.active a .row .txtdetalle{
-  background:#444c63; 
+  background:#444c63;
   color: #fff;
 }
 .detalle.bkg{
@@ -3268,7 +3268,7 @@ ul.estados .dropdown span {
   -webkit-border-radius: 3px;
   border-radius: 3px;
   border: none;
-  cursor: pointer; 
+  cursor: pointer;
 }
 .content .overflow .col-5 ul.acciones li.rechazar a{
   background: #ff6b6b;
@@ -3507,7 +3507,7 @@ ul.estados .dropdown span {
 }
 
 .content .overflow .row .overflow{
-  margin: 8px 0; 
+  margin: 8px 0;
   position: inherit;
   -webkit-border-radius:3px;
   border-radius:3px;
@@ -3549,7 +3549,7 @@ ul.estados .dropdown span {
   width: 100%;
 }
 
-#nueva-solicitud form ul.segments li label.segment, 
+#nueva-solicitud form ul.segments li label.segment,
 #nueva-solicitud form ul.segments li ul.sections li label.section {
   width: 181px;
   position: relative;
@@ -3789,4 +3789,46 @@ ul.btns-comentario li:last-child{
 
 .detalle.bkg iframe {
     width: 100%;
+}
+
+.paginator {
+  position: relative;
+  padding: 10px 18px 10px 10px;
+}
+
+.paginator ul.pagination {
+  display: table;
+  float: right;
+}
+
+.paginator:before,
+.paginator:after {
+  display: table;
+  content: "";
+  clear: both;
+}
+.paginator ul.pagination li {
+  display: table-cell;
+  padding: 0 1px;
+}
+
+.paginator ul.pagination li.disabled {
+  display: none;
+}
+
+.paginator ul.pagination li.active a {
+  background: #00b8cf;
+}
+
+.paginator ul.pagination li a {
+  background: #d7e3f0;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: 'proxima_nova_rgbold';
+  font-size: 0.923em;
+  line-height: 21px;
+  padding: 7px 12px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 4px;
 }

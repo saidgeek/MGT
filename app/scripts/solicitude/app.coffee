@@ -7,7 +7,8 @@ angular.module('movistarApp', [
   'ui.router',
   'filepicker',
   'confirmClick',
-  'btford.socket-io'
+  'btford.socket-io',
+  'ui.bootstrap'
 ])
   .config ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) ->
     $httpProvider.interceptors.push 'noCacheInterceptor'
@@ -21,7 +22,7 @@ angular.module('movistarApp', [
         templateUrl: 'partials/solicitude/index'
         resolve:
           _solicitudes: (Solicitude) =>
-            Solicitude.resource.index({ target: null, filter: null }).$promise
+            Solicitude.resource.index({ target: null, filter: null, perPage: 15, page: 0 }).$promise
         controller: 'SolicitudesCtrl'
         authenticate: true
       .state 'filter',
@@ -87,7 +88,7 @@ angular.module('movistarApp', [
     ]
   .factory 'noCacheInterceptor', () =>
     request: (config) ->
-      if config.method is 'GET' and config.url.indexOf('partials/') is -1 and config.url.indexOf('directives/') is -1
+      if config.method is 'GET' and config.url.indexOf('partials/') is -1 and config.url.indexOf('directives/') is -1 and config.url.indexOf('template/') is -1
         separator = '&'
         if config.url.indexOf('?') is -1
           separator = '?'
@@ -139,9 +140,9 @@ angular.module('movistarApp', [
     $http.defaults.headers.common['token-client'] =  $rootScope.currentUser.access.clientToken
     $http.defaults.headers.common['token-access'] =  $rootScope.currentUser.access.accessToken
 
-    IO.emit 'register.solicitude.globals', 
+    IO.emit 'register.solicitude.globals',
       id: $rootScope.currentUser?.id || null
-    
+
     # Redirect to login if route requires auth and you're not logged in
     $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromParams) ->
       if toState.authenticate and not Auth.isLoggedIn()
