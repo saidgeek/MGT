@@ -10,7 +10,7 @@ angular.module('movistarApp')
 
       $scope.reportCSV = (id) =>
         $window.location = "/api/v1/log/#{id}/csv";
-      
+
 
       $scope.reload = (role) =>
         User.index role, (err, users) ->
@@ -95,9 +95,9 @@ angular.module('movistarApp')
     $scope.solicitudes = null
     $scope.role = $rootScope.currentUser.role
 
-    Solicitude.index null, null, (err, solicitudes) ->
+    Solicitude.index null, null, null, null, (err, data) ->
       if !err
-        $scope.solicitudes = solicitudes
+        $scope.solicitudes = data.solicitudes
 
     $rootScope.$watch 'filters.user.solicitude.state', (state) =>
       _target = null

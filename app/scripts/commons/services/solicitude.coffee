@@ -27,6 +27,14 @@ angular.module("movistarApp")
           states: '@states'
         url: '/api/v1/solicitudes/groups'
 
+      groupsForUser:
+        method: "GET"
+        params:
+          states: '@states'
+          user_id: '@user_id'
+          role: '@role'
+        url: '/api/v1/solicitudes/groups'
+
       show:
         method: 'GET'
         params:
@@ -127,6 +135,18 @@ angular.module("movistarApp")
         cb err.data
       ).$premise
 
+    _groupsForUser = (user_id, role, cb) ->
+      resource.groupsForUser(
+        states: $rootScope.currentUser?.permissions.states
+        user_id: user_id
+        role: role
+      , (groups) ->
+        groups = _makeGroups(groups)
+        cb null, groups
+      , (err) ->
+        cb err.data
+      ).$premise
+
     _show = (id, cb) ->
       resource.show(
         id: id
@@ -199,6 +219,8 @@ angular.module("movistarApp")
         _search(q, cb)
       groups: (cb) ->
         _groups(cb)
+      groupsForUser: (user_id, role, cb) ->
+        _groupsForUser(user_id, role, cb)
       show: (id, cb) ->
         _show(id, cb)
       create: (data, cb) ->

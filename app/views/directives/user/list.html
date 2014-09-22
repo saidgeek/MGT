@@ -1,6 +1,6 @@
 <div class="overflow top-admin">
 
-  <div class="margin" data-ng-repeat="user in users" data-sgk-role="search" 
+  <div class="margin" data-ng-repeat="user in users" data-sgk-role="search"
     data-sgk-search="{{ user.email }} {{ user.profile.firstName }} {{ user.profile.lastName }}">
     <div class="note round" id="works_01" data-id="{{ user._id }}">
       <div class="note-left">
@@ -26,7 +26,7 @@
 
       <div class="note-right">
           <h3 data-ng-class="{active: $index===0}">Solicitudes <span></span></h3>
-          <div data-sgk-user-states-filter></div>
+          <div data-sgk-user-states-filter data-sgk-user-id="{{ user._id }}" data-sgk-role="{{ user.role }}"></div>
       </div>
 
     </div><!-- note round -->

@@ -1,11 +1,11 @@
 'use strict'
 
 angular.module('movistarApp')
-  .directive 'sgkUserStatesFilter', ($window, $rootScope, $timeout) ->
+  .directive 'sgkUserStatesFilter', ($window, $rootScope, $timeout, Solicitude) ->
     restrict: 'A'
     scope: {}
     templateUrl: 'directives/user/states'
-    controller: ($scope, $rootScope, Solicitude) ->
+    controller: ($scope, $rootScope) ->
       $scope.states = $rootScope.currentUser.permissions.states
       $scope.groups = null
 
@@ -14,17 +14,15 @@ angular.module('movistarApp')
         if $rootScope.filters?.solicitude?.state?
           $rootScope.filters.user.solicitude.state = value
         else
-          $rootScope.filters = 
+          $rootScope.filters =
             user:
               solicitude:
                 state: value
 
-      $scope.reload = () =>
-        Solicitude.groups (err, groups) ->
-          if !err
-            $scope.groups = groups.states
+    link: (scope, element, attrs) =>
+      user_id = attrs.sgkUserId
+      role = attrs.sgkRole
 
-      $rootScope.$on 'reloadStateFilter', (e) =>
-        $scope.reload()
-      
-      $scope.reload()
+      Solicitude.groupsForUser user_id, role, (err, groups) =>
+        if !err
+          scope.groups = groups.states
