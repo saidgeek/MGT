@@ -1,11 +1,13 @@
-<ul>
-  <li id='{{ l.id }}' ng-repeat="l in list">
-    <img src='images/loader_30.GIF' />
-    <span id="porcent_{{ l.id }}">0%</span> 
-    <span>{{ l.name }}</span>
-    <a href="javascript:{}" ng-click="remove(l)" style="display: none;">Remover</a>
-  </li>
-</ul>
+<div class="overflow" style="height: 72px;border: 1px #9da9b9 solid;display: none;">
+  <ul>
+    <li id='{{ l.id }}' ng-repeat="l in list">
+      <img src='images/loader_30.GIF' />
+      <span id="porcent_{{ l.id }}">0%</span>
+      <span>{{ l.name }}</span>
+      <a href="javascript:{}" ng-click="remove(l)" style="display: none;">Remover</a>
+    </li>
+  </ul>
+</div>
 <div class="upload">
   <input class="att" type="file" name="attachment" multiple ng-model="ngModel">
 </div>

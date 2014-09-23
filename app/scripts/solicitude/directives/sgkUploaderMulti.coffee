@@ -19,11 +19,11 @@ angular.module('movistarApp')
       addToList = (id, name) =>
         if name.length > 100
           name = "#{ name.substr(0,10) }...#{ name.substr((name.length - 10), name.length) }"
-        $scope.$apply () -> 
+        $scope.$apply () ->
           $scope.list.push { id: id, name: name }
 
       $rootScope.$on 'clean_list_uploader', (e) ->
-        $scope.list = {}        
+        $scope.list = {}
 
       $scope.upload = (id, file) =>
         options =
@@ -34,14 +34,14 @@ angular.module('movistarApp')
             name: $scope.referer
         addToList(id, file.name)
         filepickerApi.storeAndThumbnail options, (err, res) ->
-          $scope.$apply () -> 
+          $scope.$apply () ->
             $scope.attachments.push res
-  
+
     link: ($scope, $element, $attrs, ngModel) ->
       $scope.referer = $attrs.sgkType
       $scope.refererId = if $attrs.sgkUploaderMulti is '' then null else $attrs.sgkUploaderMulti
       _posicion = $attrs.sgkPosition || 'top'
-    
+
       # ngModel.$setViewValue []
 
       html = null
@@ -50,13 +50,15 @@ angular.module('movistarApp')
         $element.find('ul').remove()
         $element.append(html)
 
-      $_triggers = () =>  
+      $_triggers = () =>
         $element
           .find('input[type="file"]').on 'change', (e) =>
             for file in angular.element(e.target)[0].files
               MD5 = new Hashes.MD5
               _id = MD5.hex file.lastModifiedDate+Date.now()
               $scope.upload(_id, file)
+              $element.find('.overflow').css 'display', 'block'
+              $element.find('.overflow').mCustomScrollbar "update"
             return false
 
       $scope.$on 'remove', (e, id) ->
@@ -79,5 +81,14 @@ angular.module('movistarApp')
 
           ngModel.$setViewValue _att
       , true
+
+
+      $overflow = $element.find('.overflow')
+      if $overflow.find('.mCustomScrollBox').length is 0
+        $overflow.mCustomScrollbar
+          scrollButtons:
+              enable:false
+      $overflow.mCustomScrollbar "update"
+      $overflow.mCustomScrollbar "scrollTo", "top"
 
       $_triggers()

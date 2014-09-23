@@ -1,7 +1,7 @@
 <fieldset class="odd">
   <input type="text" id="titulo" name="titulo" placeholder="Titulo de la solicitud" ng-model="solicitude.ticket.title" required/>
   <div class="message-error" ng-show="submitted && form.titulo.$error.required">El campo titulo es requerido.</div>
-  <textarea id="descripcion" name="descripcion" rows="10" data-sgk-ckeditor data-sgk-ckeditor-height="200" placeholder="Descripción de la Solicitud" ng-model="solicitude.ticket.description" required></textarea>
+  <textarea id="descripcion" name="descripcion" rows="5" data-sgk-ckeditor data-sgk-ckeditor-height="130" placeholder="Descripción de la Solicitud" ng-model="solicitude.ticket.description" required></textarea>
   <div class="message-error" ng-show="submitted && form.descripcion.$error.required">El campo descripcion es requerido.</div>
 
 </fieldset>
@@ -15,4 +15,3 @@
   </ul>
   <button type="submit" ng-click="submitted = true" class="boton1 round"><span></span>Generar Solicitud</button>
 </fieldset>
-        
