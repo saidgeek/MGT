@@ -1,10 +1,10 @@
 <div class="relativo" ng-if="solicitude">
 	<div class="overflow" style="overflow: auto">
 		<div class="detalle bkg">
-			
+
 			<div class="row">
 				<div class="first last">
-					<div class="col-7">
+					<div class="col-8">
 						<div class="code">
 							<span>Code: {{ solicitude.code }}</span>
 						</div>
@@ -16,19 +16,23 @@
 								<span></span> Sol. {{ solicitude.createdAt | DateFormat }}
 							</li>
 							<li class="ico" ng-if="solicitude.priority" ng-class="solicitude.priority | PriorityIcons">
-								<span></span> 
+								<span></span>
 								<div class="dropdown" ng-show="edit_priority()">
 									<span></span>
 									<select ng-model="solicitude.priority" name="priority" ng-options="p.id as p.name for p in priorities" ng-change="update_priority()"></select>
 								</div>
 								<p ng-hide="edit_priority()">{{ solicitude.priority | Priority }}</p>
 							</li>
+							<li class="ico" ng-if="solicitude.duration && !solicitude.pausedAt">
+								<span></span>
+								{{ solicitude.duration / 6000 }} min.
+							</li>
 							<li class="ico" ng-if="solicitude.duration && !solicitude.pausedAt" >
 								<span></span> <div data-sgk-duration ng-model="solicitude.endedAt"></div>
 							</li>
 						</ul>
 					</div>
-					<div class="col-5" data-sgk-actions="{{ solicitude.state.type }}">
+					<div class="col-4" data-sgk-actions="{{ solicitude.state.type }}">
 						<!-- <ul class="btnes">
 							<li class="btn pau"><a href="">Pausar</a></li>
 							<li class="btn rev"><a href="">Enviar a Revisión</a></li>
@@ -41,24 +45,24 @@
 				<div class="first">
 					<div class="col-7">
 						<div class="info">
-							
+
 							<ul class="info-detalle">
 								<li>
-									<span>Solicitante:</span> 
+									<span>Solicitante:</span>
 									{{ solicitude.applicant.profile.firstName }} {{ solicitude.applicant.profile.lastName }}
 								</li>
 								<li ng-if="solicitude.responsible">
-									<span>Responsable:</span> 
+									<span>Responsable:</span>
 									{{ solicitude.responsible.profile.firstName }}  {{ solicitude.responsible.profile.lastName }} ({{ solicitude.responsible.role | InvolvedRole }})
 								</li>
 								<li ng-if="solicitude.provider">
-									<span>Proveedor:</span> 
+									<span>Proveedor:</span>
 									{{ solicitude.provider.profile.company }} ({{ solicitude.provider.profile.firstName }} {{ solicitude.provider.profile.lastName }})
 								</li>
 							</ul>
 							<ul class="info-detalle">
 								<li ng-if="solicitude.ticket.segments">
-									<span>Segmento(s):</span> 
+									<span>Segmento(s):</span>
 									<ul class="segments">
 										<li ng-repeat="s in solicitude.ticket.segments">
 											<span>{{ s.type }}:</span>
@@ -69,7 +73,7 @@
 							</ul>
 							<ul class="info-detalle">
 								<li ng-if="solicitude.ticket.category">
-									<span>Categoría:</span> 
+									<span>Categoría:</span>
 									{{ solicitude.ticket.category.name }}
 								</li>
 							</ul>
@@ -125,7 +129,7 @@
 						<a ui-sref="solicitude.comments({ type: type.id })" ui-sref-opts="{reload: true}"><span>{{ comment[type.id].length }}</span>{{ type.name }}</a>
 					</li>
 				</ul>
-				
+
 				<div class="comments" id="comment-form" ng-show="showCommentForm()">
 			    <form name="form" ng-submit="addComment(form)" ng-class="{ submitted: submitted && form.$invalid }" novalidate>
 		        <textarea class="round" name="message" rows="5" ng-model="_comment.message" data-sgk-ckeditor data-sgk-ckeditor-height="80" placeholder="{{comment_form_placeholder}}"></textarea>
@@ -143,7 +147,7 @@
 		</div>
 
 		<div class="row">
-			
+
 			<div class="detalle bkg" ng-repeat="c in comments" id="comments-detail">
 				<div class="row">
 					<div class="first">
@@ -154,12 +158,12 @@
 										<span><img src="images/avatar-user.png" ng-src="{{ c.createdBy.profile.avatar || 'images/avatar-user.png' }}"></span>
 									</div>
 									<div class="username">
-										<span>{{ c.createdBy.profile.firstName }} {{ c.createdBy.profile.lastName }}</span> 
+										<span>{{ c.createdBy.profile.firstName }} {{ c.createdBy.profile.lastName }}</span>
 										<p data-sgk-duration ng-model="c.createdAt"></p>
 									</div>
 								</div>
 							</div>
-							<div class="col-9">	
+							<div class="col-9">
 								<iframe frameborder="0" data-sgk-iframe-description="{{commentHtmlTrusted(c.message)}}"></iframe>
 							</div>
 						</div>
@@ -204,7 +208,7 @@
 					</div>
 					<div class="first">
 						<div class="comments" id="form-task">
-							<div class="col-8">	
+							<div class="col-8">
 		            <form name="form" ng-submit="addTask(form)">
 				            <textarea class="round" name="desc" rows="2" ng-model="task.content"></textarea>
 				            <fieldset>
@@ -218,7 +222,7 @@
 						</div>
 					</div>
 				</div>
-			
+
 			</div>
 		</div>
 
@@ -248,7 +252,7 @@
 				            <!-- <a href="javascript:{}">Activar solicitud</a> -->
 				        </div>
 				    </div>
-				    
+
 				    <div data-sgk-comment-task="{{ t._id }}" data-sgk-comment-task-solicitude="{{ solicitude._id }}"></div>
 					</div>
 				</div>

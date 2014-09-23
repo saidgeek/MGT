@@ -23,7 +23,7 @@
 						<div class="row">
 							<div class="first">
 								<div class="second">
-									<div class="col-7">
+									<div class="col-8">
 										<ul class="estados">
 											<li class="ico" ng-class="s.state[role] | StateIcons">
 												<span></span> {{ s.state[role] | StateSolicitude }}
@@ -39,13 +39,17 @@
 											<li class="ico" ng-if="s.priority" ng-class="s.priority | PriorityIcons">
 												<span></span> {{ s.priority | Priority }}
 											</li>
+											<li class="ico time" ng-if="s.duration && !s.pausedAt">
+												<span></span>
+												<p>{{ s.duration / 6000 }} min.</p>
+											</li>
 											<li class="ico" ng-if="s.duration && !s.pausedAt">
 												<span></span>
 												<p data-sgk-duration ng-model="s.endedAt"></p>
 											</li>
 										</ul>
 									</div>
-									<div class="col-5">
+									<div class="col-4">
 										<ul class="detalles">
 											<li class="ico com" ng-if="show_comments(solicitude._id)">
 												<span></span>Comentarios

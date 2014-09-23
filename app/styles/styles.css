@@ -3014,11 +3014,11 @@ div.message-error {
 .col-6.border{
     border-right: 1px solid #a9b4c4;
 }
-.col-7 .code,
-.col-7 ul.estados,
-.col-7 ul.estados li,
-.col-5 ul.detalles,
-.col-5 ul.detalles li,
+.col-8 .code,
+.col-8 ul.estados,
+.col-8 ul.estados li,
+.col-4 ul.detalles,
+.col-4 ul.detalles li,
 .content .overflow .col-5 ul.acciones li,
 .col-5 .inv ul li{
   float: left;
@@ -3079,20 +3079,20 @@ div.message-error {
 .active .col-7 .code span{
   background: #444c63;
 }
-.overflow .lista .col-7 ul.estados,
-.overflow .lista .col-5 ul.detalles,
+.overflow .lista .col-8 ul.estados,
+.overflow .lista .col-4 ul.detalles,
 .content .overflow .col-7 ul.info-detalle{
   margin: 3px 0;
   width: 100%;
 }
-.overflow .lista .col-5 ul.detalles,
+.overflow .lista .col-4 ul.detalles,
 .content .overflow .col-5 ul.acciones,
 .col-5 ul.detalles,
 .col-5 ul.acciones{
   float: right;
   width: auto;
 }
-.col-7 ul.estados li,
+.col-8 ul.estados li,
 .col-5 ul.detalles li,
 .col-5 ul.acciones li,
 .content .overflow .col-7 ul.info-detalle li,
@@ -3100,14 +3100,19 @@ div.message-error {
   margin:0 8px 0 0;
   white-space: nowrap;
 }
-.col-7 ul.estados li:last-child,
+
+.col-8 ul.estados li.time {
+  margin: 0 21px 0 0;
+}
+
+.col-8 ul.estados li:last-child,
 .col-5 ul.detalles li:last-child,
 .col-5 ul.acciones li:last-child,
 .content .overflow .col-7 ul.info-detalle li:last-child,
 .col-5 .inv ul li:last-child{
   margin:0;
 }
-.content .overflow .col-7 ul.info-detalle li span{
+.content .overflow .col-8 ul.info-detalle li span{
   font-family: 'proxima_nova_rgbold';
 }
 .estados li.ico span,
