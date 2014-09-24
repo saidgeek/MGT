@@ -14,7 +14,7 @@ angular.module('movistarApp')
         { name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
         { name: 'colors', items : [ 'TextColor','BGColor' ] },
         { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] },
-        { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','CreateDiv',
+        { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','CreateDiv',
         '-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ] },
         { name: 'links', items : [ 'Link','Unlink' ] },
       ]
@@ -42,4 +42,3 @@ angular.module('movistarApp')
 
       $rootScope.$on 'resetCkeditor', (e) ->
         ck.setData ''
-
