@@ -22,7 +22,7 @@ angular.module('movistarApp')
     IO.on 'solicitude.new', (data) ->
       Solicitude.show data.id, (err, solicitude) ->
         if !err
-          $scope.solicitudes.unshift solicitude
+          $scope.solicitudes.solicitudes.unshift solicitude
 
 
     $scope.$watch 'currentPage', (value) ->
