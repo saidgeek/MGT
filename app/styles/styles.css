@@ -707,14 +707,7 @@ border-top: 1px solid #d9e5f3;
     /*white-space: nowrap;*/
     /*width: 33.3%;*/
 }
-.note ul.lista-opt li a{
-    height: 16px;
-    width: 16px;
-    overflow: hidden;
-    display: block;
-    background: url('../images/sprite_main.png') no-repeat -144px -16px;
-    text-indent: -999px;
-}
+
 .note ul li.last{
     border: none;
     padding-right: 0;
@@ -1651,6 +1644,15 @@ ul.menu-usuarios li a:hover{
     font-size: 0.923em;
     color: #9da9b9;
 }
+
+.edit-user ul li.logs a span{
+  height: 16px;
+  width: 16px;
+  overflow: hidden;
+  display: block;
+  background: url('../images/sprite_main.png') no-repeat -144px -16px;
+}
+
 .edit-user ul li a .ico.edi {
     background-position: -352px -16px;
 }

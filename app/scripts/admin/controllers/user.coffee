@@ -1,35 +1,33 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'UserCtrl', ($scope, $rootScope, $window, User) ->
-      $scope.users = []
+  .controller 'UsersGroupsCtrl', ($scope, _users_groups, RolesData) ->
+    _makeGroups = (groups) ->
+      result = {}
+      _total = 0
+      for g in groups
+        result[g._id] = g.count
+        _total += g.count
+      result['total'] = _total
+      result
 
-      $rootScope.$watch 'filters.user.role', () =>
-        if $rootScope.filters?
-          $scope.reload ($rootScope.filters.user.role)
+    $scope.groups = _makeGroups _users_groups
+    $scope.roles = RolesData.getArray()
 
-      $scope.reportCSV = (id) =>
-        $window.location = "/api/v1/log/#{id}/csv";
+  .controller 'UserCtrl', ($scope, $window, _users, $stateParams, $state) ->
+      $scope.users = _users
 
+      $scope.isActive = (id, index) ->
+        return true if !$stateParams.id? and index is 0
+        return true if $stateParams.id is id
+        return false
 
-      $scope.reload = (role) =>
-        User.index role, (err, users) ->
-          if err
-            $scope.errors = err
-          else
-            if users.length > 0
-              $scope.users = users
+      $scope.show = (id) ->
+        $state.transitionTo 'users_show', { id: id }, { reload: true }
 
-      $scope.reload()
-
-  .controller 'UserShowCtrl', ($scope, $rootScope, $element, User) =>
-    $scope.user = {}
-
-    $rootScope.$on 'loadUserShow', (e, id) =>
-      if typeof id isnt 'undefined'
-        User.show id, (err, user) =>
-          if !err
-            $scope.user = user
+  .controller 'UserShowCtrl', ($scope, _user, _user_solicitudes) ->
+    $scope.user = _user
+    $scope.solicitudes = _user_solicitudes.resources
 
   .controller 'UserSaveCtrl', ($scope, $rootScope, User, RolesData) ->
     $scope.title = 'Crear nuevo usuario'
@@ -90,21 +88,3 @@ angular.module('movistarApp')
               content: """
                           El usuario #{ user.profile.firstName } #{ user.profile.lastName } se a agregado correctamente.
                        """
-
-  .controller 'UserSolicitudesCtrl', ($scope, $rootScope, Solicitude) ->
-    $scope.solicitudes = null
-    $scope.role = $rootScope.currentUser.role
-
-    Solicitude.index null, null, null, null, (err, data) ->
-      if !err
-        $scope.solicitudes = data.solicitudes
-
-    $rootScope.$watch 'filters.user.solicitude.state', (state) =>
-      _target = null
-      _filter = null
-      if state?
-        _target = 'state'
-        _filter = state.toLowerCase()
-      Solicitude.index _target, _filter, (err, solicitudes) ->
-        if !err
-          $scope.solicitudes = solicitudes

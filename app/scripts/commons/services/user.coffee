@@ -43,10 +43,16 @@ angular.module("movistarApp")
         url: '/api/v1/users'
         isArray: true
 
+      solicitudes:
+        method: 'GET'
+        params:
+          id: '@id'
+          role: '@role'
+          state: '@state'
+        url: '/api/v1/user/:id/solicitudes'
+
       groups:
         method: "GET"
-        data:
-          roles: '@roles'
         url: '/api/v1/users/groups'
         isArray: true
 
@@ -66,11 +72,22 @@ angular.module("movistarApp")
 
     _index = (role, cb) ->
       resource.index(
-          role: role || $rootScope.currentUser?.permissions.roles
+          role: role
         , (users) ->
           cb null, users
         , (err) ->
           cb err.data
+      ).$promise
+
+    _solicitudes = (id, role, state, cb) ->
+      resource.solicitudes(
+          id: id
+          role: role
+          state: state
+        , (solicitudes) ->
+          cb null, solicitudes
+        , (err) ->
+          cb err
       ).$promise
 
     _makeGroups = (groups) ->
@@ -84,7 +101,7 @@ angular.module("movistarApp")
 
     _groups = (cb) ->
       resource.groups(
-          roles: $rootScope.currentUser?.permissions.roles
+          {}
         , (groups) ->
           groups = _makeGroups(groups)
           cb null, groups
@@ -131,6 +148,7 @@ angular.module("movistarApp")
         _update(id, data, cb)
       show: (id, cb) ->
         _show(id, cb)
+      solicitudes: (id, role, state, cb) ->
+        _solicitudes(id, role, state, cb)
       resource: resource
     }
-

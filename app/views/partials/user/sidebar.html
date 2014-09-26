@@ -1,1 +1,11 @@
-<div data-sgk-user-sidebar></div>
+<div class="overflow">
+  <div id="estado" class="sidebox">
+    <h3>Tipos de usuarios</h3>
+    <ul class="bold">
+      <li><a ui-sref="users">Todos<span class="round light">{{ groups.total }}</span></a></li>
+      <li data-ng-repeat="r in roles" data-sgk-permission="roles" data-permission-value="{{r.id}}">
+        <a ui-sref="users_role({ role: r.id.toLowerCase() })">{{ r.name }}<span class="round light">{{ groups[r.id] || 0 }}</span></a>
+      </li>
+    </ul>
+  </div>
+</div>

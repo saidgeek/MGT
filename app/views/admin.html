@@ -24,10 +24,13 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <div id="loading">
+      <img src="images/movistar.png">
+    </div>
 
     <!-- Add your site or application content here -->
     <div class="wrap" id="wrap">
-        
+
       <div id="side" data-ng-switch="module" data-filepicker-run>
         <div class="thetable">
 
@@ -204,9 +207,9 @@
         <!-- MODULES -->
         <script src="scripts/admin/app.js"></script>
         <script src="scripts/filepicker.js"></script>
-        <!-- FACTORIES --> 
-        <script src="scripts/factories/params.js"></script><!-- DELETE -->
-        <script src="scripts/factories/localSourceData.js"></script>
+        <!-- FACTORIES -->
+        <script src="scripts/commons/factories/params.js"></script><!-- DELETE -->
+        <script src="scripts/commons/factories/localSourceData.js"></script>
         <!-- CONTROLLERS -->
         <script src="scripts/commons/controllers/master.js"></script><!-- DELETE -->
         <script src="scripts/admin/controllers/user.js"></script>
@@ -217,27 +220,24 @@
         <script src="scripts/commons/services/user.js"></script>
         <script src="scripts/commons/services/category.js"></script>
         <script src="scripts/commons/services/user.js"></script>
-
         <script src="scripts/commons/services/category.js"></script>
         <script src="scripts/commons/services/notification.js"></script>
+        <script src="scripts/commons/services/solicitude.js"></script>
         <!-- DIRECTIVAS DE GENERALES -->
         <script src="scripts/commons/directives/sgkModal.js"></script>
-        <script src="scripts/directives/resize.js"></script>
-        <script src="scripts/directives/admin.js"></script>
-        <script src="scripts/directives/search.js"></script>
+        <script src="scripts/commons/directives/resize.js"></script>
+        <script src="scripts/commons/directives/admin.js"></script>
+        <script src="scripts/commons/directives/search.js"></script>
         <script src="scripts/commons/directives/sgkScroll.js"></script>
         <!-- DIRECTIVAS DE USUARIO -->
-        <script src="scripts/directives/user/list.js"></script>
-        <script src="scripts/directives/user/detail.js"></script>
-        <script src="scripts/directives/user/sidebar.js"></script>
-        <script src="scripts/directives/user/solicitudes.js"></script>
-        <script src="scripts/directives/user/states.js"></script>
+        <script src="scripts/admin/directives/sgkAccordion.js"></script>
+        <script src="scripts/admin/directives/sgkMedidaResize.js"></script>
+        <script src="scripts/admin/directives/sgkStates.js"></script>
         <!-- DIRECTIVAS DE CATEGORIA -->
         <script src="scripts/directives/category/list.js"></script>
         <script src="scripts/directives/category/detail.js"></script>
         <!-- FILTERS -->
         <script src="scripts/commons/services/filters.js"></script>
-        <script src="scripts/commons/services/solicitude.js"></script>
         <!-- endbuild -->
 
 
