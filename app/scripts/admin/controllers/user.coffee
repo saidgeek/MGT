@@ -29,7 +29,7 @@ angular.module('movistarApp')
     $scope.user = _user
     $scope.solicitudes = _user_solicitudes.resources
 
-  .controller 'UserSaveCtrl', ($scope, $rootScope, User, RolesData) ->
+  .controller 'UserSaveCtrl', ($scope, $rootScope, User, RolesData, $timeout, $state) ->
     $scope.title = 'Crear nuevo usuario'
     $scope.user = {}
     $scope.errors = {}
@@ -79,8 +79,6 @@ angular.module('movistarApp')
                           Ha ocurrido un error al crear el usuario.
                        """
           else
-            $rootScope.$emit 'reloadUser', user
-            $rootScope.$emit 'reloadUserSidebar'
             $scope.$emit 'close', true
             $scope.user = {}
             $rootScope.alert =
@@ -88,3 +86,6 @@ angular.module('movistarApp')
               content: """
                           El usuario #{ user.profile.firstName } #{ user.profile.lastName } se a agregado correctamente.
                        """
+            $timeout () ->
+              $state.go 'users_show', { id: user._id }
+            , 1000
