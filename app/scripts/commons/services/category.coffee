@@ -10,7 +10,7 @@ angular.module("movistarApp")
 
       show:
         method: 'GET'
-        parmas:
+        params:
           id: '@id'
         url: '/api/v1/category/:id'
 
@@ -47,7 +47,6 @@ angular.module("movistarApp")
 
     _show = (id, cb) ->
       resource.show(
-         {}
           id: id
         , (category) ->
           cb null, category
@@ -57,7 +56,6 @@ angular.module("movistarApp")
 
     _save = (data, cb) ->
       resource.save(
-         {}
           category: data
         , (category) ->
           cb null, category
@@ -67,7 +65,6 @@ angular.module("movistarApp")
 
     _update = (id, data, cb) ->
       resource.update(
-         {}
           id: id
           category: data
         , (category) ->
@@ -78,7 +75,6 @@ angular.module("movistarApp")
 
     _remove = (id, category, cb) ->
       resource.remove(
-         {}
         id: id
         category: category
       , (category) ->
@@ -98,5 +94,5 @@ angular.module("movistarApp")
         _update(id, data, cb)
       remove: (id, category, cb) ->
         _remove(id, category, cb)
+      resource: resource
     }
-

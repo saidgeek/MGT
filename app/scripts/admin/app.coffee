@@ -124,8 +124,33 @@ angular.module('movistarApp', [
             templateUrl: 'partials/category/sidebox'
           'left':
             templateUrl: 'partials/category/left'
+            controller: 'CategoryCtrl'
           'right':
             templateUrl: 'partials/category/right'
+            controller: 'CategoryShowCtrl'
+        resolve:
+          _categories: (Category) =>
+            Category.resource.index({}).$promise
+          _category: (Category, _categories) =>
+            Category.resource.show({ id: _categories[0]._id }).$promise
+        authenticate: true
+
+      .state 'categories_show',
+        url: '/admin/categories/:id',
+        views:
+          'sidebox':
+            templateUrl: 'partials/category/sidebox'
+          'left':
+            templateUrl: 'partials/category/left'
+            controller: 'CategoryCtrl'
+          'right':
+            templateUrl: 'partials/category/right'
+            controller: 'CategoryShowCtrl'
+        resolve:
+          _categories: (Category) =>
+            Category.resource.index({}).$promise
+          _category: (Category, $stateParams) =>
+            Category.resource.show({ id: $stateParams.id }).$promise
         authenticate: true
 
     $locationProvider.html5Mode true

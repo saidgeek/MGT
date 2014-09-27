@@ -36,12 +36,13 @@ angular.module('movistarApp')
     $scope.roles = RolesData.getArray()
 
     $scope.$watch 'id', (id) ->
-      User.show id, (err, user) ->
-        if err
-          $scope.errors = err
-        else
-          $scope.user = user
-          $scope.title = "#{user.profile.firstName} #{user.profile.lastName}"
+      if id?
+        User.show id, (err, user) ->
+          if err
+            $scope.errors = err
+          else
+            $scope.user = user
+            $scope.title = "#{user.profile.firstName} #{user.profile.lastName}"
 
     $scope.update = (form) ->
       if form.$valid
@@ -58,8 +59,7 @@ angular.module('movistarApp')
               $rootScope.currentUser.avatar = user.profile.avatar
               $rootScope.currentUser.name = user.profile.firstName+' '+user.profile.lastName
               $rootScope.currentUser.role = user.role
-            $rootScope.$emit 'reloadUser', user
-            $rootScope.$emit 'reloadUserSidebar'
+            $state.go 'users_show', { id: user._id }, { reload: true }
             $scope.$emit 'close', true
 
             $rootScope.alert =
@@ -79,6 +79,7 @@ angular.module('movistarApp')
                           Ha ocurrido un error al crear el usuario.
                        """
           else
+            $state.go 'users_show', { id: user._id }, { reload: true }
             $scope.$emit 'close', true
             $scope.user = {}
             $rootScope.alert =
@@ -86,6 +87,3 @@ angular.module('movistarApp')
               content: """
                           El usuario #{ user.profile.firstName } #{ user.profile.lastName } se a agregado correctamente.
                        """
-            $timeout () ->
-              $state.go 'users_show', { id: user._id }
-            , 1000
