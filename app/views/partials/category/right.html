@@ -1,2 +1,35 @@
 <div data-sgk-alerts></div>
-<div data-sgk-category-detail></div>
+<div class="detalle" ng-if="category">
+    <div class="row_">
+      <div class="edit-user">
+        <ul>
+          <li>
+            <a href="javascript:{}" data-sgk-modal="form"
+              data-sgk-ctrl="CategorySaveCtrl"
+              data-sgk-tpl="partials/category/edit"
+              data-sgk-action="update"
+              data-sgk-id="{{ category._id }}">
+              <span class="ico edi"></span>
+              Editar información
+            </a>
+          </li>
+          <li>
+            <a href="javascript:{}" data-sgk-modal="confirm"
+              data-sgk-ctrl="CategorySaveCtrl"
+              data-sgk-tpl="partials/category/delete"
+              data-sgk-action="remove"
+              data-sgk-id="{{ category._id }}">
+              <span class="ico eli"></span>
+              Eliminar
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row_">
+      <h2>{{  category.name }}</h2>
+      <p>
+        {{ category.description }}
+      </p>
+    </div>
+</div>

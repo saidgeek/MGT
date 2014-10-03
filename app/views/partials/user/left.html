@@ -13,5 +13,38 @@
 
 	</div>
 
-	<div data-sgk-user-list></div>
+	<div class="overflow top-admin" data-sgk-scroll data-sgk-accordion>
+
+		<div class="margin" data-ng-repeat="user in users" data-sgk-role="search"
+			data-sgk-search="{{ user.email }} {{ user.profile.firstName }} {{ user.profile.lastName }}">
+			<div class="note round" id="works_01" data-id="{{ user._id }}" ng-class="{active: isActive(user._id, $index)}">
+				<div class="note-left" ng-click="show(user._id)">
+
+					<div class="table-user">
+						<ul class="lista-opt">
+							<li class="img-user">
+								<div>
+									<img ng-src="{{ user.profile.avatar || 'images/avatar-user.png' }}" alt="{{ user.profile.firstName }} {{ user.profile.lastName }}">
+								</div>
+							</li>
+							<li>
+								<h3>{{ user.profile.firstName }} {{ user.profile.lastName }}</h3>
+								<span>{{ user.role | RoleName }}</span>
+							</li>
+							<li></li>
+						</ul>
+					</div><!-- table-user -->
+
+				</div>
+
+				<div class="note-right">
+						<h3>Solicitudes <span></span></h3>
+						<div data-sgk-user-states-filter data-sgk-user-id="{{ user._id }}" data-sgk-role="{{ user.role }}"></div>
+				</div>
+
+			</div><!-- note round -->
+		</div><!-- margin -->
+
+	</div>
+
 </div>

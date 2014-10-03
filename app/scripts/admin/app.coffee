@@ -19,25 +19,138 @@ angular.module('movistarApp', [
       .state 'users',
         url: '/admin/users'
         views:
-          'sidebox': 
+          'sidebox':
             templateUrl: 'partials/user/sidebox'
           'sidebar':
             templateUrl: 'partials/user/sidebar'
+            controller: 'UsersGroupsCtrl'
           'left':
             templateUrl: 'partials/user/left'
+            controller: 'UserCtrl'
           'right':
             templateUrl: 'partials/user/right'
+            controller: 'UserShowCtrl'
+        resolve:
+          _users_groups: (User) =>
+            User.resource.groups({ roles: null }).$promise
+          _users: (User) =>
+            User.resource.index({ role: null }).$promise
+          _user: (User, _users) =>
+            User.resource.show({ id: _users[0]._id }).$promise
+          _user_solicitudes: (User, _user) =>
+            User.resource.solicitudes({ id: _user._id, role: _user.role, state: null }).$promise
         authenticate: true
+
+      .state 'users_role',
+        url: '/admin/users/:role'
+        views:
+          'sidebox':
+            templateUrl: 'partials/user/sidebox'
+          'sidebar':
+            templateUrl: 'partials/user/sidebar'
+            controller: 'UsersGroupsCtrl'
+          'left':
+            templateUrl: 'partials/user/left'
+            controller: 'UserCtrl'
+          'right':
+            templateUrl: 'partials/user/right'
+            controller: 'UserShowCtrl'
+        resolve:
+          _users_groups: (User) =>
+            User.resource.groups({ roles: null }).$promise
+          _users: (User, $stateParams) =>
+            User.resource.index({ role: $stateParams.role.toUpperCase() }).$promise
+          _user: (User, _users) =>
+            User.resource.show({ id: _users[0]._id }).$promise
+          _user_solicitudes: (User, _user) =>
+            User.resource.solicitudes({ id: _user._id, role: _user.role, state: null }).$promise
+        authenticate: true
+
+      .state 'users_show',
+        url: '/admin/users/:id'
+        views:
+          'sidebox':
+            templateUrl: 'partials/user/sidebox'
+          'sidebar':
+            templateUrl: 'partials/user/sidebar'
+            controller: 'UsersGroupsCtrl'
+          'left':
+            templateUrl: 'partials/user/left'
+            controller: 'UserCtrl'
+          'right':
+            templateUrl: 'partials/user/right'
+            controller: 'UserShowCtrl'
+        resolve:
+          _users_groups: (User) =>
+            User.resource.groups({ roles: null }).$promise
+          _users: (User) =>
+            User.resource.index({ role: null }).$promise
+          _user: (User, $stateParams) =>
+            User.resource.show({ id: $stateParams.id }).$promise
+          _user_solicitudes: (User, _user) =>
+            User.resource.solicitudes({ id: _user._id, role: _user.role, state: null }).$promise
+        authenticate: true
+
+      .state 'users_solicitudes_filter',
+        url: '/admin/users/:id/:role/:state'
+        views:
+          'sidebox':
+            templateUrl: 'partials/user/sidebox'
+          'sidebar':
+            templateUrl: 'partials/user/sidebar'
+            controller: 'UsersGroupsCtrl'
+          'left':
+            templateUrl: 'partials/user/left'
+            controller: 'UserCtrl'
+          'right':
+            templateUrl: 'partials/user/right'
+            controller: 'UserShowCtrl'
+        resolve:
+          _users_groups: (User) =>
+            User.resource.groups({ roles: null }).$promise
+          _users: (User) =>
+            User.resource.index({ role: null }).$promise
+          _user: (User, $stateParams) =>
+            User.resource.show({ id: $stateParams.id }).$promise
+          _user_solicitudes: (User, $stateParams) =>
+            User.resource.solicitudes({ id: $stateParams.id, role: $stateParams.role, state: $stateParams.state }).$promise
+        authenticate: true
+
       # ADIMIN.CATEGORY ROUTE
       .state 'categories',
         url: '/admin/categories',
         views:
-          'sidebox': 
+          'sidebox':
             templateUrl: 'partials/category/sidebox'
           'left':
             templateUrl: 'partials/category/left'
+            controller: 'CategoryCtrl'
           'right':
             templateUrl: 'partials/category/right'
+            controller: 'CategoryShowCtrl'
+        resolve:
+          _categories: (Category) =>
+            Category.resource.index({}).$promise
+          _category: (Category, _categories) =>
+            Category.resource.show({ id: _categories[0]._id }).$promise
+        authenticate: true
+
+      .state 'categories_show',
+        url: '/admin/categories/:id',
+        views:
+          'sidebox':
+            templateUrl: 'partials/category/sidebox'
+          'left':
+            templateUrl: 'partials/category/left'
+            controller: 'CategoryCtrl'
+          'right':
+            templateUrl: 'partials/category/right'
+            controller: 'CategoryShowCtrl'
+        resolve:
+          _categories: (Category) =>
+            Category.resource.index({}).$promise
+          _category: (Category, $stateParams) =>
+            Category.resource.show({ id: $stateParams.id }).$promise
         authenticate: true
 
     $locationProvider.html5Mode true
@@ -74,24 +187,9 @@ angular.module('movistarApp', [
         $window.location = "/auth/login"
         event.preventDefault()
       $rootScope.filters = null
-      # console.log 'stateChangeStart'
-      # loading = angular.element('<div id="loading"><img src="images/loader.gif"/></div>')
-      #   .css 
-      #     width: '100%'
-      #     height: '100%'
-      #     position: 'absolute'
-      #     top: '0'
-      #     left: '0'
-      #     background: '#2f364a'
-      #     'z-index': '1000'
-
-      # angular.element('body').prepend(loading)
 
     # stateChangeSuccess
-    # $rootScope.$on '$viewContentLoaded', (event, toState, toParams, fromParams) ->
-    #   console.log 'viewContentLoaded'
-    #   $timeout () =>
-    #     angular.element('body').find('#loading').remove()
-    #   , 1500
-      
-
+    $rootScope.$on '$stateChangeSuccess', (event, toState, toParams, fromParams) ->
+      angular.element('body')
+        .find('#loading')
+        .fadeOut 500
