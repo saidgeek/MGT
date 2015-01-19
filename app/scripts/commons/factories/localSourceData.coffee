@@ -118,6 +118,24 @@ angular.module("movistarApp")
         EDITOR: 'COMPLETED'
         CONTENT_MANAGER: 'COMPLETED'
         PROVIDER: 'COMPLETED'
+      QUEUE_VALIDATION_CLIENT_PRO:
+        ROOT: 'QUEUE_VALIDATION_CLIENT_PRO'
+        ADMIN: 'QUEUE_VALIDATION_CLIENT_PRO'
+        CLIENT: 'FOR_VALIDATION_PRO'
+        EDITOR: 'PROCCESS'
+        CONTENT_MANAGER: 'QUEUE_VALIDATION'
+      ACCEPTED_BY_CLIENT_PRO:
+        ROOT: 'ACCEPTED_BY_CLIENT_PRO'
+        ADMIN: 'ACCEPTED_BY_CLIENT_PRO'
+        CLIENT: 'ACCEPTED_PRO'
+        EDITOR: 'PROCCESS'
+        CONTENT_MANAGER: 'ACCEPTED_PRO'
+      REJECTED_BY_CLIENT_PRO:
+        ROOT: 'REJECTED_BY_CLIENT_PRO'
+        ADMIN: 'REJECTED_BY_CLIENT_PRO'
+        CLIENT: 'REJECTED_PRO'
+        EDITOR: 'PROCCESS'
+        CONTENT_MANAGER: 'FOR_CHANGE_PRO'
 
     _getAll = () ->
       _states = []
@@ -201,6 +219,15 @@ angular.module("movistarApp")
       REACTIVATED:
         name: 'Reactivado'
         icon: 'val'
+      QUEUE_VALIDATION_CLIENT_PRO:
+        name: 'Espera validacion pro'
+        icon: 'valc'
+      ACCEPTED_BY_CLIENT_PRO:
+        name: 'Aceptado por cliente (pro)'
+        icon: 'acec'
+      REJECTED_BY_CLIENT_PRO:
+        name: 'Rechazado por cliente (pro)'
+        icon: 'recc'
 
     _makeArray = () ->
       _states = []

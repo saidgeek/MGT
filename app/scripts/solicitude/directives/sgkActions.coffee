@@ -8,7 +8,6 @@ angular.module('movistarApp')
 
       $element
         .on 'click', 'ul.acciones li.aceptar a, ul.acciones li.rechazar a, ul.acciones li.pause a', (e) ->
-          console.log 'entro'
           e.preventDefault()
           $el = angular.element(e.target)
           _section = $el.data('section').toLowerCase()

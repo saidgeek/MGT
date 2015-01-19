@@ -119,6 +119,9 @@ angular.module('movistarApp', [
         return true if ['rejected_by_manager'].indexOf(state) > -1 and ['PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['paused'].indexOf(state) > -1 and ['EDITOR', 'CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return true if ['reactivated'].indexOf(state) > -1 and ['PROVIDER', 'ADMIN', 'ROOT'].indexOf(role) > -1
+        return true if ['queue_validation_client_pro'].indexOf(state) > -1 and ['CLIENT', 'ROOT', 'ADMIN'].indexOf(role) > -1
+        return true if ['rejected_by_client_pro'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
+        return true if ['accepted_by_client_pro'].indexOf(state) > -1 and ['CONTENT_MANAGER', 'ADMIN', 'ROOT'].indexOf(role) > -1
         return false
     }
 
