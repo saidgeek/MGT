@@ -19,7 +19,7 @@ angular.module("movistarApp")
         params:
           q: '@q'
         url: '/api/v1/solicitudes/search/:q'
-        isArray: true
+        # isArray: true
 
       groups:
         method: "GET"

@@ -15,6 +15,44 @@ angular.module('movistarApp', [
     $urlRouterProvider.otherwise '/admin/users'
 
     $stateProvider
+      # ADIMIN.CATEGORY ROUTE
+      .state 'categories',
+        url: '/admin/categories'
+        views:
+          'sidebox':
+            templateUrl: 'partials/category/sidebox'
+          'left':
+            templateUrl: 'partials/category/left'
+            controller: 'CategoryCtrl'
+          'right':
+            templateUrl: 'partials/category/right'
+            controller: 'CategoryShowCtrl'
+        resolve:
+          _categories: (Category) =>
+            Category.resource.index({}).$promise
+          _category: (Category, _categories) =>
+            if _categories.length > 0
+              Category.resource.show({ id: _categories[0]._id }).$promise
+        authenticate: true
+
+      .state 'categories_show',
+        url: '/admin/categories/:id',
+        views:
+          'sidebox':
+            templateUrl: 'partials/category/sidebox'
+          'left':
+            templateUrl: 'partials/category/left'
+            controller: 'CategoryCtrl'
+          'right':
+            templateUrl: 'partials/category/right'
+            controller: 'CategoryShowCtrl'
+        resolve:
+          _categories: (Category) =>
+            Category.resource.index({}).$promise
+          _category: (Category, $stateParams) =>
+            Category.resource.show({ id: $stateParams.id }).$promise
+        authenticate: true
+
       # ADIMIN.USERS ROUTE
       .state 'users',
         url: '/admin/users'
@@ -114,43 +152,6 @@ angular.module('movistarApp', [
             User.resource.show({ id: $stateParams.id }).$promise
           _user_solicitudes: (User, $stateParams) =>
             User.resource.solicitudes({ id: $stateParams.id, role: $stateParams.role, state: $stateParams.state }).$promise
-        authenticate: true
-
-      # ADIMIN.CATEGORY ROUTE
-      .state 'categories',
-        url: '/admin/categories',
-        views:
-          'sidebox':
-            templateUrl: 'partials/category/sidebox'
-          'left':
-            templateUrl: 'partials/category/left'
-            controller: 'CategoryCtrl'
-          'right':
-            templateUrl: 'partials/category/right'
-            controller: 'CategoryShowCtrl'
-        resolve:
-          _categories: (Category) =>
-            Category.resource.index({}).$promise
-          _category: (Category, _categories) =>
-            Category.resource.show({ id: _categories[0]._id }).$promise
-        authenticate: true
-
-      .state 'categories_show',
-        url: '/admin/categories/:id',
-        views:
-          'sidebox':
-            templateUrl: 'partials/category/sidebox'
-          'left':
-            templateUrl: 'partials/category/left'
-            controller: 'CategoryCtrl'
-          'right':
-            templateUrl: 'partials/category/right'
-            controller: 'CategoryShowCtrl'
-        resolve:
-          _categories: (Category) =>
-            Category.resource.index({}).$promise
-          _category: (Category, $stateParams) =>
-            Category.resource.show({ id: $stateParams.id }).$promise
         authenticate: true
 
     $locationProvider.html5Mode true
