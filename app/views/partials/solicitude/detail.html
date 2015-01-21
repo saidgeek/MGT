@@ -159,7 +159,7 @@
 									</div>
 									<div class="username">
 										<span>{{ c.createdBy.profile.firstName }} {{ c.createdBy.profile.lastName }}</span>
-										<p data-sgk-duration ng-model="c.createdAt"></p>
+										creado el: {{ c.createdAt | DateFormat }}
 									</div>
 								</div>
 							</div>
