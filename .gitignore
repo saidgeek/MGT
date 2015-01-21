@@ -5,6 +5,6 @@ public
 app/lib
 heroku
 /views
-dist
+/dist
 dist_pre
 .DS_Store
