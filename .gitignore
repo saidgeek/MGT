@@ -8,3 +8,4 @@ heroku
 /dist
 dist_pre
 .DS_Store
+*.cli.coffee
