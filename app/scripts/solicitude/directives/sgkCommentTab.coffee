@@ -33,10 +33,8 @@ angular.module('movistarApp')
         $el.parent().addClass 'active'
         $areaform.attr 'placeholder', placeholder[type]
         # $rootScope.$emit 'loadComments', type, scope.comment[type]
-        console.log 'scope.comment[type]:', scope.comment[type]
         scope.comment_type = type
         scope.comments = scope.comment[type]
-        console.log 'scope.comments:', scope.comments
         scope.$apply()
         
         return false

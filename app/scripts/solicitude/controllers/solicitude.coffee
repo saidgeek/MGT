@@ -117,7 +117,7 @@ angular.module('movistarApp')
         Comment.show data.comment, (err, comment) ->
           if !err
             if CommentPermissions.view(comment.type, $rootScope.currentUser.role)
-              $scope.comments.push comment
+              $scope.comments.unshift comment
             return false
 
     IO.on 'solicitude.new.task', (data) ->
