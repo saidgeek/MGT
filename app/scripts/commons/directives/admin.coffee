@@ -4,18 +4,10 @@ angular.module('movistarApp')
   .directive 'sgkDuration', ($interval) ->
     restrict: 'A'
     link: (scope, element, attrs) ->
-      console.log attrs.date
       date = moment(attrs.date).format('YYYY/MM/DD H:m:S');
-      console.log date
       element.countdown(date)
         .on 'update.countdown', (e) ->
           element.html e.strftime('%H:%M:%S')
-
-
-
-      # $interval () =>
-      #   element.html moment(ngModel.$viewValue).fromNow(false)
-      # , 500
 
   .directive 'sgkMedidaDetail', ($window, $rootScope, $timeout) ->
     restrict: 'A'
