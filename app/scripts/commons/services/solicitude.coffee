@@ -96,6 +96,12 @@ angular.module("movistarApp")
           id: '@id'
         url: '/api/v1/solicitude/:id/archived'
 
+      delete:
+        method: 'DELETE'
+        params:
+          id: '@id'
+        url: '/api/v1/solicitude/:id/delete'
+
     _index = (target, filter, perPage, page, cb) ->
       resource.index(
         target: target
@@ -245,6 +251,15 @@ angular.module("movistarApp")
         cb err
       ).$promise
 
+    _delete: (id, cb) ->
+      resource.delete(
+        id: id
+      , () ->
+        cb null, true
+      , (err) ->
+        cb err
+      ).$promise
+
     return {
       index: (target, filter, perPage, page, cb) ->
         _index(target, filter, perPage, page, cb)
@@ -270,5 +285,7 @@ angular.module("movistarApp")
         _toggleCheckTasks(id, task, cb)
       archived: (id, cb) ->
         _archived(id, cb)
+      delete: (id, cb) ->
+        _delete(id, cb)
       resource: resource
     }

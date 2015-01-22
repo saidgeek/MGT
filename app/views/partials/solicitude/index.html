@@ -17,6 +17,7 @@
 									<div class="code">
 										<span>Code: {{ s.code }}</span> {{ s.ticket.title }}
 										<i class="fa fa-archive fa-lg" ng-click="archived(s._id)" ng-show="archivedShow(s.state)"></i>
+										<i class="fa fa-trash fa-lg" ng-click="delete(s._id)" ng-show="deleteShow(s.applicant, s.state)"></i>
 									</div>
 								</div>
 							</div>

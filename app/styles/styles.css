@@ -3075,6 +3075,7 @@ div.message-error {
 }
 .col-7-s .code .fa {
     float: right;
+    padding-right: 5px;
 }
 .col-6{
   width: 49.99%;

@@ -30,6 +30,12 @@ angular.module('movistarApp')
       $el = angular.element('div.lista').find(_find)
       $el.remove()
 
+    IO.on 'solicitude.delete', (data) ->
+      $scope.isGo = true
+      _find = "li[data-id='#{data.id}']"
+      $el = angular.element('div.lista').find(_find)
+      $el.remove()
+
     $scope.$watch 'currentPage', (value) ->
       _page = value - 1
       if _page > -1
@@ -46,12 +52,19 @@ angular.module('movistarApp')
 
     $scope.archived = (id) =>
       $scope.isGo = false
-      console.log 'archived:', id
       Solicitude.resource.archived({ id: id }).$promise
+      return false
+
+    $scope.delete = (id) =>
+      $scope.isGo = false
+      Solicitude.resource.delete({ id: id }).$promise
       return false
 
     $scope.archivedShow = (state) ->
       ['COMPLETED', 'CANCELED'].indexOf(state.type) > -1
+
+    $scope.deleteShow = (id ,state) ->
+      state.type is 'CANCELED' and $rootScope.currentUser.id is id
 
     # Solicitude.index _target, _filter, (err, solicitudes) ->
     #   if err
