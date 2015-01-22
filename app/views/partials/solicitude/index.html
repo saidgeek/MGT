@@ -31,23 +31,19 @@
 												<span></span> {{ s.state[role] | StateSolicitude }}
 											</li>
 											<li class="ico">
-												<span></span>
-												Sol. {{ s.createdAt | DateFormat }}
+												<i class="fa fa-calendar-o"> Sol. {{ s.createdAt | DateFormat }}</i>
 											</li>
 											<li class="ico" ng-if="s.startedAt">
-												<span></span>
-												Ini. {{ s.startedAt | DateFormat }}
+												<i class="fa fa-calendar-o"> Ini. {{ s.startedAt | DateFormat }}</i>
 											</li>
 											<li class="ico" ng-if="s.priority" ng-class="s.priority | PriorityIcons">
 												<span></span> {{ s.priority | Priority }}
 											</li>
-											<li class="ico time" ng-if="s.duration && !s.pausedAt">
-												<span></span>
-												<p>{{ s.duration / 60000 }} min.</p>
+											<li class="ico" ng-if="s.duration && !s.pausedAt">
+												<i class="fa fa-calendar-o"> {{ s.duration / 60000 }} min.</i>
 											</li>
 											<li class="ico" ng-if="s.duration && !s.pausedAt">
-												<span></span>
-												<p data-sgk-duration data-date="{{s.endedAt}}"></p>
+												<i class="fa fa-clock-o" data-sgk-duration data-date="{{s.endedAt}}"></i>
 											</li>
 										</ul>
 									</div>

@@ -13,7 +13,7 @@
 								<span></span> {{ solicitude.state[role] | StateSolicitude }}
 							</li>
 							<li class="ico">
-								<span></span> Sol. {{ solicitude.createdAt | DateFormat }}
+								<i class="fa fa-calendar-o"> Sol. {{ solicitude.createdAt | DateFormat }}</i>
 							</li>
 							<li class="ico" ng-if="solicitude.priority" ng-class="solicitude.priority | PriorityIcons">
 								<span></span>
@@ -24,11 +24,10 @@
 								<p ng-hide="edit_priority()">{{ solicitude.priority | Priority }}</p>
 							</li>
 							<li class="ico" ng-if="solicitude.duration && !solicitude.pausedAt">
-								<span></span>
-								{{ solicitude.duration / 60000 }} min.
+								<i class="fa fa-calendar-o"> {{ solicitude.duration / 60000 }} min.</i>
 							</li>
 							<li class="ico" ng-if="solicitude.duration && !solicitude.pausedAt" >
-								<span></span> <div data-sgk-duration  data-date="{{solicitude.endedAt}}"></div>
+								<i class="fa fa-clock-o" data-sgk-duration data-date="{{solicitude.endedAt}}"></i>
 							</li>
 						</ul>
 					</div>

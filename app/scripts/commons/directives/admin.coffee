@@ -7,7 +7,9 @@ angular.module('movistarApp')
       date = moment(attrs.date).format('YYYY/MM/DD H:m:S');
       element.countdown(date)
         .on 'update.countdown', (e) ->
-          element.html e.strftime('%H:%M:%S')
+          element.html e.strftime(' %H:%M:%S')
+        .on 'finish.countdown', (e) ->
+          element.html ' 00:00:00'
 
   .directive 'sgkMedidaDetail', ($window, $rootScope, $timeout) ->
     restrict: 'A'
