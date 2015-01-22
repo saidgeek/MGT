@@ -28,7 +28,7 @@
 								{{ solicitude.duration / 60000 }} min.
 							</li>
 							<li class="ico" ng-if="solicitude.duration && !solicitude.pausedAt" >
-								<span></span> <div data-sgk-duration ng-model="solicitude.endedAt"></div>
+								<span></span> <div data-sgk-duration  data-date="{{solicitude.endedAt}}"></div>
 							</li>
 						</ul>
 					</div>
