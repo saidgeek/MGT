@@ -3047,6 +3047,35 @@ div.message-error {
 .col-7{
   width: 58.33%;
 }
+.col-7-s{
+  /*width: 23.33%;*/
+}
+.col-7-s .code {
+  font-family: 'proxima_nova_rgbold';
+  color: #444c63;
+  margin: 0 15px 0 0;
+  white-space: nowrap;
+  width: 100%;
+}
+.active .col-7-s .code {
+  color: #fff;
+}
+.col-7-s .code span{
+  background: #f2f6fa;
+  display: inline-block;
+  padding: 4px;
+  border-radius: 3px;
+  font-size: 12px;
+  color: #9da9b9;
+  font-family: 'proxima_novalight';
+  margin: 0 5px 0 0;
+}
+.active .col-7-s .code span{
+  background: #444c63;
+}
+.col-7-s .code .fa {
+    float: right;
+}
 .col-6{
   width: 49.99%;
 }

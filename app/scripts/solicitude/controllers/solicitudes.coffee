@@ -24,6 +24,11 @@ angular.module('movistarApp')
         if !err
           $scope.solicitudes.solicitudes.unshift solicitude
 
+    IO.on 'solicitude.archived', (data) ->
+      $scope.isGo = true
+      _find = "li[data-id='#{data.id}']"
+      $el = angular.element('div.lista').find(_find)
+      $el.remove()
 
     $scope.$watch 'currentPage', (value) ->
       _page = value - 1
@@ -31,6 +36,22 @@ angular.module('movistarApp')
         Solicitude.index _target, _filter, 15, _page, (err, solicitudes) ->
           if !err
             $scope.solicitudes = solicitudes
+
+    $scope.isGo = true
+
+    $scope.go = (id) ->
+      if $scope.isGo
+        $state.go 'solicitude', { id: id }
+        $scope.isGo = true
+
+    $scope.archived = (id) =>
+      $scope.isGo = false
+      console.log 'archived:', id
+      Solicitude.resource.archived({ id: id }).$promise
+      return false
+
+    $scope.archivedShow = (state) ->
+      ['COMPLETED', 'CANCELED'].indexOf(state.type) > -1
 
     # Solicitude.index _target, _filter, (err, solicitudes) ->
     #   if err

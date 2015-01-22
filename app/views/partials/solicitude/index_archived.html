@@ -16,7 +16,6 @@
 								<div class="col-7-s">
 									<div class="code">
 										<span>Code: {{ s.code }}</span> {{ s.ticket.title }}
-										<i class="fa fa-archive fa-lg" ng-click="archived(s._id)" ng-show="archivedShow(s.state)"></i>
 									</div>
 								</div>
 							</div>
@@ -36,6 +35,10 @@
 											<li class="ico" ng-if="s.startedAt">
 												<span></span>
 												Ini. {{ s.startedAt | DateFormat }}
+											</li>
+											<li class="ico" ng-if="archivedShow(s.state)">
+												<span></span>
+												Arch. {{ s.archivedAt[role] | DateFormat }}
 											</li>
 											<li class="ico" ng-if="s.priority" ng-class="s.priority | PriorityIcons">
 												<span></span> {{ s.priority | Priority }}

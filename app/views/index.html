@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="stylesheet" href="styles/jquery.mCustomScrollbar.css" />
     <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css" />
     <!--[if IE]>
       <link rel="stylesheet" href="styles/ie.css" />
     <![endif]-->
@@ -190,6 +191,7 @@
               <ul>
             <!--     <li data-ng-class="{active: isActive('/inicio')}"><a ng-href="/inicio">Inicio</a></li> -->
                 <li ui-sref-active="active"><a ui-sref="solicitudes">Solicitudes</a></li>
+                <li ui-sref-active="active"><a ui-sref="archived">Archivadas</a></li>
                 <li ui-sref-active="active"><a href="/admin/" target="_self">Administración</a></li>
               </ul>
             </div>
@@ -274,6 +276,7 @@
 
         <script src="scripts/commons/controllers/search.js"></script>
         <script src="scripts/solicitude/controllers/solicitudes.js"></script>
+        <script src="scripts/solicitude/controllers/archived.js"></script>
         <script src="scripts/solicitude/controllers/solicitude.js"></script>
         <script src="scripts/solicitude/controllers/save.js"></script>
         <script src="scripts/solicitude/controllers/filter.js"></script>

@@ -13,6 +13,14 @@ angular.module("movistarApp")
           page: '@page'
         url: '/api/v1/solicitudes/:target/:filter'
 				#isArray: true
+      
+      index_archived:
+        method: 'GET'
+        params:
+          perPage: '@perPage'
+          page: '@page'
+        url: '/api/v1/solicitudes/archived'
+        #isArray: true
 
       search:
         method: 'GET'
@@ -82,10 +90,26 @@ angular.module("movistarApp")
           task: "@task"
         url: '/api/v1/solicitude/:id/check/:task'
 
+      archived:
+        method: 'PUT'
+        params:
+          id: '@id'
+        url: '/api/v1/solicitude/:id/archived'
+
     _index = (target, filter, perPage, page, cb) ->
       resource.index(
         target: target
         filter: filter
+        perPage: perPage
+        page: page
+      , (solicitudes) ->
+        cb null, solicitudes
+      , (err) ->
+        cb err.data
+      ).$premise
+
+    _index_archived = (perPage, page, cb) ->
+      resource.index(
         perPage: perPage
         page: page
       , (solicitudes) ->
@@ -212,9 +236,20 @@ angular.module("movistarApp")
         cb err.data
       ).$promise
 
+    _archived: (id, cb) ->
+      resource.archived(
+        id: id
+      , () ->
+        cb null, true
+      , (err) ->
+        cb err
+      ).$promise
+
     return {
       index: (target, filter, perPage, page, cb) ->
         _index(target, filter, perPage, page, cb)
+      index_archived: (perPage, page, cb) ->
+        _index_archived(perPage, page, cb)
       search: (q, cb) ->
         _search(q, cb)
       groups: (cb) ->
@@ -233,5 +268,7 @@ angular.module("movistarApp")
         _addTasks(id, desc, attachments, cb)
       toggleCheckTasks: (id, task, cb) ->
         _toggleCheckTasks(id, task, cb)
+      archived: (id, cb) ->
+        _archived(id, cb)
       resource: resource
     }

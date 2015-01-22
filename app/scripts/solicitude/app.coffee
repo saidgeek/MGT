@@ -25,6 +25,14 @@ angular.module('movistarApp', [
             Solicitude.resource.index({ target: null, filter: null, perPage: 15, page: 0 }).$promise
         controller: 'SolicitudesCtrl'
         authenticate: true
+      .state 'archived',
+        url: '/solicitudes/archived'
+        templateUrl: 'partials/solicitude/index_archived'
+        resolve:
+          _archived: (Solicitude) =>
+            Solicitude.resource.index_archived({ perPage: 15, page: 0 }).$promise
+        controller: 'ArchivedCtrl'
+        authenticate: true
       .state 'filter',
         url: '/solicitudes/:target/:filter'
         templateUrl: 'partials/solicitude/index'
