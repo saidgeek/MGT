@@ -44,6 +44,9 @@ angular.module('movistarApp')
                 .find('ul.acciones li.pause')
                 .remove()
 
+          if $element.find('li.pause').length > 1
+            $element.find('li.pause')[0].remove()
+
       $_loadSection = (section) =>
         $el = $element.parents('.row')
 
