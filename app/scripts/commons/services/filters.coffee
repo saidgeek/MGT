@@ -26,7 +26,7 @@ angular.module("movistarApp")
 
   .filter 'DateFormat', ->
     (date) ->
-      moment(date).format('DD-MM-YYYY HH:mm')
+      moment.tz(date, 'America/Santiago').format('DD-MM-YYYY HH:mm')
 
   .filter 'StateSolicitude', (StateData) ->
     (key) ->
