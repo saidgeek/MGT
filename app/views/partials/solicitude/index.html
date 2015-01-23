@@ -43,7 +43,7 @@
 												<i class="fa fa-calendar-o"> {{ s.duration / 60000 }} min.</i>
 											</li>
 											<li class="ico" ng-if="s.duration && !s.pausedAt">
-												<i class="fa fa-clock-o" data-sgk-duration data-date="{{s.endedAt}}"></i>
+												<i class="fa fa-clock-o" data-sgk-duration data-start="{{s.startedAt}}" data-duration="{{s.duration}}"></i>
 											</li>
 										</ul>
 									</div>

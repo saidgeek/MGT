@@ -27,7 +27,7 @@
 								<i class="fa fa-calendar-o"> {{ solicitude.duration / 60000 }} min.</i>
 							</li>
 							<li class="ico" ng-if="solicitude.duration && !solicitude.pausedAt" >
-								<i class="fa fa-clock-o" data-sgk-duration data-date="{{solicitude.endedAt}}"></i>
+								<i class="fa fa-clock-o" data-sgk-duration data-start="{{solicitude.startedAt}}" data-duration="{{solicitude.duration}}"></i>
 							</li>
 						</ul>
 					</div>

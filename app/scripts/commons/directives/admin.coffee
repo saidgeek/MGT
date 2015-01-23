@@ -4,7 +4,9 @@ angular.module('movistarApp')
   .directive 'sgkDuration', ($interval) ->
     restrict: 'A'
     link: (scope, element, attrs) ->
-      date = moment.tz(attrs.date, 'America/Santiago').format('YYYY/MM/DD H:m:S');
+      console.log attrs.duration
+      date = moment(attrs.start).tz('America/Santiago').add(((attrs.duration/60000)+4), 'minutes').toDate()
+      # date = moment.tz(attrs.date, 'America/Santiago').format('YYYY/MM/DD H:m:S');
       element.countdown(date)
         .on 'update.countdown', (e) ->
           element.html e.strftime(' %H:%M:%S')

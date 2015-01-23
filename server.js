@@ -66,9 +66,6 @@ require('./lib/config/express')(app);
 // Routing
 require('./lib/routes')(app);
 
-require('./createMapping')();
-require('./synchronizeModels')();
-
 // Start server
 server.listen(config.port, function () {
   console.log('Express server listening on port %d in %s mode', config.port, app.get('env'));

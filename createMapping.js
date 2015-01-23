@@ -1,21 +1,45 @@
 'use strict'
 
-var path = require('path'),
+var config = require('./lib/config/config'),
     mongoose = require('mongoose'),
-    mongoosastic = require('mongoosastic'),
-    Solicitude = mongoose.model('Solicitude');
+    mongoose.connect(config.mongo.uri, config.mongo.options),
+    path = require('path'),
+    mongoosastic = require('mongoosastic');
 
-module.exports = function() {
+var modelsPath = path.join(__dirname, 'lib/models');
+require(modelsPath + '/email');
+require(modelsPath + '/token');
+require(modelsPath + '/user');
+require(modelsPath + '/attachment');
+require(modelsPath + '/category');
+require(modelsPath + '/notification');
+require(modelsPath + '/solicitude');
+require(modelsPath + '/task');
+require(modelsPath + '/comment');
+require(modelsPath + '/log');
 
-  var Solicitude = mongoose.model('Solicitude');
+Solicitude = mongoose.model('Solicitude');
 
-  Solicitude.createMapping(function(err, mapping) {
-    if (err) {
-      console.log('err:', err);
-    } else {
-      console.log('Mapping creado');
-      console.log(mapping);
-    };
+Solicitude.createMapping(function(err, mapping) {
+  if (err) {
+    console.log('err:', err);
+  } else {
+    console.log('Mapping creado');
+    console.log(mapping);
+  };
+});
+
+var stream = Solicitude.synchronize();
+  var count = 0;
+
+  stream.on('data', function(err, doc) {
+    count++;
   });
-  
-};
+
+  stream.on('close', function() {
+    console.log('Indexados '+ count + ' solicitudes!');
+  });
+
+  stream.on('error', function(err) {
+    console.log('ERROR:', err);
+  });
