@@ -36,7 +36,7 @@ angular.module("movistarApp")
       QUEUE_VALIDATION:
         ROOT: 'QUEUE_VALIDATION'
         ADMIN: 'QUEUE_VALIDATION'
-        CLIENT: 'QUEUE_VALIDATION'
+        CLIENT: 'EMITED'
         EDITOR: 'QUEUE_VALIDATION'
       CANCELED:
         ROOT: 'CANCELED'
@@ -196,7 +196,7 @@ angular.module("movistarApp")
         name: 'Pausada'
         icon: 'pau'
       FOR_VALIDATION:
-        name: 'Por validacion'
+        name: 'En espera de arpobación'
         icon: 'valg'
       QUEUE_CHANGE:
         name: 'Espera cambios'
@@ -228,6 +228,9 @@ angular.module("movistarApp")
       REJECTED_BY_CLIENT_PRO:
         name: 'Rechazado por cliente (pro)'
         icon: 'recc'
+      EMITED:
+        name: 'Emitidas'
+        icon: 'asi'
 
     _makeArray = () ->
       _states = []

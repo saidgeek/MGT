@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('movistarApp')
-  .controller 'SolicitudeCtrl', ($scope, Solicitude, $rootScope, PriorityData, Category, User, Comment, Task, SegmentsData, SectionsData, _solicitude, _comments, _attachments, _tasks, $state, IO, CommentPermissions, $sce) ->
+  .controller 'SolicitudeCtrl', ($scope, $fancyModal, Solicitude, $rootScope, PriorityData, Category, User, Comment, Task, SegmentsData, SectionsData, _solicitude, _comments, _attachments, _tasks, $state, IO, CommentPermissions, $sce) ->
     $scope.solicitude = _solicitude
     $scope.comments = []
     $scope.comment_type = null
@@ -12,6 +12,35 @@ angular.module('movistarApp')
       internal: []
       provider: []
       other: []
+
+    $scope.openProfile = (type) ->
+      $scope.profile = 
+        email: "#{$scope.solicitude[type].email || false}"
+        avatar: "#{$scope.solicitude[type].profile.avatar || false}"
+        name: "#{$scope.solicitude[type].profile.firstName} #{$scope.solicitude[type].profile.lastName || false}"
+        number: "#{$scope.solicitude[type].profile.phoneNumber || false}"
+        cel: "#{$scope.solicitude[type].profile.celNumber || false}"
+        description: "#{$scope.solicitude[type].profile.description || false}"
+      $fancyModal.open
+        template: """
+          <div class="modal-profile">
+            <img src="{{ profile.avatar }}" ng-show="profile.avatar" />
+            <h3>{{ profile.name }}</h3>
+            <p ng-show="profile.email">
+              <i class="fa fa-envelope"></i> {{ profile.email }}
+            </p>
+            <p ng-show="profile.cel">
+              <i class="fa fa-mobile"></i> {{ profile.cel }}
+            </p>
+            <p ng-show="profile.number">
+              <i class="fa fa-phone"></i> {{ profile.number }}
+            </p>
+            <p ng-show="profile.description">
+             {{ profile.description }}
+            </p>
+          </div>
+        """
+        scope: $scope
 
     angular.element.each _comments, (index, comment) ->
       if CommentPermissions.view(comment.type, $rootScope.currentUser.role)

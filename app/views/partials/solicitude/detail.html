@@ -48,15 +48,21 @@
 							<ul class="info-detalle">
 								<li>
 									<span>Solicitante:</span>
-									{{ solicitude.applicant.profile.firstName }} {{ solicitude.applicant.profile.lastName }}
+									<a href="javascript:{}" ng-click="openProfile('applicant')" style="text-decoration: underline;">
+										{{ solicitude.applicant.profile.firstName }} {{ solicitude.applicant.profile.lastName }}
+									</a>
 								</li>
 								<li ng-if="solicitude.responsible">
 									<span>Responsable:</span>
-									{{ solicitude.responsible.profile.firstName }}  {{ solicitude.responsible.profile.lastName }} ({{ solicitude.responsible.role | InvolvedRole }})
+									<a href="javascript:{}" ng-click="openProfile('responsible')" style="text-decoration: underline;">
+										{{ solicitude.responsible.profile.firstName }}  {{ solicitude.responsible.profile.lastName }} ({{ solicitude.responsible.role | InvolvedRole }})
+									</a>
 								</li>
 								<li ng-if="solicitude.provider">
 									<span>Proveedor:</span>
-									{{ solicitude.provider.profile.company }} ({{ solicitude.provider.profile.firstName }} {{ solicitude.provider.profile.lastName }})
+									<a href="javascript:{}" ng-click="openProfile('provider')" style="text-decoration: underline;">
+										{{ solicitude.provider.profile.company }} ({{ solicitude.provider.profile.firstName }} {{ solicitude.provider.profile.lastName }})
+									</a>
 								</li>
 							</ul>
 							<ul class="info-detalle">

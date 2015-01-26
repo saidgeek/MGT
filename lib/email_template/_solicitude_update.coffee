@@ -5,16 +5,15 @@ template = require './template'
 module.exports = {
   html: """
     #{ template.header }
-      
+
       <p>
-        La solicitud "<%= title %>" código: <%= code %> se ha actualizado.
+        <%= to %> la solicitud "<%= title %>" con código de referencia <b><%= code %></b>, a actualizado su estado a <b><%= state.toLowerCase() %></b> para acceder a ella solo debes hacer click <a class="ir" href="<%= url %>">aquí</a>. 
       </p>
-      <a class="ir" href="<%= url %>">Ir a la Solicitud</a>
 
     #{ template.footer }
   """
   text: """
-    La solicitud "<%= title %>" código: <%= code %> se ha actualizado.
+    <%= to %> la solicitud "<%= title %>" con código de referencia <b><%= code %></b>, a actualizado su estado a <b><%= state.toLowerCase() %></b>.
     link: <%= url %>
   """
 }

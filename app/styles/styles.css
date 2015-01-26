@@ -3870,3 +3870,34 @@ ul.btns-comentario li:last-child{
   cursor: pointer;
   border-radius: 4px;
 }
+
+.fancymodal-content {
+    width: 250px;
+}
+
+.fancymodal-content .modal-profile {
+    padding: 10px;
+}
+
+.fancymodal-content .modal-profile img {
+    width: 80px;
+    height: 80px;
+    margin-left: 50%;
+    left: -40px;
+    border-radius: 50%;
+    position: relative; 
+}
+
+.fancymodal-content .modal-profile h3 {
+    color: #232323;
+    font-size: 2em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.fancymodal-content .modal-profile p {
+    font-size: 1em;
+    padding: 10px;
+}
+

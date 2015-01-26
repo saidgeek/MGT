@@ -3,12 +3,13 @@
 angular.module('movistarApp', [
   'ngCookies',
   'ngResource',
-  'ngSanitize',
+  'ngSanitize'
   'ui.router',
   'filepicker',
   'confirmClick',
   'btford.socket-io',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'vesparny.fancyModal'
 ])
   .config ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) ->
     $httpProvider.interceptors.push 'noCacheInterceptor'
