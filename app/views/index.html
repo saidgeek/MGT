@@ -158,13 +158,25 @@
                     </ul>
                   </div>
 
-                  <div id="categoria" class="sidebox" ng-if="currentUser.role !== 'CLIENT' && currentUser.role !== 'PROVIDER'">
+                  <!--div id="categoria" class="sidebox" ng-if="currentUser.role !== 'CLIENT' && currentUser.role !== 'PROVIDER'">
                     <h3>Categorías</h3>
                     <ul class="bold">
                       <li ng-repeat="c in categories" ui-sref-active="active">
                         <a ui-sref="filter({ target: 'category', filter: c._id.toLowerCase() })">
                           <div class="ico"></div>
                           {{ c.name }}
+                        </a>
+                      </li>
+                    </ul>
+                  </div-->
+
+                  <div id="categoria" class="sidebox">
+                    <h3>Segmentos</h3>
+                    <ul class="bold">
+                      <li ng-repeat="c in ['Personas', 'Negocios', 'Empresas', 'Telefónica Chile']">
+                        <a ui-sref="search({ q: c })">
+                          <div class="ico"></div>
+                          {{ c }}
                         </a>
                       </li>
                     </ul>

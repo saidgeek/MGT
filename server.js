@@ -65,6 +65,7 @@ require('./lib/config/express')(app);
 
 // Routing
 require('./lib/routes')(app);
+require('./synchronizeModels')(app);
 
 // Start server
 server.listen(config.port, function () {

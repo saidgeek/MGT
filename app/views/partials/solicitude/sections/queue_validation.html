@@ -11,12 +11,12 @@
                     </select>
                     <div class="message-error" ng-show="submitted && form.priority.$error.required">El campo prioridad es requerido.</div>
                 </li>
-                <li class="dropdown"><span></span>
+                <!--li class="dropdown"><span></span>
                     <select ng-model="solicitude.ticket.category" name="category" ng-options="c._id as c.name for c in categories | RemoveThis: id:c._id" required>
                       <option value="">Categoría</option>
                     </select>
                     <div class="message-error" ng-show="submitted && form.category.$error.required">El campo clasificacion es requerido.</div>
-                </li>
+                </li-->
                 <li class="dropdown"><span></span>
                     <select ng-model="solicitude.responsible" name="responsible" ng-options="u._id as (u.profile.firstName+' '+u.profile.lastName) for u in contentManagers" required>
                       <option value="">Responsable</option>

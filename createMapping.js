@@ -1,9 +1,9 @@
 'use strict'
 
 var config = require('./lib/config/config'),
-    mongoose = require('mongoose'),
-    mongoose.connect(config.mongo.uri, config.mongo.options),
-    path = require('path'),
+    mongoose = require('mongoose');
+    mongoose.connect(config.mongo.uri, config.mongo.options);
+var path = require('path'),
     mongoosastic = require('mongoosastic');
 
 var modelsPath = path.join(__dirname, 'lib/models');
@@ -18,16 +18,16 @@ require(modelsPath + '/task');
 require(modelsPath + '/comment');
 require(modelsPath + '/log');
 
-Solicitude = mongoose.model('Solicitude');
+var Solicitude = mongoose.model('Solicitude');
 
-Solicitude.createMapping(function(err, mapping) {
-  if (err) {
-    console.log('err:', err);
-  } else {
-    console.log('Mapping creado');
-    console.log(mapping);
-  };
-});
+// Solicitude.createMapping(function(err, mapping) {
+//   if (err) {
+//     console.log('err:', err);
+//   } else {
+//     console.log('Mapping creado');
+//     console.log(mapping);
+//   };
+// });
 
 var stream = Solicitude.synchronize();
   var count = 0;
