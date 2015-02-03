@@ -38,11 +38,11 @@ angular.module('movistarApp')
                 .parent()
                 .remove()
 
-          if _state is 'proccess' and ['PROVIDER', 'ROOT', 'ADMIN'].indexOf($rootScope.currentUser.role) > -1
-            if moment($scope.solicitude.endedAt) < moment(Date.now())
-              $element
-                .find('ul.acciones li.pause')
-                .remove()
+          #if _state is 'proccess' and ['PROVIDER', 'ROOT', 'ADMIN'].indexOf($rootScope.currentUser.role) > -1
+          #  if moment($scope.solicitude.endedAt) < moment(Date.now())
+          #    $element
+          #      .find('ul.acciones li.pause')
+          #      .remove()
 
           if $element.find('li.pause').length > 1
             $element.find('li.pause')[0].remove()
