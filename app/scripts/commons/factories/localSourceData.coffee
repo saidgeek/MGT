@@ -196,7 +196,7 @@ angular.module("movistarApp")
         name: 'Pausada'
         icon: 'pau'
       FOR_VALIDATION:
-        name: 'En espera de arpobación'
+        name: 'En espera de aprobación'
         icon: 'valg'
       QUEUE_CHANGE:
         name: 'Espera cambios'
