@@ -9,7 +9,7 @@
                         <select ng-model="solicitude.provider" name="provider" ng-options="u._id as (u.profile.company+' ('+u.profile.firstName+' '+u.profile.lastName+')') for u in provider" required>
                           <option value="">Proveedor</option>
                         </select>
-                        <div class="message-error" ng-show="submitted && form.provider.$error.required">El campo prioridad es requerido.</div>
+                        <div class="message-error" ng-show="submitted && form.provider.$dirty && form.provider.$invalid">El campo prioridad es requerido.</div>
                     </li>
                 </ul>
             </fieldset>
@@ -26,7 +26,7 @@
                     <li><button type="reset">Limpiar todos los Datos</button></li>
                     <li><a href="javascript:{}" data-cancel>Cancelar</a></li>
                 </ul>
-                <button type="submit" class="boton1 round" ng-click="submitted = true; nextState('assigned_to_provider')"><span></span>Validar Solicitud</button>
+                <button type="submit" class="boton1 round" data-invalid="{{ form.$invalid }}" ng-click="submitted = true; nextState('assigned_to_provider')"><span></span>Validar Solicitud</button>
             </fieldset>
         </form>
     </div>

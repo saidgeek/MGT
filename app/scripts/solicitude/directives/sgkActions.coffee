@@ -59,10 +59,11 @@ angular.module('movistarApp')
             $element.find('ul').css 'display', 'block'
 
           $row.on 'click', 'form [type="submit"]', (e) ->
-            $row.hide()
-            ActionsFactory.section('loader').success (data) =>
-              $loader = angular.element(data)
-              $el.after $loader
+            if !angular.element(this).data('invalid')
+              $row.hide()
+              ActionsFactory.section('loader').success (data) =>
+                $loader = angular.element(data)
+                $el.after $loader
           $compile($el.parent().find('.row.form').contents())($scope)
 
           if section is 'queue_validation'
