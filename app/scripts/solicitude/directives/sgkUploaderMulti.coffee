@@ -14,7 +14,8 @@ angular.module('movistarApp')
         index = $scope.attachments.indexOf(attachment)
         $scope.attachments.splice index, 1
         $scope.list.splice index, 1
-        $scope.$emit 'remove', attachment.id
+        #$scope.$emit 'remove', attachment.id
+        angular.element('input[type="file"]').val(null);
 
       addToList = (id, name) =>
         if name.length > 100
@@ -23,7 +24,7 @@ angular.module('movistarApp')
           $scope.list.push { id: id, name: name }
 
       $rootScope.$on 'clean_list_uploader', (e) ->
-        $scope.list = {}
+        $scope.list = []
 
       $scope.upload = (id, file) =>
         options =
