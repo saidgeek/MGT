@@ -4,13 +4,29 @@ angular.module('movistarApp')
   .directive 'sgkDuration', ($interval) ->
     restrict: 'A'
     link: (scope, element, attrs) ->
-      date = moment(attrs.start).tz('America/Santiago').add(((attrs.duration/60000)+4), 'minutes').toDate()
-      # date = moment.tz(attrs.date, 'America/Santiago').format('YYYY/MM/DD H:m:S');
-      element.countdown(date)
-        .on 'update.countdown', (e) ->
-          element.html e.strftime(' %H:%M:%S')
-        .on 'finish.countdown', (e) ->
-          element.html ' 00:00:00'
+      _is = (parseInt(attrs.duration)/1000)
+
+      element.text " 00:00:00"
+      if parseInt(attrs.duration) > 0
+        setInterval () ->
+          _is = _is - 1;
+          s = Math.floor(_is%60)
+          m = Math.floor(_is/60) % 60
+          h = Math.floor(_is/3600)
+          if s.toString().length is 1
+            s = "0#{s}"
+          if m.toString().length is 1
+            m = "0#{m}"
+          if h.toString().length is 1
+            h = "0#{h}"
+          element.text " #{h}:#{m}:#{s}"
+        , 1000
+
+  .directive 'sgkMin', ($interval) ->
+    restrict: 'A'
+    link: (scope, element, attrs) ->
+
+      element.text " #{Math.abs(moment(attrs.start).diff(attrs.end, 'milliseconds') / 60000)} min."
 
   .directive 'sgkMedidaDetail', ($window, $rootScope, $timeout) ->
     restrict: 'A'

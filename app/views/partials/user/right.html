@@ -87,14 +87,14 @@
                       <li class="ico" ng-if="s.priority" ng-class="solicitude.priority | PriorityIcons">
                         <span></span> {{ solicitude.priority | Priority }}
                       </li>
-                      <li class="ico" ng-if="solicitude.duration && !solicitude.pausedAt">
-                        <i class="fa fa-calendar-o"> {{ solicitude.duration / 60000 }} min.</i>
-                      </li>
                       <li class="ico" data-ng-if="solicitude.priority" data-ng-class="solicitude.priority | PriorityIcons">
                         <span></span> {{ solicitude.priority | Priority }}
                       </li>
                       <li class="ico" ng-if="solicitude.duration && !solicitude.pausedAt">
-                        <i class="fa fa-clock-o" data-sgk-duration data-start="{{solicitude.startedAt}}" data-duration="{{solicitude.duration}}"></i>
+                        <i class="fa fa-calendar-o" data-sgk-min data-start="{{solicitude.startedAt}}" data-end="{{solicitude.endedAt}}"></i>
+                      </li>
+                      <li class="ico" ng-if="solicitude.duration && !solicitude.pausedAt" >
+                        <i class="fa fa-clock-o" data-sgk-duration data-end="{{solicitude.endedAt}}" data-duration="{{solicitude.duration}}"></i>
                       </li>
                     </ul>
                   </div>

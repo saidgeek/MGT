@@ -40,10 +40,10 @@
 												<span></span> {{ s.priority | Priority }}
 											</li>
 											<li class="ico" ng-if="s.duration && !s.pausedAt">
-												<i class="fa fa-calendar-o"> {{ s.duration / 60000 }} min.</i>
+												<i class="fa fa-calendar-o" data-sgk-min data-start="{{s.startedAt}}" data-end="{{s.endedAt}}"></i>
 											</li>
 											<li class="ico" ng-if="s.duration && !s.pausedAt">
-												<i class="fa fa-clock-o" data-sgk-duration data-start="{{s.startedAt}}" data-duration="{{s.duration}}"></i>
+												<i class="fa fa-clock-o" data-sgk-duration data-duration="{{s.duration}}" data-end="{{s.endedAt}}"></i>
 											</li>
 										</ul>
 									</div>
