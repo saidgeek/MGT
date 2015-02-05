@@ -27,7 +27,9 @@ angular.module('movistarApp')
             scrollButtons:
                 enable:false
         $overflow.mCustomScrollbar "update"
-        $overflow.mCustomScrollbar "scrollTo", "top"
+        $timeout () =>
+          $overflow.mCustomScrollbar "scrollTo", "top"
+        , 1000
       
       $timeout () =>
         $timeout () =>

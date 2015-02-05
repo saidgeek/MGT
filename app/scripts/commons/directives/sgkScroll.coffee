@@ -19,5 +19,8 @@ angular.module('movistarApp')
           $timeout () =>
             $_add_scroll()
             element.mCustomScrollbar 'update'
+            $timeout () =>
+              element.mCustomScrollbar "scrollTo","top"
+            , 1000
           , 0
         , 0

@@ -8,18 +8,25 @@ angular.module('movistarApp')
 
       element.text " 00:00:00"
       if parseInt(attrs.duration) > 0
-        setInterval () ->
+        interval = setInterval () ->
           _is = _is - 1;
           s = Math.floor(_is%60)
           m = Math.floor(_is/60) % 60
           h = Math.floor(_is/3600)
+
+          if s is 0 and m is 0 and h is 0
+            element.text " 00:00:00"
+            clearInterval interval
+
           if s.toString().length is 1
             s = "0#{s}"
           if m.toString().length is 1
             m = "0#{m}"
           if h.toString().length is 1
             h = "0#{h}"
+
           element.text " #{h}:#{m}:#{s}"
+
         , 1000
 
   .directive 'sgkMin', ($interval) ->
