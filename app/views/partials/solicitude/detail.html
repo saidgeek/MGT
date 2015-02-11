@@ -26,7 +26,7 @@
 							<li class="ico" ng-if="solicitude.duration && !solicitude.pausedAt">
 								<i class="fa fa-calendar-o" data-sgk-min data-start="{{solicitude.startedAt}}" data-end="{{solicitude.endedAt}}"></i>
 							</li>
-							<li class="ico" ng-if="solicitude.duration && !solicitude.pausedAt" >
+							<li class="ico" ng-if="solicitude.duration && !solicitude.pausedAt && s.state.type == 'PROCCESS'" >
 								<i class="fa fa-clock-o" data-sgk-duration data-end="{{solicitude.endedAt}}" data-duration="{{solicitude.duration}}"></i>
 							</li>
 						</ul>
