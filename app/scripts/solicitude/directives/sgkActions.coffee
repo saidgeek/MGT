@@ -38,11 +38,11 @@ angular.module('movistarApp')
                 .parent()
                 .remove()
 
-          if _state is 'proccess' and ['PROVIDER', 'ROOT', 'ADMIN'].indexOf($rootScope.currentUser.role) > -1
-            if moment($scope.solicitude.endedAt) < moment(Date.now())
-              $element
-                .find('ul.acciones li.pause')
-                .remove()
+          #if _state is 'proccess' and ['PROVIDER', 'ROOT', 'ADMIN'].indexOf($rootScope.currentUser.role) > -1
+          #  if moment($scope.solicitude.endedAt) < moment(Date.now())
+          #    $element
+          #      .find('ul.acciones li.pause')
+          #      .remove()
 
           if $element.find('li.pause').length > 1
             $element.find('li.pause')[0].remove()
@@ -59,10 +59,11 @@ angular.module('movistarApp')
             $element.find('ul').css 'display', 'block'
 
           $row.on 'click', 'form [type="submit"]', (e) ->
-            $row.hide()
-            ActionsFactory.section('loader').success (data) =>
-              $loader = angular.element(data)
-              $el.after $loader
+            if !angular.element(this).data('invalid')
+              $row.hide()
+              ActionsFactory.section('loader').success (data) =>
+                $loader = angular.element(data)
+                $el.after $loader
           $compile($el.parent().find('.row.form').contents())($scope)
 
           if section is 'queue_validation'

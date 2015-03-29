@@ -53,7 +53,7 @@
 
       <fieldset class="odd segments" data-sgk-checks="segments">
           <p>Seleccionar segmentos a los que aplica la solicitud</p>
-          <div class="message-error" ng-show="submitted && error.segments">Se debe seleccionar al menos 1 segmento.</div>
+          <div class="message-error" ng-show="submitted && !error.segments">Se debe seleccionar al menos un segmento.</div>
           
           <ul class="segments">
             <li data-segment="Personas">
@@ -366,7 +366,7 @@
                 <li><button type="reset">Limpiar todos los Datos</button></li>
                 <li><a href="javascript:{}" data-cancel>Cancelar</a></li>
             </ul>
-            <button type="submit" ng-click="validateForm(form); nextState('assigned_to_manager')" class="boton1 round"><span></span>Asignar Solicitud</button>
+            <button type="submit" data-invalid="{{ form.$invalid }}" ng-click="validateForm(form); nextState('assigned_to_manager')" class="boton1 round"><span></span>Asignar Solicitud</button>
         </fieldset>
       </div>
     </form>

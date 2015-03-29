@@ -27,7 +27,7 @@
                     <li><button type="reset">Limpiar todos los Datos</button></li>
                     <li><a href="javascript:{}" data-cancel>Cancelar</a></li>
                 </ul>
-                <button type="submit" class="boton1 round" ng-click="submitted = true; nextState('proccess')"><span></span>Validar Solicitud</button>
+                <button type="submit" class="boton1 round" data-invalid="{{ form.$invalid }}" ng-click="submitted = true; nextState('proccess')"><span></span>Validar Solicitud</button>
             </fieldset>
         </form>
     </div>

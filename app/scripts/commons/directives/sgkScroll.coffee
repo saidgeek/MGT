@@ -6,7 +6,6 @@ angular.module('movistarApp')
     link: (scope, element, attrs) ->
 
       $_add_scroll = () ->
-        console.log element.find('.mCustomScrollBox').length
         if element.find('.mCustomScrollBox').length is 0
           element.mCustomScrollbar
             scrollInertia: 2000
@@ -20,5 +19,8 @@ angular.module('movistarApp')
           $timeout () =>
             $_add_scroll()
             element.mCustomScrollbar 'update'
+            $timeout () =>
+              element.mCustomScrollbar "scrollTo","top"
+            , 1000
           , 0
         , 0

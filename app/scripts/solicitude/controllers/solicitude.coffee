@@ -184,21 +184,13 @@ angular.module('movistarApp')
     $scope.validateTags = () ->
       $scope.tags.length > 0
 
-    $scope.validateSections = (form) ->
-      $scope.solicitude.ticket.segments.length < 1
-
     $scope.validateSegments = (form) ->
-      $scope.solicitude.ticket.sections.length < 1
+      $scope.solicitude.ticket.segments? and $scope.solicitude.ticket.segments.length > 0
 
-    $scope.validateForm = (form) =>
-      if $scope.form?
-        $scope.error['segments'] = $scope.validateSections(form)
-        $scope.error['sections'] = $scope.validateSegments(form)
-        if $scope.error['sections'] || $scope.error['sections']
-          form.$valid = false
-        else
-          form.$valid = true
-        $scope.submitted = true
+    $scope.validateForm = (form) ->
+      $scope.error['segments'] = $scope.validateSegments(form)
+      form.$invalid = !$scope.validateSegments(form)
+      $scope.submitted = true
 
     $scope.addTask = (form) ->
       if form.$valid

@@ -6,7 +6,7 @@ angular.module('movistarApp')
     link: (scope, element, attrs) ->
       
       IO.on 'solicitude.filter.change', (data) ->
-        query_all = "li[data-id='#{ data.id[all] }'] span.round.light"
+        query_all = "li[data-id='all'] span.round.light"
         query = "li[data-id='#{ data.id[$rootScope.currentUser.role] }'] span.round.light"
         $el = element.find(query)
         $el_all = element.find(query_all)

@@ -15,7 +15,7 @@
                     <li><button type="reset">Limpiar todos los Datos</button></li>
                     <li><a href="javascript:{}" data-cancel>Cancelar</a></li>
                 </ul>
-                <button type="submit" class="boton1 round" ng-click="submitted = true; nextState(rejectedState)"><span></span>Confirmar</button>
+                <button type="submit" data-invalid="{{ form.$invalid }}" class="boton1 round" ng-click="submitted = true; nextState(rejectedState)"><span></span>Confirmar</button>
             </fieldset>
         </form>
     </div>

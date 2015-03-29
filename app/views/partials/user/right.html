@@ -79,19 +79,22 @@
                         <span></span> {{ solicitude.state[user.role] | StateSolicitude }}
                       </li>
                       <li class="ico">
-                        <span></span>
-                        Sol. {{ solicitude.createdAt | DateFormat }}
+                        <i class="fa fa-calendar-o"> Sol. {{ solicitude.createdAt | DateFormat }}</i>
                       </li>
-                      <li class="ico" data-ng-if="solicitude.startedAt">
-                        <span></span>
-                        Ini. {{ solicitude.startedAt | DateFormat }}
+                      <li class="ico" ng-if="solicitude.startedAt">
+                        <i class="fa fa-calendar-o"> Ini. {{ solicitude.startedAt | DateFormat }}</i>
+                      </li>
+                      <li class="ico" ng-if="s.priority" ng-class="solicitude.priority | PriorityIcons">
+                        <span></span> {{ solicitude.priority | Priority }}
                       </li>
                       <li class="ico" data-ng-if="solicitude.priority" data-ng-class="solicitude.priority | PriorityIcons">
                         <span></span> {{ solicitude.priority | Priority }}
                       </li>
-                      <li class="ico" data-ng-if="solicitude.duration && !solicitude.pausedAt">
-                        <span></span>
-                        <p data-sgk-duration data-ng-model="solicitude.endedAt"></p>
+                      <li class="ico" ng-if="solicitude.duration && !solicitude.pausedAt">
+                        <i class="fa fa-calendar-o" data-sgk-min data-start="{{solicitude.startedAt}}" data-end="{{solicitude.endedAt}}"></i>
+                      </li>
+                      <li class="ico" ng-if="solicitude.duration && !solicitude.pausedAt" >
+                        <i class="fa fa-clock-o" data-sgk-duration data-end="{{solicitude.endedAt}}" data-duration="{{solicitude.duration}}"></i>
                       </li>
                     </ul>
                   </div>
